@@ -21,7 +21,7 @@ void loadLinesFromFile() async{
           List<String> points = data[1].trim().split(',');
           List<LatLng> pointsFromFile =[];
 
-          print(header[0]);
+          //print(header[0]);
           //print('('+header[1]+','+header[2]+','+header[3]+')');
           BusLine newBusline = new BusLine();
           newBusline.name = header[0];

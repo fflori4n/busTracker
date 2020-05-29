@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/infoBoardItem/infoItem.dart';
+import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
 
+import 'infoBoardItem/infoListView.dart';
 import 'loadModules/stations.dart';
 import 'navbar/navBar.dart';
 
@@ -30,7 +32,7 @@ class buletinState extends State<buletin> {
       children: <Widget>[
         Container(
           decoration: new BoxDecoration(
-                color: gray,
+                color: buletinBCG,
                 borderRadius: new BorderRadius.only(
                   topRight: const Radius.circular(4.0),
                   bottomRight: const Radius.circular(4.0),
@@ -38,25 +40,24 @@ class buletinState extends State<buletin> {
           ),
           margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
           padding: EdgeInsets.only(left: 0.0, top: 0.0),
-          height: screenHeight/1.5,
-          width:  (screenWidth/4.5) + 10,
+          height: 800 * hScaleFactor,
+          width: 350 * wScaleFactor,
           alignment: Alignment.topLeft,
           child: Column(
             children: <Widget>[
               Container(
                 decoration: new BoxDecoration(
-                color: baseBlack,
+                color: buletinHeader,
                 ),
                 padding: EdgeInsets.all(6.0),
-                width:  (screenWidth/4.5) + 10,
-                height: 45,
+                width: 350 * wScaleFactor,
+                height: 100 * hScaleFactor,
                 child: getStationHeadline(),
               ),
               Container(
                 decoration: new BoxDecoration(
                   color: baseWhite.withOpacity(0.8),
                 ),
-                width:  (screenWidth/4.5) + 10,
                 height: 6,
                 margin: EdgeInsets.only(bottom: 5.0),
               ),
@@ -71,9 +72,14 @@ class buletinState extends State<buletin> {
                   Expanded(child: SizedBox()),
                 ],
               ),
-              Column(
-                  children:dispInfo(context)
-              )
+              /*Column(
+                  children:dispInfo(context),
+              ),*/
+              Expanded(
+                child: ListView(              // use listView Builder, do not render invisible widgets
+                  children: dispInfo(context),
+                ),
+              ),
             ],
           )
     )],

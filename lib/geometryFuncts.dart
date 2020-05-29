@@ -114,3 +114,21 @@ double normLoc(LatLng point0, LatLng point1){ // quick and dirty aprox. r^2=r^2+
 
   return (sqrt(x*x + y*y)*R);
 }
+
+double map(double val, double inLow, double inHigh, double outLow, double outHigh,[int saturation]){ // Arduino style map function
+
+  // saturation - null - both
+  //              0 - none
+  //              1 - only low
+  //              2 - only high
+
+  double out = (val - inLow) * (outHigh - outLow) / (inHigh - inLow) + outLow;
+
+  if(saturation != 0){
+    if(saturation != 1) {
+      out = min(out, outHigh);}
+    if(saturation != 2){
+      out = max(out, outLow);}
+  }
+  return out;
+}

@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 
-void loadNickName(Bus busRef) async{
+Future loadNickName(Bus busRef) async{
   Time startTime = busRef.startTime;
   String busLineName = busRef.busLine;
   try {
@@ -23,9 +23,10 @@ void loadNickName(Bus busRef) async{
     List<String> lines = rawFileContent.split('\n');
     String newNickName = lines.elementAt(rand.nextInt(lines.length)).trim();
     busRef.nickName = newNickName;
-
+    return;
   }
   catch(e) {
     print('[  Er  ] laoding nickname: ' + e);
+    return;
   }
 }

@@ -42,7 +42,7 @@ Future<void> loadStationsFromFiles() async {
           //print(csvList[6]);
           //print(csvList[7]);
 
-          newStation.dbgPrint();
+          //newStation.dbgPrint();
           stationList.add(newStation);
         }
         catch(e){
@@ -125,13 +125,6 @@ selectClosest2Click(LatLng click){
       }
     }
   }
-  //activeStation.dbgPrint();
- // print('buslist:');
- // for(var bus in buslist){bus.dbgPrint();}
-  //print('End');
-
-  //print('selecting closest station');
-  //print(closestStation.name + ', lines: ' + closestStation.servedLines.toString() + ' - ' + closestStation.distFromLineStart.toString());
 }
 
 double getDistFromLineStart(LatLng target, BusLine line){

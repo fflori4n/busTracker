@@ -14,10 +14,12 @@ class Bus{
   Time eTA = new Time(-1,-1,-1);
   Time expErMarg = new Time(0,0,0);                                             // expected margin of + error
   String busLine = '';
-  bool isDisplayedOnMap = false;
-  bool isRampAccesible = false;
   String nickName = '';
   String etcInfo = '';
+  int noUpdateForTicks = 0;
+  bool displayedOnMap = false;
+  bool isRampAccesible = false;
+
 
   Bus(LatLng busPos, Color color, Time startTime,String busLine){
     this.busPos = busPos;
@@ -29,6 +31,9 @@ class Bus{
   }
   void setETA(Time eta){
     this.eTA = eta;
+  }
+  String printBasic(){
+    return busLine + ' ' + startTime.hours.toString() + ':' + startTime.mins.toString() + ' ' + nickName;
   }
   void dbgPrint(){
     print(busLine.toString());

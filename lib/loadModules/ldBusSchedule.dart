@@ -53,9 +53,9 @@ void LdLineSchedule(BusLine bbusline, DateTime Date) async {
           newBus.isRampAccesible = true;
         }
         spaceSep[i] = spaceSep[i].replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
-        print(spaceSep[0] + ':' + spaceSep[i]);
+        //print(spaceSep[0] + ':' + spaceSep[i]);
         newBus.startTime = Time(int.parse(spaceSep[0]),int.parse(spaceSep[i]),0);
-        newBus.isDisplayedOnMap = true;
+        newBus.displayedOnMap = true;
         DateTime now = DateTime.now();
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
         int elapsedTime = now.difference(startDateTime).inMinutes;
@@ -63,7 +63,7 @@ void LdLineSchedule(BusLine bbusline, DateTime Date) async {
           print('bus gone!');
         }
         else{
-          loadNickName(newBus);   // test only
+          await loadNickName(newBus);   // test only
           buslist.add(newBus);
         }
       }catch(e){

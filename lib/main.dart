@@ -12,11 +12,14 @@ import 'navbar/navBar.dart';
 
 const smTresh = 400;
 const mlTresh = 1200;
+const mapRefreshPeriod = 500;
 bool isSmallScreen = false;
 bool isMediumScreen = true;
 bool isLargeScreen = false;
 double screenWidth = 1920;
 double screenHeight = 1080;
+double wScaleFactor=1;
+double hScaleFactor=1;
 
 void main() {
   update();
@@ -47,6 +50,9 @@ class index extends StatelessWidget {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
 
+    wScaleFactor = screenWidth / 1366;  // dev screen width
+    hScaleFactor = screenHeight / 900;
+
     if(screenWidth < smTresh ){
       isSmallScreen = true;
       isMediumScreen = false;
@@ -68,7 +74,7 @@ class index extends StatelessWidget {
            ),*/
            //navBar(),
            mapView(),
-           SideNav(),
+           //SideNav(),
            buletin(),
           ],
         )
@@ -83,7 +89,7 @@ class index extends StatelessWidget {
 
 void update() async {
   while(true){
-    await new Future.delayed(const Duration(milliseconds: 500));
+    await new Future.delayed(const Duration(milliseconds: mapRefreshPeriod));
     moveBus();
     //readConsole();
    // mapViewState.setState(() {});

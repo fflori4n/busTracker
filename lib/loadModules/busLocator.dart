@@ -18,11 +18,29 @@ List<Bus> buslist=[];
 
 void moveBus(){
   for(var bus in buslist){
+
+    if(nsBusLines.isEmpty){
+      print('[ ER ] no bus lines. cant calc position');
+      return;
+    }
+
+    DateTime now = DateTime.now();
+    DateTime startDateTime = new DateTime(now.year,now.month,now.day,bus.startTime.hours,bus.startTime.mins, bus.startTime.sex);
+    int elapsedTime = now.difference(startDateTime).inSeconds;
+
+    if(elapsedTime < 0){
+      bus.displayedOnMap = false;
+      //bus.noUpdateForTicks = elapsedTime.abs()*2;
+    }  // do not show bus that has not departed
+
+    if(bus.noUpdateForTicks == -1 || (bus.noUpdateForTicks != 0 && Time(-1,-1,0) != bus.eTA)){
+      //print('skipping:' + bus.printBasic());
+      continue;    
+    }
+    bus.noUpdateForTicks = max(0,bus.noUpdateForTicks-1);       // not very nice
+
     var line;
     double distPassed = getEstDistPassed(bus.startTime);
-
-    if(nsBusLines.isEmpty)
-      return;
     for(line in nsBusLines){
       if(line.name == bus.busLine)
         break;
@@ -31,23 +49,28 @@ void moveBus(){
 
     for(int i=0; i<activeStation.servedLines.length; i++){ // optimise too many loops
       if(activeStation.servedLines[i] == bus.busLine){
-        //print('setting eta');
-        //setBusETA(distPassed,activeStation.distFromLineStart[i],bus);
         Time eta = new Time(0,0,0);
         if((activeStation.distFromLineStart[i] - distPassed) < 0){
           eta.sex = -1;
           bus.setETA(eta);
+          bus.noUpdateForTicks = -1;  // never update this
           continue;
         }
         int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) / (0.2777 * avrgBusSpeed)).toInt();// m/km/h
         eta.hours = newETAsecs ~/ 3600;
         newETAsecs %= 3600;
         eta.mins = newETAsecs ~/ 60;
-        newETAsecs %= 60;
         if(eta.hours != 0 || eta.mins > 30)
           eta.sex = 0;
         else
+          newETAsecs %= 60;
           eta.sex = newETAsecs;
+
+        if(bus.eTA.hours >= 1){                         // do not update far away buses
+          bus.noUpdateForTicks = 5*60*2;  // 5 mins
+        }else if(bus.eTA.mins >= 15){
+          bus.noUpdateForTicks = 60*2;  // 1 min
+        }
         bus.setETA(eta);
       }
     }
