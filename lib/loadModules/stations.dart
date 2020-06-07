@@ -70,8 +70,8 @@ List<Marker> getStationMarkers(){
     }
 
     stationMarkers.add(new Marker(
-        width: stationList[i].selected ? 25.0 : 15.0,
-        height: stationList[i].selected ? 25.0 : 15.0,
+        width: stationList[i].selected ? 25.0 : 12.0,
+        height: stationList[i].selected ? 25.0 : 12.0,
         point: stationList[i].pos,
         builder: (ctx) =>
         new Container(
@@ -79,7 +79,7 @@ List<Marker> getStationMarkers(){
             shape: BoxShape.circle,
             border:Border.all(
               width: stationList[i].selected ? 4.0 : 2.0,
-              color: stationList[i].selected ? baseBlack.withOpacity(0.8) : baseYellow.withOpacity(0.8),
+              color: stationList[i].selected ?  baseBlack.withOpacity(0.8) : baseBlack.withOpacity(0.4),
             ) ,
             color: Colors.transparent,
           ),
@@ -137,6 +137,6 @@ double getDistFromLineStart(LatLng target, BusLine line){
   }
 }
 
-Text getStationHeadline(){
+/*Text getStationHeadline(){
   return Text(activeStation.name + '\n' + activeStation.servedLines.toString(), style: legendText,);
-}
+}*/

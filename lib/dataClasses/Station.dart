@@ -21,6 +21,16 @@ class Station{
     this.pos = pos;
   }
 
+  String getStationName(){
+    return name;
+  }
+  String getStationInfo(){
+    return description;
+  }
+  List<String>getServedLines(){
+    return servedLines;
+  }
+
   void dbgPrint(){
     print('_________________________-');
     print('Station: ' + name);

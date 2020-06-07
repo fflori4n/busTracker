@@ -15,4 +15,16 @@ class Time{
     }
     return false;
   }
+
+  int inSex(){
+    return this.hours*3600 + this.mins * 60 + this.sex;
+  }
+
+  Time operator +(Time other) {
+    Time newTime = new Time(this.hours + other.hours, this.mins + other.mins, this.sex + other.sex);
+    return newTime;
+  }
+  bool operator >(int other) {
+    return ((this.hours*3600 + this.mins*60 + this.sex) > other);
+  }
 }

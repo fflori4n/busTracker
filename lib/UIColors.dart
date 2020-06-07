@@ -11,14 +11,14 @@ const Color inactiveStationCol = Color.fromRGBO(20, 20, 20, 0.5);
 const Color inactiveStationCol2 = Color.fromRGBO(80, 80, 80, 0.5);
 const Color activeStationCol = Color.fromRGBO(45, 160, 230,0.8);
 
-const Color baseYellow = Color.fromRGBO(255, 193, 36, 1);                       // #E6A825
-const Color baseBlack = Color.fromRGBO(31, 31, 31,1);                           // #121314
+const Color baseYellow = Color(0xFFE6A825);                                     // #E6A825
+const Color baseBlack = Color(0xff121314);                                      // #121314
 const Color baseGray = Color(0xff3D3D3D);                                       // #3D3D3D
 const Color baseWhite =  Color(0xffffffff);                                     // #C9C9C9
 const Color baseBlue = Color(0xff195169);                                       // #195169
 const Color baseLBlue= Color.fromRGBO(120, 156, 255, 1);                        // #5578BD
 
-const Color buletinHeader= baseBlue;
+const Color buletinHeader= baseBlack;
 const Color buletinBCG= baseGray;
 
 double setSize(double devSize, {int devScreenwidth= 1366}){
@@ -63,4 +63,10 @@ TextStyle infoBrdSmall = TextStyle(
     fontWeight: FontWeight.bold,
     color: baseWhite,
     letterSpacing: 1.1
+);
+TextStyle infoBrdLabel = TextStyle(
+fontSize: 10 * wScaleFactor,
+fontWeight: FontWeight.bold,
+color: baseWhite.withOpacity(0.8),
+letterSpacing: 1.1
 );

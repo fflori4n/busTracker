@@ -53,10 +53,10 @@ FlutterMap drawOsmMap() {
         // NetworkTileProvider or CachedNetworkTileProvider
         tileProvider: NonCachingNetworkTileProvider(),
       ),
-      PolylineLayerOptions(
+      /*PolylineLayerOptions(
          // polylines: getBusLines(),
          polylines: getBusLines(),
-      ),
+      ),*/
       MarkerLayerOptions(
         markers: getStationMarkers(),
       ),

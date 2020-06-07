@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:latlong/latlong.dart';
 
 import 'loadModules/stations.dart';
+import 'loadModules/busLocator.dart';
 
 LatLng getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   List<LatLng> pointList = polyLine;
@@ -40,23 +41,27 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
     if(dist < minDist){
       minDist = dist;
       minPoint = projection;
+      mindex = i;
     }
   }
-
-  pointList.insert((mindex + 1), minPoint);
+  //addDBGMarker(minPoint); // DBG
+  //pointList.insert((mindex + 1), minPoint);
+  pointList.insert((mindex+1), minPoint);
   double distSum = 0;
 
-  for(int i = 0; i<(mindex + 2); i++){
+  for(int i = 0; i<(mindex + 1); i++){
     distSum+=normLoc(pointList[i], pointList[i+1]);
   }
 
-  pointList.removeAt(mindex + 1);
+  pointList.removeAt(mindex+1);
   //print('closest point:' + minPoint.toString());
-  //print('distance from path start:' + distSum.roundToDouble().toString());
+  print('distance from path start:' + distSum.roundToDouble().toString());
+
+  addDBGMarker(getPOnPolyLineByDist (distSum.roundToDouble(), polyLine)); // DBG;
   return distSum.roundToDouble();
 }
 
-LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){
+LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){ // works ok!
   LatLng minPoint;
   double minDist = 10000;
   for(int i = 0; i<(pointList.length - 1); i++){
@@ -67,7 +72,7 @@ LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){
       minPoint = projection;
     }
   }
-  //print('closest point:' + minPoint.toString());
+  print('closest point:' + minPoint.toString());
   return minPoint;
 }
 

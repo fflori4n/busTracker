@@ -15,6 +15,13 @@ final LatLng initMapCenter = new LatLng(0,0);
 const double avrgBusSpeed = 17;
 
 List<Bus> buslist=[];
+List<LatLng> dbgMarkers = [];
+
+void addDBGMarker(LatLng pos){
+  if(!(dbgMarkers.contains(pos))){
+    dbgMarkers.add(pos);
+  }
+}
 
 void moveBus(){
   for(var bus in buslist){
@@ -66,11 +73,18 @@ void moveBus(){
           newETAsecs %= 60;
           eta.sex = newETAsecs;
 
-        if(bus.eTA.hours >= 1){                         // do not update far away buses
+        if(bus.eTA.hours >= 1){                                                 // do not update far away buses
           bus.noUpdateForTicks = 5*60*2;  // 5 mins
         }else if(bus.eTA.mins >= 15){
           bus.noUpdateForTicks = 60*2;  // 1 min
+        }/*else if(bus.eTA.inSex() + bus.expErMarg.inSex() < 0){  // bus is arriving
+          bus.eTA = Time(0,0,-2);
+          bus.noUpdateForTicks = bus.expErMarg.inSex()*2;  // 1 min
         }
+        else{
+          bus.eTA = Time(0,0,-1);
+          bus.noUpdateForTicks = -1;
+        }*/
         bus.setETA(eta);
       }
     }
@@ -121,19 +135,37 @@ void addSelectedBuses(Station station, String line){
 List<Marker> getBusMarkers(){
     List<Marker> busMarkers = [];
 
-    for(int i=0; i < buslist.length; i++) {
-
+    for(var bus in buslist) {
+      /*if(!bus.displayedOnMap){
+        continue;
+      }*/
       busMarkers.add(new Marker(
-          width: 15.0,
-          height: 15.0,
-          point: buslist[i].busPos,
+          width: 10.0,
+          height: 10.0,
+          point: bus.busPos,
           builder: (ctx) =>
           new Container(
             decoration: new BoxDecoration(
               shape: BoxShape.circle,
-              color: buslist[i].color,
+              color: bus.color,
             ),
           )));
+    }
+    if(dbgMarkers.isNotEmpty){
+      for(var mark in dbgMarkers){
+        print('oh hi mark');
+        busMarkers.add(new Marker(
+            width: 15.0,
+            height: 15.0,
+            point: mark,
+            builder: (ctx) =>
+            new Container(
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red,
+              ),
+            )));
+      }
     }
 
   return busMarkers;
