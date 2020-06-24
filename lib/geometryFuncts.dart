@@ -57,7 +57,7 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
   //print('closest point:' + minPoint.toString());
   print('distance from path start:' + distSum.roundToDouble().toString());
 
-  addDBGMarker(getPOnPolyLineByDist (distSum.roundToDouble(), polyLine)); // DBG;
+  //addDBGMarker(getPOnPolyLineByDist (distSum.roundToDouble(), polyLine)); // DBG;
   return distSum.roundToDouble();
 }
 

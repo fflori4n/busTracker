@@ -30,6 +30,7 @@ dependencies:
   faker: ^1.2.1
   path_provider: ^1.6.7
   crypto: ^2.1.4
+  google_fonts: any
 
 
   # The following adds the Cupertino Icons font to your application.

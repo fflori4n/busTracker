@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/ldBusSchedule.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'busLines.dart';
@@ -14,16 +15,20 @@ void onPosChange(MapPosition mapPos, bool h){
   //print(mapPos.center);
   //print(mapPos.zoom);
 }
-void onTap(LatLng tapPos){
+Future<void> onTap(LatLng tapPos) async {
   //print(tapPos.latitude.toString() + "," + tapPos.longitude.toString());
   selectClosest2Click(tapPos);
-  for(var line in activeStation.servedLines) {
+  await loadLinesFromFile(activeStation.servedLines); // load only the active lines
+  for(BusLine busLine in nsBusLines){
+    LdLineSchedule(busLine, DateTime.now());
+  }
+  /*for(var line in activeStation.servedLines) {
     for(var busLine in nsBusLines){
       if(busLine.name == line){
         LdLineSchedule(busLine, DateTime.now());
       }
     }
-  }
+  }*/
   //print(distToPprojection(activeStation.pos, nsBusLines[0].points));
 
   //addStation(tapPos); //add stations
@@ -77,7 +82,7 @@ class mapViewState extends State<mapView> {
   void initState(){
 
     loadStationsFromFiles();
-    loadLinesFromFile();
+    //loadLinesFromFile();
 
     Timer.periodic(Duration(milliseconds: 200 ), (v) {
       setState(() { drawOsmMap();});

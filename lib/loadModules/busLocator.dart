@@ -153,7 +153,7 @@ List<Marker> getBusMarkers(){
     }
     if(dbgMarkers.isNotEmpty){
       for(var mark in dbgMarkers){
-        print('oh hi mark');
+        //print('oh hi mark');
         busMarkers.add(new Marker(
             width: 15.0,
             height: 15.0,

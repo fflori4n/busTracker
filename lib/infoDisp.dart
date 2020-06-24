@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/infoBoardItem/infoItem.dart';
+import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
 
+import 'dataClasses/BusLine.dart';
 import 'infoBoardItem/infoListView.dart';
 import 'loadModules/stations.dart';
 import 'navbar/navBar.dart';
@@ -32,7 +34,7 @@ class buletinState extends State<buletin> {
       children: <Widget>[
         Container(
           decoration: new BoxDecoration(
-                color: buletinBCG,
+                color: ligthBlack,
                 borderRadius: new BorderRadius.only(
                   topRight: const Radius.circular(4.0),
                   bottomRight: const Radius.circular(4.0),
@@ -48,7 +50,7 @@ class buletinState extends State<buletin> {
             children: <Widget>[
               Container(
                 decoration: new BoxDecoration(
-                color: buletinHeader,
+                color: baseBlue,
                 ),
                 padding: EdgeInsets.all(6.0),
                 width: 370 * wScaleFactor,
@@ -79,42 +81,26 @@ class buletinState extends State<buletin> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 3.0, bottom: 4.0,),
-                        child: Text(
-                          activeStation.getServedLines().toString(),
-                          style: infoBrdSmall,
-                          textAlign: TextAlign.left,
+                        child: Row(
+                          children: getStationLineLabels(),
                         ),
                       )
                     ],
                   ),
                 ),
               ),
-              Container(
+              /*Container(
                 decoration: new BoxDecoration(
                   color: baseWhite,
                 ),
                 height: 3,
                 margin: EdgeInsets.only(bottom: 5.0),
-              ),
+              ),*/
               Container(
                 child: infoLegend(),
               ),
-             /* Row(
-                children: <Widget>[
-                  Text('Num', style: legendText),
-                  Text('Departures at'.padRight(7,' '), style: legendText),
-                  Expanded(child: SizedBox()),
-                  Text('Arrives in', style: legendText),
-                  Expanded(child: SizedBox()),
-                ],
-              ),*/
-              /*Column(
-                  children:dispInfo(context),
-              ),*/
               Expanded(
-                child: ListView(              // use listView Builder, do not render invisible widgets
-                  children: dispInfo(context),
-                ),
+                child: getListView(context),
               ),
             ],
           )
@@ -123,10 +109,45 @@ class buletinState extends State<buletin> {
   }
 }
 
+List<Widget> getStationLineLabels(){
+  List<Widget> labelList = new List();
+  for(var line in activeStation.servedLines){
+    Text newText;
+    if(nsBusLinesContainsName(line)){
+      newText = new Text(
+        line + ' ',
+        style: infoBrdSmall,
+        textAlign: TextAlign.left,);
+    }
+    else{
+      newText = new Text(
+        line + ' ',
+        style: infoBrdSmallSemiTransp,
+        textAlign: TextAlign.left,);
+    }
+    labelList.add(newText);
+  }
+  //labelList.add(Text('hello world', style: infoBrdSmall,));
+  return labelList;
+}
+
+Widget getListView(context){
+  return ListView.separated(  // lazy listview do not render stuff that isn't visible
+    //padding: const EdgeInsets.all(8),
+    itemCount: buslist.length,
+    itemBuilder: (BuildContext context, int index) {
+      //return infoItem(context, index);
+      return drawBuletinitem(context, buslist[index], activeStation);
+    },
+    separatorBuilder: (BuildContext context, int index) => const Divider(),
+  );
+}
+
 Widget infoLegend(){
   return Container(
-    margin: EdgeInsets.only(top: 2.0, bottom: 2.0, left: 10.0, right: 10.0),
-    padding: EdgeInsets.only(left: 5.0, right: 5.0, top: 1.0, bottom: 1.0),
+    margin: EdgeInsets.only(top: 0.0, bottom: 4.0, left: 0.0, right: 0.0),
+    padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 5.0),
+    color: baseBlack,
     child: Row(
       children: <Widget>[
         Stack(

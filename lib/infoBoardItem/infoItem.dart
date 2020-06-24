@@ -2,21 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
-
-List<Widget> dispInfo(context){
-  List<Widget> displayedBuses = new List();
-  for(var bus in buslist) {
-    //displayedBuses.add(drawInfoItem(bus,activeStation));
-    displayedBuses.add(drawBuletinitem(context,bus,activeStation));
-  }
-  return displayedBuses;
-}
-
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
   String lineName = bus.busLine.padRight(5, ' ');
@@ -42,59 +33,75 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
     ETAsex = bus.eTA.sex.toString().toString().padLeft(2, '0');
   }
 
-  String nickName = bus.nickName;
+  String nickName = bus.nickName.toUpperCase();
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
-  return Container(
-    margin: EdgeInsets.only(top: 4.0, bottom: 4.0, left: 10.0, right: 10.0),
-    //width: (screenWidth/4.5),                                                   // global
-    padding: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0, bottom: 5.0),
-    decoration: BoxDecoration(
-      border: Border.all(color: Colors.white70, width: 2.0),
-      borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-    ),
-    child: Row(
-      children: <Widget>[
-        Stack(
-          children: <Widget>[
-            Text(lineName, style: infoBrdYellow,),
-          ],
-        ),
-        Text( (startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
-        Expanded(child: SizedBox()),
-        msgInsteadOfETA.isEmpty ? Text( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : Text(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Text(erExp.padLeft(15,' '), style: infoBrdSmall,),
-            Text(nickName, style: infoBrdSmall,),
-          ],
-        ),
-        Column(
-          children: [
-            Container(
-              decoration: new BoxDecoration(
-                color: bus.displayedOnMap ? baseWhite : Colors.transparent,
-                border: Border.all(color: baseWhite, width: 1.0),
-                borderRadius: new BorderRadius.all(Radius.circular(1.0)),
-              ),
-              margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
-              width: infoBrdSmall.fontSize,
-              height: infoBrdSmall.fontSize,
-            ),
-            Container(
-              decoration: new BoxDecoration(
-                color: bus.isRampAccesible ? baseYellow : Colors.transparent,
-                border: Border.all(color: baseYellow, width: 1.0),
-                borderRadius: new BorderRadius.all(Radius.circular(1.0)),
-              ),
-              margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-              width: infoBrdSmall.fontSize,
-              height: infoBrdSmall.fontSize,
-            ),
-          ],
-        ),
-      ],
-    ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+  Container(
+  margin: EdgeInsets.only(top: 1.0, bottom: 2.0, left: 10.0, right: 10.0),
+  //width: (screenWidth/4.5),                                                   // global
+  padding: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0, bottom: 5.0),
+  decoration: BoxDecoration(
+  border: Border.all(color: Colors.white70, width: 2.0),
+  borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+  ),
+  child: Row(
+  children: <Widget>[
+  Stack(
+  children: <Widget>[
+  Column(
+  children: <Widget>[
+  Row(children: <Widget>[
+  Text(lineName, style: infoBrdYellow,),
+  Text( (startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
+  ],),
+  ],
+  ),
+  ],
+  ),
+
+  Expanded(child: SizedBox()),
+  msgInsteadOfETA.isEmpty ? Text( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : Text(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
+  Column(
+  crossAxisAlignment: CrossAxisAlignment.end,
+  children: <Widget>[
+  Text(erExp.padLeft(15,' '), style: infoBrdSmall,),
+  Text(nickName, style: infoBrdSmaller,),
+  ],
+  ),
+  Column(
+  children: [
+  Container(
+  decoration: new BoxDecoration(
+  color: bus.displayedOnMap ? baseWhite : Colors.transparent,
+  border: Border.all(color: baseWhite, width: 1.0),
+  borderRadius: new BorderRadius.all(Radius.circular(1.0)),
+  ),
+  margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+  width: infoBrdSmall.fontSize,
+  height: infoBrdSmall.fontSize,
+  ),
+  Container(
+  decoration: new BoxDecoration(
+  color: bus.isRampAccesible ? baseYellow : Colors.transparent,
+  border: Border.all(color: baseYellow, width: 1.0),
+  borderRadius: new BorderRadius.all(Radius.circular(1.0)),
+  ),
+  margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+  width: infoBrdSmall.fontSize,
+  height: infoBrdSmall.fontSize,
+  ),
+  ],
+  ),
+  ],
+  ),
+  ),
+      Container(
+        margin: EdgeInsets.only(top: 0.0, bottom: 0.0, left: 12.0, right: 0.0),
+        child: Text(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left,),
+      ),
+    ],
   );
 }

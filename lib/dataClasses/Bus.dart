@@ -16,6 +16,7 @@ class Bus{
   String busLine = '';
   String nickName = '';
   String etcInfo = '';
+  String lineDescr = '';
   int noUpdateForTicks = 0;
   bool displayedOnMap = false;
   bool isRampAccesible = false;

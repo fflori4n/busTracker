@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
-import 'package:mapTest/navbar/navSideBar.dart';
 import 'dart:async';
 import 'loadModules/mapViewOSM.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
-
-import 'navbar/navBar.dart';
-
-//StreamSubscription periodicSub;
+import 'package:google_fonts/google_fonts.dart';
 
 const smTresh = 400;
 const mlTresh = 1200;

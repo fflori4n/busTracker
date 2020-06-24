@@ -7,7 +7,7 @@ import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'nickNames.dart';
 
-void LdLineSchedule(BusLine bbusline, DateTime Date) async {
+Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
   String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
@@ -46,6 +46,7 @@ void LdLineSchedule(BusLine bbusline, DateTime Date) async {
       try{
         newBus.busLine = bbusline.name;
         newBus.lineColor = bbusline.color;
+        newBus.lineDescr = bbusline.description;
         newBus.color = bbusline.color.withAlpha(200);
         newBus.busPos = bbusline.points[0];
 

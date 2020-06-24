@@ -4,12 +4,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
+import 'package:mapTest/loadModules/busLocator.dart';
+
+const bool verbose = true;
 
 List<BusLine> nsBusLines = [];
 
-void loadLinesFromFile() async{
+Future loadLinesFromFile(List<String> loadThis) async{
+  buslist.clear();
+  for(var busLine in nsBusLines){           // clear buslines that aren't active
+    if(!(loadThis.contains(busLine.name))){
+      nsBusLines.remove(busLine);
+    }
+  }
   try {
-    print('bus line load');
+    if(verbose){print('---  Loading bus lines from file  ---');}  //DBG
     String rawFileContent = await rootBundle.loadString('assets/busLinesNS.txt');
     List<String> lines = rawFileContent.split('<>');
     for(int i=0; i < lines.length; i++){
@@ -21,18 +30,27 @@ void loadLinesFromFile() async{
           List<String> points = data[1].trim().split(',');
           List<LatLng> pointsFromFile =[];
 
-          //print(header[0]);
-          //print('('+header[1]+','+header[2]+','+header[3]+')');
           BusLine newBusline = new BusLine();
           newBusline.name = header[0];
+
+          if(nsBusLinesContainsName(newBusline.name) || (loadThis.isNotEmpty && !(loadThis.contains(newBusline.name)))){
+            if(verbose){print('skipping' + newBusline.name);}  //DBG
+            continue;
+          }
+
+          if(verbose){print('loading: ' + newBusline.name);  //DBG
+                      print('Header: [name][R][G][B][Descr.]' + header.toString() );}
+
           newBusline.color = Color.fromRGBO(int.parse(header[1]),int.parse(header[2]),int.parse(header[3]), 0.9);
+          try{
+            newBusline.description = header[4].toString();
+          }
+          catch(r){}
 
           if(points.length >= 2){
             for(int j=0; j<(points.length-1);j+=2){
-              //print('<' + points[j].trim() + '><' + points[j+1].trim() +'>\n');
               LatLng point = new LatLng(double.parse(points[j]), double.parse(points[j+1]));
               pointsFromFile.add(point);
-              //print('added point:' + point.toString());
             }
             newBusline.points = pointsFromFile;
             nsBusLines.add(newBusline);
@@ -43,7 +61,7 @@ void loadLinesFromFile() async{
         }
       }
     }
-    print('busline EOF');
+    if(verbose){print('---  Loading completed  ---');}  //DBG
     return;
     }
   catch(e) {
