@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:latlong/latlong.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'dart:async';
 import 'loadModules/mapViewOSM.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'mapOverlay/mapOverlay.dart';
 
 const smTresh = 400;
 const mlTresh = 1200;
@@ -16,6 +19,9 @@ double screenWidth = 1920;
 double screenHeight = 1080;
 double wScaleFactor=1;
 double hScaleFactor=1;
+
+LatLng mapCenter;
+double mapZoom;
 
 void main() {
   update();
@@ -70,6 +76,7 @@ class index extends StatelessWidget {
            ),*/
            //navBar(),
            mapView(),
+           drawMapOverlay(),
            //SideNav(),
            buletin(),
           ],

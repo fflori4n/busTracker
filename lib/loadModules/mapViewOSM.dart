@@ -6,14 +6,17 @@ import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/ldBusSchedule.dart';
 import 'package:mapTest/loadModules/stations.dart';
+import '../main.dart';
 import 'busLines.dart';
 import 'busLocator.dart';
 
 Marker busTest;
-
 void onPosChange(MapPosition mapPos, bool h){
   //print(mapPos.center);
   //print(mapPos.zoom);
+  mapCenter = mapPos.center;
+  mapZoom = mapPos.zoom;
+  print('MAP: ' + mapCenter.toString() + ',' + mapZoom.toString());
 }
 Future<void> onTap(LatLng tapPos) async {
   //print(tapPos.latitude.toString() + "," + tapPos.longitude.toString());
@@ -35,7 +38,7 @@ Future<void> onTap(LatLng tapPos) async {
 }
 
 FlutterMap drawOsmMap() {
-  return new FlutterMap(
+  FlutterMap map = new FlutterMap(
     options: MapOptions(
       center: LatLng(45.2603, 19.8260),
       zoom: 14,
@@ -53,15 +56,8 @@ FlutterMap drawOsmMap() {
         urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
         //urlTemplate: 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png http://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
         subdomains: ['a', 'b', 'c'],
-        // For example purposes. It is recommended to use
-        // TileProvider with a caching and retry strategy, like
-        // NetworkTileProvider or CachedNetworkTileProvider
         tileProvider: NonCachingNetworkTileProvider(),
       ),
-      /*PolylineLayerOptions(
-         // polylines: getBusLines(),
-         polylines: getBusLines(),
-      ),*/
       MarkerLayerOptions(
         markers: getStationMarkers(),
       ),
@@ -70,6 +66,9 @@ FlutterMap drawOsmMap() {
       ),
     ],
   );
+  mapCenter = map.options.center;
+  mapZoom = map.options.zoom;
+  return map;
 }
 
 class mapView extends StatefulWidget {
