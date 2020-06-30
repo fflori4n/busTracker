@@ -21,6 +21,9 @@ double wScaleFactor=1;
 double hScaleFactor=1;
 
 LatLng mapCenter;
+LatLng mapNW;
+LatLng mapSE;
+final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
 double mapZoom;
 
 void main() {

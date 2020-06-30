@@ -14,6 +14,9 @@ Marker busTest;
 void onPosChange(MapPosition mapPos, bool h){
   //print(mapPos.center);
   //print(mapPos.zoom);
+  mapNW = mapPos.bounds.northWest;
+  mapSE = mapPos.bounds.southEast;
+
   mapCenter = mapPos.center;
   mapZoom = mapPos.zoom;
   print('MAP: ' + mapCenter.toString() + ',' + mapZoom.toString());
@@ -40,7 +43,7 @@ Future<void> onTap(LatLng tapPos) async {
 FlutterMap drawOsmMap() {
   FlutterMap map = new FlutterMap(
     options: MapOptions(
-      center: LatLng(45.2603, 19.8260),
+      center: mapRefPoint,
       zoom: 14,
       maxZoom: 17,
       minZoom: 12,
