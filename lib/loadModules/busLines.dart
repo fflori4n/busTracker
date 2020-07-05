@@ -9,8 +9,9 @@ import 'package:mapTest/loadModules/busLocator.dart';
 const bool verbose = true;
 
 List<BusLine> nsBusLines = [];
+List<BusLine> inactiveLines = [];
 
-Future loadLinesFromFile(List<String> loadThis) async{
+Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
   buslist.clear();
   for(var busLine in nsBusLines){           // clear buslines that aren't active
     if(!(loadThis.contains(busLine.name))){
@@ -53,7 +54,12 @@ Future loadLinesFromFile(List<String> loadThis) async{
               pointsFromFile.add(point);
             }
             newBusline.points = pointsFromFile;
-            nsBusLines.add(newBusline);
+            if(loadInactive){
+              inactiveLines.add(newBusline);
+            }
+            else{
+              nsBusLines.add(newBusline);
+            }
           }
         }
         catch(e){

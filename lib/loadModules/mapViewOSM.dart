@@ -24,7 +24,10 @@ void onPosChange(MapPosition mapPos, bool h){
 Future<void> onTap(LatLng tapPos) async {
   //print(tapPos.latitude.toString() + "," + tapPos.longitude.toString());
   selectClosest2Click(tapPos);
-  await loadLinesFromFile(activeStation.servedLines); // load only the active lines
+  if(inactiveLines.isEmpty){
+    await loadLinesFromFile([],true); // load only the active lines
+  }
+  await loadLinesFromFile(activeStation.servedLines,false); // load only the active lines
   for(BusLine busLine in nsBusLines){
     LdLineSchedule(busLine, DateTime.now());
   }
@@ -61,9 +64,9 @@ FlutterMap drawOsmMap() {
         subdomains: ['a', 'b', 'c'],
         tileProvider: NonCachingNetworkTileProvider(),
       ),
-      MarkerLayerOptions(
+     /* MarkerLayerOptions(
         markers: getStationMarkers(),
-      ),
+      ),*/
       MarkerLayerOptions(
         markers: getBusMarkers(),
       ),

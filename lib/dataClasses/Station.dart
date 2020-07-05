@@ -6,6 +6,7 @@ class Station{
   LatLng pos = initMapCenter;
   String name = "";
   String description = "";
+  String stationGroup;
   List<String> servedLines = [];
   List<double> distFromLineStart = [];
   bool selected = false;
@@ -13,6 +14,8 @@ class Station{
 
   Station(LatLng pos){
     this.pos = pos;
+  }
+  Station.empty(){
   }
   Station.byName(String name){
     this.name = name;

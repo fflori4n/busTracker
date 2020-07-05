@@ -12,7 +12,9 @@ import 'busLocator.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-List<Station> stationList = [];
+Station paperStation = new Station(LatLng(45.237330061975,19.80649497604369));
+
+List<Station> stationList = [paperStation];
 Station activeStation = new Station.byName('No selected station!');
 
 Future<String> loadAsset() async {
@@ -21,36 +23,33 @@ Future<String> loadAsset() async {
 Future<void> loadStationsFromFiles() async {
   try {
     print('stations load');
-    String rawFileContent = await rootBundle.loadString('assets/stationsNS.txt');
+    String rawFileContent = await rootBundle.loadString('assets/nsStations.txt');
     List<String> lines = rawFileContent.split('\n');
     for(int i=0; i<lines.length;i++){
       lines[i].trim();
-
       if(!(lines[i].isEmpty || lines[i][0] == '#')){
-        List<String> csvList = lines[i].split(',');
-        try{
-          Station newStation = new Station(LatLng(double.parse(csvList[0]),double.parse(csvList[1])));
-          newStation.shade = int.parse(csvList[3]);
-          newStation.name = csvList[2];
-          newStation.description = csvList[4];
-
-          for(int i=5; i<csvList.length;i++){
-            newStation.servedLines.add(csvList[i].trim());
-          }
-          //print(csvList.length);
-
-          //print(csvList[6]);
-          //print(csvList[7]);
-
-          //newStation.dbgPrint();
-          stationList.add(newStation);
+        List<String> csvList = lines[i].split('|');
+        List<String> coords = csvList[1].split(',');
+        List<String> servedLines = csvList[3].split(',');
+        if(coords.length != 2){
+          print('[  Er  ] incorrect latlng ' + lines[i]);
+          continue;}
+        Station newStation = new Station(LatLng(double.parse(coords[1]),double.parse(coords[0])));
+        newStation.name = csvList[0];
+        newStation.stationGroup = csvList[2];
+        if(newStation.stationGroup != 'I'){ // skip everithing not area I for now DBG
+          continue;
         }
-        catch(e){
-          print('[  Er  ] cant read line: ' + i.toString());
-        }
+        newStation.servedLines = servedLines;
+        newStation.shade = 1;
+        newStation.description = '';
+
+        //newStation.dbgPrint();
+        stationList.add(newStation);
       }
-      //print(lines[i]);
+      print(stationList.length);
     }
+    //dbgPrintStationList();
     return;
   }
   catch(e) {
@@ -68,7 +67,7 @@ List<Marker> getStationMarkers(){
     if(stationList[i].shade == 1){
       inactiveColor = inactiveStationCol2;
     }
-
+    //print('adding' + stationList[i].name);
     stationMarkers.add(new Marker(
         width: stationList[i].selected ? 25.0 : 12.0,
         height: stationList[i].selected ? 25.0 : 12.0,
@@ -137,6 +136,10 @@ double getDistFromLineStart(LatLng target, BusLine line){
   }
 }
 
-/*Text getStationHeadline(){
-  return Text(activeStation.name + '\n' + activeStation.servedLines.toString(), style: legendText,);
-}*/
+void dbgPrintStationList(){
+  print('** DBG stationList **');
+  print('length:' + stationList.length.toString());
+  for(var station in stationList){
+    station.dbgPrint();
+  }
+}
