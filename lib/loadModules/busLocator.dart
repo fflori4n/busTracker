@@ -1,8 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/Time.dart';
@@ -10,100 +5,108 @@ import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import '../geometryFuncts.dart';
+import '../main.dart';
 
 final LatLng initMapCenter = new LatLng(0,0);
 const double avrgBusSpeed = 17;
 
 List<Bus> buslist=[];
-List<LatLng> dbgMarkers = [];
 
-void addDBGMarker(LatLng pos){
-  if(!(dbgMarkers.contains(pos))){
-    dbgMarkers.add(pos);
-  }
-}
-
-void moveBus(){
+final calcVerbose = true;
+void calcBusPos(){
+  DateTime refTime = DateTime.now();
   for(var bus in buslist){
+    double distPassed;
 
-    if(nsBusLines.isEmpty){
-      print('[ ER ] no bus lines. cant calc position');
-      return;
+    if(bus.noPosUpdateTicks > 0)
+      bus.noPosUpdateTicks--;
+    else if(bus.noPosUpdateTicks == 0){
+      //bus.dbgPrint();
+
+      DateTime startDateTime = new DateTime(refTime.year,refTime.month,refTime.day,bus.startTime.hours,bus.startTime.mins, bus.startTime.sex);
+      int elapsedTime = refTime.difference(startDateTime).inSeconds;
+
+      if(elapsedTime < 0){
+        bus.displayedOnMap = false;
+        bus.noPosUpdateTicks = elapsedTime.abs()*1000 ~/ mapRefreshPeriod;
+        continue;
+      }
+
+      distPassed = getEstDistPassed(bus.startTime);
+
+      bus.busPos = getPOnPolyLineByDist(distPassed,bus.busLine.points);
+      if(bus.busPos == LatLng(-1,-1)){
+        bus.displayedOnMap = false;
+        bus.noPosUpdateTicks = -1;  // never update Pos
+        continue;
+      }
+
+      bus.noPosUpdateTicks = 5000 ~/ mapRefreshPeriod;
     }
 
-    DateTime now = DateTime.now();
-    DateTime startDateTime = new DateTime(now.year,now.month,now.day,bus.startTime.hours,bus.startTime.mins, bus.startTime.sex);
-    int elapsedTime = now.difference(startDateTime).inSeconds;
+    if(bus.noEtaUpdateTicks > 0){
+      bus.noEtaUpdateTicks--;
+      if(bus.eTA.hours <= 0 && bus.eTA.mins < 15){      // do not update if time is more than 15mins
+        bus.eTA.sex--;
 
-    if(elapsedTime < 0){
-      bus.displayedOnMap = false;
-      //bus.noUpdateForTicks = elapsedTime.abs()*2;
-    }  // do not show bus that has not departed
-
-    if(bus.noUpdateForTicks == -1 || (bus.noUpdateForTicks != 0 && Time(-1,-1,0) != bus.eTA)){
-      //print('skipping:' + bus.printBasic());
-      continue;    
-    }
-    bus.noUpdateForTicks = max(0,bus.noUpdateForTicks-1);       // not very nice
-
-    var line;
-    double distPassed = getEstDistPassed(bus.startTime);
-    for(line in nsBusLines){
-      if(line.name == bus.busLine)
-        break;
-    }
-    bus.busPos = getPOnPolyLineByDist(distPassed,line.points);
-
-    for(int i=0; i<activeStation.servedLines.length; i++){ // optimise too many loops
-      if(activeStation.servedLines[i] == bus.busLine){
-        Time eta = new Time(0,0,0);
-        if((activeStation.distFromLineStart[i] - distPassed) < 0){
-          eta.sex = -1;
-          bus.setETA(eta);
-          bus.noUpdateForTicks = -1;  // never update this
-          continue;
+        if(bus.eTA.sex < 0){     // just count down, do not calculate actual Eta
+          bus.eTA.sex = 59;
+          bus.eTA.mins--;
         }
-        int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) / (0.2777 * avrgBusSpeed)).toInt();// m/km/h
-        eta.hours = newETAsecs ~/ 3600;
-        newETAsecs %= 3600;
-        eta.mins = newETAsecs ~/ 60;
-        if(eta.hours != 0 || eta.mins > 30)
-          eta.sex = 0;
-        else
-          newETAsecs %= 60;
-          eta.sex = newETAsecs;
 
-        if(bus.eTA.hours >= 1){                                                 // do not update far away buses
-          bus.noUpdateForTicks = 5*60*2;  // 5 mins
-        }else if(bus.eTA.mins >= 15){
-          bus.noUpdateForTicks = 60*2;  // 1 min
-        }/*else if(bus.eTA.inSex() + bus.expErMarg.inSex() < 0){  // bus is arriving
-          bus.eTA = Time(0,0,-2);
-          bus.noUpdateForTicks = bus.expErMarg.inSex()*2;  // 1 min
+        if(bus.eTA.mins < 0){
+          bus.eTA.mins = 59;
+          bus.eTA.hours--;
         }
-        else{
-          bus.eTA = Time(0,0,-1);
-          bus.noUpdateForTicks = -1;
-        }*/
-        bus.setETA(eta);
+        if(bus.eTA.hours < 0){  // technically not needed if mins arent displayed over one hour
+          bus.eTA.hours = 23;
+        }
       }
     }
+    else if(bus.noEtaUpdateTicks == 0){
+        bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;     // every 15 sex
+        print('calculateing ETA');
+        try{
+          Time eta = new Time(0,0,0);
+          int i = activeStation.servedLines.indexOf(bus.busLine.name);
+          if(i < 0 || i>activeStation.servedLines.length){
+            print('[  Wr  ] bus not found in servedlines - skipping');
+            continue;
+          }
+          distPassed = getEstDistPassed(bus.startTime);
+
+          print(bus.busLine.name + 'distFrom Start:' + activeStation.distFromLineStart[i].toString());
+          if((activeStation.distFromLineStart[i] - distPassed) < 0){
+            eta.sex = -1;
+            bus.setETA(eta);
+            bus.noEtaUpdateTicks = -1;  // never update this
+           // print('bus left');
+            continue;
+          }
+
+          /*print(bus.nickName + '****************');
+          print(distPassed);
+          print(activeStation.distFromLineStart[i]);*/
+
+          int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) ~/ (0.2777 * avrgBusSpeed));// m/km/h
+
+          eta.hours = newETAsecs ~/ 3600;
+          newETAsecs %= 3600;
+          eta.mins = newETAsecs ~/ 60;
+          if(eta.hours != 0 || eta.mins > 30)
+            eta.sex = 0;
+          else
+            newETAsecs %= 60;
+          eta.sex = newETAsecs;
+
+          bus.setETA(eta);
+          sortByEta();  // sort DBG TODO: optimise this shit
+
+        } catch(e){
+          print('[  ER  ] cant calculate ETA for: ' + bus.nickName + '--' + e.toString());
+        }
+    }
   }
-}
-
-void setBusETA(distPassed, distFromStart, bus){
-  Time eta = new Time(0,0,0);
-
-  if(distPassed > distFromStart){
-    print('removed bus');
-    //buslist.remove(bus);
-    return;
-  }
-
-  eta.mins = (distFromStart - distPassed) / avrgBusSpeed;// m/km/h
-  bus.setETA(eta);
-  print('bus:' + bus.toString() + 'eta: ' + eta.toString());
-  return;
 }
 
 double getEstDistPassed(Time startTime){ // basic estimation of pos for const speed
@@ -123,7 +126,7 @@ void addSelectedBuses(Station station, String line){
     if(bbusline.name == line){
       newBus.lineColor = bbusline.color;
       newBus.color = bbusline.color.withAlpha(200);
-      newBus.busLine = bbusline.name;
+      newBus.busLine = bbusline;
       newBus.busPos = bbusline.points[0];
       DateTime now = DateTime.now();
       //print(now.hour.toString() + ':' + now.minute.toString());
@@ -132,41 +135,19 @@ void addSelectedBuses(Station station, String line){
     }
   }
 }
-List<Marker> getBusMarkers(){
-    List<Marker> busMarkers = [];
 
-    for(var bus in buslist) {
-      /*if(!bus.displayedOnMap){
-        continue;
-      }*/
-      busMarkers.add(new Marker(
-          width: 10.0,
-          height: 10.0,
-          point: bus.busPos,
-          builder: (ctx) =>
-          new Container(
-            decoration: new BoxDecoration(
-              shape: BoxShape.circle,
-              color: bus.color,
-            ),
-          )));
-    }
-    if(dbgMarkers.isNotEmpty){
-      for(var mark in dbgMarkers){
-        //print('oh hi mark');
-        busMarkers.add(new Marker(
-            width: 15.0,
-            height: 15.0,
-            point: mark,
-            builder: (ctx) =>
-            new Container(
-              decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.red,
-              ),
-            )));
+void sortByEta(){  //TODO: not very elegant algorithm, may work for this specific case or too slow
+  for(int j =0; j < buslist.length -1; j++){
+    bool sorted = true;
+    for(int i=0;i< (buslist.length - 1);i++){
+      if(buslist[i].eTA.inSex() > buslist[i + 1].eTA.inSex()){
+        Bus temp = buslist[i];
+        buslist[i] = buslist[i+1];
+        buslist[i+1] = temp;
+        sorted = false;
       }
     }
-
-  return busMarkers;
+    if(sorted)
+      return;
+  }
 }

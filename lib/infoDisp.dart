@@ -3,21 +3,19 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/infoBoardItem/infoItem.dart';
-import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
+import 'package:mapTest/navbar/statusbar.dart';
 
 import 'dataClasses/BusLine.dart';
-import 'infoBoardItem/infoListView.dart';
 import 'loadModules/stations.dart';
-import 'navbar/navBar.dart';
 
-class buletin extends StatefulWidget {
-  buletinState createState() => buletinState();
+class Buletin extends StatefulWidget {
+  BuletinState createState() => BuletinState();
 }
 
-class buletinState extends State<buletin> {
+class BuletinState extends State<Buletin> {
 
   @override
   void initState(){
@@ -29,6 +27,7 @@ class buletinState extends State<buletin> {
 
   @override
   Widget build(BuildContext context) {
+    double width = 370, height = 800;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -42,18 +41,19 @@ class buletinState extends State<buletin> {
           ),
           margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
           padding: EdgeInsets.only(left: 0.0, top: 0.0),
-          height: 800 * hScaleFactor,
-          width: 370 * wScaleFactor,  //350
+          height: height * hScaleFactor,
+          width: width * wScaleFactor,  //350
           alignment: Alignment.topLeft,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              StatusBar(),
               Container(
                 decoration: new BoxDecoration(
                 color: baseBlue,
                 ),
                 padding: EdgeInsets.all(6.0),
-                width: 370 * wScaleFactor,
+                width: width * wScaleFactor,
                 //height: 100 * hScaleFactor,
                 child: Container(
                   padding: EdgeInsets.all(6.0),
@@ -127,11 +127,23 @@ List<Widget> getStationLineLabels(){
     }
     labelList.add(newText);
   }
-  //labelList.add(Text('hello world', style: infoBrdSmall,));
-  return labelList;
+
+  if(labelList.length > 12){
+    List<Widget> labelList2 = new List();
+    for(int i = 13; i < labelList.length; i++){
+      labelList2.add(labelList[i]);
+    }
+    labelList.removeRange(13, labelList.length- 1);
+    labelList.add(Text('XXXX'));  // TODO: start newline if too many buslines
+    return labelList;
+  }
+  else{
+    //labelList.add(Text('hello world', style: infoBrdSmall,));
+    return labelList;
+  }
 }
 
-Widget getListView(context){
+Widget getListView(context){ // TODO: set cursor to next bus
   return ListView.separated(  // lazy listview do not render stuff that isn't visible
     //padding: const EdgeInsets.all(8),
     itemCount: buslist.length,
@@ -143,7 +155,7 @@ Widget getListView(context){
   );
 }
 
-Widget infoLegend(){
+Widget infoLegend(){ // TODO: fix ui alignment
   return Container(
     margin: EdgeInsets.only(top: 0.0, bottom: 4.0, left: 0.0, right: 0.0),
     padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 5.0),
@@ -193,4 +205,89 @@ Widget infoLegend(){
     ),
   );
 
+}
+
+class MobSchedule extends StatefulWidget {
+  MobScheduleState createState() => MobScheduleState();
+}
+
+class MobScheduleState extends State<MobSchedule> {
+
+  @override
+  void initState(){
+    // TODO: only refresh when necessseary
+    Timer.periodic(Duration(seconds: 1), (v) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double width = 370, height = 800;
+
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+            decoration: new BoxDecoration(
+                color: ligthBlack,
+                borderRadius: new BorderRadius.only(
+                  topRight: const Radius.circular(4.0),
+                  bottomRight: const Radius.circular(4.0),
+                )
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
+            padding: EdgeInsets.only(left: 0.0, top: 0.0),
+            height: screenHeight,
+            width: screenWidth,  //350
+            alignment: Alignment.topLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(child: StatusBar(), width: screenWidth,),
+                Container(
+                  decoration: new BoxDecoration(
+                    color: baseBlue,
+                  ),
+                  padding: EdgeInsets.all(6.0),
+                  width: screenWidth,
+                  //height: 100 * hScaleFactor,
+                  child: Container(
+                    padding: EdgeInsets.all(6.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(text: 'Station: ', style: infoBrdLabel,),
+                              TextSpan(text: activeStation.getStationName(), style: infoBrdLabel),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 3.0, bottom: 3.0,),
+                          child: Row(
+                            children: getStationLineLabels(),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  child: infoLegend(),
+                ),
+                Expanded(
+                  child: getListView(context),
+                ),
+              ],
+            )
+        )],
+    );
+  }
 }

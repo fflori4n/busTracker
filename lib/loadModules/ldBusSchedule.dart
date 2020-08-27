@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Time.dart';
@@ -7,7 +6,7 @@ import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'nickNames.dart';
 
-Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
+Future ldLineSchedule(BusLine bbusline, DateTime date) async {
   String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
@@ -17,7 +16,7 @@ Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
   }
   catch(e){
     print('[ ER ] opening file: ' + lineName + '.txt');
-    return; // some signaling would be nice...
+    return; // TODO some signaling would be nice...
   }
   if(rawFileContent.isEmpty){
     print('[ ER ] file is empty: ' + lineName + '.txt');
@@ -25,9 +24,9 @@ Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
   }
   List<String> dayBlocks = rawFileContent.split('>');
 
-  if(Date.weekday == DateTime.sunday){
+  if(date.weekday == DateTime.sunday){
     rawDayStr = dayBlocks[3];
-  }else if(Date.weekday == DateTime.saturday){
+  }else if(date.weekday == DateTime.saturday){
     rawDayStr = dayBlocks[2];
   }else{
     rawDayStr = dayBlocks[1];
@@ -44,7 +43,7 @@ Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
       }
       Bus newBus = new Bus.empty();
       try{
-        newBus.busLine = bbusline.name;
+        newBus.busLine = bbusline;
         newBus.lineColor = bbusline.color;
         newBus.lineDescr = bbusline.description;
         newBus.color = bbusline.color.withAlpha(200);
@@ -54,18 +53,18 @@ Future LdLineSchedule(BusLine bbusline, DateTime Date) async {
           newBus.isRampAccesible = true;
         }
         spaceSep[i] = spaceSep[i].replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
-        //print(spaceSep[0] + ':' + spaceSep[i]);
         newBus.startTime = Time(int.parse(spaceSep[0]),int.parse(spaceSep[i]),0);
         newBus.displayedOnMap = true;
         DateTime now = DateTime.now();
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
-        int elapsedTime = now.difference(startDateTime).inMinutes;
-        if(elapsedTime > 120) {
-          print('bus gone!');
+        //if(elapsedTime > (activeStation.distFromLineStart[activeStation.servedLines.indexOf(newBus.busLine.toString())] * 5)) {
+        if(now.difference(startDateTime).inMinutes > 90){
+          print('bus gone!'); // TODO test me and add max load limit
         }
         else{
           await loadNickName(newBus);   // test only
           buslist.add(newBus);
+          //print(' added to buslist:' + newBus.busLine.name + ' ' + newBus.nickName);
         }
       }catch(e){
         print('[ ER ] creating new bus:' + lineName + ' '+ line.toString());

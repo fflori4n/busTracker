@@ -9,6 +9,8 @@ import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/main.dart';
 
+import 'busMarkersOverlay.dart';
+
 Widget drawMapOverlay(){
   print('rendering map overlay!');
   return IgnorePointer(
@@ -17,7 +19,8 @@ Widget drawMapOverlay(){
         width: constraints.widthConstraints().maxWidth,
         height: constraints.heightConstraints().maxHeight,
         color: baseBlue.withOpacity(0.2),
-        child: CustomPaint(painter: OverlayPainter()),
+        child: CustomPaint(painter: OverlayPainter(),
+        foregroundPainter: BusOverlayPainter(),),
   ),),);
 }
 
@@ -25,36 +28,20 @@ class OverlayPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
 
-    /*for(var busline in inactiveLines){
-      if(nsBusLines.contains(busline)){
-        continue;
-      }
-      final paint = Paint()
-        ..color = busline.color.withOpacity(0.05)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 4
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round;
-      print('drawing...');
-
-      drawPolyLine(canvas,size,busline.points, paint);
-    }*/
-
     for(var busline in nsBusLines){
       final paint = Paint()
-        ..color = busline.color.withOpacity(0.3)
+        ..color = busline.color.withOpacity(0.6)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 4
         ..strokeJoin = StrokeJoin.round
         ..strokeCap = StrokeCap.round;
-      print('drawing...');
 
       drawPolyLine(canvas,size,busline.points, paint);
     }
     for(Station station in stationList){  // draw stations on overlay? maybe faseter? test it
       double radius = 6;
       Paint paint = Paint()
-        ..color = baseBlack.withOpacity(0.3)
+        ..color = baseBlack.withOpacity(0.15)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2;
       if(station == activeStation){

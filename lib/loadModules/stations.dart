@@ -6,13 +6,14 @@ import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import '../geometryFuncts.dart';
+import '../main.dart';
 import 'busLines.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'busLocator.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-Station paperStation = new Station(LatLng(45.237330061975,19.80649497604369));
+Station paperStation = new Station.namePos('Paper station',LatLng(45.230727,19.823666));
 
 List<Station> stationList = [paperStation];
 Station activeStation = new Station.byName('No selected station!');
@@ -21,6 +22,7 @@ Future<String> loadAsset() async {
 
 }
 Future<void> loadStationsFromFiles() async {
+  progStatusString = 'Loading stations.';
   try {
     print('stations load');
     String rawFileContent = await rootBundle.loadString('assets/nsStations.txt');
@@ -50,6 +52,7 @@ Future<void> loadStationsFromFiles() async {
       print(stationList.length);
     }
     //dbgPrintStationList();
+    progStatusString = '';
     return;
   }
   catch(e) {
@@ -100,22 +103,25 @@ selectClosest2Click(LatLng click){
       closestStation = stationList[i];
     }
   }
+  if(closestDist > 500){
+    activeStation = new Station.byName('No selected station!');
+    activeStation.servedLines = [''];       // A+ level bug fixing. congrats.
+    return;
+  }
   closestStation.selected = true;
   activeStation = closestStation;
 
-  /*for(var bus in buslist){
-    if(!(activeStation.servedLines.contains(bus.busLine))){
-      buslist.remove(bus);
-    }
-  }*/
   buslist.clear();
   activeStation.distFromLineStart.clear();
   for(int i=0; i< activeStation.servedLines.length; i++){   // init line from dist to be safe
     activeStation.distFromLineStart.add(0.0);
   }
+}
 
-  for(var servedLine in activeStation.servedLines){
-    for(var line in nsBusLines){
+void calcDistFromLineStart(){ // calculates distace from lineStart for active station
+  for(String servedLine in activeStation.servedLines){
+    for(BusLine line in nsBusLines){
+      print(line.name + ' - - ' + servedLine);
       if(line.name == servedLine){
         addSelectedBuses(activeStation, servedLine);
         int i = activeStation.servedLines.indexOf(servedLine);
@@ -124,6 +130,9 @@ selectClosest2Click(LatLng click){
       }
     }
   }
+ /* for(int i = 0; i < activeStation.distFromLineStart.length; i++){
+    print(activeStation.distFromLineStart[i].toString());
+  }*/
 }
 
 double getDistFromLineStart(LatLng target, BusLine line){

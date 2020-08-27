@@ -13,7 +13,7 @@ LatLng getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   for(;i<pointList.length;i++){
     if(i+2 >= pointList.length){   // path is not long enough
       print('longer than path!');
-      return LatLng(0,0);}
+      return LatLng(-1,-1);}
     distSum += normLoc(pointList[i], pointList[i+1]);
     if(distSum > distance){
       break;

@@ -22,25 +22,13 @@ void onPosChange(MapPosition mapPos, bool h){
   print('MAP: ' + mapCenter.toString() + ',' + mapZoom.toString());
 }
 Future<void> onTap(LatLng tapPos) async {
-  //print(tapPos.latitude.toString() + "," + tapPos.longitude.toString());
+  //print('taped at:' + tapPos.toString());
   selectClosest2Click(tapPos);
-  if(inactiveLines.isEmpty){
-    await loadLinesFromFile([],true); // load only the active lines
-  }
-  await loadLinesFromFile(activeStation.servedLines,false); // load only the active lines
+  await loadLinesFromFile(activeStation.servedLines,false);
+  calcDistFromLineStart();
   for(BusLine busLine in nsBusLines){
-    LdLineSchedule(busLine, DateTime.now());
+    ldLineSchedule(busLine, DateTime.now());
   }
-  /*for(var line in activeStation.servedLines) {
-    for(var busLine in nsBusLines){
-      if(busLine.name == line){
-        LdLineSchedule(busLine, DateTime.now());
-      }
-    }
-  }*/
-  //print(distToPprojection(activeStation.pos, nsBusLines[0].points));
-
-  //addStation(tapPos); //add stations
 }
 
 FlutterMap drawOsmMap() {
@@ -64,12 +52,6 @@ FlutterMap drawOsmMap() {
         subdomains: ['a', 'b', 'c'],
         tileProvider: NonCachingNetworkTileProvider(),
       ),
-     /* MarkerLayerOptions(
-        markers: getStationMarkers(),
-      ),*/
-      MarkerLayerOptions(
-        markers: getBusMarkers(),
-      ),
     ],
   );
   mapCenter = map.options.center;
@@ -85,13 +67,7 @@ class mapViewState extends State<mapView> {
 
   @override
   void initState(){
-
-    loadStationsFromFiles();
-    //loadLinesFromFile();
-
-    Timer.periodic(Duration(milliseconds: 200 ), (v) {
-      setState(() { drawOsmMap();});
-    });
+    loadStationsFromFiles();  // TODO: Fix me -- move to better location
     super.initState();
   }
 

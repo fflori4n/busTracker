@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,6 +33,27 @@ double setSize(double devSize, {int devScreenwidth= 1366}){
   print('in:' + devSize.toString() + ' out:' + newWidth.toString());
   print(devScreenwidth/screenWidth);
   return newWidth.toDouble();
+}
+
+Color giveMeColor(String seedStr){
+  String digest = sha1.convert(utf8.encode(seedStr.replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';}))).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+  String digest2 = sha1.convert(utf8.encode(seedStr)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+  var rand = new Random(int.parse(digest));
+  var rand2 = new Random(int.parse(digest2));
+  // #458BFA
+  double hue = 45; //new Random(int.parse(digest));
+  double hueVariation = 25 * rand2.nextInt(5).toDouble();
+  double satVariation = 0.1 * rand2.nextInt(5).toDouble() - 0.5;
+  double sat = 110;
+  double light = 0.5; // const
+  //r = min + rnd.nextInt(max - min);
+  sat = (sat -50 + rand.nextInt(70+50) + satVariation)/255;
+  hue = rand.nextInt(360).toDouble();
+  hue = (hue + hueVariation) % 360;
+
+  print(hue.toString() + sat.toString() + light.toString());
+  HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);
+  return newColor.toColor();
 }
 
 TextStyle listText =  GoogleFonts.robotoCondensed(

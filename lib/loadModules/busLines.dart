@@ -1,23 +1,28 @@
+import 'dart:convert';
+import 'dart:math';
 import 'dart:ui';
 
+import 'package:crypto/crypto.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 
-const bool verbose = true;
+import '../main.dart';
+import 'nickNames.dart';
+
+const bool verbose = false;
 
 List<BusLine> nsBusLines = [];
 List<BusLine> inactiveLines = [];
 
 Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
+  progStatusString = 'Loading bus lines.';
   buslist.clear();
-  for(var busLine in nsBusLines){           // clear buslines that aren't active
-    if(!(loadThis.contains(busLine.name))){
-      nsBusLines.remove(busLine);
-    }
-  }
+  nsBusLines.clear();
+
   try {
     if(verbose){print('---  Loading bus lines from file  ---');}  //DBG
     String rawFileContent = await rootBundle.loadString('assets/busLinesNS.txt');
@@ -42,7 +47,32 @@ Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
           if(verbose){print('loading: ' + newBusline.name);  //DBG
                       print('Header: [name][R][G][B][Descr.]' + header.toString() );}
 
-          newBusline.color = Color.fromRGBO(int.parse(header[1]),int.parse(header[2]),int.parse(header[3]), 0.9);
+          //newBusline.color = Color.fromRGBO(int.parse(header[1]),int.parse(header[2]),int.parse(header[3]), 0.9);
+          //newBusline.color = giveMeColor(newBusline.name);
+          //print(giveMeColor(newBusline.name));
+
+
+          // debug*********************
+          String digest = sha1.convert(utf8.encode(newBusline.name.replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';}))).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+          String digest2 = sha1.convert(utf8.encode(newBusline.name)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+          var rand = new Random(int.parse(digest));
+          var rand2 = new Random(int.parse(digest2));
+          // #458BFA
+          double hue = 45; //new Random(int.parse(digest));
+          double hueVariation = 25 * rand2.nextInt(5).toDouble();
+          double satVariation = 0.1 * rand2.nextInt(5).toDouble() - 0.5;
+          double sat = 110;
+          double light = 0.5; // const
+          //r = min + rnd.nextInt(max - min);
+          sat = (sat -50 + rand.nextInt(70+50) + satVariation)/255;
+          hue = rand.nextInt(360).toDouble();
+          hue = (hue + hueVariation) % 360;
+
+          if(verbose){print(hue.toString() + sat.toString() + light.toString());}
+          HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);
+          newBusline.color = newColor.toColor();
+          //**************************
+
           try{
             newBusline.description = header[4].toString();
           }
@@ -68,6 +98,7 @@ Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
       }
     }
     if(verbose){print('---  Loading completed  ---');}  //DBG
+    progStatusString = '';
     return;
     }
   catch(e) {

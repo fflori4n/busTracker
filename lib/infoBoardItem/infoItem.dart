@@ -10,7 +10,7 @@ import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
-  String lineName = bus.busLine.padRight(5, ' ');
+  String lineName = bus.busLine.name.padRight(5, ' ');
   Color lineColor = bus.lineColor;
 
   String startHours = bus.startTime.hours.toString().padLeft(2, '0');

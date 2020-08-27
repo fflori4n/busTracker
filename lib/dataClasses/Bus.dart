@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 
+import 'BusLine.dart';
 import 'Time.dart';
 
 final LatLng initMapCenter = new LatLng(0,0);
@@ -13,28 +14,29 @@ class Bus{
   Time startTime = new Time(-1,-1,0);
   Time eTA = new Time(-1,-1,-1);
   Time expErMarg = new Time(0,10,0);                                             // expected margin of + error
-  String busLine = '';
+  //String busLine = '';
+  BusLine busLine;
   String nickName = '';
   String etcInfo = '';
   String lineDescr = '';
-  int noUpdateForTicks = 0;
+  int noPosUpdateTicks = 0;
+  int noEtaUpdateTicks = 0;
   bool displayedOnMap = false;
   bool isRampAccesible = false;
 
 
-  Bus(LatLng busPos, Color color, Time startTime,String busLine){
+  Bus(LatLng busPos, Color color, Time startTime,BusLine busLine){
     this.busPos = busPos;
     this.color = color;
     this.startTime = startTime;
     this.busLine = busLine;
   }
-  Bus.empty(){
-  }
+  Bus.empty();
   void setETA(Time eta){
     this.eTA = eta;
   }
   String printBasic(){
-    return busLine + ' ' + startTime.hours.toString() + ':' + startTime.mins.toString() + ' ' + nickName;
+    return busLine.name.toString() + ' ' + startTime.hours.toString() + ':' + startTime.mins.toString() + ' ' + nickName;
   }
   void dbgPrint(){
     print(busLine.toString());

@@ -20,6 +20,10 @@ class Station{
   Station.byName(String name){
     this.name = name;
   }
+  Station.namePos(String name, LatLng pos){
+    this.name = name;
+    this.pos = pos;
+  }
   void setPos( LatLng pos){
     this.pos = pos;
   }
