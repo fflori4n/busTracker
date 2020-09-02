@@ -49,7 +49,7 @@ Future<void> loadStationsFromFiles() async {
         //newStation.dbgPrint();
         stationList.add(newStation);
       }
-      print(stationList.length);
+      //print(stationList.length);
     }
     //dbgPrintStationList();
     progStatusString = '';

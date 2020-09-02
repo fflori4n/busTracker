@@ -30,7 +30,7 @@ class OverlayPainter extends CustomPainter {
 
     for(var busline in nsBusLines){
       final paint = Paint()
-        ..color = busline.color.withOpacity(0.6)
+        ..color = busline.color.withOpacity(0.25)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 4
         ..strokeJoin = StrokeJoin.round

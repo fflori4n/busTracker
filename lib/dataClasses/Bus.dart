@@ -8,7 +8,8 @@ import 'Time.dart';
 final LatLng initMapCenter = new LatLng(0,0);
 
 class Bus{
-  LatLng busPos = initMapCenter;
+  //LatLng busPos = initMapCenter;
+  Position busPos;
   Color color = Colors.white;
   Color lineColor = Colors.transparent;
   Time startTime = new Time(-1,-1,0);
@@ -26,7 +27,7 @@ class Bus{
 
 
   Bus(LatLng busPos, Color color, Time startTime,BusLine busLine){
-    this.busPos = busPos;
+    this.busPos.busPoint = busPos;
     this.color = color;
     this.startTime = startTime;
     this.busLine = busLine;
@@ -40,5 +41,15 @@ class Bus{
   }
   void dbgPrint(){
     print(busLine.toString());
+  }
+}
+
+class Position{
+  LatLng busPoint = initMapCenter;
+  double heading = -1;
+
+  Position(LatLng pos, double hdg){
+    busPoint = pos;
+    heading = hdg;
   }
 }

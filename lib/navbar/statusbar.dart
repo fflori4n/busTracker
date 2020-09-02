@@ -13,6 +13,7 @@ class StatusBar extends StatefulWidget {
 class _statusBarState extends State<StatusBar> {
   String _dispString;
   String _spinner;
+  String _spinner2;
   Timer _everySecond;
 
   @override
@@ -21,7 +22,19 @@ class _statusBarState extends State<StatusBar> {
     // sets first value
     // ⠤⠶⠿⣀⣤⣶⣿⠿⠛⠉
     //final String animString = '⡿⣟⣯⣷⣾⣽⣻⢿';
-    final String animString = '⣀⣤⣶⣶⣿⣿⣿⣯⣯⣯⣿⣿⠿⠿⠿⠛⠛⠉    ';
+    //⣿⣯⣯⣯⣿⣿⠿⠿⠿⠛⠛⠉
+
+    /*
+    ⣀
+    ⣤
+    ⣶
+    ⣿
+    ⠿⣀
+    ⠛⣤
+    ⠛⡤
+    */
+    final String animString =  '⣀⣤⣶⣶⣿⣿⣿⠿⠿⠿⠿⠛⠛⠛⠛⠛⠛⠉    ';
+    final String animString2 = '       ⣀⣀⣀⣀⣤⣤⡤⣤⡤⣤⣶⣿⠿⠛⠉';
     // '⢿⠿⠿⡿
     _dispString = progStatusString;
     int frameInd = 0;
@@ -32,6 +45,7 @@ class _statusBarState extends State<StatusBar> {
           if(frameInd >= animString.length){frameInd = 0;}
           _dispString = progStatusString;
           _spinner = animString[frameInd];
+          _spinner2 = animString2[frameInd];
           frameInd++;
         }
         catch(r){
@@ -56,9 +70,17 @@ class _statusBarState extends State<StatusBar> {
           Text('$_dispString'),
           Expanded(child: SizedBox()),
           Container(
-            child: RotatedBox(
-                quarterTurns: 1,
-                child: Text('$_spinner', style: TextStyle( color: Colors.black),),
+            child: Row(
+              children: <Widget>[
+                RotatedBox(
+                  quarterTurns: 1,
+                  child: Text('$_spinner', style: TextStyle( color: Colors.black,),),
+                ),
+                RotatedBox(
+                  quarterTurns: 1,
+                  child: Text('$_spinner2', style: TextStyle( color: Colors.black),),
+                ),
+              ],
             ),
             padding:  EdgeInsets.only(bottom: 4.0),
           )

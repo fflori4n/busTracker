@@ -1,19 +1,19 @@
 import 'dart:math';
 
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/dataClasses/Bus.dart';
 
-import 'loadModules/stations.dart';
-import 'loadModules/busLocator.dart';
-
-LatLng getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
+Position getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   List<LatLng> pointList = polyLine;
+  LatLng prevSectionP;
   double distSum = 0;  //m
+  double heading;
 
   int i =0;
   for(;i<pointList.length;i++){
     if(i+2 >= pointList.length){   // path is not long enough
       print('longer than path!');
-      return LatLng(-1,-1);}
+      return new Position(LatLng(-1,-1),0);}
     distSum += normLoc(pointList[i], pointList[i+1]);
     if(distSum > distance){
       break;
@@ -24,9 +24,14 @@ LatLng getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   double sectCompleted = 1 - (distance / sectionDist);
 
   //print("dbg: next point " + distance.round().toString() + ", " + (sectCompleted*100).round().toString() + '%');
-
   LatLng newPos = LatLng(pointList[i].latitude + sectCompleted*(pointList[i+1].latitude-pointList[i].latitude), pointList[i].longitude + sectCompleted*(pointList[i+1].longitude-pointList[i].longitude));
-  return newPos;
+  if(pointList[i] != prevSectionP){                                             //angle between i and i+1 points
+    // TODO: test if aprox is worth implementing for atan2
+    heading = atan2(pointList[i+1].latitude - pointList[i].latitude, pointList[i+1].longitude - pointList[i].longitude);
+    prevSectionP = pointList[i];
+    //print('calculating heading');
+  }
+  return new Position(newPos,heading);
 }
 
 double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good needs fixing
@@ -55,13 +60,13 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
 
   pointList.removeAt(mindex+1);
   //print('closest point:' + minPoint.toString());
-  print('distance from path start:' + distSum.roundToDouble().toString());
+  //print('distance from path start:' + distSum.roundToDouble().toString());
 
-  //addDBGMarker(getPOnPolyLineByDist (distSum.roundToDouble(), polyLine)); // DBG;
+  //addDBGMarker(getPOnPolyLineByDist (distSum.roundToDouble(), polyLine));     // DBG;
   return distSum.roundToDouble();
 }
 
-LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){ // works ok!
+LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){             // works ok!
   LatLng minPoint;
   double minDist = 10000;
   for(int i = 0; i<(pointList.length - 1); i++){
@@ -72,7 +77,7 @@ LatLng pProjectionOnPolyLine(LatLng point, List<LatLng> pointList){ // works ok!
       minPoint = projection;
     }
   }
-  print('closest point:' + minPoint.toString());
+  //print('closest point:' + minPoint.toString());
   return minPoint;
 }
 
@@ -105,11 +110,11 @@ LatLng pProjectionToLine( LatLng lnPoint0, LatLng lnPoint1, LatLng point){
   return projection;
 }
 
-double normLoc(LatLng point0, LatLng point1){ // quick and dirty aprox. r^2=r^2+d^2
+double normLoc(LatLng point0, LatLng point1){                                   // quick and dirty aprox. r^2=r^2+d^2
   const double toRad = 3.1415/180;
   const double R = 6371e3;
 
-  double F1 = point0.latitude * toRad;  //lat
+  double F1 = point0.latitude * toRad;                                          //lat
   double F2 = point1.latitude * toRad;
   double L1 = point0.longitude * toRad;
   double L2 = point1.longitude * toRad;

@@ -18,8 +18,10 @@ void calcBusPos(){
   for(var bus in buslist){
     double distPassed;
 
-    if(bus.noPosUpdateTicks > 0)
+    if(bus.noPosUpdateTicks > 0){
       bus.noPosUpdateTicks--;
+
+    }
     else if(bus.noPosUpdateTicks == 0){
       //bus.dbgPrint();
 
@@ -35,7 +37,7 @@ void calcBusPos(){
       distPassed = getEstDistPassed(bus.startTime);
 
       bus.busPos = getPOnPolyLineByDist(distPassed,bus.busLine.points);
-      if(bus.busPos == LatLng(-1,-1)){
+      if(bus.busPos.busPoint == LatLng(-1,-1)){
         bus.displayedOnMap = false;
         bus.noPosUpdateTicks = -1;  // never update Pos
         continue;
@@ -100,7 +102,7 @@ void calcBusPos(){
           eta.sex = newETAsecs;
 
           bus.setETA(eta);
-          sortByEta();  // sort DBG TODO: optimise this shit
+          sortByEta(bus);
 
         } catch(e){
           print('[  ER  ] cant calculate ETA for: ' + bus.nickName + '--' + e.toString());
@@ -127,7 +129,7 @@ void addSelectedBuses(Station station, String line){
       newBus.lineColor = bbusline.color;
       newBus.color = bbusline.color.withAlpha(200);
       newBus.busLine = bbusline;
-      newBus.busPos = bbusline.points[0];
+      newBus.busPos = new Position(bbusline.points[0], -1);
       DateTime now = DateTime.now();
       //print(now.hour.toString() + ':' + now.minute.toString());
       newBus.startTime = Time(now.hour, now.minute, 0);
@@ -136,18 +138,15 @@ void addSelectedBuses(Station station, String line){
   }
 }
 
-void sortByEta(){  //TODO: not very elegant algorithm, may work for this specific case or too slow
-  for(int j =0; j < buslist.length -1; j++){
-    bool sorted = true;
-    for(int i=0;i< (buslist.length - 1);i++){
-      if(buslist[i].eTA.inSex() > buslist[i + 1].eTA.inSex()){
-        Bus temp = buslist[i];
-        buslist[i] = buslist[i+1];
-        buslist[i+1] = temp;
-        sorted = false;
-      }
+void sortByEta(Bus bus){
+  // TODO: convert everithing to index instead of ref.
+  int busIndex = buslist.indexOf(bus);
+  if(( busIndex - 1) > 0){
+    int prevBusSex = buslist[busIndex - 1].eTA.inSex();
+    if(prevBusSex > bus.eTA.inSex()){
+      Bus temp = buslist[busIndex];
+      buslist[busIndex] = buslist[busIndex - 1];
+      buslist[busIndex - 1] = temp;
     }
-    if(sorted)
-      return;
   }
 }

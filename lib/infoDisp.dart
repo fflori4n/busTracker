@@ -97,7 +97,7 @@ class BuletinState extends State<Buletin> {
                 margin: EdgeInsets.only(bottom: 5.0),
               ),*/
               Container(
-                child: infoLegend(),
+                child: drawLegend(context),
               ),
               Expanded(
                 child: getListView(context),

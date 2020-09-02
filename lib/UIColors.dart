@@ -73,39 +73,46 @@ TextStyle legendText =  GoogleFonts.robotoCondensed(
 
 // info board style
 TextStyle infoBrdLarge =  GoogleFonts.robotoCondensed(
-    fontSize: 15 * wScaleFactor,
+    //fontSize: 15 * wScaleFactor,
+    fontSize: 20,
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1
 );
 TextStyle infoBrdYellow =  GoogleFonts.robotoCondensed(
-    fontSize: 15 * wScaleFactor,
+    //fontSize: 15 * wScaleFactor,
+    fontSize: 20,
     fontWeight: FontWeight.normal,
     color: baseYellow,
     letterSpacing: 1.1
 );
 TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
-    fontSize: 10 * wScaleFactor,
+    //fontSize: 10 * wScaleFactor,
+    fontSize: 15,
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1
 );
 
 TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(
-fontSize: 10 * wScaleFactor,
+//fontSize: 10 * wScaleFactor,
+fontSize: 15,
 fontWeight: FontWeight.normal,
 color: baseWhite.withOpacity(0.5),
 letterSpacing: 1.1
 );
+
 TextStyle infoBrdSmaller = GoogleFonts.robotoCondensed(
-    fontSize: 8 * wScaleFactor,
+    //fontSize: 8 * wScaleFactor,
+    fontSize: 12,
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1
 );
 // legend for station name and lines
 TextStyle infoBrdLabel = GoogleFonts.robotoCondensed(
-  fontSize: 10 * wScaleFactor,
+  //fontSize: 10 * wScaleFactor,
+  fontSize: 15,
   letterSpacing: 1.1,
   fontWeight: FontWeight.normal,
   fontStyle: FontStyle.normal,
@@ -113,7 +120,8 @@ TextStyle infoBrdLabel = GoogleFonts.robotoCondensed(
 );
 // bus line description under infoitem
 TextStyle busDescrSmall = GoogleFonts.robotoCondensed(
-  fontSize: 8 * wScaleFactor,
+  //fontSize: 8 * wScaleFactor,
+  fontSize: 12,
   letterSpacing: 1.1,
   fontWeight: FontWeight.normal,
   color: baseWhite,

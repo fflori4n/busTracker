@@ -1,5 +1,6 @@
 
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +9,9 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
+
+import '../main.dart';
+
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
   String lineName = bus.busLine.name.padRight(5, ' ');
@@ -39,68 +43,198 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-  Container(
-  margin: EdgeInsets.only(top: 1.0, bottom: 2.0, left: 10.0, right: 10.0),
-  //width: (screenWidth/4.5),                                                   // global
-  padding: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0, bottom: 5.0),
-  decoration: BoxDecoration(
-  border: Border.all(color: Colors.white70, width: 2.0),
-  borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-  ),
-  child: Row(
-  children: <Widget>[
-  Stack(
-  children: <Widget>[
-  Column(
-  children: <Widget>[
-  Row(children: <Widget>[
-  Text(lineName, style: infoBrdYellow,),
-  Text( (startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
-  ],),
-  ],
-  ),
-  ],
-  ),
-
-  Expanded(child: SizedBox()),
-  msgInsteadOfETA.isEmpty ? Text( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : Text(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
-  Column(
-  crossAxisAlignment: CrossAxisAlignment.end,
-  children: <Widget>[
-  Text(erExp.padLeft(15,' '), style: infoBrdSmall,),
-  Text(nickName, style: infoBrdSmaller,),
-  ],
-  ),
-  Column(
-  children: [
-  Container(
-  decoration: new BoxDecoration(
-  color: bus.displayedOnMap ? baseWhite : Colors.transparent,
-  border: Border.all(color: baseWhite, width: 1.0),
-  borderRadius: new BorderRadius.all(Radius.circular(1.0)),
-  ),
-  margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
-  width: infoBrdSmall.fontSize,
-  height: infoBrdSmall.fontSize,
-  ),
-  Container(
-  decoration: new BoxDecoration(
-  color: bus.isRampAccesible ? baseYellow : Colors.transparent,
-  border: Border.all(color: baseYellow, width: 1.0),
-  borderRadius: new BorderRadius.all(Radius.circular(1.0)),
-  ),
-  margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-  width: infoBrdSmall.fontSize,
-  height: infoBrdSmall.fontSize,
-  ),
-  ],
-  ),
-  ],
-  ),
-  ),
       Container(
-        margin: EdgeInsets.only(top: 0.0, bottom: 0.0, left: 12.0, right: 0.0),
-        child: Text(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left,),
+        margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
+        padding: EdgeInsets.only(left: 7.0, right: 7.0, top: 5.0, bottom: 3.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white70, width: 1.5),
+          borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+        ),
+        child: Row(children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(children: <Widget>[
+                  Expanded(
+                        child:  Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: AutoSizeText(lineName, style: infoBrdYellow,),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
+                            ),
+                          ],
+                        ),
+                    //Text(lineName, style: infoBrdYellow,),)
+                  ),
+                  Expanded(
+                    child: AutoSizeText((startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
+                  ),
+                  Expanded(
+                      child: msgInsteadOfETA.isEmpty ? AutoSizeText( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : AutoSizeText(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
+                  ),
+                ],),
+                AutoSizeText(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
+              ],
+            )//Container(color: baseBlue, child: Text('hello world!'),),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              //margin: EdgeInsets.only(top: 2),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        AutoSizeText(erExp.padLeft(15,' '), style: infoBrdSmall,),
+                        AutoSizeText(nickName.padLeft(15,' '), style: infoBrdSmaller,),
+                      ],),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                          decoration: new BoxDecoration(
+                            color: bus.displayedOnMap ? baseWhite : Colors.transparent,
+                            border: Border.all(color: baseWhite, width: 1.0),
+                            borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                          ),
+                          margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+                          width: infoBrdSmall.fontSize,
+                          height: infoBrdSmall.fontSize,
+                        ),
+                        Container(
+                          decoration: new BoxDecoration(
+                            color: bus.isRampAccesible ? baseYellow : Colors.transparent,
+                            border: Border.all(color: baseYellow, width: 1.0),
+                            borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                          ),
+                          margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                          width: infoBrdSmall.fontSize,
+                          height: infoBrdSmall.fontSize,
+                        ),
+                      ],),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+        ],)
+      ),
+    ],
+  );
+}
+
+Widget drawLegend(BuildContext context){
+
+  String lineName = 'NAME'.padRight(5, ' ');
+  Color lineColor = Colors.white70;
+
+  String startTime = 'DEPARTS AT';
+  String ETAtime= 'ARRIVES IN';
+  String lineDescr = 'LINE WAYPOINTS - MAIN STATIONS';
+  String nickName = 'NICKNAME';
+  String erExp = 'EXP.ERROR';
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+         // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
+          padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
+          color: baseBlack,
+          child: Row(children: <Widget>[
+            Expanded(
+                flex: 8,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(children: <Widget>[
+                      Expanded(
+                        child:  Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: AutoSizeText(lineName, style: infoBrdSmaller,),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: AutoSizeText(' ', style: TextStyle(color: lineColor, fontSize: 10 * wScaleFactor),),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: AutoSizeText(startTime.padRight(7,' '), style: infoBrdSmaller,),
+                      ),
+                      Expanded(
+                        child: AutoSizeText(ETAtime.padRight(10,' '), style: infoBrdSmaller,),
+                      ),
+                    ],),
+                    AutoSizeText(lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
+                  ],
+                )//Container(color: baseBlue, child: Text('hello world!'),),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                //margin: EdgeInsets.only(top: 2),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          AutoSizeText(erExp.padLeft(15,' '), style: infoBrdSmaller,),
+                          AutoSizeText(nickName.padLeft(15,' '), style: infoBrdSmaller,),
+                        ],),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            decoration: new BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border.all(color: baseWhite, width: 1.0),
+                              borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                            ),
+                            margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+                            width: infoBrdSmall.fontSize,
+                            height: infoBrdSmall.fontSize,
+                          ),
+                          Container(
+                            decoration: new BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border.all(color: baseYellow, width: 1.0),
+                              borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                            ),
+                            margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                            width: infoBrdSmall.fontSize,
+                            height: infoBrdSmall.fontSize,
+                          ),
+                        ],),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],)
       ),
     ],
   );

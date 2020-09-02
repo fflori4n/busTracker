@@ -47,7 +47,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
         newBus.lineColor = bbusline.color;
         newBus.lineDescr = bbusline.description;
         newBus.color = bbusline.color.withAlpha(200);
-        newBus.busPos = bbusline.points[0];
+        newBus.busPos = new Position(bbusline.points[0], -1);
 
         if(spaceSep[i].contains('R')){
           newBus.isRampAccesible = true;
