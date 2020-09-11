@@ -13,6 +13,8 @@ const double avrgBusSpeed = 17;
 List<Bus> buslist=[];
 
 final calcVerbose = true;
+bool isSorted = false;  // TODO: convert to static? instead of global
+
 void calcBusPos(){
   DateTime refTime = DateTime.now();
   for(var bus in buslist){
@@ -20,11 +22,9 @@ void calcBusPos(){
 
     if(bus.noPosUpdateTicks > 0){
       bus.noPosUpdateTicks--;
-
     }
     else if(bus.noPosUpdateTicks == 0){
       //bus.dbgPrint();
-
       DateTime startDateTime = new DateTime(refTime.year,refTime.month,refTime.day,bus.startTime.hours,bus.startTime.mins, bus.startTime.sex);
       int elapsedTime = refTime.difference(startDateTime).inSeconds;
 
@@ -33,7 +33,6 @@ void calcBusPos(){
         bus.noPosUpdateTicks = elapsedTime.abs()*1000 ~/ mapRefreshPeriod;
         continue;
       }
-
       distPassed = getEstDistPassed(bus.startTime);
 
       bus.busPos = getPOnPolyLineByDist(distPassed,bus.busLine.points);
@@ -42,10 +41,8 @@ void calcBusPos(){
         bus.noPosUpdateTicks = -1;  // never update Pos
         continue;
       }
-
       bus.noPosUpdateTicks = 5000 ~/ mapRefreshPeriod;
     }
-
     if(bus.noEtaUpdateTicks > 0){
       bus.noEtaUpdateTicks--;
       if(bus.eTA.hours <= 0 && bus.eTA.mins < 15){      // do not update if time is more than 15mins
@@ -85,11 +82,6 @@ void calcBusPos(){
            // print('bus left');
             continue;
           }
-
-          /*print(bus.nickName + '****************');
-          print(distPassed);
-          print(activeStation.distFromLineStart[i]);*/
-
           int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) ~/ (0.2777 * avrgBusSpeed));// m/km/h
 
           eta.hours = newETAsecs ~/ 3600;
@@ -102,7 +94,14 @@ void calcBusPos(){
           eta.sex = newETAsecs;
 
           bus.setETA(eta);
-          sortByEta(bus);
+
+          if(!isSorted && buslist.indexOf(bus) == buslist.length){
+            sortAllByEta();
+            isSorted = true;
+          }
+          else{
+            sortByEta(bus);
+          }
 
         } catch(e){
           print('[  ER  ] cant calculate ETA for: ' + bus.nickName + '--' + e.toString());
@@ -149,4 +148,21 @@ void sortByEta(Bus bus){
       buslist[busIndex - 1] = temp;
     }
   }
+}
+void sortAllByEta(){
+  for(int i=0; i< (buslist.length - 1); i++){
+    bool flg = true;
+    for(int j=0; j < (buslist.length - 1); j++){
+      if(buslist[j].eTA.inSex() > buslist[j+1].eTA.inSex()){
+        Bus temp = buslist[j];
+        buslist[j] = buslist[j + 1];
+        buslist[j + 1] = temp;
+        flg = false;
+      }
+    }
+    if(flg) {
+      return;
+    }
+  }
+
 }

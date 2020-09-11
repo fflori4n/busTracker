@@ -1,7 +1,9 @@
 import 'dart:html';
 import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 
 import '../main.dart';
@@ -57,7 +59,13 @@ class BusOverlayPainter extends CustomPainter {
       final paint = Paint()
         ..color = bus.color
         //..style = PaintingStyle.stroke
-        ..strokeWidth = 4
+        ..strokeWidth = 1
+        ..strokeJoin = StrokeJoin.round
+        ..strokeCap = StrokeCap.round;
+      final stroke = Paint()
+        ..color = Colors.black87
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1
         ..strokeJoin = StrokeJoin.round
         ..strokeCap = StrokeCap.round;
 
@@ -71,8 +79,34 @@ class BusOverlayPainter extends CustomPainter {
       }
       if(bus.busPos.heading == -1)
         canvas.drawCircle(Offset(x,y), 6, paint);
-      else
-        canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading), paint);
+      else {
+        canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading), paint); // paint bus markers
+        canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading), stroke); // TODO: maybe do both stroke and fill at once?
+      }
+
+      // draw text
+      final textStyle = ui.TextStyle(
+        color: Colors.black87,
+        fontSize: 12,
+      );
+      final paragraphBuilder = ui.ParagraphBuilder(new ui.ParagraphStyle(textDirection: TextDirection.ltr,))
+        ..pushStyle(textStyle)
+        ..addText(bus.busLine.name);
+        //..addText('\t')
+        //..addText(bus.nickName);
+
+        /*..addText('\n')
+        ..addText();*/
+        if(bus.eTA.inSex() > 0 && bus.eTA.inSex() < 59*60){
+          paragraphBuilder.addText('\t' + bus.eTA.mins.toString().padLeft(2,'0') + ':' + bus.eTA.sex.toString().padLeft(2,'0'));
+        }
+
+      final constraints = ui.ParagraphConstraints(width: 300);
+      final paragraph = paragraphBuilder.build();
+      paragraph.layout(constraints);
+      final offset = Offset(x + 5, y + 5);
+      canvas.drawParagraph(paragraph, offset);
+
     }
   }
 
