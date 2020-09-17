@@ -17,6 +17,7 @@ bool isSorted = false;  // TODO: convert to static? instead of global
 
 void calcBusPos(){
   DateTime refTime = DateTime.now();
+
   for(var bus in buslist){
     double distPassed;
 
@@ -28,12 +29,14 @@ void calcBusPos(){
       DateTime startDateTime = new DateTime(refTime.year,refTime.month,refTime.day,bus.startTime.hours,bus.startTime.mins, bus.startTime.sex);
       int elapsedTime = refTime.difference(startDateTime).inSeconds;
 
-      if(elapsedTime < 0){
+      if(elapsedTime < 0){  // not departed - not displayed
         bus.displayedOnMap = false;
         bus.noPosUpdateTicks = elapsedTime.abs()*1000 ~/ mapRefreshPeriod;
         continue;
       }
-      distPassed = getEstDistPassed(bus.startTime);
+
+      //distPassed = getEstDistPassed(bus.startTime); // < this is more accurate, but not worth it, unless getEstDist takes much longer
+      distPassed = getEstDistPassed(elapsedTime);
 
       bus.busPos = getPOnPolyLineByDist(distPassed,bus.busLine.points);
       if(bus.busPos.busPoint == LatLng(-1,-1)){
@@ -45,7 +48,7 @@ void calcBusPos(){
     }
     if(bus.noEtaUpdateTicks > 0){
       bus.noEtaUpdateTicks--;
-      if(bus.eTA.hours <= 0 && bus.eTA.mins < 15){      // do not update if time is more than 15mins
+      if(bus.eTA.hours <= 0 && bus.eTA.mins < 15 && bus.eTA.inSex() > 0){      // do not update if time is more than 15mins
         bus.eTA.sex--;
 
         if(bus.eTA.sex < 0){     // just count down, do not calculate actual Eta
@@ -61,6 +64,10 @@ void calcBusPos(){
           bus.eTA.hours = 23;
         }
       }
+      else if(bus.eTA.sex == -1){
+        // decrease timer when bus is arriving
+        bus.expErMarg.decrease(Time(0,0,1));
+      }
     }
     else if(bus.noEtaUpdateTicks == 0){
         bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;     // every 15 sex
@@ -75,14 +82,25 @@ void calcBusPos(){
           distPassed = getEstDistPassed(bus.startTime);
 
           print(bus.busLine.name + 'distFrom Start:' + activeStation.distFromLineStart[i].toString());
-          if((activeStation.distFromLineStart[i] - distPassed) < 0){
-            eta.sex = -1;
+
+          double postStationDist = (activeStation.distFromLineStart[i] - distPassed);
+
+          if(postStationDist < 0){
+            if(bus.expErMarg.inSex() <= 0){ // ************************************
+              eta.sex = -2;
+              bus.expErMarg.set(Time(0,0,0));
+              bus.noEtaUpdateTicks = -1;  // never update this
+            }
+            else{
+              eta.sex = -1;
+              bus.expErMarg.decrease(Time(0,0,15));
+            }
             bus.setETA(eta);
-            bus.noEtaUpdateTicks = -1;  // never update this
            // print('bus left');
             continue;
           }
           int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) ~/ (0.2777 * avrgBusSpeed));// m/km/h
+          bus.expErMarg.set(bus.expErMarg.sex2Time((distPassed) ~/ (0.2777 * avrgBusSpeed)*0.5));
 
           eta.hours = newETAsecs ~/ 3600;
           newETAsecs %= 3600;
@@ -95,13 +113,13 @@ void calcBusPos(){
 
           bus.setETA(eta);
 
-          if(!isSorted && buslist.indexOf(bus) == buslist.length){
+         // if(!isSorted && buslist.indexOf(bus) == buslist.length){
             sortAllByEta();
-            isSorted = true;
+         /*   isSorted = true;
           }
           else{
             sortByEta(bus);
-          }
+          }*/
 
         } catch(e){
           print('[  ER  ] cant calculate ETA for: ' + bus.nickName + '--' + e.toString());
@@ -110,11 +128,18 @@ void calcBusPos(){
   }
 }
 
-double getEstDistPassed(Time startTime){ // basic estimation of pos for const speed
+double getEstDistPassed(var startTime){ // basic estimation of pos for const speed
 
-  DateTime now = DateTime.now();
-  DateTime startDateTime = new DateTime(now.year,now.month,now.day,startTime.hours,startTime.mins, startTime.sex);
-  int elapsedTime = now.difference(startDateTime).inSeconds;
+  int elapsedTime;
+
+  if(startTime is Time){                                                        // is = instanceof in dart ;) cool
+    DateTime now = DateTime.now();
+    DateTime startDateTime = new DateTime(now.year,now.month,now.day,startTime.hours,startTime.mins, startTime.sex);
+    elapsedTime = now.difference(startDateTime).inSeconds;
+  }
+  else if(startTime is int){
+    elapsedTime = startTime;
+  }
   double distance = (elapsedTime)* 0.2777 * avrgBusSpeed;  //1000/3600
  // print('Est dist: ' + distance.round().toString() + ' m');
   return distance;

@@ -14,7 +14,7 @@ class Bus{
   Color lineColor = Colors.transparent;
   Time startTime = new Time(-1,-1,0);
   Time eTA = new Time(-1,-1,-1);
-  Time expErMarg = new Time(0,10,0);                                             // expected margin of + error
+  Time expErMarg = new Time(0,0,0);                                             // expected margin of + error
   //String busLine = '';
   BusLine busLine;
   String nickName = '';

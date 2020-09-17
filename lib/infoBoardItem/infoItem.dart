@@ -21,10 +21,10 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String startMins = bus.startTime.mins.toString().padLeft(2, '0');
 
   String msgInsteadOfETA = '';
-  if(bus.eTA.equals(0, 0, -2)){
+  if(bus.eTA.equals(0, 0, -1)){
     msgInsteadOfETA = 'ARRIVING';
   }
-  if(bus.eTA.equals(0, 0, -1)){
+  if(bus.eTA.equals(0, 0, -2)){
     msgInsteadOfETA = 'LEFT';
   }
 
