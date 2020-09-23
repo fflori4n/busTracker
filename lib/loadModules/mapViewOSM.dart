@@ -1,16 +1,19 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/ldBusSchedule.dart';
 import 'package:mapTest/loadModules/stations.dart';
+import '../geometryFuncts.dart';
 import '../main.dart';
 import 'busLines.dart';
 import 'busLocator.dart';
 
 Marker busTest;
+FlutterMap map = new FlutterMap();
 void onPosChange(MapPosition mapPos, bool h){
   //print(mapPos.center);
   //print(mapPos.zoom);
@@ -29,10 +32,15 @@ Future<void> onTap(LatLng tapPos) async {
   for(BusLine busLine in nsBusLines){
     ldLineSchedule(busLine, DateTime.now());
   }
+
+  for(var busline in nsBusLines){
+    returnStationOnLine(busline);
+  }
+
 }
 
 FlutterMap drawOsmMap() {
-  FlutterMap map = new FlutterMap(
+   map = new FlutterMap(
     options: MapOptions(
       center: mapRefPoint,
       zoom: 14,
@@ -76,8 +84,15 @@ class mapViewState extends State<mapView> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(6.0),
-        child: drawOsmMap(),
-      ),
-      );
+        child: Listener(
+            onPointerSignal: (pointerSignal){
+              if(pointerSignal is PointerScrollEvent){
+                // do something when scrolled
+                print('Scrolled' + pointerSignal.position.toString());
+              }
+            },
+            child: drawOsmMap(),
+      )
+      ),);
   }
 }

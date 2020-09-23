@@ -13,7 +13,8 @@ import 'busLocator.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-Station paperStation = new Station.namePos('Paper station',LatLng(45.230727,19.823666));
+final String paperStationName = 'Paper Station';
+Station paperStation = new Station.namePos(paperStationName,LatLng(45.230727,19.823666));
 
 List<Station> stationList = [paperStation];
 Station activeStation = new Station.byName('No selected station!');
@@ -25,7 +26,7 @@ Future<void> loadStationsFromFiles() async {
   progStatusString = 'Loading stations.';
   try {
     print('stations load');
-    String rawFileContent = await rootBundle.loadString('assets/nsStations.txt');
+    String rawFileContent = await rootBundle.loadString('nsStations.txt');
     List<String> lines = rawFileContent.split('\n');
     for(int i=0; i<lines.length;i++){
       lines[i].trim();

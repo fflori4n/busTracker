@@ -12,7 +12,7 @@ const double avrgBusSpeed = 17;
 
 List<Bus> buslist=[];
 
-final calcVerbose = true;
+final calcVerbose = false;
 bool isSorted = false;  // TODO: convert to static? instead of global
 
 void calcBusPos(){
@@ -44,7 +44,11 @@ void calcBusPos(){
         bus.noPosUpdateTicks = -1;  // never update Pos
         continue;
       }
-      bus.noPosUpdateTicks = 5000 ~/ mapRefreshPeriod;
+      bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod;  // bus pos update time
+    }
+    if(activeStation.name == paperStationName){   // do not calculate eta for easter egg station
+      bus.setETA(Time(0,0,0));
+      continue;
     }
     if(bus.noEtaUpdateTicks > 0){
       bus.noEtaUpdateTicks--;
@@ -71,7 +75,7 @@ void calcBusPos(){
     }
     else if(bus.noEtaUpdateTicks == 0){
         bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;     // every 15 sex
-        print('calculateing ETA');
+        //print('calculateing ETA'); //DBG
         try{
           Time eta = new Time(0,0,0);
           int i = activeStation.servedLines.indexOf(bus.busLine.name);
@@ -81,7 +85,7 @@ void calcBusPos(){
           }
           distPassed = getEstDistPassed(bus.startTime);
 
-          print(bus.busLine.name + 'distFrom Start:' + activeStation.distFromLineStart[i].toString());
+          //print(bus.busLine.name + ' distFrom Start:' + activeStation.distFromLineStart[i].toString());
 
           double postStationDist = (activeStation.distFromLineStart[i] - distPassed);
 

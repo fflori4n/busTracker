@@ -29,13 +29,23 @@ class OverlayPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
 
     for(var busline in nsBusLines){
-      final paint = Paint()
-        ..color = busline.color.withOpacity(0.25)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 4
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round;
-
+      var paint = Paint();
+      if(activeStation.name == paperStation.name){
+        paint = Paint()
+          ..color = busline.color.withOpacity(0.05)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+      }
+      else{
+        paint = Paint()
+          ..color = busline.color.withOpacity(0.25)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+      }
       drawPolyLine(canvas,size,busline.points, paint);
     }
     for(Station station in stationList){  // draw stations on overlay? maybe faseter? test it

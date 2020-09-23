@@ -2,6 +2,10 @@ import 'dart:math';
 
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
+import 'package:mapTest/dataClasses/BusLine.dart';
+import 'package:mapTest/loadModules/stations.dart';
+
+import 'dataClasses/Station.dart';
 
 Position getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   List<LatLng> pointList = polyLine;
@@ -141,4 +145,23 @@ double map(double val, double inLow, double inHigh, double outLow, double outHig
       out = max(out, outLow);}
   }
   return out;
+}
+
+List<Station> returnStationOnLine(BusLine busLine){
+  List<Station> nonSortedStation = [];
+
+  for(var station in stationList){
+    for(var line in station.servedLines){
+      //print(line.toString() + ',' + busLine.name.toString());
+      if(line == busLine.name){
+        nonSortedStation.add(station);
+      }
+    }
+  }
+
+  print(busLine.name);
+  for(var station in nonSortedStation){
+    print(station.name);
+  }
+  return nonSortedStation;
 }
