@@ -31,6 +31,8 @@ double mapZoom;
 
 String progStatusString = '';
 
+bool filtTabOpen = false;
+
 void main() {
   update();
   runApp(MyApp());

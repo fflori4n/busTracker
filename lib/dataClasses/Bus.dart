@@ -24,6 +24,7 @@ class Bus{
   int noEtaUpdateTicks = 0;
   bool displayedOnMap = false;
   bool isRampAccesible = false;
+  bool isHighLighted = false;
 
 
   Bus(LatLng busPos, Color color, Time startTime,BusLine busLine){

@@ -40,100 +40,107 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String nickName = bus.nickName.toUpperCase();
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
-        padding: EdgeInsets.only(left: 7.0, right: 7.0, top: 5.0, bottom: 3.0),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white70, width: 1.5),
-          borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-        ),
-        child: Row(children: <Widget>[
-          Expanded(
-            flex: 8,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(children: <Widget>[
-                  Expanded(
-                        child:  Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: AutoSizeText(lineName, style: infoBrdYellow,),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
-                            ),
-                          ],
-                        ),
-                    //Text(lineName, style: infoBrdYellow,),)
-                  ),
-                  Expanded(
-                    child: AutoSizeText((startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
-                  ),
-                  Expanded(
-                      child: msgInsteadOfETA.isEmpty ? AutoSizeText( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : AutoSizeText(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
-                  ),
-                ],),
-                AutoSizeText(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
-              ],
-            )//Container(color: baseBlue, child: Text('hello world!'),),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              //margin: EdgeInsets.only(top: 2),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 5,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        AutoSizeText(erExp.padLeft(15,' '), style: infoBrdSmall,),
-                        AutoSizeText(nickName.padLeft(15,' '), style: infoBrdSmaller,),
-                      ],),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        Container(
-                          decoration: new BoxDecoration(
-                            color: bus.displayedOnMap ? baseWhite : Colors.transparent,
-                            border: Border.all(color: baseWhite, width: 1.0),
-                            borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                          ),
-                          margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
-                          width: infoBrdSmall.fontSize,
-                          height: infoBrdSmall.fontSize,
-                        ),
-                        Container(
-                          decoration: new BoxDecoration(
-                            color: bus.isRampAccesible ? baseYellow : Colors.transparent,
-                            border: Border.all(color: baseYellow, width: 1.0),
-                            borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                          ),
-                          margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                          width: infoBrdSmall.fontSize,
-                          height: infoBrdSmall.fontSize,
-                        ),
-                      ],),
-                  ),
-                ],
-              ),
+  return new GestureDetector(
+    onTap: (){
+      bus.isHighLighted = !bus.isHighLighted;
+      filtTabOpen = !filtTabOpen;
+    },
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+            margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
+            padding: EdgeInsets.only(left: 7.0, right: 7.0, top: 5.0, bottom: 3.0),
+            decoration: BoxDecoration(
+              border: bus.isHighLighted ? Border.all(color: baseBlue, width: 1.5) : Border.all(color: Colors.white70, width: 1.5),
+              borderRadius: new BorderRadius.all(Radius.circular(2.0)),
             ),
-          ),
+            child: Row(children: <Widget>[
+              Expanded(
+                  flex: 8,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(children: <Widget>[
+                        Expanded(
+                          child:  Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: AutoSizeText(lineName, style: infoBrdYellow,),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
+                              ),
+                            ],
+                          ),
+                          //Text(lineName, style: infoBrdYellow,),)
+                        ),
+                        Expanded(
+                          child: AutoSizeText((startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
+                        ),
+                        Expanded(
+                          child: msgInsteadOfETA.isEmpty ? AutoSizeText( (ETAhours + ':' + ETAmins + ':' + ETAsex).padRight(10,' '), style: infoBrdYellow,) : AutoSizeText(msgInsteadOfETA.padRight(10,' '), style: infoBrdSmall,),
+                        ),
+                      ],),
+                      AutoSizeText(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
+                      Text(bus.isHighLighted.toString()),     // DBG
+                    ],
+                  )//Container(color: baseBlue, child: Text('hello world!'),),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  //margin: EdgeInsets.only(top: 2),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            AutoSizeText(erExp.padLeft(15,' '), style: infoBrdSmall,),
+                            AutoSizeText(nickName.padLeft(15,' '), style: infoBrdSmaller,),
+                          ],),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Container(
+                              decoration: new BoxDecoration(
+                                color: bus.displayedOnMap ? baseWhite : Colors.transparent,
+                                border: Border.all(color: baseWhite, width: 1.0),
+                                borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                              ),
+                              margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+                              width: infoBrdSmall.fontSize,
+                              height: infoBrdSmall.fontSize,
+                            ),
+                            Container(
+                              decoration: new BoxDecoration(
+                                color: bus.isRampAccesible ? baseYellow : Colors.transparent,
+                                border: Border.all(color: baseYellow, width: 1.0),
+                                borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                              ),
+                              margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                              width: infoBrdSmall.fontSize,
+                              height: infoBrdSmall.fontSize,
+                            ),
+                          ],),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
 
-        ],)
-      ),
-    ],
+            ],)
+        ),
+      ],
+    ),
   );
 }
 
@@ -236,6 +243,21 @@ Widget drawLegend(BuildContext context){
             ),
           ],)
       ),
+      FilterTab(),
     ],
+  );
+}
+
+Widget FilterTab(){
+  if(!filtTabOpen){
+    return Text('no');
+  }
+  return Container(
+    // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
+      padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
+      color: baseBlack,
+      child:  Row( children: <Widget>[
+        Expanded( child:  Text('hello world', style: infoBrdSmall,),)
+      ],)
   );
 }
