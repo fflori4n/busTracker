@@ -5,6 +5,7 @@ import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
 import 'dart:async';
+import 'dataClasses/Show.dart';
 import 'loadModules/mapViewOSM.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
 
@@ -14,6 +15,8 @@ const smTresh = 1000;
 const mlTresh = 1000;
 // TODO: figure out how to set dinamic size of elements
 final int mapRefreshPeriod = 500;
+
+Show busFilters = new Show();
 
 bool isSmallScreen = false;
 bool isMediumScreen = true;

@@ -41,10 +41,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
   return new GestureDetector(
-    onTap: (){
-      bus.isHighLighted = !bus.isHighLighted;
-      filtTabOpen = !filtTabOpen;
-    },
+    onTap: (){ bus.isHighLighted = !bus.isHighLighted; },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -86,7 +83,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
                         ),
                       ],),
                       AutoSizeText(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
-                      Text(bus.isHighLighted.toString()),     // DBG
+                      bus.isHighLighted ? Text('item clicked!',style: busDescrSmall) : Container(),     // DBG
                     ],
                   )//Container(color: baseBlue, child: Text('hello world!'),),
               ),
@@ -158,6 +155,7 @@ Widget drawLegend(BuildContext context){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
+      FilterTab(),
       Container(
          // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
           padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
@@ -243,21 +241,31 @@ Widget drawLegend(BuildContext context){
             ),
           ],)
       ),
-      FilterTab(),
     ],
   );
 }
 
 Widget FilterTab(){
   if(!filtTabOpen){
-    return Text('no');
+    return Container();
   }
-  return Container(
-    // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
-      padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
-      color: baseBlack,
-      child:  Row( children: <Widget>[
-        Expanded( child:  Text('hello world', style: infoBrdSmall,),)
-      ],)
+  return Column(
+    children: <Widget>[
+      Container(
+        // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
+          padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
+          color: baseBlack,
+          child:  Row( children: <Widget>[
+            Expanded( child:  Text('hello world', style: infoBrdSmall,),)
+          ],)
+      ),
+      Container(
+        decoration: new BoxDecoration(
+          color: baseWhite,
+        ),
+        height: 1,
+        //margin: EdgeInsets.only(bottom: 5.0),
+      ),
+    ],
   );
 }

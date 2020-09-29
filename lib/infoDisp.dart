@@ -48,54 +48,73 @@ class BuletinState extends State<Buletin> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               StatusBar(),
-              Container(
-                decoration: new BoxDecoration(
-                color: baseBlue,
-                ),
-                padding: EdgeInsets.all(6.0),
-                width: width * wScaleFactor,
-                //height: 100 * hScaleFactor,
-                child: Container(
-                  padding: EdgeInsets.all(6.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Station:',
-                        style: infoBrdLabel,
-                        textAlign: TextAlign.left,
-                      ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    decoration: new BoxDecoration(
+                      color: baseBlue,
+                    ),
+                    padding: EdgeInsets.all(6.0),
+                    width: width * wScaleFactor,
+                    //height: 100 * hScaleFactor,
+                    child: Container(
+                      padding: EdgeInsets.all(6.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Station:',
+                            style: infoBrdLabel,
+                            textAlign: TextAlign.left,
+                          ),
 
-                      Container(
-                        margin: EdgeInsets.only(top: 3.0, bottom: 6.0,),
-                        child: Text(
-                          activeStation.getStationName(),
-                          style: infoBrdLarge,
-                          textAlign: TextAlign.left,
-                        ),
+                          Container(
+                            margin: EdgeInsets.only(top: 3.0, bottom: 6.0,),
+                            child: Text(
+                              activeStation.getStationName(),
+                              style: infoBrdLarge,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Text(
+                            'Lines:',
+                            style: infoBrdLabel,
+                            textAlign: TextAlign.left,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(top: 3.0, bottom: 4.0,),
+                                child: Row(
+                                  children: getStationLineLabels(),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      Text(
-                        'Lines:',
-                        style: infoBrdLabel,
-                        textAlign: TextAlign.left,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 3.0, bottom: 4.0,),
-                        child: Row(
-                          children: getStationLineLabels(),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                            padding: EdgeInsets.all(6),
+                            color: baseBlack,
+                            child: GestureDetector(
+                              child: Text('#filters', style: infoBrdLabel),
+                              onTap: () { filtTabOpen = !filtTabOpen; },
+                            )
+                        ),
+                      ),
+                    ],
+                  )
+
+                ],
               ),
-              /*Container(
-                decoration: new BoxDecoration(
-                  color: baseWhite,
-                ),
-                height: 3,
-                margin: EdgeInsets.only(bottom: 5.0),
-              ),*/
               Container(
                 child: drawLegend(context),
               ),
@@ -104,7 +123,7 @@ class BuletinState extends State<Buletin> {
               ),
             ],
           )
-    )],
+    ),],
     );
   }
 }
@@ -249,35 +268,46 @@ class MobScheduleState extends State<MobSchedule> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(child: StatusBar(), width: screenWidth,),
-                Container(
-                  decoration: new BoxDecoration(
-                    color: baseBlue,
-                  ),
-                  padding: EdgeInsets.all(6.0),
-                  width: screenWidth,
-                  //height: 100 * hScaleFactor,
-                  child: Container(
-                    padding: EdgeInsets.all(6.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            children: <TextSpan>[
-                              TextSpan(text: 'Station: ', style: infoBrdLabel,),
-                              TextSpan(text: activeStation.getStationName(), style: infoBrdLabel),
-                            ],
-                          ),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      decoration: new BoxDecoration(
+                        color: baseBlue,
+                      ),
+                      padding: EdgeInsets.all(6.0),
+                      width: screenWidth,
+                      //height: 100 * hScaleFactor,
+                      child: Container(
+                        padding: EdgeInsets.all(6.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(text: 'Station: ', style: infoBrdLabel,),
+                                  TextSpan(text: activeStation.getStationName(), style: infoBrdLabel),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 3.0, bottom: 3.0,),
+                              child: Row(
+                                children: getStationLineLabels(),
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 3.0, bottom: 3.0,),
-                          child: Row(
-                            children: getStationLineLabels(),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
-                  ),
+                    Container(
+                        color: baseBlack,
+                        child: GestureDetector(
+                          child: Text('#filters', style: infoBrdLabel),
+                          onTap: () { filtTabOpen = !filtTabOpen; },
+                        )
+                    ),
+                  ],
                 ),
                 Container(
                   child: infoLegend(),
