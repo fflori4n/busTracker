@@ -94,26 +94,67 @@
 </style>
 <img src= "assets/splash/splashLogo.svg", class= "center"></img>
 <div class= "center">
-  <img src= "assets/splash/obj1.svg", class= "doodle object"></img>
-  <img src= "assets/splash/lamp1.svg", class= "doodle lamp"></img>
-  <img src= "assets/splash/stat3.svg", class= "doodle stat"></img>
+  <img src= "assets/splash/obj1.svg", class= "doodle object", id="obj"></img>
+  <img src= "assets/splash/lamp1.svg", class= "doodle lamp", id="lamp"></img>
+  <img src= "assets/splash/stat3.svg", class= "doodle stat", id="stat"></img>
 
 </div>
 <div class= "center2">
-  <img src= "assets/splash/pers0.svg", class='pers' ></img>
-  <img src= "assets/splash/pers1.svg", class='pers' ></img>
-  <img src= "assets/splash/pers2.svg", class='pers' ></img>
-  <img src= "assets/splash/pers3.svg", class='pers' ></img>
-  <img src= "assets/splash/pers4.svg", class='pers' ></img>
-  <img src= "assets/splash/pers5.svg", class='pers' ></img>
-  <img src= "assets/splash/pers6.svg", class='pers' ></img>
-  <img src= "assets/splash/pers7.svg", class='pers' ></img>
-  <img src= "assets/splash/pers8.svg", class='pers' ></img>
-  <img src= "assets/splash/pers9.svg", class='pers' ></img>
-  <img src= "assets/splash/pers10.svg", class='pers' ></img>
-  <img src= "assets/splash/pers11.svg", class='pers' ></img>
-  <img src= "assets/splash/persBlank.svg", class='pers' ></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p0'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p1'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p2'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p3'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p4'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p5'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p6'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p7'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p8'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p9'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p10'></img>
+  <img src= "assets/splash/persBlank.svg", class='pers' id='p11'></img>
 </div>
+
+<script>
+	function shuffle(array) {
+	// from : https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js -- Ben Jackson
+    var i = array.length,
+        j = 0,
+        temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+        // swap randomly chosen element with current element
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+	}
+
+	var ranNums = shuffle([0,1,2,3,4,5,6,7,8,9,10,11]);
+
+	var numOfPeople = 0;
+	var hours = new Date().getHours();
+
+	if( hours == 0){
+		numOfPeople = 1 + Math.floor(Math.random() * 3);	// 0 - 2
+	}
+	else if( hours == 7 || hours == 8 || hours == 15 || hours == 16){
+		numOfPeople = 8 + Math.floor(Math.random() * 5);	// 6 - 12
+	}
+	else if( hours > 5){
+		numOfPeople = 2 + Math.floor(Math.random() * 7);	// 0 - 2
+	}
+	//window.alert(numOfPeople);
+	document.getElementById("obj").src = "assets/splash/obj" + Math.floor(Math.random() * 4) + ".svg";
+	document.getElementById("lamp").src = "assets/splash/lamp" + Math.floor(Math.random() * 4) + ".svg";
+	document.getElementById("stat").src = "assets/splash/stat" + Math.floor(Math.random() * 4) + ".svg";
+
+	var i;
+	for (i = 0; i < numOfPeople; i++) {
+		document.getElementById("p" + Math.floor(Math.random() * 12)).src = "assets/splash/pers" + ranNums[i] + ".svg";
+	}
+
+</script>
 <!-- splash end **************************************-->
   <script>
     if ('serviceWorker' in navigator) {
