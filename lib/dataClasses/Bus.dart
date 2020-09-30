@@ -23,6 +23,7 @@ class Bus{
   int noPosUpdateTicks = 0;
   int noEtaUpdateTicks = 0;
   bool displayedOnMap = false;
+  bool displayedOnSchedule = true;
   bool isRampAccesible = false;
   bool isHighLighted = false;
 

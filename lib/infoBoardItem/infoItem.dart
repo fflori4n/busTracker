@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Station.dart';
+import 'package:mapTest/filters.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
@@ -255,9 +256,35 @@ Widget FilterTab(){
         // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
           padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
           color: baseBlack,
-          child:  Row( children: <Widget>[
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text('left buses',style: infoBrdSmall,),
+                  GestureDetector(
+                    onTap: (){
+                      busFilters.left = !busFilters.left;
+                      applyFilters(busFilters);
+                      },
+                    child: Container(
+                      decoration: new BoxDecoration(
+                        color: busFilters.left ? baseYellow : Colors.transparent,
+                        border: Border.all(color: baseYellow, width: 1.0),
+                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                      ),
+                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                      width: infoBrdSmall.fontSize,
+                      height: infoBrdSmall.fontSize,
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        /* Row( children: <Widget>[
             Expanded( child:  Text('hello world', style: infoBrdSmall,),)
           ],)
+  //hideLeft(Show filters)*/
       ),
       Container(
         decoration: new BoxDecoration(

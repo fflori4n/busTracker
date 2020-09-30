@@ -7,6 +7,7 @@ import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/ldBusSchedule.dart';
 import 'package:mapTest/loadModules/stations.dart';
+import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
 import 'busLines.dart';

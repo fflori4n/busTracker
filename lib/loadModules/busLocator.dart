@@ -4,6 +4,7 @@ import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/stations.dart';
+import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
 
@@ -149,7 +150,7 @@ double getEstDistPassed(var startTime){ // basic estimation of pos for const spe
   return distance;
 }
 
-void addSelectedBuses(Station station, String line){
+/*void addSelectedBuses(Station station, String line){
   Bus newBus = new Bus.empty();
 
   for(var bbusline in nsBusLines){
@@ -164,7 +165,7 @@ void addSelectedBuses(Station station, String line){
       buslist.add(newBus);
     }
   }
-}
+}*/
 
 void sortByEta(Bus bus){
   // TODO: convert everithing to index instead of ref.

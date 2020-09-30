@@ -124,7 +124,7 @@ void calcDistFromLineStart(){ // calculates distace from lineStart for active st
     for(BusLine line in nsBusLines){
       print(line.name + ' - - ' + servedLine);
       if(line.name == servedLine){
-        addSelectedBuses(activeStation, servedLine);
+        //addSelectedBuses(activeStation, servedLine);
         int i = activeStation.servedLines.indexOf(servedLine);
         activeStation.distFromLineStart.insert(i, distToPprojection(activeStation.pos, line.points));
         activeStation.distFromLineStart.removeAt(i+1);

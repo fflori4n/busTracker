@@ -8,7 +8,9 @@ import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/navbar/statusbar.dart';
 
+import 'dataClasses/Bus.dart';
 import 'dataClasses/BusLine.dart';
+import 'filters.dart';
 import 'loadModules/stations.dart';
 
 class Buletin extends StatefulWidget {
@@ -163,12 +165,23 @@ List<Widget> getStationLineLabels(){
 }
 
 Widget getListView(context){ // TODO: set cursor to next bus
+
+  applyFilters(busFilters);
+  List<Bus> displayedList = buslist;
+  for(var bus in displayedList){
+    if(!bus.displayedOnSchedule){
+      displayedList.remove(bus);
+    }
+  }
   return ListView.separated(  // lazy listview do not render stuff that isn't visible
     //padding: const EdgeInsets.all(8),
     itemCount: buslist.length,
     itemBuilder: (BuildContext context, int index) {
       //return infoItem(context, index);
-      return drawBuletinitem(context, buslist[index], activeStation);
+      if(buslist[index].displayedOnSchedule){                                   // disp on schedule
+        return drawBuletinitem(context, buslist[index], activeStation);
+      }
+      return Container(height: 0,);
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );
