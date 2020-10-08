@@ -35,8 +35,6 @@ void calcBusPos(){
         bus.noPosUpdateTicks = elapsedTime.abs()*1000 ~/ mapRefreshPeriod;
         continue;
       }
-
-      //distPassed = getEstDistPassed(bus.startTime); // < this is more accurate, but not worth it, unless getEstDist takes much longer
       distPassed = getEstDistPassed(elapsedTime);
 
       bus.busPos = getPOnPolyLineByDist(distPassed,bus.busLine.points);
@@ -101,6 +99,7 @@ void calcBusPos(){
               bus.expErMarg.decrease(Time(0,0,15));
             }
             bus.setETA(eta);
+            filterBus(bus, busFilters);
            // print('bus left');
             continue;
           }

@@ -133,19 +133,19 @@ class BuletinState extends State<Buletin> {
 List<Widget> getStationLineLabels(){
   List<Widget> labelList = new List();
   for(var line in activeStation.servedLines){
-    Text newText;
-    if(nsBusLinesContainsName(line)){
-      newText = new Text(
-        line + ' ',
-        style: infoBrdSmall,
-        textAlign: TextAlign.left,);
-    }
-    else{
-      newText = new Text(
-        line + ' ',
-        style: infoBrdSmallSemiTransp,
-        textAlign: TextAlign.left,);
-    }
+    var newText= new GestureDetector(
+      child: Text(line + ' ', style: nsBusLinesContainsName(line) ? infoBrdSmall : infoBrdSmallSemiTransp, textAlign: TextAlign.left,),
+      onTap: (){
+        if(busFilters.hideLine.contains(line)){
+          busFilters.hideLine.remove(line);
+        }
+        else{
+          busFilters.hideLine.add(line);
+        }
+        applyFilters(busFilters);
+      },
+    );
+
     labelList.add(newText);
   }
 
@@ -165,14 +165,6 @@ List<Widget> getStationLineLabels(){
 }
 
 Widget getListView(context){ // TODO: set cursor to next bus
-
-  applyFilters(busFilters);
-  List<Bus> displayedList = buslist;
-  for(var bus in displayedList){
-    if(!bus.displayedOnSchedule){
-      displayedList.remove(bus);
-    }
-  }
   return ListView.separated(  // lazy listview do not render stuff that isn't visible
     //padding: const EdgeInsets.all(8),
     itemCount: buslist.length,

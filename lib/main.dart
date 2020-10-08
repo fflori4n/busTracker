@@ -92,38 +92,6 @@ class Index extends StatelessWidget {
           }
       }
     );
-
-   /* if(screenWidth < smTresh ){
-      isSmallScreen = true;
-      isMediumScreen = false;
-      isLargeScreen = false;
-    }else if(screenWidth >= mlTresh){
-      isSmallScreen = false;
-      isMediumScreen = false;
-      isLargeScreen = true;
-    }else{
-      // init values, save time.
-    }
-    return Scaffold(
-        body: new Container(
-        child:new Stack(
-          children: <Widget>[
-           /*Container(   // navBar
-             child:  isSmallScreen ? Text('small') : navBar(),
-           ),*/
-           //navBar(),
-           mapView(),
-           drawMapOverlay(),
-           //SideNav(),
-           Buletin(),
-          ],
-        )
-    ));
-    /*return EnvWidget(
-      largeScreen: Text("large screen"),
-      mediumScreen: Text("mediumScreen"),
-      smallScreen: Text("smallScreen"),
-    );*/*/
   }
 }
 

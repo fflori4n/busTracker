@@ -11,6 +11,7 @@ import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
 
+import '../infoDisp.dart';
 import '../main.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
@@ -22,10 +23,13 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String startMins = bus.startTime.mins.toString().padLeft(2, '0');
 
   String msgInsteadOfETA = '';
-  if(bus.eTA.equals(0, 0, -1)){
+  if(bus.eTA.equals(-1, -1, -1)){
+    msgInsteadOfETA = '...';
+  }
+  else if(bus.eTA.equals(0, 0, -1)){
     msgInsteadOfETA = 'ARRIVING';
   }
-  if(bus.eTA.equals(0, 0, -2)){
+  else if(bus.eTA.equals(0, 0, -2)){
     msgInsteadOfETA = 'LEFT';
   }
 
@@ -258,6 +262,7 @@ Widget FilterTab(){
           color: baseBlack,
           child: Column(
             children: <Widget>[
+              Text('hidden: ' + busFilters.hideLine.toString(),style: infoBrdSmall,),
               Row(
                 children: <Widget>[
                   Text('left buses',style: infoBrdSmall,),
@@ -266,6 +271,27 @@ Widget FilterTab(){
                       busFilters.left = !busFilters.left;
                       applyFilters(busFilters);
                       },
+                    child: Container(
+                      decoration: new BoxDecoration(
+                        color: busFilters.left ? baseYellow : Colors.transparent,
+                        border: Border.all(color: baseYellow, width: 1.0),
+                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                      ),
+                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                      width: infoBrdSmall.fontSize,
+                      height: infoBrdSmall.fontSize,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text('eta > 15min',style: infoBrdSmall,),
+                  GestureDetector(
+                    onTap: (){
+                      busFilters.eTAgt15mins = !busFilters.eTAgt15mins;
+                      applyFilters(busFilters);
+                    },
                     child: Container(
                       decoration: new BoxDecoration(
                         color: busFilters.left ? baseYellow : Colors.transparent,
