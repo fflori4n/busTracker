@@ -32,6 +32,9 @@ class Time{
 
   void decrease(Time subTime){  //TODO: fix, quick and dirty, can underflow
     if(subTime.inSex() > this.hours*3600 + this.mins*60 + this.sex){
+      this.sex = 0;
+      this.mins = 0;
+      this.hours = 0;
       return;
     }
 
@@ -46,8 +49,8 @@ class Time{
       this.mins+=60;
     }
     this.hours-= subTime.hours;
-    if(this.hours < 0){
+    /*if(this.hours < 0){
       this.hours+=24;
-    }
+    }*/
   }
 }

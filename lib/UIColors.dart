@@ -1,13 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/main.dart';
-
-import 'geometryFuncts.dart';
 
 const Color mainBCG = Color.fromRGBO(20, 20, 20, 0.5);
 const Color inactiveStationCol = Color.fromRGBO(20, 20, 20, 0.5);
@@ -42,14 +39,14 @@ Color giveMeColor(String seedStr){
   var rand2 = new Random(int.parse(digest2));
   // #458BFA
   double hue = 45; //new Random(int.parse(digest));
-  double hueVariation = 25 * rand2.nextInt(5).toDouble();
+  //double hueVariation = 25 * rand2.nextInt(5).toDouble();
   double satVariation = 0.1 * rand2.nextInt(5).toDouble() - 0.5;
   double sat = 110;
   double light = 0.5; // const
   //r = min + rnd.nextInt(max - min);
   sat = (sat -50 + rand.nextInt(70+50) + satVariation)/255;
-  hue = rand.nextInt(360).toDouble();
-  hue = (hue + hueVariation) % 360;
+  hue = 303 - 108 + rand.nextInt(216).toDouble();
+  hue = hue % 360;//(hue + hueVariation) % 360;
 
   print(hue.toString() + sat.toString() + light.toString());
   HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);
@@ -92,6 +89,15 @@ TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1
+);
+
+TextStyle infoBrdSmallCrossedOut =  GoogleFonts.robotoCondensed(
+  //fontSize: 10 * wScaleFactor,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+    color: baseWhite,
+    letterSpacing: 1.1,
+    decoration: TextDecoration.lineThrough,
 );
 
 TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(

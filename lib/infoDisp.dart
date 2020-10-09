@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/infoBoardItem/infoItem.dart';
@@ -7,7 +6,6 @@ import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/navbar/statusbar.dart';
-
 import 'dataClasses/Bus.dart';
 import 'dataClasses/BusLine.dart';
 import 'filters.dart';
@@ -18,9 +16,8 @@ class Buletin extends StatefulWidget {
 }
 
 class BuletinState extends State<Buletin> {
-
   @override
-  void initState(){
+  void initState() {
     Timer.periodic(Duration(seconds: 1), (v) {
       setState(() {});
     });
@@ -34,112 +31,108 @@ class BuletinState extends State<Buletin> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          decoration: new BoxDecoration(
+            decoration: new BoxDecoration(
                 color: ligthBlack,
                 borderRadius: new BorderRadius.only(
                   topRight: const Radius.circular(4.0),
                   bottomRight: const Radius.circular(4.0),
-                )
-          ),
-          margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
-          padding: EdgeInsets.only(left: 0.0, top: 0.0),
-          height: height * hScaleFactor,
-          width: width * wScaleFactor,  //350
-          alignment: Alignment.topLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              StatusBar(),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: new BoxDecoration(
-                      color: baseBlue,
-                    ),
-                    padding: EdgeInsets.all(6.0),
-                    width: width * wScaleFactor,
-                    //height: 100 * hScaleFactor,
-                    child: Container(
-                      padding: EdgeInsets.all(6.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Station:',
-                            style: infoBrdLabel,
-                            textAlign: TextAlign.left,
-                          ),
+                )),
+            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
+            //padding: EdgeInsets.only(left: 0.0, top: 0.0),
+            height: isMobile ? 0.920 * screenHeight : height * hScaleFactor,
+            width: isMobile ? screenWidth: width * wScaleFactor,
 
-                          Container(
-                            margin: EdgeInsets.only(top: 3.0, bottom: 6.0,),
-                            child: Text(
-                              activeStation.getStationName(),
-                              style: infoBrdLarge,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          Text(
-                            'Lines:',
-                            style: infoBrdLabel,
-                            textAlign: TextAlign.left,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top: 3.0, bottom: 4.0,),
-                                child: Row(
-                                  children: getStationLineLabels(),
-                                ),
+            //350
+            alignment: Alignment.topLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                isMobile ? Container() : StatusBar(),
+                Container(
+                  decoration: new BoxDecoration(
+                    color: baseBlue,
+                  ),
+                  padding: EdgeInsets.all(6.0),
+                  width: isMobile ? screenWidth : width * wScaleFactor,
+                  //height: 100 * hScaleFactor,
+                  child: Container(                 // *********************************
+                    padding: EdgeInsets.all(6.0), // 6
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'Station: ',
+                                style: infoBrdLabel,
                               ),
+                              TextSpan(
+                                  text: activeStation.getStationName(),
+                                  style: infoBrdLabel),
                             ],
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 3.0,
+                            bottom: 3.0,
+                          ),
+                          child: Row(
+                            children: getStationLineLabels(),
+                          ),
+                        )
+
+                      ],
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                ),
+                Container(
+                  color: baseBlue,
+                  child: Row(
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Container(
-                            padding: EdgeInsets.all(6),
-                            color: baseBlack,
-                            child: GestureDetector(
-                              child: Text('#filters', style: infoBrdLabel),
-                              onTap: () { filtTabOpen = !filtTabOpen; },
-                            )
-                        ),
+                      Spacer(),
+                      Container(
+                          padding: EdgeInsets.all(6),
+                          color: baseBlack,
+                          child: GestureDetector(
+                            child:
+                            Text('#filters', style: infoBrdLabel),
+                            onTap: () {
+                              filtTabOpen = !filtTabOpen;
+                            },
+                          )
                       ),
                     ],
-                  )
-
-                ],
-              ),
-              Container(
-                child: drawLegend(context),
-              ),
-              Expanded(
-                child: getListView(context),
-              ),
-            ],
-          )
-    ),],
+                  ),
+                ),
+                Container(
+                  child: drawLegend(context),
+                ),
+                Expanded(
+                  child: getListView(context),
+                ),
+              ],
+            )),
+      ],
     );
   }
 }
 
-List<Widget> getStationLineLabels(){
+List<Widget> getStationLineLabels() {
   List<Widget> labelList = new List();
-  for(var line in activeStation.servedLines){
-    var newText= new GestureDetector(
-      child: Text(line + ' ', style: nsBusLinesContainsName(line) ? infoBrdSmall : infoBrdSmallSemiTransp, textAlign: TextAlign.left,),
-      onTap: (){
-        if(busFilters.hideLine.contains(line)){
+  for (var line in activeStation.servedLines) {
+    var newText = new GestureDetector(
+      child: Text(
+        line,
+        style: nsBusLinesContainsName(line)
+            ? (busFilters.hideLine.contains(line) ? infoBrdSmallCrossedOut : infoBrdSmall) : infoBrdSmallSemiTransp,
+        textAlign: TextAlign.left,
+      ),
+      onTap: () {
+        if (busFilters.hideLine.contains(line)) {
           busFilters.hideLine.remove(line);
-        }
-        else{
+        } else {
           busFilters.hideLine.add(line);
         }
         applyFilters(busFilters);
@@ -147,39 +140,41 @@ List<Widget> getStationLineLabels(){
     );
 
     labelList.add(newText);
+    labelList.add(Text(' ', style: infoBrdSmall,));
   }
 
-  if(labelList.length > 12){
-    List<Widget> labelList2 = new List();
-    for(int i = 13; i < labelList.length; i++){
-      labelList2.add(labelList[i]);
-    }
-    labelList.removeRange(13, labelList.length- 1);
-    labelList.add(Text('XXXX'));  // TODO: start newline if too many buslines
-    return labelList;
+  if (labelList.length > 12) {
+    labelList.insert(12, Text('\n'));
   }
-  else{
-    //labelList.add(Text('hello world', style: infoBrdSmall,));
-    return labelList;
-  }
+  return labelList;
 }
 
-Widget getListView(context){ // TODO: set cursor to next bus
-  return ListView.separated(  // lazy listview do not render stuff that isn't visible
-    //padding: const EdgeInsets.all(8),
-    itemCount: buslist.length,
-    itemBuilder: (BuildContext context, int index) {
-      //return infoItem(context, index);
-      if(buslist[index].displayedOnSchedule){                                   // disp on schedule
-        return drawBuletinitem(context, buslist[index], activeStation);
+Widget getListView(context) {
+  // TODO: this is slow, temp fix
+  List<Bus> displayedBusList = [];
+  if(busFilters.refreshFlg){
+    applyFilters(busFilters); // this also slow, but easy to implement, maybe worth it?
+    busFilters.refreshFlg = false;
+  }
+  for (var bus in buslist){
+    if(bus.displayedOnSchedule){
+      if(busFilters.next10only && displayedBusList.length >= 10){
+        break;
       }
-      return Container(height: 0,);
+      displayedBusList.add(bus);
+    }
+  }
+  return ListView.separated(// lazy listview do not render stuff that isn't visible
+    itemCount: displayedBusList.length,
+    itemBuilder: (BuildContext context, int index) {
+      return drawBuletinitem(context, displayedBusList[index], activeStation);
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );
 }
 
-Widget infoLegend(){ // TODO: fix ui alignment
+Widget infoLegend() {
+  // TODO: fix ui alignment
   return Container(
     margin: EdgeInsets.only(top: 0.0, bottom: 4.0, left: 0.0, right: 0.0),
     padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 5.0),
@@ -188,17 +183,32 @@ Widget infoLegend(){ // TODO: fix ui alignment
       children: <Widget>[
         Stack(
           children: <Widget>[
-            Text('Num', style: infoBrdSmall,),
+            Text(
+              'Num',
+              style: infoBrdSmall,
+            ),
           ],
         ),
-        Text( ('Departs at').padRight(7,' '), style: infoBrdSmall,),
+        Text(
+          ('Departs at').padRight(7, ' '),
+          style: infoBrdSmall,
+        ),
         Expanded(child: SizedBox()),
-        Text('Arrives in'.padRight(10,' '), style: infoBrdSmall,),
+        Text(
+          'Arrives in'.padRight(10, ' '),
+          style: infoBrdSmall,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Text('Error'.padLeft(15,' '), style: infoBrdSmall,),
-            Text('Nick name', style: infoBrdSmall,),
+            Text(
+              'Error'.padLeft(15, ' '),
+              style: infoBrdSmall,
+            ),
+            Text(
+              'Nick name',
+              style: infoBrdSmall,
+            ),
           ],
         ),
         Column(
@@ -209,7 +219,8 @@ Widget infoLegend(){ // TODO: fix ui alignment
                 border: Border.all(color: baseWhite, width: 1.0),
                 borderRadius: new BorderRadius.all(Radius.circular(1.0)),
               ),
-              margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+              margin:
+                  EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
               width: infoBrdSmall.fontSize,
               height: infoBrdSmall.fontSize,
             ),
@@ -219,7 +230,8 @@ Widget infoLegend(){ // TODO: fix ui alignment
                 border: Border.all(color: baseYellow, width: 1.0),
                 borderRadius: new BorderRadius.all(Radius.circular(1.0)),
               ),
-              margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+              margin:
+                  EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
               width: infoBrdSmall.fontSize,
               height: infoBrdSmall.fontSize,
             ),
@@ -228,17 +240,15 @@ Widget infoLegend(){ // TODO: fix ui alignment
       ],
     ),
   );
-
 }
-
+// TODO:
 class MobSchedule extends StatefulWidget {
   MobScheduleState createState() => MobScheduleState();
 }
 
 class MobScheduleState extends State<MobSchedule> {
-
   @override
-  void initState(){
+  void initState() {
     // TODO: only refresh when necessseary
     Timer.periodic(Duration(seconds: 1), (v) {
       setState(() {});
@@ -262,17 +272,20 @@ class MobScheduleState extends State<MobSchedule> {
                 borderRadius: new BorderRadius.only(
                   topRight: const Radius.circular(4.0),
                   bottomRight: const Radius.circular(4.0),
-                )
-            ),
+                )),
             margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
             padding: EdgeInsets.only(left: 0.0, top: 0.0),
             height: screenHeight,
-            width: screenWidth,  //350
+            width: screenWidth,
+            //350
             alignment: Alignment.topLeft,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(child: StatusBar(), width: screenWidth,),
+                Container(
+                  child: StatusBar(),
+                  width: screenWidth,
+                ),
                 Stack(
                   children: <Widget>[
                     Container(
@@ -290,13 +303,21 @@ class MobScheduleState extends State<MobSchedule> {
                             RichText(
                               text: TextSpan(
                                 children: <TextSpan>[
-                                  TextSpan(text: 'Station: ', style: infoBrdLabel,),
-                                  TextSpan(text: activeStation.getStationName(), style: infoBrdLabel),
+                                  TextSpan(
+                                    text: 'Station: ',
+                                    style: infoBrdLabel,
+                                  ),
+                                  TextSpan(
+                                      text: activeStation.getStationName(),
+                                      style: infoBrdLabel),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: 3.0, bottom: 3.0,),
+                              margin: EdgeInsets.only(
+                                top: 3.0,
+                                bottom: 3.0,
+                              ),
                               child: Row(
                                 children: getStationLineLabels(),
                               ),
@@ -309,9 +330,10 @@ class MobScheduleState extends State<MobSchedule> {
                         color: baseBlack,
                         child: GestureDetector(
                           child: Text('#filters', style: infoBrdLabel),
-                          onTap: () { filtTabOpen = !filtTabOpen; },
-                        )
-                    ),
+                          onTap: () {
+                            filtTabOpen = !filtTabOpen;
+                          },
+                        )),
                   ],
                 ),
                 Container(
@@ -321,8 +343,8 @@ class MobScheduleState extends State<MobSchedule> {
                   child: getListView(context),
                 ),
               ],
-            )
-        )],
+            ))
+      ],
     );
   }
 }

@@ -16,6 +16,10 @@ import '../main.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
+  if(!bus.displayedOnSchedule) {
+    return Container();
+  }
+
   String lineName = bus.busLine.name.padRight(5, ' ');
   Color lineColor = bus.lineColor;
 
@@ -262,14 +266,21 @@ Widget FilterTab(){
           color: baseBlack,
           child: Column(
             children: <Widget>[
-              Text('hidden: ' + busFilters.hideLine.toString(),style: infoBrdSmall,),
+              Row(
+                children: <Widget>[
+                  Text('hidden lines:',style: infoBrdSmall,),
+                  Spacer(),
+                  Text(busFilters.hideLine.toString(),style: infoBrdSmall,)
+                ],
+              ),
               Row(
                 children: <Widget>[
                   Text('left buses',style: infoBrdSmall,),
+                  Spacer(),
                   GestureDetector(
                     onTap: (){
                       busFilters.left = !busFilters.left;
-                      applyFilters(busFilters);
+                      busFilters.refreshFlg = true;
                       },
                     child: Container(
                       decoration: new BoxDecoration(
@@ -287,14 +298,37 @@ Widget FilterTab(){
               Row(
                 children: <Widget>[
                   Text('eta > 15min',style: infoBrdSmall,),
+                  Spacer(),
                   GestureDetector(
                     onTap: (){
                       busFilters.eTAgt15mins = !busFilters.eTAgt15mins;
-                      applyFilters(busFilters);
+                      busFilters.refreshFlg = true;
                     },
                     child: Container(
                       decoration: new BoxDecoration(
-                        color: busFilters.left ? baseYellow : Colors.transparent,
+                        color: busFilters.eTAgt15mins ? baseYellow : Colors.transparent,
+                        border: Border.all(color: baseYellow, width: 1.0),
+                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
+                      ),
+                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
+                      width: infoBrdSmall.fontSize,
+                      height: infoBrdSmall.fontSize,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text('next 10 only',style: infoBrdSmall,),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: (){
+                      busFilters.next10only = !busFilters.next10only;
+                      busFilters.refreshFlg = true;
+                    },
+                    child: Container(
+                      decoration: new BoxDecoration(
+                        color: busFilters.next10only ? baseYellow : Colors.transparent,
                         border: Border.all(color: baseYellow, width: 1.0),
                         borderRadius: new BorderRadius.all(Radius.circular(4.0)),
                       ),
@@ -305,12 +339,9 @@ Widget FilterTab(){
                   )
                 ],
               )
+
             ],
           ),
-        /* Row( children: <Widget>[
-            Expanded( child:  Text('hello world', style: infoBrdSmall,),)
-          ],)
-  //hideLeft(Show filters)*/
       ),
       Container(
         decoration: new BoxDecoration(

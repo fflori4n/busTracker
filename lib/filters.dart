@@ -9,26 +9,27 @@ void applyFilters(Show filters){
 }
 
 void filterBus(Bus bus,Show filters){
-  if(filters.hideLine.contains(bus.busLine.name)){
+  if(filters.hideLine.contains(bus.busLine.name.trim())){
     bus.displayedOnSchedule = false;
-    bus.noEtaUpdateTicks = -1; //never update
+    //bus.noEtaUpdateTicks = -1; //never update
+    return;
   }
   else{
     bus.noPosUpdateTicks = 0;
     bus.noEtaUpdateTicks = 0;
     bus.displayedOnSchedule = true;
-    bus.displayedOnMap = true; // TODO:problematic, fix later
+    //bus.displayedOnMap = true; // TODO:problematic, fix later
   }
   if(bus.eTA.equals(0, 0, -2)) {
     if (filters.left) {
       bus.noPosUpdateTicks = 0;
       bus.noEtaUpdateTicks = 0;
       bus.displayedOnSchedule = true;
-      bus.displayedOnMap = true; // TODO:problematic, fix later
+      //bus.displayedOnMap = true; // TODO:problematic, fix later
     }
     else {
       bus.displayedOnSchedule = false;
-      bus.noEtaUpdateTicks = -1; //never update
+      //bus.noEtaUpdateTicks = -1; //never update
       // bus.displayedOnMap = false;
     }
   }
@@ -37,11 +38,11 @@ void filterBus(Bus bus,Show filters){
       bus.noPosUpdateTicks = 0;
       bus.noEtaUpdateTicks = 0;
       bus.displayedOnSchedule = true;
-      bus.displayedOnMap = true; // TODO:problematic, fix later
+      //bus.displayedOnMap = true; // TODO:problematic, fix later
     }
     else {
       bus.displayedOnSchedule = false;
-      bus.noEtaUpdateTicks = -1; //never update
+      //bus.noEtaUpdateTicks = -1; //never update
     }
   }
 }

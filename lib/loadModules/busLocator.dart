@@ -46,35 +46,20 @@ void calcBusPos(){
       bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod;  // bus pos update time
     }
     if(activeStation.name == paperStationName){   // do not calculate eta for easter egg station
-      bus.setETA(Time(0,0,0));
+      bus.setETA(Time(-1, -1, -1));
       continue;
+    }
+    if(bus.eTA.sex == -1){
+      bus.expErMarg.decrease(Time(0,0,1));         // decrease timer when bus is arriving
     }
     if(bus.noEtaUpdateTicks > 0){
       bus.noEtaUpdateTicks--;
-      if(bus.eTA.hours <= 0 && bus.eTA.mins < 15 && bus.eTA.inSex() > 0){      // do not update if time is more than 15mins
-        bus.eTA.sex--;
-
-        if(bus.eTA.sex < 0){     // just count down, do not calculate actual Eta
-          bus.eTA.sex = 59;
-          bus.eTA.mins--;
-        }
-
-        if(bus.eTA.mins < 0){
-          bus.eTA.mins = 59;
-          bus.eTA.hours--;
-        }
-        if(bus.eTA.hours < 0){  // technically not needed if mins arent displayed over one hour
-          bus.eTA.hours = 23;
-        }
-      }
-      else if(bus.eTA.sex == -1){
-        // decrease timer when bus is arriving
-        bus.expErMarg.decrease(Time(0,0,1));
+      if(bus.eTA.hours <= 0 && bus.eTA.mins < 15 && bus.eTA.inSex() > 0){// do not update if time is more than 15mins
+        bus.eTA.decrease(Time(0,0,1));
       }
     }
     else if(bus.noEtaUpdateTicks == 0){
         bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;     // every 15 sex
-        //print('calculateing ETA'); //DBG
         try{
           Time eta = new Time(0,0,0);
           int i = activeStation.servedLines.indexOf(bus.busLine.name);
@@ -85,7 +70,6 @@ void calcBusPos(){
           distPassed = getEstDistPassed(bus.startTime);
 
           //print(bus.busLine.name + ' distFrom Start:' + activeStation.distFromLineStart[i].toString());
-
           double postStationDist = (activeStation.distFromLineStart[i] - distPassed);
 
           if(postStationDist < 0){
@@ -96,7 +80,7 @@ void calcBusPos(){
             }
             else{
               eta.sex = -1;
-              bus.expErMarg.decrease(Time(0,0,15));
+              //bus.expErMarg.decrease(Time(0,0,15));
             }
             bus.setETA(eta);
             filterBus(bus, busFilters);

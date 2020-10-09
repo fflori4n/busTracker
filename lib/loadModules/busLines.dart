@@ -58,15 +58,15 @@ Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
           var rand = new Random(int.parse(digest));
           var rand2 = new Random(int.parse(digest2));
           // #458BFA
-          double hue = 45; //new Random(int.parse(digest));
+          double hue = 303; //new Random(int.parse(digest));
           double hueVariation = 25 * rand2.nextInt(5).toDouble();
           double satVariation = 0.1 * rand2.nextInt(5).toDouble() - 0.5;
           double sat = 110;
           double light = 0.5; // const
           //r = min + rnd.nextInt(max - min);
           sat = (sat -50 + rand.nextInt(70+50) + satVariation)/255;
-          hue = rand.nextInt(360).toDouble();
-          hue = (hue + hueVariation) % 360;
+          hue = 303 - 108 + rand2.nextInt(300).toDouble();//rand2.nextInt(216).toDouble();
+          hue = hue % 360;//(hue + hueVariation) % 360;
 
           if(verbose){print(hue.toString() + sat.toString() + light.toString());}
           HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);

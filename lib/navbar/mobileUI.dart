@@ -15,12 +15,12 @@ class MobileUI extends StatefulWidget {
 }
 
 class MobileUIState extends State<MobileUI> {
-  Widget mobileMainView = MobSchedule();
+  Widget mobileMainView = Buletin();
 
   _update(){
     setState(() {
       if(isScheduleView){
-        mobileMainView = MobSchedule();
+        mobileMainView = Buletin();
       }
       else{
         mobileMainView = new Stack(

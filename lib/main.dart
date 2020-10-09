@@ -18,9 +18,10 @@ final int mapRefreshPeriod = 500;
 
 Show busFilters = new Show();
 
-bool isSmallScreen = false;
+/*bool isSmallScreen = false;
 bool isMediumScreen = true;
-bool isLargeScreen = false;
+bool isLargeScreen = false;*/
+bool isMobile = true;
 double screenWidth = 1920;
 double screenHeight = 1080;
 double wScaleFactor=1;
@@ -72,11 +73,13 @@ class Index extends StatelessWidget {
       builder: (context,constraints){
           if(constraints.maxWidth < smTresh){                                   // MOBILE VIEW
             print('** MOBILE VIEW DBG **');
+            isMobile = true;
             return Scaffold(
                 body: MobileUI());
           }           // DESKTOP VIEW
           else{
             print('** DESKTOP VIEW DBG **');
+            isMobile = false;
             return Scaffold(
                 body: new Container(
                     child:new Stack(
