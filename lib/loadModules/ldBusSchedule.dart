@@ -68,6 +68,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
         }
       }catch(e){
         print('[ ER ] creating new bus:' + lineName + ' '+ line.toString());
+        print('[ ER ] $e');
       }
     }
   }

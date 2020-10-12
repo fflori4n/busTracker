@@ -7,12 +7,14 @@ import 'package:flutter/rendering.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/filters.dart';
+import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
 
 import '../infoDisp.dart';
 import '../main.dart';
+import 'filterItem.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
@@ -254,102 +256,3 @@ Widget drawLegend(BuildContext context){
   );
 }
 
-Widget FilterTab(){
-  if(!filtTabOpen){
-    return Container();
-  }
-  return Column(
-    children: <Widget>[
-      Container(
-        // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
-          padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
-          color: baseBlack,
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text('hidden lines:',style: infoBrdSmall,),
-                  Spacer(),
-                  Text(busFilters.hideLine.toString(),style: infoBrdSmall,)
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text('left buses',style: infoBrdSmall,),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: (){
-                      busFilters.left = !busFilters.left;
-                      busFilters.refreshFlg = true;
-                      },
-                    child: Container(
-                      decoration: new BoxDecoration(
-                        color: busFilters.left ? baseYellow : Colors.transparent,
-                        border: Border.all(color: baseYellow, width: 1.0),
-                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                      ),
-                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                      width: infoBrdSmall.fontSize,
-                      height: infoBrdSmall.fontSize,
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text('eta > 15min',style: infoBrdSmall,),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: (){
-                      busFilters.eTAgt15mins = !busFilters.eTAgt15mins;
-                      busFilters.refreshFlg = true;
-                    },
-                    child: Container(
-                      decoration: new BoxDecoration(
-                        color: busFilters.eTAgt15mins ? baseYellow : Colors.transparent,
-                        border: Border.all(color: baseYellow, width: 1.0),
-                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                      ),
-                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                      width: infoBrdSmall.fontSize,
-                      height: infoBrdSmall.fontSize,
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text('next 10 only',style: infoBrdSmall,),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: (){
-                      busFilters.next10only = !busFilters.next10only;
-                      busFilters.refreshFlg = true;
-                    },
-                    child: Container(
-                      decoration: new BoxDecoration(
-                        color: busFilters.next10only ? baseYellow : Colors.transparent,
-                        border: Border.all(color: baseYellow, width: 1.0),
-                        borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                      ),
-                      margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                      width: infoBrdSmall.fontSize,
-                      height: infoBrdSmall.fontSize,
-                    ),
-                  )
-                ],
-              )
-
-            ],
-          ),
-      ),
-      Container(
-        decoration: new BoxDecoration(
-          color: baseWhite,
-        ),
-        height: 1,
-        //margin: EdgeInsets.only(bottom: 5.0),
-      ),
-    ],
-  );
-}

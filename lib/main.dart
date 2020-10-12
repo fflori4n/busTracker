@@ -6,10 +6,12 @@ import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
 import 'dart:async';
 import 'dataClasses/Show.dart';
+import 'infoBoardItem/indicator.dart';
 import 'loadModules/mapViewOSM.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
 
 import 'mapOverlay/mapOverlay.dart';
+import 'location/locationTest.dart';
 
 const smTresh = 1000;
 const mlTresh = 1000;
@@ -38,6 +40,8 @@ String progStatusString = '';
 bool filtTabOpen = false;
 
 void main() {
+  //getCurrentLocation();
+  // 46.1013842,19.633794599999998
   update();
   runApp(MyApp());
 }
