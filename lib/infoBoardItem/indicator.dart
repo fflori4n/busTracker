@@ -21,14 +21,14 @@ class indicatorShape extends CustomPainter {
       ..style = PaintingStyle.fill;
 
    Path big = Path()
-      ..addOval(Rect.fromCircle(center: Offset(0, 0), radius: size.height / 2));
+      ..addOval(Rect.fromCircle(center: Offset(0, size.height/2), radius: size.height / 2));
 
    Path pin = Path();
    if(isSet){
-     pin.addOval(Rect.fromCircle(center: Offset(size.height / 2, 0), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(size.height / 2, size.height/2), radius: size.height / 6));
    }
    else{
-     pin.addOval(Rect.fromCircle(center: Offset(-size.height / 2, 0), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(-size.height / 2, size.height/2), radius: size.height / 6));
    }
 
 
@@ -44,7 +44,8 @@ Widget indicator(Color onColor, Color offColor,Color pinColor, bool isSet) {
     return Center(
       child: CustomPaint(
         painter: indicatorShape(onColor, offColor,pinColor,isSet),
-        child: Container(child: Text(' ')),
+        child: Container(
+            child: Text(' ')),
       ),
     );
 }

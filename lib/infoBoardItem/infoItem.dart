@@ -80,7 +80,8 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
                               ),
                               Expanded(
                                 flex: 1,
-                                child: AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
+                                  child:indicator( lineColor.withOpacity(0.4), lineColor, ligthBlack, bus.displayedOnMap ? false : true),
+                                //AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
                               ),
                             ],
                           ),
