@@ -8,6 +8,7 @@ import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/navbar/statusbar.dart';
 import 'dataClasses/Bus.dart';
 import 'dataClasses/BusLine.dart';
+import 'dataClasses/multiLang.dart';
 import 'filters.dart';
 import 'loadModules/stations.dart';
 
@@ -64,7 +65,7 @@ class BuletinState extends State<Buletin> {
                           text: TextSpan(
                             children: <TextSpan>[
                               TextSpan(
-                                text: 'Station: ',
+                                text: lbl_station.print() + ': ',
                                 style: infoBrdLabel,
                               ),
                               TextSpan(
@@ -97,7 +98,7 @@ class BuletinState extends State<Buletin> {
                           color: baseBlack,
                           child: GestureDetector(
                             child:
-                            Text('#filters', style: infoBrdLabel),
+                            Text(lbl_filters.print(), style: infoBrdLabel),
                             onTap: () {
                               filtTabOpen = !filtTabOpen;
                             },

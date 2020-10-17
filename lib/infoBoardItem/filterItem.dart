@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mapTest/dataClasses/multiLang.dart';
 
 import '../UIColors.dart';
 import '../main.dart';
@@ -26,7 +27,7 @@ Widget FilterTab() {
                   },
                   child: Row(
                     children: <Widget>[
-                      Text('hidden lines',style: infoBrdSmall,),
+                      Text(lbl_filt_hiddenLines.print(),style: infoBrdSmall,),
                       Spacer(),
                       Text(busFilters.hideLine.toString(),style: infoBrdSmall,),
                   ],),
@@ -41,7 +42,7 @@ Widget FilterTab() {
                   },
                   child: Row(
                     children: <Widget>[
-                      Text('left buses',style: infoBrdSmall,),
+                      Text(lbl_filt_leftBuses.print(),style: infoBrdSmall,),
                       Spacer(),
                       Container(
                         child: indicator(baseBlue, baseYellow, baseBlack, !busFilters.left),
@@ -59,7 +60,7 @@ Widget FilterTab() {
                   },
                   child: Row(
                     children: <Widget>[
-                      Text('only ETA < 15min',style: infoBrdSmall,),
+                      Text(lbl_filt_eta1.print(),style: infoBrdSmall,),
                       Spacer(),
                       Container(
                         child: indicator(baseBlue, baseYellow, baseBlack, busFilters.eTAgt15mins),
@@ -77,12 +78,34 @@ Widget FilterTab() {
                   },
                   child: Row(
                     children: <Widget>[
-                      Text('only first 10',style: infoBrdSmall,),
+                      Text(lbl_filt_onlyFirst10.print(),style: infoBrdSmall,),
                       Spacer(),
                       Container(
                         child: indicator(baseBlue, baseYellow, baseBlack, !busFilters.next10only),
                         height: infoBrdSmall.fontSize,
                       ),],
+                  )
+              ),
+            ),
+
+            Container(  // switch language
+              padding: EdgeInsets.only(top: 2, bottom: 2),
+              child: GestureDetector(
+                  onTap: () {
+                    final List<String> languages = ['srb','eng','hun']; // TODO: use array instead of string
+                    int i = languages.indexOf(activeLang);
+                    if(i < languages.length - 1)
+                      i++;
+                    else
+                      i=0;
+
+                    activeLang = languages[i];
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Text('language:',style: infoBrdSmall,),
+                      Spacer(),
+                      Text(activeLang,style: infoBrdSmall,),],
                   )
               ),
             ),

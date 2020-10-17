@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Station.dart';
+import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/filters.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
@@ -33,10 +34,10 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
     msgInsteadOfETA = '...';
   }
   else if(bus.eTA.equals(0, 0, -1)){
-    msgInsteadOfETA = 'ARRIVING';
+    msgInsteadOfETA = lbl_arriving.print();
   }
   else if(bus.eTA.equals(0, 0, -2)){
-    msgInsteadOfETA = 'LEFT';
+    msgInsteadOfETA = lbl_left.print();
   }
 
   String ETAhours = bus.eTA.hours.toString().padLeft(2, '0');
@@ -155,14 +156,14 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
 Widget drawLegend(BuildContext context){
 
-  String lineName = 'NAME'.padRight(5, ' ');
+  String lineName = lbl_lineName.print().padRight(5, ' ');
   Color lineColor = Colors.white70;
 
-  String startTime = 'DEPARTS AT';
-  String ETAtime= 'ARRIVES IN';
-  String lineDescr = 'LINE WAYPOINTS - MAIN STATIONS';
-  String nickName = 'NICKNAME';
-  String erExp = 'EXP.ERROR';
+  String startTime = lbl_departsAt.print();
+  String ETAtime= lbl_arrivesIn.print();
+  String lineDescr = lbl_lineDescr.print();
+  String nickName = lbl_nickName.print();
+  String erExp = lbl_expError.print();
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
