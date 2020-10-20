@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/OSMapLayer.dart';
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
 import 'dart:async';
 import 'dataClasses/Show.dart';
+import 'dataClasses/user.dart';
 import 'infoBoardItem/indicator.dart';
 import 'loadModules/mapViewOSM.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
@@ -34,13 +37,13 @@ LatLng mapNW;
 LatLng mapSE;
 final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
 double mapZoom;
-
 String progStatusString = '';
-
 bool filtTabOpen = false;
+MapController mapController = MapController();
+User user = new User();  // new user to store position
 
 void main() {
-  //getCurrentLocation();
+  getCurrentLocation();  // DBG
   // 46.1013842,19.633794599999998
   update();
   runApp(MyApp());
@@ -89,7 +92,8 @@ class Index extends StatelessWidget {
                     child:new Stack(
                       children: <Widget>[
                         //navBar(),
-                        mapView(),
+                        //mapView(),
+                        MapPage(),        // TODO: Test this.
                         drawMapOverlay(),
                         //SideNav(),
                         Buletin(),

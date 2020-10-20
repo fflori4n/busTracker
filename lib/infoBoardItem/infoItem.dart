@@ -53,7 +53,10 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
   return new GestureDetector(
-    onTap: (){ bus.isHighLighted = !bus.isHighLighted; },
+    onTap: (){
+      bus.isHighLighted = !bus.isHighLighted;
+      mapController.move(bus.busPos.busPoint, 16);      // TODO: test test test
+    },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

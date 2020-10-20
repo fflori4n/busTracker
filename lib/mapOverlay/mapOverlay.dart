@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +13,21 @@ import 'package:mapTest/main.dart';
 import 'busMarkersOverlay.dart';
 
 Widget drawMapOverlay(){
-  print('rendering map overlay!');
-  return IgnorePointer(
-      child:LayoutBuilder(
-      builder: (_, constraints) => Container(
-        width: constraints.widthConstraints().maxWidth,
-        height: constraints.heightConstraints().maxHeight,
-        color: baseBlue.withOpacity(0.2),
-        child: CustomPaint(painter: OverlayPainter(),
-        foregroundPainter: BusOverlayPainter(),),
-  ),),);
+    print('rendering map overlay!');
+    return IgnorePointer(
+      child: LayoutBuilder(
+        builder: (_, constraints) =>
+            Container(
+              width: constraints
+                  .widthConstraints()
+                  .maxWidth,
+              height: constraints
+                  .heightConstraints()
+                  .maxHeight,
+              color: baseBlue.withOpacity(0.2),
+              child: CustomPaint(painter: OverlayPainter(),
+                foregroundPainter: BusOverlayPainter(),),
+            ),),);
 }
 
 class OverlayPainter extends CustomPainter {
@@ -71,6 +77,21 @@ class OverlayPainter extends CustomPainter {
         continue;
       }
       canvas.drawCircle(Offset(x,y), radius, paint);
+    }
+    if(user.locationEnabled && user.position != LatLng(-1,-1)){
+      double y = size.height * (user.position.latitude - mapNW.latitude)/(mapSE.latitude - mapNW.latitude);
+      double x = size.width * (user.position.longitude - mapNW.longitude)/(mapSE.longitude - mapNW.longitude);
+      if(x < 0 || x> size.width || y < 0 || y> size.height){
+        print('user location out of bounds! [  Wr  ]');
+      }
+      else{
+        Paint userPaint = Paint()
+          ..color = baseBlue.withOpacity(0.8)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2;
+
+        canvas.drawCircle(Offset(x,y), 5, userPaint);
+      }
     }
   }
 
