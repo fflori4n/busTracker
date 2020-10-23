@@ -20,6 +20,7 @@ class Bus{
   String nickName = '';
   String etcInfo = '';
   String lineDescr = '';
+  String stationLetter = '';  // A B C D E
   int noPosUpdateTicks = 0;
   int noEtaUpdateTicks = 0;
   bool displayedOnMap = false;

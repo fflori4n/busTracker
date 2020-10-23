@@ -2,9 +2,10 @@
 import 'package:latlong/latlong.dart';
 
 class User{
-  bool locationEnabled = true;
+  bool locationEnabled = false;
   LatLng position = LatLng(-1,-1);
-  int heading;  // not used
+  double heading;  // not used
+  double posAcc;
   DateTime posUpdated;
 }
 

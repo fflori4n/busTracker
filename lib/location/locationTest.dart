@@ -17,11 +17,22 @@ success(pos) {
   } catch (ex) {
     print("Exception thrown : " + ex.toString());
   }
-  mapController.move(LatLng(pos.coords.latitude,pos.coords.longitude), 16); // DBG not sure if useful
+  mapController.move(LatLng(pos.coords.latitude,pos.coords.longitude), mapController.zoom); // DBG not sure if useful
 
   user.position = LatLng(pos.coords.latitude,pos.coords.longitude);
+  user.posAcc = pos.coords.accuracy;
   user.posUpdated = DateTime.now();
 }
 getCurrentLocation() {
     getCurrentPosition(allowInterop((pos) => success(pos)));
+}
+
+void updatePos(){
+  int elapsedTime = DateTime.now().difference(user.posUpdated).inSeconds;
+  print('location updated: ' + elapsedTime.toString());
+
+  if(elapsedTime > 60){
+    getCurrentLocation();
+    print('location updated [  OK  ]');
+  }
 }

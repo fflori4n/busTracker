@@ -9,6 +9,7 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/filters.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
+import 'package:mapTest/infoBoardItem/stationSign.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
@@ -16,6 +17,7 @@ import 'package:mapTest/UIColors.dart';
 import '../infoDisp.dart';
 import '../main.dart';
 import 'filterItem.dart';
+import 'locMenu.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
 
@@ -52,6 +54,8 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   String nickName = bus.nickName.toUpperCase();
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
+  String stationLet = bus.stationLetter;
+
   return new GestureDetector(
     onTap: (){
       bus.isHighLighted = !bus.isHighLighted;
@@ -84,12 +88,15 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
                               ),
                               Expanded(
                                 flex: 1,
-                                  child:indicator( lineColor.withOpacity(0.4), lineColor, ligthBlack, bus.displayedOnMap ? false : true),
-                                //AutoSizeText('⠿', style: TextStyle(color: lineColor, fontSize: 15 * wScaleFactor),),
+                                  child: Row(
+                                    children: <Widget>[
+                                      stationLetter(stationLet),
+                                      indicator( lineColor.withOpacity(0.4), lineColor, ligthBlack, bus.displayedOnMap ? false : true),
+                                    ],
+                                  ),
                               ),
                             ],
                           ),
-                          //Text(lineName, style: infoBrdYellow,),)
                         ),
                         Expanded(
                           child: AutoSizeText((startHours + ':' + startMins).padRight(7,' '), style: infoBrdLarge,),
@@ -124,23 +131,13 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Container(
-                              decoration: new BoxDecoration(
-                                color: bus.displayedOnMap ? baseWhite : Colors.transparent,
-                                border: Border.all(color: baseWhite, width: 1.0),
-                                borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                              ),
+                              child: indicator(baseGray, baseYellow, ligthBlack, !bus.displayedOnMap),
                               margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
-                              width: infoBrdSmall.fontSize,
                               height: infoBrdSmall.fontSize,
                             ),
                             Container(
-                              decoration: new BoxDecoration(
-                                color: bus.isRampAccesible ? baseYellow : Colors.transparent,
-                                border: Border.all(color: baseYellow, width: 1.0),
-                                borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                              ),
-                              margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                              width: infoBrdSmall.fontSize,
+                              child: indicator(baseGray, baseWhite, ligthBlack, !bus.isRampAccesible),
+                              margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                               height: infoBrdSmall.fontSize,
                             ),
                           ],),
@@ -172,6 +169,7 @@ Widget drawLegend(BuildContext context){
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       FilterTab(),
+      LocationMenu(),
       Container(
          // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
           padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
@@ -230,23 +228,13 @@ Widget drawLegend(BuildContext context){
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Container(
-                            decoration: new BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(color: baseWhite, width: 1.0),
-                              borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                            ),
+                            child: indicator(baseGray, baseWhite, baseBlack, true),
                             margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
-                            width: infoBrdSmall.fontSize,
                             height: infoBrdSmall.fontSize,
                           ),
                           Container(
-                            decoration: new BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(color: baseYellow, width: 1.0),
-                              borderRadius: new BorderRadius.all(Radius.circular(4.0)),
-                            ),
-                            margin: EdgeInsets.only(top: 1.5, bottom: 0, left: 6.0, right: 3.0),
-                            width: infoBrdSmall.fontSize,
+                            child: indicator(baseGray, baseWhite, baseBlack, true),
+                            margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                             height: infoBrdSmall.fontSize,
                           ),
                         ],),

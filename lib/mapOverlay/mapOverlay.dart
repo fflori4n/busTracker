@@ -1,11 +1,13 @@
 import 'dart:html';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart' hide Path;
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/dataClasses/Station.dart';
+import 'package:mapTest/geometryFuncts.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/main.dart';
@@ -91,6 +93,13 @@ class OverlayPainter extends CustomPainter {
           ..strokeWidth = 2;
 
         canvas.drawCircle(Offset(x,y), 5, userPaint);
+
+
+        double diam = mapDiameterByDistance(user.posAcc, size);
+        //print(diam);
+        if(diam > 0){
+          canvas.drawCircle(Offset(x,y), diam/2, userPaint ..color=baseBlue.withOpacity(0.5));
+        }
       }
     }
   }
@@ -111,4 +120,12 @@ void drawPolyLine(Canvas canvas,Size size,List<LatLng> inLatLng, Paint lineStyle
     line.lineTo(x, y);
   }
   canvas.drawPath(line,lineStyle);
+}
+
+
+double mapDiameterByDistance( double meter, Size size){
+  double longDist = normLoc(LatLng(mapSE.latitude, mapNW.longitude), mapSE);
+  return (meter * size.width)/longDist;
+  //print(longDist);
+  //return meter;
 }

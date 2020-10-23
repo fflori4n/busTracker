@@ -11,6 +11,7 @@ import 'dataClasses/BusLine.dart';
 import 'dataClasses/multiLang.dart';
 import 'filters.dart';
 import 'loadModules/stations.dart';
+import 'location/locationTest.dart';
 
 class Buletin extends StatefulWidget {
   BuletinState createState() => BuletinState();
@@ -21,6 +22,9 @@ class BuletinState extends State<Buletin> {
   void initState() {
     Timer.periodic(Duration(seconds: 1), (v) {
       setState(() {});
+      /*if(user.locationEnabled){
+        updatePos(); // TODO: For now but not suitable location!!!! DBG !!! FIX THIS PLS !!!
+      }*/
     });
     super.initState();
   }
@@ -93,6 +97,17 @@ class BuletinState extends State<Buletin> {
                   child: Row(
                     children: <Widget>[
                       Spacer(),
+                      Container(
+                          padding: EdgeInsets.all(6),
+                          color: baseGray,
+                          child: GestureDetector(
+                            child:
+                            Text('where am I?', style: infoBrdLabel),
+                            onTap: () {
+                              locTabOpen = !locTabOpen;
+                            },
+                          )
+                      ),
                       Container(
                           padding: EdgeInsets.all(6),
                           color: baseBlack,
@@ -243,7 +258,7 @@ Widget infoLegend() {
   );
 }
 // TODO:
-class MobSchedule extends StatefulWidget {
+/*class MobSchedule extends StatefulWidget {
   MobScheduleState createState() => MobScheduleState();
 }
 
@@ -349,3 +364,4 @@ class MobScheduleState extends State<MobSchedule> {
     );
   }
 }
+*/

@@ -39,12 +39,12 @@ final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
 double mapZoom;
 String progStatusString = '';
 bool filtTabOpen = false;
+bool locTabOpen = false;
+
 MapController mapController = MapController();
 User user = new User();  // new user to store position
 
 void main() {
-  getCurrentLocation();  // DBG
-  // 46.1013842,19.633794599999998
   update();
   runApp(MyApp());
 }
