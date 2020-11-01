@@ -7,7 +7,7 @@ import '../main.dart';
 import 'indicator.dart';
 
 Widget FilterTab() {
-  if (!filtTabOpen) {
+  if (!user.filtTabOpen) {
     return Container();
   }
   return Column(

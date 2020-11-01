@@ -69,11 +69,11 @@ class BusOverlayPainter extends CustomPainter {
         ..strokeJoin = StrokeJoin.round
         ..strokeCap = StrokeCap.round;
 
-      double y = size.height * (bus.busPos.busPoint.latitude - mapNW.latitude)/(mapSE.latitude - mapNW.latitude);
+      double y = size.height * (bus.busPos.busPoint.latitude - mapConfig.mapNW.latitude)/(mapConfig.mapSE.latitude - mapConfig.mapNW.latitude);
       if(y < 0 || y> size.height){
         continue;
       }
-      double x = size.width * (bus.busPos.busPoint.longitude - mapNW.longitude)/(mapSE.longitude - mapNW.longitude);
+      double x = size.width * (bus.busPos.busPoint.longitude - mapConfig.mapNW.longitude)/(mapConfig.mapSE.longitude - mapConfig.mapNW.longitude);
       if(x < 0 || x> size.width){
         continue;
       }

@@ -36,14 +36,14 @@ class _statusBarState extends State<StatusBar> {
     final String animString =  '⣀⣤⣶⣶⣿⣿⣿⠿⠿⠿⠿⠛⠛⠛⠛⠛⠛⠉    ';
     final String animString2 = '       ⣀⣀⣀⣀⣤⣤⡤⣤⡤⣤⣶⣿⠿⠛⠉';
     // '⢿⠿⠿⡿
-    _dispString = progStatusString;
+    _dispString = user.progStatusString;
     int frameInd = 0;
     // defines a timer
     _everySecond = Timer.periodic(Duration(milliseconds: 200), (Timer t) { // 80 for DBG
       setState(() {
         try{
           if(frameInd >= animString.length){frameInd = 0;}
-          _dispString = progStatusString;
+          _dispString = user.progStatusString;
           _spinner = animString[frameInd];
           _spinner2 = animString2[frameInd];
           frameInd++;

@@ -23,7 +23,7 @@ Future<String> loadAsset() async {
 
 }
 Future<void> loadStationsFromFiles() async {
-  progStatusString = 'Loading stations.';
+  user.progStatusString = 'Loading stations.';
   try {
     print('stations load');
     String rawFileContent = await rootBundle.loadString('nsStations.txt');
@@ -53,7 +53,7 @@ Future<void> loadStationsFromFiles() async {
       //print(stationList.length);
     }
     //dbgPrintStationList();
-    progStatusString = '';
+    user.progStatusString = '';
     return;
   }
   catch(e) {

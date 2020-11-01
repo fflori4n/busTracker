@@ -27,12 +27,18 @@ getCurrentLocation() {
     getCurrentPosition(allowInterop((pos) => success(pos)));
 }
 
-void updatePos(){
-  int elapsedTime = DateTime.now().difference(user.posUpdated).inSeconds;
-  print('location updated: ' + elapsedTime.toString());
-
-  if(elapsedTime > 60){
+void updatePos() async{ // call this only on user.locationEnabled rising edge // may leak !!!!
+  //print('update pos');
+  while(user.locationEnabled){
     getCurrentLocation();
-    print('location updated [  OK  ]');
+    await Future.delayed(Duration(seconds: 60));
+    //print('location updated [  OK  ]');
+    /*int elapsedTime = DateTime.now().difference(user.posUpdated).inSeconds;
+    print('location updated: ' + elapsedTime.toString());
+
+    if(elapsedTime > 60){
+      getCurrentLocation();
+      print('location updated [  OK  ]');
+    }*/
   }
 }

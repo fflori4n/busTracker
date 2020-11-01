@@ -19,7 +19,7 @@ List<BusLine> nsBusLines = [];
 List<BusLine> inactiveLines = [];
 
 Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
-  progStatusString = 'Loading bus lines.';
+  user.progStatusString = 'Loading bus lines.';
   buslist.clear();
   nsBusLines.clear();
 
@@ -98,7 +98,7 @@ Future loadLinesFromFile(List<String> loadThis, bool loadInactive) async{
       }
     }
     if(verbose){print('---  Loading completed  ---');}  //DBG
-    progStatusString = '';
+    user.progStatusString = '';
     return;
     }
   catch(e) {

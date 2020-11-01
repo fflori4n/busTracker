@@ -36,8 +36,8 @@ class _MapPageState extends State<MapPage> {
 
     // wait for the controller to be ready before using it
     statefulMapController.onReady.then((_) => (){
-      mapCenter = map.options.center;
-      mapZoom = map.options.zoom;
+      mapConfig.mapCenter = map.options.center;
+      mapConfig.mapZoom = map.options.zoom;
       print("The map controller is ready");
     });
 
@@ -90,14 +90,10 @@ class _MapPageState extends State<MapPage> {
 }
 
 void onPosChange(MapPosition mapPos, bool h){
-  //print(mapPos.center);
-  //print(mapPos.zoom);
-  mapNW = mapPos.bounds.northWest;
-  mapSE = mapPos.bounds.southEast;
-
-  mapCenter = mapPos.center;
-  mapZoom = mapPos.zoom;
-  //print('MAP: ' + mapCenter.toString() + ',' + mapZoom.toString());
+  mapConfig.mapNW = mapPos.bounds.northWest;
+  mapConfig.mapSE = mapPos.bounds.southEast;
+  mapConfig.mapCenter = mapPos.center;
+  mapConfig.mapZoom = mapPos.zoom;
 }
 
 Future<void> onTap(LatLng tapPos) async {

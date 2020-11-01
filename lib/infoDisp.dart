@@ -104,7 +104,7 @@ class BuletinState extends State<Buletin> {
                             child:
                             Text('where am I?', style: infoBrdLabel),
                             onTap: () {
-                              locTabOpen = !locTabOpen;
+                              user.locTabOpen = !user.locTabOpen;
                             },
                           )
                       ),
@@ -115,7 +115,7 @@ class BuletinState extends State<Buletin> {
                             child:
                             Text(lbl_filters.print(), style: infoBrdLabel),
                             onTap: () {
-                              filtTabOpen = !filtTabOpen;
+                              user.filtTabOpen = !user.filtTabOpen;
                             },
                           )
                       ),

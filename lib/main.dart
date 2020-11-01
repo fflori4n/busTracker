@@ -2,47 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/OSMapLayer.dart';
-import 'package:mapTest/UIColors.dart';
+import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
 import 'dart:async';
 import 'dataClasses/Show.dart';
 import 'dataClasses/user.dart';
-import 'infoBoardItem/indicator.dart';
-import 'loadModules/mapViewOSM.dart';
-import 'package:mapTest/loadModules/mapViewOSM.dart';
-
 import 'mapOverlay/mapOverlay.dart';
-import 'location/locationTest.dart';
 
-const smTresh = 1000;
-const mlTresh = 1000;
-// TODO: figure out how to set dinamic size of elements
+final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
+final double smTresh = 1000;
+final double mlTresh = 1000;
 final int mapRefreshPeriod = 500;
 
-Show busFilters = new Show();
-
-/*bool isSmallScreen = false;
-bool isMediumScreen = true;
-bool isLargeScreen = false;*/
-bool isMobile = true;
 double screenWidth = 1920;
 double screenHeight = 1080;
 double wScaleFactor=1;
 double hScaleFactor=1;
+bool isMobile = true;
 
-LatLng mapCenter;
-LatLng mapNW;
-LatLng mapSE;
-final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
-double mapZoom;
-String progStatusString = '';
-bool filtTabOpen = false;
-bool locTabOpen = false;
+User user = new User();  // new user to store position
+Show busFilters = new Show();
+MapConfig mapConfig = new MapConfig();
 
 MapController mapController = MapController();
-User user = new User();  // new user to store position
 
 void main() {
   update();
@@ -59,7 +43,7 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         primarySwatch: Colors.blue,
       ),
-      home: Index(),
+      home: Index(),//Index(),
     );
   }
 }
@@ -75,6 +59,8 @@ class Index extends StatelessWidget {
 
     wScaleFactor = screenWidth / 1366;  // dev screen width
     hScaleFactor = screenHeight / 900;
+
+    onLoad();
 
     return LayoutBuilder(
       builder: (context,constraints){
@@ -113,6 +99,10 @@ void update() async {
     calcBusPos();
 
   }
+}
+
+void onLoad(){
+
 }
 
 

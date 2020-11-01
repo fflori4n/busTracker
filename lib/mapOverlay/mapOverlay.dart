@@ -70,19 +70,19 @@ class OverlayPainter extends CustomPainter {
           ..strokeWidth = 4;
       }
 
-      double y = size.height * (station.pos.latitude - mapNW.latitude)/(mapSE.latitude - mapNW.latitude);
+      double y = size.height * (station.pos.latitude - mapConfig.mapNW.latitude)/(mapConfig.mapSE.latitude - mapConfig.mapNW.latitude);
       if(y < 0 || y> size.height){
         continue;
       }
-      double x = size.width * (station.pos.longitude - mapNW.longitude)/(mapSE.longitude - mapNW.longitude);
+      double x = size.width * (station.pos.longitude - mapConfig.mapNW.longitude)/(mapConfig.mapSE.longitude - mapConfig.mapNW.longitude);
       if(x < 0 || x> size.width){
         continue;
       }
       canvas.drawCircle(Offset(x,y), radius, paint);
     }
     if(user.locationEnabled && user.position != LatLng(-1,-1)){
-      double y = size.height * (user.position.latitude - mapNW.latitude)/(mapSE.latitude - mapNW.latitude);
-      double x = size.width * (user.position.longitude - mapNW.longitude)/(mapSE.longitude - mapNW.longitude);
+      double y = size.height * (user.position.latitude - mapConfig.mapNW.latitude)/(mapConfig.mapSE.latitude - mapConfig.mapNW.latitude);
+      double x = size.width * (user.position.longitude - mapConfig.mapNW.longitude)/(mapConfig.mapSE.longitude - mapConfig.mapNW.longitude);
       if(x < 0 || x> size.width || y < 0 || y> size.height){
         print('user location out of bounds! [  Wr  ]');
       }
@@ -98,7 +98,7 @@ class OverlayPainter extends CustomPainter {
         double diam = mapDiameterByDistance(user.posAcc, size);
         //print(diam);
         if(diam > 0){
-          canvas.drawCircle(Offset(x,y), diam/2, userPaint ..color=baseBlue.withOpacity(0.5));
+          canvas.drawCircle(Offset(x,y), diam/2, userPaint ..color=baseBlue.withOpacity(0.1));
         }
       }
     }
@@ -111,8 +111,8 @@ class OverlayPainter extends CustomPainter {
 void drawPolyLine(Canvas canvas,Size size,List<LatLng> inLatLng, Paint lineStyle){
   Path line = Path();
   for(int i = 0; i < inLatLng.length; i++){
-    double y = size.height * (inLatLng[i].latitude - mapNW.latitude)/(mapSE.latitude - mapNW.latitude);
-    double x = size.width * (inLatLng[i].longitude - mapNW.longitude)/(mapSE.longitude - mapNW.longitude);
+    double y = size.height * (inLatLng[i].latitude - mapConfig.mapNW.latitude)/(mapConfig.mapSE.latitude - mapConfig.mapNW.latitude);
+    double x = size.width * (inLatLng[i].longitude - mapConfig.mapNW.longitude)/(mapConfig.mapSE.longitude - mapConfig.mapNW.longitude);
     if(i == 0){
       line.moveTo(x, y);
       continue;
@@ -124,7 +124,7 @@ void drawPolyLine(Canvas canvas,Size size,List<LatLng> inLatLng, Paint lineStyle
 
 
 double mapDiameterByDistance( double meter, Size size){
-  double longDist = normLoc(LatLng(mapSE.latitude, mapNW.longitude), mapSE);
+  double longDist = normLoc(LatLng(mapConfig.mapSE.latitude, mapConfig.mapNW.longitude), mapConfig.mapSE);
   return (meter * size.width)/longDist;
   //print(longDist);
   //return meter;

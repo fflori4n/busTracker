@@ -8,7 +8,7 @@ import '../main.dart';
 import 'indicator.dart';
 
 Widget LocationMenu() {
-  if (!locTabOpen) {
+  if (!user.locTabOpen) {
     return Container();
   }
   return Column(
@@ -26,7 +26,7 @@ Widget LocationMenu() {
                   onTap: () {
                     user.locationEnabled = !user.locationEnabled;
                     if(user.locationEnabled){
-                      getCurrentLocation();
+                      updatePos();
                     }
                   },
                   child: Row(
@@ -34,12 +34,31 @@ Widget LocationMenu() {
                       Text('location enabled',style: infoBrdSmall,),
                       Spacer(),
                       Container(
-                        child: indicator(baseBlue, baseYellow, baseBlack, !user.locationEnabled),
+                        child: indicator(baseBlue, baseYellow, baseGray, !user.locationEnabled),
                         height: infoBrdSmall.fontSize,
                       ),],
                   )
               ),
             ),
+
+            Container(
+              padding: EdgeInsets.only(top: 2, bottom: 2),
+              child: GestureDetector(
+                  onTap: () {
+                    user.cookiesEnabled = !user.cookiesEnabled;
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Text('cookies enabled',style: infoBrdSmall,),
+                      Spacer(),
+                      Container(
+                        child: indicator(baseBlue, baseYellow, baseGray, !user.cookiesEnabled),
+                        height: infoBrdSmall.fontSize,
+                      ),],
+                  )
+              ),
+            ),
+
           ],
         ),
       ),
