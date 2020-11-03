@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/session/shared_pref.dart';
 import 'package:map_controller/map_controller.dart';
 
 //import 'loadModules/mapViewOSM.dart';
@@ -103,6 +104,7 @@ Future<void> onTap(LatLng tapPos) async {
   selectClosest2Click(tapPos);
   await loadLinesFromFile(activeStation.servedLines,false);
   calcDistFromLineStart();
+  writeCookie();                                          //TODO: find good place for writing cookie
   for(BusLine busLine in nsBusLines){
     ldLineSchedule(busLine, DateTime.now());
   }

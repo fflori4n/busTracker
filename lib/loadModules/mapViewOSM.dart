@@ -76,7 +76,6 @@ class mapViewState extends State<mapView> {
 
   @override
   void initState(){
-    loadStationsFromFiles();  // TODO: Fix me -- move to better location
     super.initState();
   }
 

@@ -6,9 +6,11 @@ import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
+import 'package:mapTest/session/shared_pref.dart';
 import 'dart:async';
 import 'dataClasses/Show.dart';
 import 'dataClasses/user.dart';
+import 'loadModules/stations.dart';
 import 'mapOverlay/mapOverlay.dart';
 
 final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
@@ -25,7 +27,6 @@ bool isMobile = true;
 User user = new User();  // new user to store position
 Show busFilters = new Show();
 MapConfig mapConfig = new MapConfig();
-
 MapController mapController = MapController();
 
 void main() {
@@ -97,12 +98,13 @@ void update() async {
     await new Future.delayed(Duration(milliseconds: mapRefreshPeriod));
     //DateTime now = DateTime.now();
     calcBusPos();
-
   }
 }
 
-void onLoad(){
-
+Future<void> onLoad() async {
+  loadStationsFromFiles();
+  //await writeCookie();
+  await readCookie();
 }
 
 
