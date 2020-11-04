@@ -1,5 +1,7 @@
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/loadModules/stations.dart';
 
+import '../onSelected.dart';
 import 'Bus.dart';
 
 class Station{
@@ -45,5 +47,32 @@ class Station{
     print(pos.toString() + ', shade: ' + shade.toString() + ' selected: ' + selected.toString());
     print('num of lines: ' + servedLines.length.toString() +'lines:' + servedLines.toString());
     print('dist from start: ' + distFromLineStart.toString());
+  }
+
+  String outString( List<Station> stations){
+    String out = '';
+    for(var station in stations){
+      out += station.name + '\n';
+    }
+    return out;
+  }
+  Future<void> activeStationLoad( String rawData) async {
+    if(rawData == null){
+      print('[  WR  ] no cookie: station');
+      return;
+    }
+    List<String> lines = rawData.split('\n');
+    for(var line in lines){
+      if(line.isEmpty){
+        continue;
+      }
+      for(var station in stationList){
+        if(station.name.contains(line)){
+          print('line:' + line.toString());
+          activeStation = station;
+        }
+      }
+    }
+    onStationSelected();
   }
 }

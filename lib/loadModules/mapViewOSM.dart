@@ -13,7 +13,7 @@ import '../main.dart';
 import 'busLines.dart';
 import 'busLocator.dart';
 
-Marker busTest;
+/*Marker busTest;
 FlutterMap map = new FlutterMap();
 void onPosChange(MapPosition mapPos, bool h){
   //print(mapPos.center);
@@ -95,4 +95,4 @@ class mapViewState extends State<mapView> {
       )
       ),);
   }
-}
+}*/

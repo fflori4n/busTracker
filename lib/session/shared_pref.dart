@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mapTest/dataClasses/Show.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/user.dart';
+import 'package:mapTest/loadModules/stations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart'; // rememeber to import shared_preferences: ^0.5.4+8
@@ -14,6 +15,7 @@ Future<void> writeCookie() async {
 
   await prefs.setString('user', user.toString());
   await prefs.setString('mapConfig', mapConfig.toString());
+  await prefs.setString('activeStations', new Station.empty().outString([activeStation]));
   //await prefs.setString('filters', busFilters.toString());
   print('write succesfull');
 }
@@ -22,6 +24,8 @@ Future<void> readCookie() async {
 
   user.loadFromString(prefs.getString('user'));
   mapConfig.loadFromString(prefs.getString('mapConfig'));
+  new Station.empty().activeStationLoad(prefs.getString('activeStations'));  // TODO: figure out how static works in dart
+  print(prefs.getString('activeStations'));
   //print(prefs.getString('filters'));
-  print('hello world!');
+  print('read all!');
 }

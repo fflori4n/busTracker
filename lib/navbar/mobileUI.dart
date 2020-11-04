@@ -6,6 +6,7 @@ import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/loadModules/mapViewOSM.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapOverlay/mapOverlay.dart';
+import '../OSMapLayer.dart';
 import '../infoDisp.dart';
 
 bool isScheduleView = true;
@@ -25,7 +26,7 @@ class MobileUIState extends State<MobileUI> {
       else{
         mobileMainView = new Stack(
           children: <Widget>[
-            mapView(),
+            MapPage(),
             drawMapOverlay(),
           ],
         );

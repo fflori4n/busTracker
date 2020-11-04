@@ -59,7 +59,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
   return new GestureDetector(
     onTap: (){
       bus.isHighLighted = !bus.isHighLighted;
-      mapController.move(bus.busPos.busPoint, 16);      // TODO: test test test
+      mapController.move(bus.busPos.busPoint, mapConfig.mapZoom);      // TODO: test test test
     },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

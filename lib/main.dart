@@ -102,7 +102,7 @@ void update() async {
 }
 
 Future<void> onLoad() async {
-  loadStationsFromFiles();
+  await loadStationsFromFiles();
   //await writeCookie();
   await readCookie();
 }

@@ -112,11 +112,11 @@ selectClosest2Click(LatLng click){
   closestStation.selected = true;
   activeStation = closestStation;
 
-  buslist.clear();
+  /*buslist.clear();
   activeStation.distFromLineStart.clear();
   for(int i=0; i< activeStation.servedLines.length; i++){   // init line from dist to be safe
     activeStation.distFromLineStart.add(0.0);
-  }
+  }*/
 }
 
 void calcDistFromLineStart(){ // calculates distace from lineStart for active station

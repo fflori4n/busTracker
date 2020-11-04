@@ -28,11 +28,11 @@ class MapConfig{
     try{
       mapCenter = LatLng(double.parse(lines[0]),double.parse(lines[1]));
       mapZoom = double.parse(lines[2].toString());
-      //mapController.move(mapCenter, mapZoom);
-      print(mapCenter.toString() + ',' + mapZoom.toString());
+      //print(mapCenter.toString() + ',' + mapZoom.toString());
     }
     catch(e){
       print('[  ER  ] loading mapConfig from cookie: ' + e.toString());
     }
+    //mapController.move(mapCenter, mapZoom); // TODO: move map somehow
   }
 }

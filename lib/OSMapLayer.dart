@@ -12,6 +12,7 @@ import 'loadModules/busLines.dart';
 import 'loadModules/ldBusSchedule.dart';
 import 'loadModules/stations.dart';
 import 'main.dart';
+import 'onSelected.dart';
 
 // from: https://pub.dev/packages/map_controller
 FlutterMap map = new FlutterMap();
@@ -25,8 +26,8 @@ class _MapPageState extends State<MapPage> {
   StatefulMapController statefulMapController;
   StreamSubscription<StatefulMapControllerStateChange> sub;
 
-   void setCenter(LatLng center){
-    mapController.move(center, mapController.zoom);
+   void setCenter(LatLng center, double zoom){
+    mapController.move(center, zoom);
   }
 
   @override
@@ -102,15 +103,5 @@ Future<void> onTap(LatLng tapPos) async {
   //mapController.move(tapPos, mapController.zoom);
 
   selectClosest2Click(tapPos);
-  await loadLinesFromFile(activeStation.servedLines,false);
-  calcDistFromLineStart();
-  writeCookie();                                          //TODO: find good place for writing cookie
-  for(BusLine busLine in nsBusLines){
-    ldLineSchedule(busLine, DateTime.now());
-  }
-
-  for(var busline in nsBusLines){
-    returnStationOnLine(busline);
-  }
-
+  onStationSelected();
 }
