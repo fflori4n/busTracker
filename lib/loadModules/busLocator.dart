@@ -44,6 +44,9 @@ void calcBusPos(){
         bus.noPosUpdateTicks = -1;  // never update Pos
         continue;
       }
+      else{
+        bus.displayedOnMap = true;
+      }
       bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod;  // bus pos update time
     }
     if(activeStation.name == paperStationName){   // do not calculate eta for easter egg station

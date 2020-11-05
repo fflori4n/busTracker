@@ -43,18 +43,11 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
       }
       Bus newBus = new Bus.empty();
       try{
-        newBus.busLine = bbusline;
-        newBus.lineColor = bbusline.color;
-        newBus.lineDescr = bbusline.description;
-        newBus.color = bbusline.color.withAlpha(200);
-        newBus.busPos = new Position(bbusline.points[0], -1);
-
         if(spaceSep[i].contains('R')){
           newBus.isRampAccesible = true;
         }
         spaceSep[i] = spaceSep[i].replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
         newBus.startTime = Time(int.parse(spaceSep[0]),int.parse(spaceSep[i]),0);
-        newBus.displayedOnMap = true;
         DateTime now = DateTime.now();
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
         //if(elapsedTime > (activeStation.distFromLineStart[activeStation.servedLines.indexOf(newBus.busLine.toString())] * 5)) {
@@ -62,6 +55,13 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
           print('bus gone!'); // TODO test me and add max load limit
         }
         else{
+          newBus.displayedOnMap = false;
+          newBus.busLine = bbusline;
+          newBus.lineColor = bbusline.color;
+          newBus.lineDescr = bbusline.description;
+          newBus.color = bbusline.color.withAlpha(200);
+          newBus.busPos = new Position(bbusline.points[0], -1);
+
           await loadNickName(newBus);   // test only
           buslist.add(newBus);
           //print(' added to buslist:' + newBus.busLine.name + ' ' + newBus.nickName);
