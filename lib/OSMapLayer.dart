@@ -2,19 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/session/shared_pref.dart';
 import 'package:map_controller/map_controller.dart';
-
-//import 'loadModules/mapViewOSM.dart';
-import 'dataClasses/BusLine.dart';
-import 'geometryFuncts.dart';
-import 'loadModules/busLines.dart';
-import 'loadModules/ldBusSchedule.dart';
 import 'loadModules/stations.dart';
 import 'main.dart';
 import 'onSelected.dart';
 
-// from: https://pub.dev/packages/map_controller
+/// from: https://pub.dev/packages/map_controller
+
 FlutterMap map = new FlutterMap();
 
 class MapPage extends StatefulWidget {
@@ -43,7 +37,7 @@ class _MapPageState extends State<MapPage> {
       print("The map controller is ready");
     });
 
-    loadStationsFromFiles();  // TODO: Fix me -- move to better location
+    //loadStationsFromFiles();  // TODO: remove
 
     /// [Important] listen to the changefeed to rebuild the map on changes:
     /// this will rebuild the map when for example addMarker or any method
@@ -60,12 +54,12 @@ class _MapPageState extends State<MapPage> {
             FlutterMap(
               mapController: mapController,
               options: MapOptions(
-                center: mapRefPoint,
+                center: (city.contains('su')) ? suMapRefPoint : nsMapRefPoint,
                 zoom: 14,
                 maxZoom: 17,
                 minZoom: 12,
-                //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
-                //nePanBoundary: LatLng(45.2901, 20.0442),
+                swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
+                nePanBoundary: LatLng(45.2901, 20.0442),
                 onPositionChanged: onPosChange,
                 onTap: onTap,
                 interactive: true,

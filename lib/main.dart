@@ -13,10 +13,13 @@ import 'dataClasses/user.dart';
 import 'loadModules/stations.dart';
 import 'mapOverlay/mapOverlay.dart';
 
-final LatLng mapRefPoint = LatLng(45.2603, 19.8260);
+final LatLng nsMapRefPoint = LatLng(45.2603, 19.8260);
+final LatLng suMapRefPoint = LatLng(46.100217,19.664413);
 final double smTresh = 1000;
 final double mlTresh = 1000;
 final int mapRefreshPeriod = 500;
+
+String city = '';
 
 double screenWidth = 1920;
 double screenHeight = 1080;
@@ -44,9 +47,20 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         primarySwatch: Colors.blue,
       ),
-      home: Index(),//Index(),
+      //home: Index(),//Index(),
+      initialRoute: '/ns',
+      routes: {
+        '/': (context) => router('x'),
+        '/ns': (context) => router('ns'),
+        '/su': (context) => router('su'),
+      }
     );
   }
+}
+
+Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
+  city = page;
+  return Index();
 }
 
 class Index extends StatelessWidget {

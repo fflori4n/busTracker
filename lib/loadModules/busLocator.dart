@@ -1,10 +1,7 @@
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
-import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/stations.dart';
-import 'package:mapTest/location/locationTest.dart';
 import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
