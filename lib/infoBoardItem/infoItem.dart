@@ -19,7 +19,7 @@ import '../main.dart';
 import 'filterItem.dart';
 import 'locMenu.dart';
 
-Widget drawBuletinitem(BuildContext context, Bus bus, Station station){
+Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
 
   if(!bus.displayedOnSchedule) {
     return Container();

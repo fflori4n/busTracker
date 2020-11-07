@@ -45,6 +45,15 @@ class Bus{
   void dbgPrint(){
     print(busLine.toString());
   }
+
+  bool isContainedBy(List<Bus>busList){
+    for(var bus in busList){
+      if(bus.startTime.inSex() == this.startTime.inSex() && bus.busLine.name == this.busLine.name){
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 class Position{

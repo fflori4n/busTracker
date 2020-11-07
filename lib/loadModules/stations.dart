@@ -17,7 +17,9 @@ final String paperStationName = 'Paper Station';
 Station paperStation = new Station.namePos(paperStationName,LatLng(45.230727,19.823666));
 
 List<Station> stationList = [paperStation];
-Station activeStation = new Station.byName('No selected station!');
+//Station activeStation = new Station.byName('No selected station!');
+final String stationLetters = 'ABCDEFGHIJK';
+List<Station> selectedStations = [new Station.namePos(paperStationName,LatLng(45.230727,19.823666))];
 
 Future<String> loadAsset() async {
 
@@ -104,13 +106,19 @@ selectClosest2Click(LatLng click){
       closestStation = stationList[i];
     }
   }
-  if(closestDist > 500){
+ /* if(closestDist > 500){
     activeStation = new Station.byName('No selected station!');
     activeStation.servedLines = [''];       // A+ level bug fixing. congrats.
     return;
   }
-  closestStation.selected = true;
-  activeStation = closestStation;
+  activeStation = closestStation;*/
+  closestStation.selected = !closestStation.selected; // = true;
+  if(!selectedStations.contains(closestStation)){
+    selectedStations.add(closestStation);
+  }
+  else{
+    selectedStations.remove(closestStation);
+  }
 
   /*buslist.clear();
   activeStation.distFromLineStart.clear();
@@ -120,7 +128,7 @@ selectClosest2Click(LatLng click){
 }
 
 void calcDistFromLineStart(){ // calculates distace from lineStart for active station
-  for(String servedLine in activeStation.servedLines){
+  /*for(String servedLine in activeStation.servedLines){
     for(BusLine line in nsBusLines){
       print(line.name + ' - - ' + servedLine);
       if(line.name == servedLine){
@@ -130,10 +138,29 @@ void calcDistFromLineStart(){ // calculates distace from lineStart for active st
         activeStation.distFromLineStart.removeAt(i+1);
       }
     }
-  }
+  }*/
  /* for(int i = 0; i < activeStation.distFromLineStart.length; i++){
     print(activeStation.distFromLineStart[i].toString());
   }*/
+ print('DBG -- loading selectedStations distances');
+ /// calculate distance from line start for each served line and add them to [selectedStation.distFromLineStart] list
+ for(Station selectedStation in selectedStations){
+   for(String servedLine in selectedStation.servedLines){
+     for(BusLine line in nsBusLines){
+       print(line.name + ' - - ' + servedLine);
+       if(line.name == servedLine){
+         int i = selectedStation.servedLines.indexOf(servedLine);
+         selectedStation.distFromLineStart.insert(i, distToPprojection(selectedStation.pos, line.points));
+         try{
+           selectedStation.distFromLineStart.removeAt(i+1);
+         }
+         catch(e){
+           print(e);
+         }
+       }
+     }
+   }
+ }
 }
 
 double getDistFromLineStart(LatLng target, BusLine line){

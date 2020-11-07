@@ -38,7 +38,7 @@ class OverlayPainter extends CustomPainter {
 
     for(var busline in nsBusLines){
       var paint = Paint();
-      if(activeStation.name == paperStation.name){
+      /*if(activeStation.name == paperStation.name){
         paint = Paint()
           ..color = busline.color.withOpacity(0.05)
           ..style = PaintingStyle.stroke
@@ -46,14 +46,14 @@ class OverlayPainter extends CustomPainter {
           ..strokeJoin = StrokeJoin.round
           ..strokeCap = StrokeCap.round;
       }
-      else{
+      else{*/
         paint = Paint()
           ..color = busline.color.withOpacity(0.25)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 4
           ..strokeJoin = StrokeJoin.round
           ..strokeCap = StrokeCap.round;
-      }
+      //}
       drawPolyLine(canvas,size,busline.points, paint);
     }
     for(Station station in stationList){  // draw stations on overlay? maybe faseter? test it
@@ -62,7 +62,7 @@ class OverlayPainter extends CustomPainter {
         ..color = baseBlack.withOpacity(0.15)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2;
-      if(station == activeStation){
+      if(selectedStations.contains(station)){
         radius = 10;
         paint = Paint()
           ..color = baseBlack.withOpacity(0.8)

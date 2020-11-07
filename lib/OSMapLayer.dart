@@ -16,7 +16,6 @@ class MapPage extends StatefulWidget {
   _MapPageState createState() => _MapPageState();
 }
 class _MapPageState extends State<MapPage> {
-  //MapController mapController;
   StatefulMapController statefulMapController;
   StreamSubscription<StatefulMapControllerStateChange> sub;
 
@@ -26,18 +25,14 @@ class _MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    // intialize the controllers
-    //mapController = mapController;
     statefulMapController = StatefulMapController(mapController: mapController);
 
-    // wait for the controller to be ready before using it
+    /// wait for the controller to be ready before using it
     statefulMapController.onReady.then((_) => (){
       mapConfig.mapCenter = map.options.center;
       mapConfig.mapZoom = map.options.zoom;
       print("The map controller is ready");
     });
-
-    //loadStationsFromFiles();  // TODO: remove
 
     /// [Important] listen to the changefeed to rebuild the map on changes:
     /// this will rebuild the map when for example addMarker or any method
@@ -66,8 +61,8 @@ class _MapPageState extends State<MapPage> {
               ),
               layers: [
                 TileLayerOptions(
-                  // urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                   urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+                  // urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                   //urlTemplate: 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png http://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
                   subdomains: ['a', 'b', 'c'],
                   tileProvider: NonCachingNetworkTileProvider(),

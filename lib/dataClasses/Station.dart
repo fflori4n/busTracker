@@ -1,4 +1,5 @@
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/loadModules/stations.dart';
 
 import '../onSelected.dart';
@@ -10,6 +11,7 @@ class Station{
   String description = "";
   String stationGroup;
   List<String> servedLines = [];
+  List<BusLine> lines = [];       // TODO: use always this insted of servedLines
   List<double> distFromLineStart = [];
   bool selected = false;
   int shade = 0;
@@ -67,9 +69,11 @@ class Station{
         continue;
       }
       for(var station in stationList){
-        if(station.name.contains(line)){
+        if(station.name.contains(line) && !selectedStations.contains(station)){
           print('line:' + line.toString());
-          activeStation = station;
+          selectedStations.add(station);
+
+          //activeStation = station;
         }
       }
     }

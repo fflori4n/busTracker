@@ -6,7 +6,7 @@ import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'nickNames.dart';
 
-Future ldLineSchedule(BusLine bbusline, DateTime date) async {
+Future ldLineSchedule(BusLine bbusline, String statLetter, DateTime date) async {
   String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
@@ -31,7 +31,6 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
   }else{
     rawDayStr = dayBlocks[1];
   }
-  //print(rawDayStr);
 
   List<String> lines = rawDayStr.trim().split('\n');
   for(var line in lines){
@@ -50,7 +49,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
         newBus.startTime = Time(int.parse(spaceSep[0]),int.parse(spaceSep[i]),0);
         DateTime now = DateTime.now();
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
-        //if(elapsedTime > (activeStation.distFromLineStart[activeStation.servedLines.indexOf(newBus.busLine.toString())] * 5)) {
+
         if(now.difference(startDateTime).inMinutes > 90){
           print('bus gone!'); // TODO test me and add max load limit
         }
@@ -63,7 +62,12 @@ Future ldLineSchedule(BusLine bbusline, DateTime date) async {
           newBus.busPos = new Position(bbusline.points[0], -1);
 
           await loadNickName(newBus);   // test only
+          /// *********************
+
+          newBus.stationLetter = statLetter;
           buslist.add(newBus);
+
+          ///*****************************
           //print(' added to buslist:' + newBus.busLine.name + ' ' + newBus.nickName);
         }
       }catch(e){

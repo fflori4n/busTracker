@@ -46,10 +46,10 @@ void calcBusPos(){
       }
       bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod;  // bus pos update time
     }
-    if(activeStation.name == paperStationName){   // do not calculate eta for easter egg station
+    /*if(activeStation.name == paperStationName){   // do not calculate eta for easter egg station
       bus.setETA(Time(-1, -1, -1));
       continue;
-    }
+    }*/
     if(bus.eTA.sex == -1){
       bus.expErMarg.decrease(Time(0,0,1));         // decrease timer when bus is arriving
     }
@@ -63,52 +63,70 @@ void calcBusPos(){
         bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;     // every 15 sex
         try{
           Time eta = new Time(0,0,0);
-          int i = activeStation.servedLines.indexOf(bus.busLine.name);
+
+          /*int i = activeStation.servedLines.indexOf(bus.busLine.name);
           if(i < 0 || i>activeStation.servedLines.length){
             print('[  Wr  ] bus not found in servedlines - skipping');
             continue;
-          }
-          distPassed = getEstDistPassed(bus.startTime);
+          }*/
+          /// ***********************************
+          bool containsLine = false;
+          double postStationDist;
 
-          //print(bus.busLine.name + ' distFrom Start:' + activeStation.distFromLineStart[i].toString());
-          double postStationDist = (activeStation.distFromLineStart[i] - distPassed);
+          for(var selectedStation in selectedStations){
+            if(selectedStation.servedLines.contains(bus.busLine.name)){
 
-          if(postStationDist < 0){
-            if(bus.expErMarg.inSex() <= 0){ // ************************************
-              eta.sex = -2;
-              bus.expErMarg.set(Time(0,0,0));
-              bus.noEtaUpdateTicks = -1;  // never update this
-            }
-            else{
-              eta.sex = -1;
-              //bus.expErMarg.decrease(Time(0,0,15));
-            }
-            bus.setETA(eta);
-            filterBus(bus, busFilters);
-           // print('bus left');
-            continue;
-          }
-          int newETAsecs = ((activeStation.distFromLineStart[i] - distPassed) ~/ (0.2777 * avrgBusSpeed));// m/km/h
-          bus.expErMarg.set(bus.expErMarg.sex2Time((distPassed) ~/ (0.2777 * avrgBusSpeed)*0.5));
+              containsLine = true;
+              int i = selectedStation.servedLines.indexOf(bus.busLine.name);
 
-          eta.hours = newETAsecs ~/ 3600;
-          newETAsecs %= 3600;
-          eta.mins = newETAsecs ~/ 60;
-          if(eta.hours != 0 || eta.mins > 30)
-            eta.sex = 0;
-          else
-            newETAsecs %= 60;
-          eta.sex = newETAsecs;
+              distPassed = getEstDistPassed(bus.startTime);
+              postStationDist = (selectedStation.distFromLineStart[i] - distPassed);
 
-          bus.setETA(eta);
+              if(postStationDist < 0){
+                if(bus.expErMarg.inSex() <= 0){ // ************************************
+                  eta.sex = -2;
+                  bus.expErMarg.set(Time(0,0,0));
+                  bus.noEtaUpdateTicks = -1;  // never update this
+                }
+                else{
+                  eta.sex = -1;
+                }
+                bus.setETA(eta);
+                filterBus(bus, busFilters);
+                continue;
+              }
+              int newETAsecs = ((selectedStation.distFromLineStart[i] - distPassed) ~/ (0.2777 * avrgBusSpeed));// m/km/h
+              bus.expErMarg.set(bus.expErMarg.sex2Time((distPassed) ~/ (0.2777 * avrgBusSpeed)*0.5));
 
-         // if(!isSorted && buslist.indexOf(bus) == buslist.length){
-            sortAllByEta();
-         /*   isSorted = true;
+              eta.hours = newETAsecs ~/ 3600;
+              newETAsecs %= 3600;
+              eta.mins = newETAsecs ~/ 60;
+              if(eta.hours != 0 || eta.mins > 30)
+                eta.sex = 0;
+              else
+                newETAsecs %= 60;
+              eta.sex = newETAsecs;
+
+              bus.setETA(eta);
+              // if(!isSorted && buslist.indexOf(bus) == buslist.length){
+              sortAllByEta();
+              /*   isSorted = true;
           }
           else{
             sortByEta(bus);
           }*/
+            }
+          }
+          if(containsLine == false){
+            print('[  Wr  ] bus not found in servedlines - skipping');
+            buslist.remove(bus);  /// DBG
+            continue;
+          }
+          /// ***********************************
+          //distPassed = getEstDistPassed(bus.startTime);
+
+          //print(bus.busLine.name + ' distFrom Start:' + activeStation.distFromLineStart[i].toString());
+          //double postStationDist = (activeStation.distFromLineStart[i] - distPassed);
 
         } catch(e){
           print('[  ER  ] cant calculate ETA for: ' + bus.nickName + '--' + e.toString());
@@ -133,23 +151,6 @@ double getEstDistPassed(var startTime){ // basic estimation of pos for const spe
  // print('Est dist: ' + distance.round().toString() + ' m');
   return distance;
 }
-
-/*void addSelectedBuses(Station station, String line){
-  Bus newBus = new Bus.empty();
-
-  for(var bbusline in nsBusLines){
-    if(bbusline.name == line){
-      newBus.lineColor = bbusline.color;
-      newBus.color = bbusline.color.withAlpha(200);
-      newBus.busLine = bbusline;
-      newBus.busPos = new Position(bbusline.points[0], -1);
-      DateTime now = DateTime.now();
-      //print(now.hour.toString() + ':' + now.minute.toString());
-      newBus.startTime = Time(now.hour, now.minute, 0);
-      buslist.add(newBus);
-    }
-  }
-}*/
 
 void sortByEta(Bus bus){
   // TODO: convert everithing to index instead of ref.
