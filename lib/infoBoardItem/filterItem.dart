@@ -6,7 +6,7 @@ import '../UIColors.dart';
 import '../main.dart';
 import 'indicator.dart';
 
-Widget FilterTab() {
+/*Widget FilterTab() {
   if (!user.filtTabOpen) {
     return Container();
   }
@@ -121,4 +121,4 @@ Widget FilterTab() {
       ),
     ],
   );
-}
+}*/

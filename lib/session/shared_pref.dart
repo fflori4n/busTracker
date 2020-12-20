@@ -21,7 +21,7 @@ Future<void> readCookie() async {
 
   user.loadFromString(prefs.getString('user'));
   mapConfig.loadFromString(prefs.getString('mapConfig'));
- // new Station.empty().activeStationLoad(prefs.getString('activeStations'));  // TODO: figure out how static works in dart
+  //new Station.empty().activeStationLoad(prefs.getString('activeStations'));  // TODO: figure out how static works in dart
   //print(prefs.getString('filters'));
   print('read all!');
 }

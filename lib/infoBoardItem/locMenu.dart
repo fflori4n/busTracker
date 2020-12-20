@@ -7,7 +7,7 @@ import '../UIColors.dart';
 import '../main.dart';
 import 'indicator.dart';
 
-Widget LocationMenu() {
+/*Widget LocationMenu() {
   if (!user.locTabOpen) {
     return Container();
   }
@@ -71,4 +71,4 @@ Widget LocationMenu() {
       ),
     ],
   );
-}
+}*/

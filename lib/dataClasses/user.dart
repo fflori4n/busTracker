@@ -10,15 +10,17 @@ class User{
 
   bool locationEnabled = false;
   bool cookiesEnabled = false;
-  bool filtTabOpen = false;
-  bool locTabOpen = false;
+  //bool filtTabOpen = false;
+  //bool locTabOpen = false;
+
+  int tabOpen = 0;
 
   String toString(){
     return
       'LOC' + locationEnabled.toString() + '\n' +
-      'COK' + cookiesEnabled.toString() + '\n' +
-      'FILT' + filtTabOpen.toString() + '\n' +
-      'LOCT' + locTabOpen.toString() + '\n';
+      'COK' + cookiesEnabled.toString() + '\n';
+      //'FILT' + filtTabOpen.toString() + '\n' +
+     // 'LOCT' + locTabOpen.toString() + '\n';
   }
 
   void loadFromString(String rawData){
@@ -31,8 +33,8 @@ class User{
       print(lines[0]);
       locationEnabled = extractBoolVal(lines[0]);
       cookiesEnabled = extractBoolVal(lines[1]);
-      filtTabOpen = extractBoolVal(lines[2]);
-      locTabOpen = extractBoolVal(lines[3]);
+      //filtTabOpen = extractBoolVal(lines[2]);
+      //locTabOpen = extractBoolVal(lines[3]);
     }
     catch(e){
       print('[  ER  ] loading user from cookie: ' + e.toString());

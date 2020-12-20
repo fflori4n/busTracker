@@ -168,8 +168,8 @@ Widget drawLegend(BuildContext context){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      FilterTab(),
-      LocationMenu(),
+      //FilterTab(),
+      //LocationMenu(),
       Container(
          // margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
           padding: EdgeInsets.only(left: 17.0, right: 17.0, top: 6.0, bottom: 4.0),
@@ -228,12 +228,12 @@ Widget drawLegend(BuildContext context){
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Container(
-                            child: indicator(baseGray, baseWhite, baseBlack, true),
+                            child: indicator(Color.fromRGBO(16, 16, 19, 1), baseWhite, baseBlack, true),
                             margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                             height: infoBrdSmall.fontSize,
                           ),
                           Container(
-                            child: indicator(baseGray, baseWhite, baseBlack, true),
+                            child: indicator(Color.fromRGBO(16, 16, 19, 1), baseWhite, baseBlack, true),
                             margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                             height: infoBrdSmall.fontSize,
                           ),

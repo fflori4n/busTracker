@@ -49,12 +49,12 @@ class _MapPageState extends State<MapPage> {
             FlutterMap(
               mapController: mapController,
               options: MapOptions(
-                center: (city.contains('su')) ? suMapRefPoint : nsMapRefPoint,
+                center: mapRefPoint,
                 zoom: 14,
                 maxZoom: 17,
                 minZoom: 12,
-                swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
-                nePanBoundary: LatLng(45.2901, 20.0442),
+                //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
+               // nePanBoundary: LatLng(45.2901, 20.0442),
                 onPositionChanged: onPosChange,
                 onTap: onTap,
                 interactive: true,

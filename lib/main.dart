@@ -15,6 +15,7 @@ import 'mapOverlay/mapOverlay.dart';
 
 final LatLng nsMapRefPoint = LatLng(45.2603, 19.8260);
 final LatLng suMapRefPoint = LatLng(46.100217,19.664413);
+LatLng mapRefPoint = nsMapRefPoint;
 final double smTresh = 1000;
 final double mlTresh = 1000;
 final int mapRefreshPeriod = 500;
@@ -59,7 +60,15 @@ class MyApp extends StatelessWidget {
 }
 
 Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
-  city = page;
+  //city = page;
+  if(page.contains('su')){
+    mapRefPoint = suMapRefPoint;
+    print('** In subotica! **');
+  }
+  else if(page.contains('ns')){
+    mapRefPoint = nsMapRefPoint;
+    print('** In novi sad! **');
+  }
   return Index();
 }
 

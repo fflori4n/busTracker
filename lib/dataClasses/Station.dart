@@ -54,7 +54,9 @@ class Station{
   String outString( List<Station> stations){
     String out = '';
     for(var station in stations){
-      out += station.name + '\n';
+      if(station.name != "Paper Station"){
+        out += station.name + '\n';
+      }
     }
     return out;
   }

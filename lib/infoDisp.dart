@@ -6,6 +6,8 @@ import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/navbar/statusbar.dart';
+import 'package:mapTest/tabs/tabs.dart';
+import 'package:mapTest/uiWidgets/dispStation.dart';
 import 'dataClasses/Bus.dart';
 import 'dataClasses/BusLine.dart';
 import 'dataClasses/multiLang.dart';
@@ -36,7 +38,7 @@ class BuletinState extends State<Buletin> {
       children: <Widget>[
         Container(
             decoration: new BoxDecoration(
-                color: ligthBlack,
+                color: Color.fromRGBO(16, 16, 16, 1),
                 borderRadius: new BorderRadius.only(
                   topRight: const Radius.circular(4.0),
                   bottomRight: const Radius.circular(4.0),
@@ -52,76 +54,127 @@ class BuletinState extends State<Buletin> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 isMobile ? Container() : StatusBar(),
-                Container(
-                  decoration: new BoxDecoration(
-                    color: baseBlue,
-                  ),
-                  padding: EdgeInsets.all(6.0),
-                  width: isMobile ? screenWidth : width * wScaleFactor,
-                  //height: 100 * hScaleFactor,
-                  child: Container(                 // *********************************
-                    padding: EdgeInsets.all(6.0), // 6
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: lbl_station.print() + ': ',
-                                style: infoBrdLabel,
-                              ),
-                              TextSpan(
-                                  //text: activeStation.getStationName(),
-                                  text: selectedStations.first.getStationName(),
-                                  style: infoBrdLabel),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: 3.0,
-                            bottom: 3.0,
-                          ),
-                          child: Row(
-                            children: getStationLineLabels(),
-                          ),
-                        )
-
-                      ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: displaySelectedStations(),
+                ),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(16, 16, 19, 1),
+                      ),
                     ),
-                  ),
-                ),
-                Container(
-                  color: baseBlue,
-                  child: Row(
-                    children: <Widget>[
-                      Spacer(),
-                      Container(
-                          padding: EdgeInsets.all(6),
-                          color: baseGray,
-                          child: GestureDetector(
-                            child:
-                            Text('where am I?', style: infoBrdLabel),
-                            onTap: () {
-                              user.locTabOpen = !user.locTabOpen;
-                            },
-                          )
+                    Container(
+                      padding: EdgeInsets.only( left: 10, right: isMobile ? screenWidth/4 : 0.3 * screenWidth/4),
+                     //
+                      child: Row(
+                        children: <Widget>[
+
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
+                                if(user.tabOpen == 1){
+                                  user.tabOpen = 0;
+                                }
+                                else{
+                                  user.tabOpen = 1;
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                transform: user.tabOpen == 1 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(46, 46, 46, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                ),
+                                child: Text("favourites",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
+                                if(user.tabOpen == 2){
+                                  user.tabOpen = 0;
+                                }
+                                else{
+                                  user.tabOpen = 2;
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                transform: user.tabOpen == 2 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(46, 46, 46, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                ),
+                                child: Text("locations",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
+                                if(user.tabOpen == 3){
+                                  user.tabOpen = 0;
+                                }
+                                else{
+                                  user.tabOpen = 3;
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                transform: user.tabOpen == 3 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(46, 46, 46, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                ),
+                                child: Text("settings",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
+                                if(user.tabOpen == 4){
+                                  user.tabOpen = 0;
+                                }
+                                else{
+                                  user.tabOpen = 4;
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                transform: user.tabOpen == 4 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(46, 46, 46, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                ),
+                                child: Text("#filters",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
+                              ),
+                            ),
+                          ),
+
+
+                        ],
                       ),
-                      Container(
-                          padding: EdgeInsets.all(6),
-                          color: baseBlack,
-                          child: GestureDetector(
-                            child:
-                            Text(lbl_filters.print(), style: infoBrdLabel),
-                            onTap: () {
-                              user.filtTabOpen = !user.filtTabOpen;
-                            },
-                          )
-                      ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
+                showTabs(user),
                 Container(
                   child: drawLegend(context),
                 ),
@@ -133,37 +186,6 @@ class BuletinState extends State<Buletin> {
       ],
     );
   }
-}
-
-List<Widget> getStationLineLabels() {
-  List<Widget> labelList = new List();
-  //for (var line in activeStation.servedLines) {
-  for (var line in selectedStations.first.servedLines) {
-    var newText = new GestureDetector(
-      child: Text(
-        line,
-        style: nsBusLinesContainsName(line)
-            ? (busFilters.hideLine.contains(line) ? infoBrdSmallCrossedOut : infoBrdSmall) : infoBrdSmallSemiTransp,
-        textAlign: TextAlign.left,
-      ),
-      onTap: () {
-        if (busFilters.hideLine.contains(line)) {
-          busFilters.hideLine.remove(line);
-        } else {
-          busFilters.hideLine.add(line);
-        }
-        applyFilters(busFilters);
-      },
-    );
-
-    labelList.add(newText);
-    labelList.add(Text(' ', style: infoBrdSmall,));
-  }
-
-  if (labelList.length > 12) {
-    labelList.insert(12, Text('\n'));
-  }
-  return labelList;
 }
 
 Widget getListView(context) {
