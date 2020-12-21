@@ -51,6 +51,12 @@ final langStr lbl_filt_leftBuses = new langStr('Left buses', 'Prošli busevi', '
 final langStr lbl_filt_eta1 = new langStr('Only in next 15min', 'Samo narednih 15min', 'Csak a következő 15min');
 final langStr lbl_filt_onlyFirst10 = new langStr('Only first 10', 'Samo prvih 10', 'Csak első 10');
 
+final langStr lbl_schedule = new langStr('SCHEDULE', 'RED VOŽNJE', 'MENETREND');
+final langStr lbl_map = new langStr('MAP', 'MAPA', 'TÉRKÉP');
+
+final langStr lbl_noSelected= new langStr('SELECT A STATION', 'IZABERITE STANICU', 'VÁLASSZON MEGÁLLÓT');
+final langStr lbl_clickMap = new langStr('Find and click your station on the map!', 'Pronađi i klikni željenu stanicu na mapi!', 'Kattintson a megállóra a térképen!');
+
 // 'location enabled'
 // 'center current location'
 // 'where am I?'

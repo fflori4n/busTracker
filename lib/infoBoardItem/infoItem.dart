@@ -91,7 +91,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
                                   child: Row(
                                     children: <Widget>[
                                       stationLetter(stationLet),
-                                      indicator( lineColor.withOpacity(0.4), lineColor, ligthBlack, bus.displayedOnMap ? false : true),
+                                      indicator( lineColor.withOpacity(0.4), lineColor, Color.fromRGBO(16, 16, 19, 1), bus.displayedOnMap ? false : true),
                                     ],
                                   ),
                               ),
@@ -131,12 +131,12 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Container(
-                              child: indicator(baseGray, baseYellow, ligthBlack, !bus.displayedOnMap),
+                              child: indicator(baseGray, baseYellow, Color.fromRGBO(16, 16, 19, 1), !bus.displayedOnMap),
                               margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                               height: infoBrdSmall.fontSize,
                             ),
                             Container(
-                              child: indicator(baseGray, baseWhite, ligthBlack, !bus.isRampAccesible),
+                              child: indicator(baseGray, baseWhite, Color.fromRGBO(16, 16, 19, 1), !bus.isRampAccesible),
                               margin: EdgeInsets.only(top: 0, bottom: 1.5, left: 6.0, right: 3.0),
                               height: infoBrdSmall.fontSize,
                             ),

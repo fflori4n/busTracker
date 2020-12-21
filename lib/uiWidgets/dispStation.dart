@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
+import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/loadModules/stations.dart';
 
 import '../UIColors.dart';
@@ -14,12 +15,14 @@ class StationLabelWidget {
   BuildContext context;
   Station stationDisp;
   String stationNumber;
+  String displayMsg = '';
 
 
-  StationLabelWidget(Station dispThisStation, String stationNumber) {
+  StationLabelWidget(Station dispThisStation, String stationNumber, [String displayMsg = '']) {
     this.context = context;
     this.stationDisp = dispThisStation;
     this.stationNumber = stationNumber;
+    this.displayMsg = displayMsg;
   }
 
   Widget show() {
@@ -111,9 +114,9 @@ class StationLabelWidget {
                           Expanded(
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 10 + totalHeight * 0.4),
-                              child: Row(
+                              child: displayMsg == '' ? Row(
                                 children: getStationLineLabels(stationDisp),
-                              ),
+                              ) : Row( children: <Widget>[Text(displayMsg, style: infoBrdSmall, textAlign: TextAlign.left,),],),
                             ),
                           ),
                         ],
@@ -162,7 +165,7 @@ List<Widget> displaySelectedStations(){
   List<Widget> stationDispList = new List();
 
   if(selectedStations.length <= 1){
-    stationDispList.add(new StationLabelWidget(new Station.byName("No station selected"), "0").show());
+    stationDispList.add(new StationLabelWidget(new Station.byName(lbl_noSelected.print()), "0", lbl_clickMap.print()).show());
   }
   for(int i =1; i < selectedStations.length; i++){
     stationDispList.add(new StationLabelWidget(selectedStations[i], i.toString()).show());

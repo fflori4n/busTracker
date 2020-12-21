@@ -98,6 +98,7 @@ TextStyle infoBrdSmallCrossedOut =  GoogleFonts.robotoCondensed(
     color: baseWhite,
     letterSpacing: 1.1,
     decoration: TextDecoration.lineThrough,
+    decorationColor: Color.fromRGBO(16, 16, 19, 1),
 );
 
 TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(

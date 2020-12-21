@@ -45,7 +45,7 @@ class BuletinState extends State<Buletin> {
                 )),
             margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
             //padding: EdgeInsets.only(left: 0.0, top: 0.0),
-            height: isMobile ? 0.920 * screenHeight : height * hScaleFactor,
+            height: isMobile ? screenHeight : height * hScaleFactor,
             width: isMobile ? screenWidth: width * wScaleFactor,
 
             //350
