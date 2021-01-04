@@ -6,7 +6,7 @@ import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'nickNames.dart';
 
-Future ldLineSchedule(BusLine bbusline, String statLetter, DateTime date) async {
+Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0]) async {
   String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
@@ -64,7 +64,8 @@ Future ldLineSchedule(BusLine bbusline, String statLetter, DateTime date) async 
           await loadNickName(newBus);   // test only
           /// *********************
 
-          newBus.stationLetter = statLetter;
+          newBus.stationNumber = statNumber;
+
           buslist.add(newBus);
 
           ///*****************************

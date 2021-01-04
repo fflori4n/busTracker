@@ -14,7 +14,7 @@ import 'package:mapTest/loadModules/stations.dart';
 
 import '../main.dart';
 
-const bool verbose = true;
+const bool verbose = false;
 
 List<BusLine> nsBusLines = [];
 List<BusLine> inactiveLines = [];

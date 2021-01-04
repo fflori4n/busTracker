@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';

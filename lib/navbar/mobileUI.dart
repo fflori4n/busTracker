@@ -114,53 +114,6 @@ class MobileUIState extends State<MobileUI> {
             ),
           ],
         ),
-
-        /*Row(children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: screenWidth / 2,
-                      height: screenHeight * 0.005,
-                      color: isScheduleView ? baseBlue : baseBlack,
-                    ),
-                    Container(
-                      width: screenWidth / 2,
-                      height: screenHeight * 0.07,
-                      color: baseBlack,
-                      child: FlatButton( child: Text(lbl_schedule.print(), style: infoBrdLarge,),
-                        onPressed: (){
-                          print('You tapped on Shedule');
-                          isScheduleView = true;
-                          _update();
-                        },),
-                    )
-                  ],),),
-
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: screenWidth / 2,
-                      height: screenHeight * 0.005,
-                      color: isScheduleView ? baseBlack : baseBlue,
-                    ),
-                    Container(
-                      width: screenWidth / 2,
-                      height: screenHeight * 0.07,
-                      color: baseBlack,
-                      child: FlatButton( child: Text(lbl_map.print(), style: infoBrdLarge,),
-                        onPressed: (){
-                          print('You tapped on map');
-                          isScheduleView = false;
-                          _update();
-                        },),
-                    )
-                  ],),)
-
-            ],
-            ),*/
-        // Text('hello world'),
       ],
     ));
   }

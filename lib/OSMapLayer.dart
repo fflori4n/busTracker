@@ -88,7 +88,7 @@ void onPosChange(MapPosition mapPos, bool h){
 }
 
 Future<void> onTap(LatLng tapPos) async {
-  //print('taped at:' + tapPos.toString());
+  print('taped at: ' + tapPos.latitude.toString() + ',' + tapPos.longitude.toString());
   //mapController.move(tapPos, mapController.zoom);
 
   selectClosest2Click(tapPos);

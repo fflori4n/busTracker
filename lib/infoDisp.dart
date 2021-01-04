@@ -67,7 +67,7 @@ class BuletinState extends State<Buletin> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only( left: 10, right: isMobile ? screenWidth/4 : 0.3 * screenWidth/4),
+                      padding: EdgeInsets.only( left: 10, right: isMobile ? screenWidth/12 : 0.3 * screenWidth/12),
                      //
                       child: Row(
                         children: <Widget>[
@@ -165,6 +165,42 @@ class BuletinState extends State<Buletin> {
                                 ),
                                 child: Text("#filters",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
                               ),
+                            ),
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                mapController.move( mapController.center, mapController.zoom + 1); // TODO: ok zoomer?,
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 10, right: 2,),
+                                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                width: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
+                                //height: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(16, 16, 19, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                  border: Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Text("+",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
+
+                              ),
+                            ),
+                          GestureDetector(
+                            onTap: (){
+                              mapController.move( mapController.center, mapController.zoom - 1); // TODO: ok zoomer,
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 2, right: 3,),
+                              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                              width: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
+                              //height: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(16, 16, 19, 1),
+                                borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                border: Border.all(width: 1, color: Colors.white),
+                              ),
+                              child: Text("-",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
+
                             ),
                           ),
 

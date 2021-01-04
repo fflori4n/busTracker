@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'BusLine.dart';
 import 'Time.dart';
@@ -20,7 +21,8 @@ class Bus{
   String nickName = '';
   String etcInfo = '';
   String lineDescr = '';
-  String stationLetter = '';  // A B C D E
+
+  int stationNumber = 0;
   int noPosUpdateTicks = 0;
   int noEtaUpdateTicks = 0;
   bool displayedOnMap = false;
@@ -46,13 +48,27 @@ class Bus{
     print(busLine.toString());
   }
 
-  bool isContainedBy(List<Bus>busList){
+  bool isIn(List<Bus>busList){
     for(var bus in busList){
-      if(bus.startTime.inSex() == this.startTime.inSex() && bus.busLine.name == this.busLine.name){
+      if(bus.startTime.inSex() == this.startTime.inSex() && bus.busLine.name == this.busLine.name && bus.stationNumber == this.stationNumber){
         return true;
       }
     }
     return false;
+  }
+  int findInBuslist(){
+    for(int i=0; i < buslist.length; i++){
+      /*if(buslist[i].busLine != this.busLine){
+        continue;
+      }
+      if(buslist[i].startTime != this.startTime){
+        continue;
+      }
+      return i;*/
+      if(buslist[i].busLine == this.busLine && buslist[i].startTime != this.startTime){
+        return i;
+      }
+    }
   }
 }
 

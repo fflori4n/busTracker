@@ -106,12 +106,10 @@ selectClosest2Click(LatLng click){
       closestStation = stationList[i];
     }
   }
- /* if(closestDist > 500){
-    activeStation = new Station.byName('No selected station!');
-    activeStation.servedLines = [''];       // A+ level bug fixing. congrats.
+  if(closestStation == null){
     return;
   }
-  activeStation = closestStation;*/
+
   closestStation.selected = !closestStation.selected; // = true;
   if(!selectedStations.contains(closestStation)){
     selectedStations.add(closestStation);
@@ -119,12 +117,6 @@ selectClosest2Click(LatLng click){
   else{
     selectedStations.remove(closestStation);
   }
-
-  /*buslist.clear();
-  activeStation.distFromLineStart.clear();
-  for(int i=0; i< activeStation.servedLines.length; i++){   // init line from dist to be safe
-    activeStation.distFromLineStart.add(0.0);
-  }*/
 }
 
 void calcDistFromLineStart(){ // calculates distace from lineStart for active station

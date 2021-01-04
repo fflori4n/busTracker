@@ -5,19 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
-import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/filters.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/infoBoardItem/stationSign.dart';
-import 'package:mapTest/loadModules/busLocator.dart';
-import 'package:mapTest/loadModules/stations.dart';
 import 'package:mapTest/UIColors.dart';
 
-import '../infoDisp.dart';
 import '../main.dart';
-import 'filterItem.dart';
-import 'locMenu.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
 
@@ -54,7 +47,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
   String nickName = bus.nickName.toUpperCase();
   String erExp = '+' + bus.expErMarg.mins.toString().padLeft(2, '0') + ':' + bus.expErMarg.sex.toString().padLeft(2, '0');
 
-  String stationLet = bus.stationLetter;
+  String stationLet = bus.stationNumber.toString();
 
   return new GestureDetector(
     onTap: (){
