@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
-import 'package:mapTest/loadModules/stations.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
 
 import '../onSelected.dart';
 import 'Bus.dart';
@@ -60,6 +62,13 @@ class Station{
     }
     return out;
   }
+
+  bool doesServedLinesContain(String key){
+    if(this.servedLines.indexOf(key) >= 0)
+      return true;
+    return false;
+  }
+
   Future<void> activeStationLoad( String rawData) async {
     if(rawData == null){
       print('[  WR  ] no cookie: station');
@@ -81,4 +90,24 @@ class Station{
     }
     onStationSelected();
   }
+  
+  factory Station.fromJson(dynamic json) {
+    try{
+      Station newStation = Station.empty();
+      newStation.name = json['name'] as String;
+      newStation.pos = LatLng(json['lon'],json['lat']);
+      newStation.stationGroup = json['zone'] as String;
+
+      var lineList = json['served_lines'];
+      newStation.servedLines = lineList != null ? List.from(lineList) : null;
+
+      //newStation.dbgPrint();
+      return newStation;
+    }
+    catch(e){
+      print(e);
+      throw "[  Er  ] laoding station w uid:" + json['uid'];
+    }
+  }
 }
+

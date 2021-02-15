@@ -3,7 +3,8 @@ import 'package:mapTest/session/shared_pref.dart';
 import 'loadModules/busLines.dart';
 import 'loadModules/busLocator.dart';
 import 'loadModules/ldBusSchedule.dart';
-import 'loadModules/stations.dart';
+import 'loadModules/loadStations.dart';
+import 'main.dart';
 
 Future<void> onStationSelected() async {
 
@@ -16,7 +17,10 @@ Future<void> onStationSelected() async {
     //print('DBG DBG -- ' + selectedStation.servedLines.toString());
   }
 
-  await loadLinesFromFile(selectedStations,false);                              /// Load busline points for active bus lines
+  //await loadLinesFromFile(selectedStations,false);                              /// Load busline points for active bus lines
+  ///
+  
+  await loadLinesFromJson(selectedStations, busLineCityStr);                  // DBG TODO:
   calcDistFromLineStart();                                                      /// fill out buslinestart to station distance table
 
   for(var selectedStation in selectedStations){
@@ -26,4 +30,6 @@ Future<void> onStationSelected() async {
   }
 
   await writeCookie();                                                          //TODO: find good place for writing cookie
+
+  removeUnusedBusLines(); /// dgb
 }

@@ -25,10 +25,10 @@ class indicatorShape extends CustomPainter {
 
    Path pin = Path();
    if(isSet){
-     pin.addOval(Rect.fromCircle(center: Offset(size.height / 2, size.height/2), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(0, size.height), radius: size.height / 6));
    }
    else{
-     pin.addOval(Rect.fromCircle(center: Offset(-size.height / 2, size.height/2), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(size.height / 2, size.height/2), radius: size.height / 6));
    }
 
 

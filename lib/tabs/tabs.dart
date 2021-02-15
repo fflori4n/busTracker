@@ -40,28 +40,40 @@ Column getTab(int tabNum){
     );
   }
   else if(tabNum == 2){ /// location
+    bool isSwitched = false;
     return Column(
       children: <Widget>[
         Container(
           padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
+          child: /*GestureDetector(
               onTap: () {
                 user.locationEnabled = !user.locationEnabled;
                 if(user.locationEnabled){
                   updatePos();
                 }
               },
-              child: Row(
+              child:*/ Row(
                 children: <Widget>[
                   Text('location enabled',style: infoBrdSmall,),
                   Spacer(),
                   Container(
-                    child: indicator(baseBlue, baseYellow, Color.fromRGBO(46, 46, 46, 1), !user.locationEnabled),
-                    height: infoBrdSmall.fontSize,
+                    padding: EdgeInsets.all(10),
+                    child: Switch(
+                      value: isSwitched,
+                      onChanged: (value){
+                        user.locationEnabled = isSwitched = value;
+                        if(user.locationEnabled){
+                          updatePos();
+                        }
+                        //print(value.toString());
+                      },
+                      activeTrackColor: Colors.lightGreenAccent,
+                      activeColor: Colors.green,
+                    ),
                   ),],
               )
           ),
-        ),
+       // ),
 
         Container(
           padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),

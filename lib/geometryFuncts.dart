@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
-import 'package:mapTest/loadModules/stations.dart';
 
 import 'dataClasses/Station.dart';
+import 'loadModules/loadStations.dart';
 
 Position getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   List<LatLng> pointList = polyLine;
@@ -46,6 +46,10 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
 
   for(int i = 0; i<(pointList.length - 1); i++){
     LatLng projection = pProjectionToLine(pointList[i], pointList[i+1], point);
+    if(projection == null){
+      print("can't calculate projection!");
+      continue;
+    }
     double dist = normLoc(projection, point);
     if(dist < minDist){
       minDist = dist;

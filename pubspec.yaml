@@ -30,8 +30,6 @@ dependencies:
   map_controller: ^0.8.0
   latlong: ^0.6.1
   flutter_html: ^0.8.2
-  faker:
-    path: /home/foska/.pub-cache/hosted/pub.dartlang.org/faker-1.2.1
   #@^1.2.1
   path_provider: 1.6.14
   #path_provider: ^1.6.7
@@ -39,6 +37,7 @@ dependencies:
   google_fonts: any
   auto_size_text: ^2.1.0
   shared_preferences: ^0.5.4+8
+  simple_animations: ^2.5.0
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -5,6 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/mapRelated/map.dart';
 
 import '../main.dart';
 

@@ -1,5 +1,6 @@
 import 'package:mapTest/dataClasses/Station.dart';
-import 'package:mapTest/loadModules/stations.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/mapRelated/map.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart'; // rememeber to import shared_preferences: ^0.5.4+8

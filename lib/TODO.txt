@@ -1,8 +1,0 @@
-
-
-
-    fix mobile bug - every time, view is switched, reloads stations
-    add multiple selected stations
-    add cookies
-    fix language
-    geolocation not working with https

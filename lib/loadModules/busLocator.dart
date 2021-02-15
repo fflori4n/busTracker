@@ -1,10 +1,10 @@
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
-import 'package:mapTest/loadModules/stations.dart';
 import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
+import 'loadStations.dart';
 
 final LatLng initMapCenter = new LatLng(0, 0);
 const double avrgBusSpeed = 17;

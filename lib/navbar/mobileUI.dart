@@ -1,12 +1,8 @@
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/UIColors.dart';
-import 'package:mapTest/loadModules/mapViewOSM.dart';
-import 'package:mapTest/main.dart';
-import 'package:mapTest/mapOverlay/mapOverlay.dart';
-import '../OSMapLayer.dart';
+import 'package:mapTest/mapRelated/drawoverlay.dart';
+import 'package:mapTest/mapRelated/map.dart';
 import '../infoDisp.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 
@@ -27,7 +23,7 @@ class MobileUIState extends State<MobileUI> {
         mobileMainView = new Stack(
           children: <Widget>[
             MapPage(),
-            drawMapOverlay(),
+            MapOverlay(),
           ],
         );
       }

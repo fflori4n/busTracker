@@ -4,11 +4,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mapTest/animatons/fadeInAnim.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/infoBoardItem/stationSign.dart';
 import 'package:mapTest/UIColors.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/mapRelated/map.dart';
 
 import '../main.dart';
 
@@ -49,11 +52,13 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
 
   String stationLet = bus.stationNumber.toString();
 
-  return new GestureDetector(
+  return FadeIn(1.5,GestureDetector(
     onTap: (){
       bus.isHighLighted = !bus.isHighLighted;
       mapController.move(bus.busPos.busPoint, mapConfig.mapZoom);      // TODO: test test test
     },
+    //opacity: _visible ? 1.0 : 0.0,
+    //           duration: Duration(milliseconds: 500),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -61,7 +66,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
             margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left: 10.0, right: 10.0),
             padding: EdgeInsets.only(left: 7.0, right: 7.0, top: 5.0, bottom: 3.0),
             decoration: BoxDecoration(
-              border: bus.isHighLighted ? Border.all(color: baseBlue, width: 1.5) : Border.all(color: Colors.white70, width: 1.5),
+              border: bus.isHighLighted ? Border.all(color: baseBlue, width: 1) : Border.all(color: Colors.white70, width: 1),
               borderRadius: new BorderRadius.all(Radius.circular(2.0)),
             ),
             child: Row(children: <Widget>[
@@ -99,7 +104,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
                         ),
                       ],),
                       AutoSizeText(bus.lineDescr, style: busDescrSmall, textAlign: TextAlign.left, textScaleFactor: 0.8,),
-                      bus.isHighLighted ? Text('item clicked!',style: busDescrSmall) : Container(),     // DBG
+                      bus.isHighLighted ? extrainfo(bus) : Container(),     // DBG
                     ],
                   )//Container(color: baseBlue, child: Text('hello world!'),),
               ),
@@ -143,7 +148,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus){//, //Station station){
             ],)
         ),
       ],
-    ),
+    ),),
   );
 }
 
@@ -239,6 +244,21 @@ Widget drawLegend(BuildContext context){
           ],)
       ),
     ],
+  );
+}
+
+Widget extrainfo( Bus bus){
+  DateTime now = new DateTime.now();
+  String intervStart = (now.hour + bus.eTA.hours).toString() + ':' + (now.minute + bus.eTA.mins).toString();
+  String intervEnd = (now.hour + bus.eTA.hours + bus.expErMarg.hours).toString() + ':' + (now.minute + bus.eTA.mins + bus.expErMarg.mins).toString();
+  return Container(
+    padding: EdgeInsets.only(top: 5, bottom: 5),
+    child: Column(
+      children: [
+        Text('Stanica : ' + selectedStations.elementAt(bus.stationNumber).name ,style: busDescrSmall),
+        Text('Očekivani dolazak između ' + intervStart + ' i ' + intervEnd ,style: busDescrSmall)
+      ],
+    ),
   );
 }
 

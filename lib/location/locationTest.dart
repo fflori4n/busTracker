@@ -2,6 +2,7 @@ import 'dart:js';
 import 'package:flutter/foundation.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/main.dart';
+import 'package:mapTest/mapRelated/map.dart';
 
 import 'location.dart';
 

@@ -9,10 +9,8 @@ import 'package:mapTest/navbar/statusbar.dart';
 import 'package:mapTest/tabs/tabs.dart';
 import 'package:mapTest/uiWidgets/dispStation.dart';
 import 'dataClasses/Bus.dart';
-import 'dataClasses/BusLine.dart';
-import 'dataClasses/multiLang.dart';
 import 'filters.dart';
-import 'loadModules/stations.dart';
+import 'mapRelated/map.dart';
 
 class Buletin extends StatefulWidget {
   BuletinState createState() => BuletinState();

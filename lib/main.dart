@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/OSMapLayer.dart';
-import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/navbar/mobileUI.dart';
 import 'package:mapTest/session/shared_pref.dart';
 import 'dart:async';
 import 'dataClasses/Show.dart';
 import 'dataClasses/user.dart';
-import 'loadModules/stations.dart';
-import 'mapOverlay/mapOverlay.dart';
+import 'mapRelated/map.dart';
 
 final LatLng nsMapRefPoint = LatLng(45.2603, 19.8260);
 final LatLng suMapRefPoint = LatLng(46.100217,19.664413);
+
 LatLng mapRefPoint = nsMapRefPoint;
+String busLineCityStr = "nsCityBusLines";
+
 final double smTresh = 1000;
 final double mlTresh = 1000;
 final int mapRefreshPeriod = 500;
@@ -30,8 +31,6 @@ bool isMobile = true;
 
 User user = new User();  // new user to store position
 Show busFilters = new Show();
-MapConfig mapConfig = new MapConfig();
-MapController mapController = MapController();
 
 void main() {
   update();
@@ -60,14 +59,18 @@ class MyApp extends StatelessWidget {
 }
 
 Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
-  //city = page;
+  selectedStations = [paperStation];  // DBG !!!!!
   if(page.contains('su')){
     mapRefPoint = suMapRefPoint;
     print('** In subotica! **');
+    loadStationsFromJson("suBusStops");
+    busLineCityStr = "suCityBusLines";
   }
   else if(page.contains('ns')){
     mapRefPoint = nsMapRefPoint;
     print('** In novi sad! **');
+    loadStationsFromJson("nsBusStops");
+    busLineCityStr = "nsCityBusLines";
   }
   return Index();
 }
@@ -101,11 +104,8 @@ class Index extends StatelessWidget {
                 body: new Container(
                     child:new Stack(
                       children: <Widget>[
-                        //navBar(),
-                        //mapView(),
                         MapPage(),        // TODO: Test this.
-                        drawMapOverlay(),
-                        //SideNav(),
+                        MapOverlay(),
                         Buletin(),
                       ],
                     )
@@ -119,13 +119,12 @@ class Index extends StatelessWidget {
 void update() async {
   while(true){
     await new Future.delayed(Duration(milliseconds: mapRefreshPeriod));
-    //DateTime now = DateTime.now();
     calcBusPos();
   }
 }
 
 Future<void> onLoad() async {
-  await loadStationsFromFiles();
+  //await loadStationsFromFiles();
   //await writeCookie();
   await readCookie();
 }

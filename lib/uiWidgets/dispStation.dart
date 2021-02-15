@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/loadModules/stations.dart';
+import 'package:mapTest/loadModules/busLines.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
 
 import '../UIColors.dart';
 import '../filters.dart';
@@ -87,7 +88,9 @@ class StationLabelWidget {
                                 ),
                                 stationNumber == "0" ? Container() : GestureDetector(
                                   onTap: () {
+                                    print('station number was' + selectedStations.indexOf(stationDisp).toString());
                                     selectedStations.remove(stationDisp);
+                                    removeUnusedBusLines();
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(
