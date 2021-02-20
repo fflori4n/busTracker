@@ -29,6 +29,7 @@ class Bus{
   bool displayedOnSchedule = true;
   bool isRampAccesible = false;
   bool isHighLighted = false;
+  bool reported = false;
 
 
   Bus(LatLng busPos, Color color, Time startTime,BusLine busLine){

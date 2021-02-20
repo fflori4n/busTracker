@@ -57,6 +57,13 @@ class BusOverlayPainter extends CustomPainter {
       if(!bus.displayedOnMap){
         continue;
       }
+     /* bool hideBusMarker = false;
+      for(var compareBus in buslist.sublist(0,buslist.indexOf(bus))){
+        if(bus.stationNumber != compareBus.stationNumber && bus.startTime == compareBus.startTime && bus.busLine == compareBus.busLine){   // TODO: maybe use nickname? but collisions will probably happen, usually not?
+          hideBusMarker = true;
+          break;
+        }
+      }*/
       final paint = Paint()
         ..color = bus.color
         //..style = PaintingStyle.stroke
@@ -78,11 +85,13 @@ class BusOverlayPainter extends CustomPainter {
       if(x < 0 || x> size.width){
         continue;
       }
-      if(bus.busPos.heading == -1)
-        canvas.drawCircle(Offset(x,y), 6, paint);
+      if (bus.busPos.heading == -1)
+          canvas.drawCircle(Offset(x, y), 6, paint);
       else {
-        canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading), paint); // paint bus markers
-        canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading), stroke); // TODO: maybe do both stroke and fill at once?
+          canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
+              paint); // paint bus markers
+          canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
+              stroke); // TODO: maybe do both stroke and fill at once?}
       }
 
       // draw text

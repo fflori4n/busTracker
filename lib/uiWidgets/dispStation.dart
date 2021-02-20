@@ -27,7 +27,7 @@ class StationLabelWidget {
 
   Widget show() {
     double totalWidth = screenWidth;
-    double totalHeight = 60;//screenHeight * 0.08;
+    double totalHeight = 55 + (stationDisp.servedLines.length / 12) * 25.0;//screenHeight * 0.08;
 
     if(!isMobile){
       totalWidth = screenWidth * 0.3;
@@ -116,8 +116,8 @@ class StationLabelWidget {
                           Expanded(
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 10 + totalHeight * 0.4),
-                              child: displayMsg == '' ? Row(
-                                children: getStationLineLabels(stationDisp),
+                              child: displayMsg == '' ? Container(
+                                child: getStationLineLabels(stationDisp),
                               ) : Row( children: <Widget>[Text(displayMsg, style: infoBrdSmall, textAlign: TextAlign.left,),],),
                             ),
                           ),
@@ -132,10 +132,45 @@ class StationLabelWidget {
   }
 }
 
-List<Widget> getStationLineLabels(Station station) {
+Widget getStationLineLabels(Station station) {
+  List<Widget> rowList = [];
+  List<Widget> labelList = [];
+  int i=0;
+  for(String line in station.servedLines){
+    var newText = new GestureDetector(
+      child: Text(
+        line.padLeft(3),
+        style: nsBusLinesContainsName(line)
+            ? (busFilters.hideLine.contains(line) ? infoBrdSmallCrossedOut : infoBrdSmall) : infoBrdSmallSemiTransp,
+        textAlign: TextAlign.left,
+      ),
+      onTap: () {
+        if (busFilters.hideLine.contains(line)) {
+          busFilters.hideLine.remove(line);
+        } else {
+          busFilters.hideLine.add(line);
+        }
+        applyFilters(busFilters);
+      },
+    );
+
+    labelList.add(newText);
+    labelList.add(Text(' ', style: infoBrdSmall,));
+
+    if(labelList.length > 24){
+      rowList.add(Row( children: labelList));
+      labelList = [];
+    }
+  }
+  rowList.add(Row( children: labelList));
+  return new Column(children: rowList, );
+}
+/*Widget getStationLineLabels(Station station) {
   List<Widget> labelList = new List();
+  labelList.add(Text(' ', style: infoBrdSmall,));
   //for (var line in activeStation.servedLines) {
   for (var line in station.servedLines) {
+
     var newText = new GestureDetector(
       child: Text(
         line,
@@ -155,13 +190,26 @@ List<Widget> getStationLineLabels(Station station) {
 
     labelList.add(newText);
     labelList.add(Text(' ', style: infoBrdSmall,));
+
+
   }
 
-  if (labelList.length > 12) {
-    labelList.insert(12, Text('\n'));
+  List<Widget> rowList = [];
+
+  for(int i=0; i < labelList.length; i+=24) {
+    try {
+      rowList.add(Row( children: labelList.sublist(0, 24),));
+      rowList.add(Row( children: labelList.sublist(25, 49),));
+      rowList.add(Row( children: labelList.sublist(50, 74),));
+    }
+    catch (p) {
+      rowList.add(Row( children: labelList.sublist(i+48),));
+      break;
+    }
   }
-  return labelList;
-}
+
+  return new Column(children: rowList, );
+}*/
 
 List<Widget> displaySelectedStations(){
   List<Widget> stationDispList = new List();

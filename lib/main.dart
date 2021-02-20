@@ -23,6 +23,8 @@ final int mapRefreshPeriod = 500;
 
 String city = '';
 
+BuildContext mainViewContext;
+
 double screenWidth = 1920;
 double screenHeight = 1080;
 double wScaleFactor=1;
@@ -81,6 +83,7 @@ class Index extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    mainViewContext = context;
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
 

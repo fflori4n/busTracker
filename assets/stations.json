@@ -7367,7 +7367,7 @@
       "lat" : 19.6113762,
       "lon" : 46.1241861,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["1AA", "1AB"],
       "uid" : "63486cc16dd1a991425b28c426bd11ab"
     },
     {
@@ -7553,14 +7553,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "bfe5a9a8d29d4e11383603bdab389217"
-    },
-    {
-      "name" : "Široki progon",
-      "lat" : 19.6334803,
-      "lon" : 46.136906,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d158e2ce6823915a51614beefcaba958"
     },
     {
       "name" : "Makova Sedmica",
@@ -7751,7 +7743,7 @@
       "lat" : 19.7227442,
       "lon" : 46.1292852,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["4A", "4B"],
       "uid" : "e6e69ae1ed3112899cadb1462050400c"
     },
     {
@@ -8295,7 +8287,7 @@
       "lat" : 19.6600664,
       "lon" : 46.1359283,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["8A","8B"],
       "uid" : "81952d52fdfb6da1bb1b69f7e401c750"
     },
     {
@@ -8439,7 +8431,7 @@
       "lat" : 19.6662354,
       "lon" : 46.078954,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["2A", "2B"],
       "uid" : "c899d1c155a702b1fee56344e5c78120"
     },
     {
@@ -8489,14 +8481,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "af2ec37152efcfe651f84d775a03492c"
-    },
-    {
-      "name" : "Đerđa Lukača",
-      "lat" : 19.6601576,
-      "lon" : 46.1359432,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c28e3b4d2cbf0bf18d2269e5473616c2"
     },
     {
       "name" : "Jovana Mikića 263",
@@ -8623,7 +8607,7 @@
       "lat" : 19.6335232,
       "lon" : 46.1369952,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["2A", "2B", "9A", "9B"],
       "uid" : "0269bfc7ae5d4e9f03e1a1e5aaa0e9b7"
     },
     {
@@ -8936,6 +8920,14 @@
       "lon" : 46.0985217,
       "zone" : "1",
       "served_lines" : [""],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "suPapirna",
+      "lat" : 19.700976873291026,
+      "lon" : 46.08137730955261,
+      "zone" : "1",
+      "served_lines" : ["1AA", "1AB", "2A", "2B", "3A", "3B", "4A", "4B", "6A", "6B", "8AA", "8AB", "8A", "8B", "9A", "9B", "10A", "10B", "16A", "16B"],
       "uid" : "075fd027bb73780f983dbda71ad1ee15"
     }
   ]
