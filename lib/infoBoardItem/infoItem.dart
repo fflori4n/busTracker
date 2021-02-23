@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mapTest/animatons/fadeInAnim.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
@@ -14,6 +15,7 @@ import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
 
 import '../main.dart';
+import 'dart:js' as js;
 
 Widget drawBuletinitem(BuildContext context, Bus bus) {
   //, //Station station){
@@ -374,6 +376,24 @@ Widget extrainfo(Bus bus) {
           'Očekivani dolazak između ' + intervStart + ' i ' + intervEnd,
           style: busDescrSmall,
           textAlign: TextAlign.left,
+        ),
+        /*IconButton(
+            icon: SvgPicture.asset(
+              'svg/filledHeartIcon2.svg',
+               color: Colors.black,
+               semanticsLabel: 'Acme Logo',
+            ),
+            onPressed: (){} //do something,
+        ),*/ // TODO: renderer crashes for svg?
+        InkWell(
+          child: Text(
+            'pogledajte mesto na google maps',
+            style: busDescrSmallLink,
+            textAlign: TextAlign.left,
+          ),
+          onTap: () {
+            js.context.callMethod('open', ['https://www.google.com/maps/search/?api=1&query=' + selectedStations.elementAt(bus.stationNumber).pos.latitude.toString() + ',' + selectedStations.elementAt(bus.stationNumber).pos.longitude.toString() + '&z=14']);
+          },
         ),
         bus.reported ? Text(
           'Poslata je Vasa prijava. Hvala.',

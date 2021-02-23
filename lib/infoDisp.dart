@@ -73,6 +73,30 @@ class BuletinState extends State<Buletin> {
                           Expanded(
                             child: GestureDetector(
                               onTap: (){
+                                if(user.tabOpen == 5){
+                                  user.tabOpen = 0;
+                                }
+                                else{
+                                  user.tabOpen = 5;
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                transform: user.tabOpen == 5 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(46, 46, 46, 1),
+                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
+                                ),
+                                child: Text("Redvožnje",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
                                 if(user.tabOpen == 1){
                                   user.tabOpen = 0;
                                 }
@@ -89,7 +113,7 @@ class BuletinState extends State<Buletin> {
                                   color: Color.fromRGBO(46, 46, 46, 1),
                                   borderRadius: BorderRadius.all(const Radius.circular(5)),
                                 ),
-                                child: Text("favourites",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                                child: Text("Favoriti",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
                               ),
                             ),
                           ),
@@ -113,7 +137,7 @@ class BuletinState extends State<Buletin> {
                                   color: Color.fromRGBO(46, 46, 46, 1),
                                   borderRadius: BorderRadius.all(const Radius.circular(5)),
                                 ),
-                                child: Text("locations",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                                child: Text("Navigacija",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
                               ),
                             ),
                           ),
@@ -137,7 +161,7 @@ class BuletinState extends State<Buletin> {
                                   color: Color.fromRGBO(46, 46, 46, 1),
                                   borderRadius: BorderRadius.all(const Radius.circular(5)),
                                 ),
-                                child: Text("settings",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
+                                child: Text("Podešavanja",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
                               ),
                             ),
                           ),
@@ -161,11 +185,11 @@ class BuletinState extends State<Buletin> {
                                   color: Color.fromRGBO(46, 46, 46, 1),
                                   borderRadius: BorderRadius.all(const Radius.circular(5)),
                                 ),
-                                child: Text("#filters",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
+                                child: Text("#filteri",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
                               ),
                             ),
                           ),
-                          GestureDetector(
+                          /*GestureDetector(
                               onTap: () {
                                 mapController.move( mapController.center, mapController.zoom + 1); // TODO: ok zoomer?,
                               },
@@ -200,7 +224,7 @@ class BuletinState extends State<Buletin> {
                               child: Text("-",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
 
                             ),
-                          ),
+                          ),*/
 
 
                         ],
