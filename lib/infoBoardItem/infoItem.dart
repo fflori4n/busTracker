@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mapTest/animatons/fadeInAnim.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
+import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/infoBoardItem/stationSign.dart';
@@ -53,6 +54,9 @@ Widget drawBuletinitem(BuildContext context, Bus bus) {
       bus.expErMarg.mins.toString().padLeft(2, '0') +
       ':' +
       bus.expErMarg.sex.toString().padLeft(2, '0');
+  if(!bus.displayedOnMap){
+    erExp = '+00:00';
+  }
 
   String stationLet = bus.stationNumber.toString();
 
@@ -355,13 +359,10 @@ Widget drawLegend(BuildContext context) {
 
 Widget extrainfo(Bus bus) {
   DateTime now = new DateTime.now();
-  String intervStart = (now.hour + bus.eTA.hours).toString() +
-      ':' +
-      (now.minute + bus.eTA.mins).toString();
-  String intervEnd =
-      (now.hour + bus.eTA.hours + bus.expErMarg.hours).toString() +
-          ':' +
-          (now.minute + bus.eTA.mins + bus.expErMarg.mins).toString();
+  Time iStart = (Time(now.hour, now.minute, now.second) + bus.eTA);
+  Time iEnd = (Time(now.hour, now.minute, now.second) + bus.eTA + bus.expErMarg);
+  String intervStart = iStart.hours.toString().padLeft(2,'0') + ':' + iStart.mins.toString().padLeft(2,'0');
+  String intervEnd = iEnd.hours.toString().padLeft(2,'0') + ':' + iEnd.mins.toString().padLeft(2,'0');
   return Container(
     padding: EdgeInsets.only(top: 5, bottom: 5),
     child: Column(
@@ -377,14 +378,6 @@ Widget extrainfo(Bus bus) {
           style: busDescrSmall,
           textAlign: TextAlign.left,
         ),
-        /*IconButton(
-            icon: SvgPicture.asset(
-              'svg/filledHeartIcon2.svg',
-               color: Colors.black,
-               semanticsLabel: 'Acme Logo',
-            ),
-            onPressed: (){} //do something,
-        ),*/ // TODO: renderer crashes for svg?
         InkWell(
           child: Text(
             'pogledajte mesto na google maps',

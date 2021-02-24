@@ -53,4 +53,18 @@ class Time{
       this.hours+=24;
     }*/
   }
+
+  Time operator +(Time other) {  // TODO: this is temp fix, add custom operators to time class for add, sub
+    this.sex += other.sex;
+    this.mins += other.mins;
+    this.hours+= other.hours;
+
+    this.mins += this.sex~/60;
+    this.sex %= 60;
+    this.hours += this.mins~/60;
+    this.mins %= 60;
+    this.hours %= 24;
+
+    return this;
+  }
 }
