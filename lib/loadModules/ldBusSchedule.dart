@@ -1,12 +1,25 @@
 import 'package:flutter/services.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
+import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 
 import 'nickNames.dart';
 
-Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0]) async {
+
+void loadBuses(List<Station> selectedStations){
+  List<String> loadedLines = [];
+
+  for(var selectedStation in selectedStations){
+    for(var line in selectedStation.lines){
+      ldLineSchedule(line,DateTime.now(),selectedStations.indexOf(selectedStation), loadedLines.where((e) => e == line.name).length);
+      loadedLines.add(line.name);
+    }
+  }
+}
+
+Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int numOfTwins = 0]) async {
   String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
@@ -50,7 +63,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0]) asy
         DateTime now = DateTime.now();
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
 
-        if(now.difference(startDateTime).inMinutes > 90){
+        if(now.difference(startDateTime).inMinutes > 120){
           print('bus gone!'); // TODO test me and add max load limit
         }
         else{
@@ -65,6 +78,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0]) asy
           /// *********************
 
           newBus.stationNumber = statNumber;
+          newBus.twins = numOfTwins;
 
           buslist.add(newBus);
 

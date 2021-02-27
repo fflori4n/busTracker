@@ -10,7 +10,6 @@ import 'package:mapTest/tabs/tabs.dart';
 import 'package:mapTest/uiWidgets/dispStation.dart';
 import 'dataClasses/Bus.dart';
 import 'filters.dart';
-import 'mapRelated/map.dart';
 
 class Buletin extends StatefulWidget {
   BuletinState createState() => BuletinState();
@@ -21,9 +20,6 @@ class BuletinState extends State<Buletin> {
   void initState() {
     Timer.periodic(Duration(seconds: 1), (v) {
       setState(() {});
-      /*if(user.locationEnabled){
-        updatePos(); // TODO: For now but not suitable location!!!! DBG !!! FIX THIS PLS !!!
-      }*/
     });
     super.initState();
   }

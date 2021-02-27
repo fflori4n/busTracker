@@ -21,7 +21,6 @@ Point(double x, double y){
 
 }
 class BusOverlayPainter extends CustomPainter {
-
   Path getTrianglePath(double x, double y, double heading) {
     final double size = 18;
     var points = new List.unmodifiable([
@@ -57,25 +56,6 @@ class BusOverlayPainter extends CustomPainter {
       if(!bus.displayedOnMap){
         continue;
       }
-     /* bool hideBusMarker = false;
-      for(var compareBus in buslist.sublist(0,buslist.indexOf(bus))){
-        if(bus.stationNumber != compareBus.stationNumber && bus.startTime == compareBus.startTime && bus.busLine == compareBus.busLine){   // TODO: maybe use nickname? but collisions will probably happen, usually not?
-          hideBusMarker = true;
-          break;
-        }
-      }*/
-      final paint = Paint()
-        ..color = bus.color
-        //..style = PaintingStyle.stroke
-        ..strokeWidth = 1
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round;
-      final stroke = Paint()
-        ..color = Colors.black87
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round;
 
       double y = size.height * (bus.busPos.busPoint.latitude - mapConfig.mapNW.latitude)/(mapConfig.mapSE.latitude - mapConfig.mapNW.latitude);
       if(y < 0 || y> size.height){
@@ -85,38 +65,50 @@ class BusOverlayPainter extends CustomPainter {
       if(x < 0 || x> size.width){
         continue;
       }
-      if (bus.busPos.heading == -1)
-          canvas.drawCircle(Offset(x, y), 6, paint);
-      else {
+
+      if(bus.twins == 0){
+        final paint = Paint()
+          ..color = bus.color
+        //..style = PaintingStyle.stroke
+          ..strokeWidth = 1
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+        final stroke = Paint()
+          ..color = Colors.black87
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+
+        if (bus.busPos.heading != -1) {
           canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
               paint); // paint bus markers
           canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
               stroke); // TODO: maybe do both stroke and fill at once?}
-      }
+        }
+        else {
+          canvas.drawCircle(Offset(x, y), 6, paint);
+        }
+        // draw text
+        final textStyle = ui.TextStyle(
+          color: Colors.black87,
+          fontSize: 12,
+        );
+        final paragraphBuilder = ui.ParagraphBuilder(new ui.ParagraphStyle(textDirection: TextDirection.ltr,))
+          ..pushStyle(textStyle);
 
-      // draw text
-      final textStyle = ui.TextStyle(
-        color: Colors.black87,
-        fontSize: 12,
-      );
-      final paragraphBuilder = ui.ParagraphBuilder(new ui.ParagraphStyle(textDirection: TextDirection.ltr,))
-        ..pushStyle(textStyle)
-        ..addText(bus.busLine.name);
-        //..addText('\t')
-        //..addText(bus.nickName);
+        paragraphBuilder.addText('\t' + bus.busLine.name);
 
-        /*..addText('\n')
-        ..addText();*/
         if(bus.eTA.inSex() > 0 && bus.eTA.inSex() < 59*60){
           paragraphBuilder.addText('\t' + bus.eTA.mins.toString().padLeft(2,'0') + ':' + bus.eTA.sex.toString().padLeft(2,'0'));
         }
 
-      final constraints = ui.ParagraphConstraints(width: 300);
-      final paragraph = paragraphBuilder.build();
-      paragraph.layout(constraints);
-      final offset = Offset(x + 5, y + 5);
-      canvas.drawParagraph(paragraph, offset);
-
+        final constraints = ui.ParagraphConstraints(width: 300);
+        final paragraph = paragraphBuilder.build();
+        paragraph.layout(constraints);
+        final offset = Offset(x + 5, y + 5 + (bus.twins * 12 * 1.3) );
+        canvas.drawParagraph(paragraph, offset);
+      }
     }
   }
 

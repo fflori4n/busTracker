@@ -69,11 +69,39 @@ class _MapPageState extends State<MapPage> {
                 ),
                 layers: [
                   TileLayerOptions(
-                    urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
-                    //urlTemplate: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+                    //urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+                    //subdomains: ['a', 'b', 'c'],
+
                     //urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     //urlTemplate: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    subdomains: ['a', 'b', 'c'],
+
+                    urlTemplate: 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', //google maps normal
+                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],
+
+                    /*
+
+                    h = roads only
+                    m = standard roadmap
+                    p = terrain
+                    r = somehow altered roadmap
+                    s = satellite only
+                    t = terrain only
+                    y = hybrid
+
+                     */
+
+                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', //google maps hybrid with names
+                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
+
+                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', //google maps satelite
+                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
+
+                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', //google maps terrain
+                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
+
+
+
+
                     tileProvider: NonCachingNetworkTileProvider(),
                   ),
 

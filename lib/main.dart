@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invert_colors/invert_colors.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
@@ -107,7 +108,7 @@ class Index extends StatelessWidget {
                 body: new Container(
                     child:new Stack(
                       children: <Widget>[
-                        MapPage(),        // TODO: Test this.
+                        MapPage(),
                         MapOverlay(),
                         Buletin(),
                       ],

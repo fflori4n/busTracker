@@ -25,6 +25,8 @@ class Bus{
   int stationNumber = 0;
   int noPosUpdateTicks = 0;
   int noEtaUpdateTicks = 0;
+  int twins = 0;
+
   bool displayedOnMap = false;
   bool displayedOnSchedule = true;
   bool isRampAccesible = false;

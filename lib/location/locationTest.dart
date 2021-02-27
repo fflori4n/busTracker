@@ -1,6 +1,6 @@
 import 'dart:js';
-import 'package:flutter/foundation.dart';
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/geometryFuncts.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapRelated/map.dart';
 
@@ -18,18 +18,22 @@ success(pos) {
   } catch (ex) {
     print("Exception thrown : " + ex.toString());
   }
-  mapController.move(LatLng(pos.coords.latitude,pos.coords.longitude), mapController.zoom); // DBG not sure if useful
-
   user.position = LatLng(pos.coords.latitude,pos.coords.longitude);
   user.posAcc = pos.coords.accuracy;
   user.posUpdated = DateTime.now();
+
+  if(normLoc(mapController.center, LatLng(pos.coords.latitude,pos.coords.longitude)) < 10000){
+    mapController.move(LatLng(pos.coords.latitude,pos.coords.longitude), mapController.zoom); // DBG not sure if useful
+  }
+  else{
+    print('user position out of bounds - not moving map [  Wr  ]');
+  }
 }
 getCurrentLocation() {
     getCurrentPosition(allowInterop((pos) => success(pos)));
 }
 
 void updatePos() async{ // call this only on user.locationEnabled rising edge // may leak !!!!
-  //print('update pos');
   while(user.locationEnabled){
     getCurrentLocation();
     await Future.delayed(Duration(seconds: 60));

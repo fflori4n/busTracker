@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
+import 'package:mapTest/infoBoardItem/stationSign.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 
@@ -39,7 +40,7 @@ class StationLabelWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: totalHeight,
+                  height: totalHeight + 3.0,
                   decoration: BoxDecoration(
                     color:  Color.fromRGBO(23, 67, 108, 1),
                   ),
@@ -47,13 +48,13 @@ class StationLabelWidget {
 
                     Container(
                       padding: EdgeInsets.only(top: 5, bottom: 10),
-                      height: totalHeight * 0.96,
+                      height: totalHeight,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Color.fromRGBO(0, 90, 152, 1),Color.fromRGBO(23, 67, 108, 1)]
                         ),
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(totalHeight * 0.1),
+                          //topLeft: Radius.circular(totalHeight * 0.1),
                           bottomLeft: Radius.circular(totalHeight * 0.1),
                         ),
                       ),
@@ -65,23 +66,7 @@ class StationLabelWidget {
                                 stationNumber == "0" ? Container(
                                   width: totalHeight * 0.3,
                                   child: Text(" "),                             // oh yeah.. very nice. good job me!
-                                ) : Container(
-                                  margin: EdgeInsets.only(
-                                    left: 10,
-                                    right: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.transparent,
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 1,
-                                    ),
-                                  ),
-                                  width: totalHeight * 0.3,
-                                  height: totalHeight * 0.3,
-                                  child: Center(child:Text(stationNumber, style: GoogleFonts.ptMono(color: Colors.white),))//TextStyle(color: Colors.white, fontFamily: ),)),
-                                ),
+                                ) : stationLetter(stationNumber),
                                 Expanded(
                                   flex: 3,
                                   child: Text(stationDisp.name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal)),// decoration: TextDecoration.lineThrough, decorationColor: Colors.red)),
@@ -92,23 +77,7 @@ class StationLabelWidget {
                                     selectedStations.remove(stationDisp);
                                     removeUnusedBusLines();
                                   },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                      left: 5,
-                                      right: 5,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(totalHeight * 0.05),),
-                                      color: Colors.transparent,
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 0,
-                                      ),
-                                    ),
-                                    width: totalHeight * 0.3,
-                                    height: totalHeight * 0.3,
-                                    child: Center(child:Text("x", style: TextStyle(color: Colors.white),)),
-                                  ),
+                                  child: stationX(),
                                 )
                               ],
                             )
