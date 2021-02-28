@@ -16,21 +16,32 @@ FlutterMap map = new FlutterMap();
 MapConfig mapConfig = new MapConfig();
 MapController mapController = new MapController();
 
+MapPageState displayedMap;
+int activeMapTile = 0;
+
+StreamController<int> mapTileSwitchController = new StreamController<int>();
 
 class MapPage extends StatefulWidget {
+  final Stream<int>stream;
+  MapPage(this.stream);
+
   @override
-  _MapPageState createState() => _MapPageState();
+  MapPageState createState() => MapPageState();
 }
 
-class _MapPageState extends State<MapPage> {
+class MapPageState extends State<MapPage> {
 
-  //final LatLng mapRefPoint = mapRefPoint;
+  String maptileUrl = 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}';
+  List<String> subdomains = ['mt0', 'mt1', 'mt2','mt3'];
 
   StatefulMapController statefulMapController;
   StreamSubscription<StatefulMapControllerStateChange> sub;
 
+  //final LatLng mapRefPoint = mapRefPoint;
+
   @override
   void initState() {
+    widget.stream.listen((num) { switchTileUrl(num); });
     statefulMapController = StatefulMapController(mapController: mapController);
 
     /// wait for the controller to be ready before using it
@@ -44,78 +55,96 @@ class _MapPageState extends State<MapPage> {
     /// this will rebuild the map when for example addMarker or any method
     /// that mutates the map assets is called
     sub = statefulMapController.changeFeed.listen((change) => setState(() {}));
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScrollDetector(
-      onPointerScroll: processScroll,//processScroll,
-      child: Scaffold(
-        body: SafeArea(
-            child: Stack(children: <Widget>[
-              FlutterMap(
-                mapController: mapController,
-                options: MapOptions(
-                  center: mapRefPoint,
-                  zoom: 14,
-                  maxZoom: 17,
-                  minZoom: 8,
-                  //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
-                  // nePanBoundary: LatLng(45.2901, 20.0442),
-                  onPositionChanged: onPosChange,
-                  onTap: onTap,
-                  interactive: true,
-                ),
-                layers: [
-                  TileLayerOptions(
-                    //urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
-                    //subdomains: ['a', 'b', 'c'],
+    var displayedMap = ScrollDetector(
+        onPointerScroll: processScroll, //processScroll,
+        child: Container(
+          foregroundDecoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.4),
+          ),
+          child: Scaffold(
+            body: SafeArea(
+                child: Stack(children: <Widget>[
+                  FlutterMap(
+                    mapController: mapController,
+                    options: MapOptions(
+                      center: mapRefPoint,
+                      zoom: 14,
+                      maxZoom: 17,
+                      minZoom: 8,
+                      //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
+                      // nePanBoundary: LatLng(45.2901, 20.0442),
+                      onPositionChanged: onPosChange,
+                      onTap: onTap,
+                      interactive: true,
+                    ),
+                    layers: [
+                      TileLayerOptions(
+                        urlTemplate: maptileUrl, //google maps normal
+                        subdomains: subdomains,
+                        tileProvider: NonCachingNetworkTileProvider(),
+                      ),
 
-                    //urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    //urlTemplate: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
-
-                    urlTemplate: 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', //google maps normal
-                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],
-
-                    /*
-
-                    h = roads only
-                    m = standard roadmap
-                    p = terrain
-                    r = somehow altered roadmap
-                    s = satellite only
-                    t = terrain only
-                    y = hybrid
-
-                     */
-
-                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', //google maps hybrid with names
-                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
-
-                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', //google maps satelite
-                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
-
-                    /*urlTemplate: 'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', //google maps terrain
-                    subdomains: ['mt0', 'mt1', 'mt2','mt3'],*/
-
-
-
-
-                    tileProvider: NonCachingNetworkTileProvider(),
-                  ),
-
-                ],
-              )
-            ])),
-      ),
+                    ],
+                  )
+                ])),
+          ),
+        )
     );
+    return displayedMap;
   }
 
   @override
   void dispose() {
     sub.cancel();
     super.dispose();
+  }
+
+  void switchTileUrl(int tyleUrlNum){
+   /// h = roads only
+   /// m = standard roadmap
+   /// p = terrain
+   /// r = somehow altered roadmap
+   /// s = satellite only
+   /// t = terrain only
+   /// y = hybrid
+
+    setState(() {
+      switch(tyleUrlNum){
+        case 0:
+          maptileUrl = 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}';     // Normal Google
+          subdomains = ['mt0', 'mt1', 'mt2','mt3'];
+          break;
+        case 5:
+          maptileUrl = 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';     // Satelite Google
+          subdomains = ['mt0', 'mt1', 'mt2','mt3'];
+          break;
+        case 2:
+          maptileUrl = 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}';   // hybrid Google
+          subdomains = ['mt0', 'mt1', 'mt2','mt3'];
+          break;
+        case 3:
+          maptileUrl = 'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}';     // terrain Google
+          subdomains = ['mt0', 'mt1', 'mt2','mt3'];
+          break;
+        case 4:
+          maptileUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png';     // OSM white
+          subdomains = ['a','b','c'];
+          break;
+        case 6:   // TODO: figure out how to use this
+          maptileUrl = 'https://suboticagis.rs/map/tile?map=2_karta&g=383_ortofoto_2008&i=JPEG&t={x}&l={y}&s={z}';
+          break;
+        case 1:
+          maptileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';    // OSM classic
+          subdomains = ['a','b','c'];
+          break;
+      }
+    });
   }
 
   Future<void> onTap(LatLng tapPos) async {
@@ -156,7 +185,7 @@ class _MapPageState extends State<MapPage> {
     mapConfig.mapZoom = mapPos.zoom;
   }
 
-  void setCenter(LatLng center, double zoom){
+  /*void setCenter(LatLng center, double zoom){
     mapController.move(center, zoom);
-  }
+  }*/
 }

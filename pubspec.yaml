@@ -26,8 +26,9 @@ dependencies:
   js: any
   #flutter_map:
   #  path: /home/foska/AndroidStudioProjects/flutter_map-master
-  flutter_map: ^0.9.0
-  map_controller: ^0.8.0
+  #flutter_map: ^0.9.0
+  flutter_map: ^0.11.0
+  map_controller: any #^0.8.0
   latlong: ^0.6.1
   flutter_html: ^0.8.2
   #@^1.2.1

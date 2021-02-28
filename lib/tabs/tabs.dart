@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/dataClasses/user.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/location/locationTest.dart';
+import 'package:mapTest/mapRelated/map.dart';
+import 'package:map_controller/map_controller.dart';
 
 import '../UIColors.dart';
 import '../main.dart';
@@ -69,7 +72,7 @@ Widget getTab(int tabNum) {
               Container(
                 margin: EdgeInsets.all(5),
                 child: FlutterSwitch(
-                    width: infoBrdSmall.fontSize * 2 * 1.3,
+               width: infoBrdSmall.fontSize * 2 * 1.3,
                     height: infoBrdSmall.fontSize * 1.3,
                     toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
                     activeColor: switchActive,
@@ -81,6 +84,13 @@ Widget getTab(int tabNum) {
                       if (user.locationEnabled) {
                         updatePos();
                       }
+
+                      activeMapTile++;
+                      if(activeMapTile>5){
+                        activeMapTile = 0;
+                      }
+                      mapTileSwitchController.add(activeMapTile);
+
                     }),
               ),
             ],

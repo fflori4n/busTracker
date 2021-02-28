@@ -22,7 +22,7 @@ class MobileUIState extends State<MobileUI> {
       } else {
         mobileMainView = new Stack(
           children: <Widget>[
-            MapPage(),
+            MapPage(mapTileSwitchController.stream),
             MapOverlay(),
           ],
         );
