@@ -63,22 +63,27 @@ class StationLabelWidget {
                           Expanded(
                             child: Row(
                               children: <Widget>[
-                                stationNumber == "0" ? Container(
-                                  width: totalHeight * 0.3,
-                                  child: Text(" "),                             // oh yeah.. very nice. good job me!
-                                ) : stationLetter(stationNumber),
+                                stationLetter(stationNumber),
                                 Expanded(
                                   flex: 3,
                                   child: Text(stationDisp.name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal)),// decoration: TextDecoration.lineThrough, decorationColor: Colors.red)),
                                 ),
-                                stationNumber == "0" ? Container() : GestureDetector(
-                                  onTap: () {
-                                    print('station number was' + selectedStations.indexOf(stationDisp).toString());
-                                    selectedStations.remove(stationDisp);
-                                    removeUnusedBusLines();
-                                  },
-                                  child: stationX(),
-                                )
+                                Container(
+                                  margin: EdgeInsets.only(right: 2),
+                                  child: FlatButton(
+                                    onPressed: () {
+                                      print('station number was' + selectedStations.indexOf(stationDisp).toString());
+                                      selectedStations.remove(stationDisp);
+                                      removeUnusedBusLines();
+                                    },
+                                    child: Icon(
+                                      Icons.clear, //: Icon.place,
+                                      color:Colors.white,
+                                      size: screenWidth/100,
+                                      semanticLabel: 'location',
+                                    ),//stationX(),
+                                  )
+                                ),
                               ],
                             )
                           ),

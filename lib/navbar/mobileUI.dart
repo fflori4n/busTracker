@@ -103,9 +103,6 @@ class MobileUIState extends State<MobileUI> {
 
                   ),
                 ),
-
-
-
               ],
             ),
           ],

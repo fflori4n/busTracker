@@ -84,13 +84,6 @@ Widget getTab(int tabNum) {
                       if (user.locationEnabled) {
                         updatePos();
                       }
-
-                      activeMapTile++;
-                      if(activeMapTile>5){
-                        activeMapTile = 0;
-                      }
-                      mapTileSwitchController.add(activeMapTile);
-
                     }),
               ),
             ],
@@ -152,6 +145,27 @@ Widget getTab(int tabNum) {
                   ),
                   Spacer(),
                   busLineCityStr.contains('su') ? Text('Subotica', style: infoBrdSmall,) : Text('Novi Sad', style: infoBrdSmall,),
+                ],
+              )),
+        ),
+        Container(
+          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+          child: GestureDetector(
+              onTap: () {
+                activeMapTile++;
+                if(activeMapTile>5){
+                  activeMapTile = 0;
+                }
+                mapTileSwitchController.add(activeMapTile);
+              },
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'map style:',
+                    style: infoBrdSmall,
+                  ),
+                  Spacer(),
+                  Text(mapProviderName, style: infoBrdSmall,),
                 ],
               )),
         ),

@@ -8,6 +8,7 @@ import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/navbar/statusbar.dart';
 import 'package:mapTest/tabs/tabs.dart';
 import 'package:mapTest/uiWidgets/dispStation.dart';
+import 'package:mapTest/uiWidgets/tabIconRow.dart';
 import 'dataClasses/Bus.dart';
 import 'filters.dart';
 
@@ -61,172 +62,10 @@ class BuletinState extends State<Buletin> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only( left: 10, right: isMobile ? screenWidth/12 : 0.3 * screenWidth/12),
-                     //
-                      child: Row(
-                        children: <Widget>[
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: (){
-                                if(user.tabOpen == 5){
-                                  user.tabOpen = 0;
-                                }
-                                else{
-                                  user.tabOpen = 5;
-                                }
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                transform: user.tabOpen == 5 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(46, 46, 46, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                ),
-                                child: Text("Redvožnje",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: (){
-                                if(user.tabOpen == 1){
-                                  user.tabOpen = 0;
-                                }
-                                else{
-                                  user.tabOpen = 1;
-                                }
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                transform: user.tabOpen == 1 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(46, 46, 46, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                ),
-                                child: Text("Favoriti",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: (){
-                                if(user.tabOpen == 2){
-                                  user.tabOpen = 0;
-                                }
-                                else{
-                                  user.tabOpen = 2;
-                                }
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                transform: user.tabOpen == 2 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(46, 46, 46, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                ),
-                                child: Text("Navigacija",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: (){
-                                if(user.tabOpen == 3){
-                                  user.tabOpen = 0;
-                                }
-                                else{
-                                  user.tabOpen = 3;
-                                }
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                transform: user.tabOpen == 3 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(46, 46, 46, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                ),
-                                child: Text("Podešavanja",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: (){
-                                if(user.tabOpen == 4){
-                                  user.tabOpen = 0;
-                                }
-                                else{
-                                  user.tabOpen = 4;
-                                }
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                transform: user.tabOpen == 4 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                                width: isMobile ? screenWidth/6 : 0.3 * screenWidth/6,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(46, 46, 46, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                ),
-                                child: Text("#filteri",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
-                              ),
-                            ),
-                          ),
-                          /*GestureDetector(
-                              onTap: () {
-                                mapController.move( mapController.center, mapController.zoom + 1); // TODO: ok zoomer?,
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(left: 10, right: 2,),
-                                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                width: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
-                                //height: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(16, 16, 19, 1),
-                                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                  border: Border.all(width: 1, color: Colors.white),
-                                ),
-                                child: Text("+",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
-
-                              ),
-                            ),
-                          GestureDetector(
-                            onTap: (){
-                              mapController.move( mapController.center, mapController.zoom - 1); // TODO: ok zoomer,
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(left: 2, right: 3,),
-                              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                              width: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
-                              //height: isMobile ? screenWidth/15 : 0.3 * screenWidth/15,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(16, 16, 19, 1),
-                                borderRadius: BorderRadius.all(const Radius.circular(5)),
-                                border: Border.all(width: 1, color: Colors.white),
-                              ),
-                              child: Text("-",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
-
-                            ),
-                          ),*/
-
-
-                        ],
-                      ),
-                    )
-                  ],
+                      padding: EdgeInsets.only( left: 10, right: 10),//right: isMobile ? screenWidth/30 : 0.3 * screenWidth/30),
+                      //margin: EdgeInsets.only(left: 8, right: 8),
+                      child: showTabIconRow(),
+                  ),]
                 ),
                 showTabs(user),
                 Container(
