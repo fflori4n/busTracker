@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong/latlong.dart';
 
 import '../UIColors.dart';
 import '../main.dart';
@@ -123,7 +124,7 @@ Widget showTabIconRow(){
                 },
                 child: Center(
                   child: Icon(
-                    user.locationEnabled ? Icons.place : Icons.not_listed_location, //: Icon.place,
+                    user.locationEnabled ?  (user.position == LatLng(-1,-1) ? Icons.place : Icons.gps_fixed) : Icons.not_listed_location, //: Icon.place,
                     color: user.locationEnabled ? Colors.white : baseYellow,
                     size: screenWidth/100,
                     semanticLabel: 'location',
