@@ -42,6 +42,7 @@ class MapPageState extends State<MapPage> {
 
   @override
   void initState() {
+    mapTileSwitchController = new StreamController<int>();
     widget.stream.listen((num) { switchTileUrl(num); });
     statefulMapController = StatefulMapController(mapController: mapController);
 

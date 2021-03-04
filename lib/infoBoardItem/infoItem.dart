@@ -14,11 +14,12 @@ import 'package:mapTest/infoBoardItem/stationSign.dart';
 import 'package:mapTest/UIColors.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
+import 'package:mapTest/uiWidgets/feedBackThumbs.dart';
 
 import '../main.dart';
 import 'dart:js' as js;
 
-Widget drawBuletinitem(BuildContext context, Bus bus) {
+Widget drawBuletinitem(BuildContext context, Bus bus, double maxWidth) {
   //, //Station station){
 
   if (!bus.displayedOnSchedule) {
@@ -219,7 +220,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus) {
                   ),
                 ],
               ),
-              bus.isHighLighted ? extrainfo(bus) : Container(), // DBG
+              bus.isHighLighted ? extrainfo(bus, maxWidth) : Container(), // DBG
             ]),
           ),
         ],
@@ -331,17 +332,35 @@ Widget drawLegend(BuildContext context) {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Container(
-                              child: indicator(Color.fromRGBO(16, 16, 19, 1),
+                              child: Center(
+                            child: Icon(
+                              Icons.near_me,
+                              color: Colors.white,
+                              size: infoBrdSmall.fontSize,
+                              semanticLabel: 'navigation',
+                              ),
+                                /*indicator(Color.fromRGBO(16, 16, 19, 1),
                                   baseWhite, baseBlack, true),
                               margin: EdgeInsets.only(
-                                  top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+                                  top: 0, bottom: 1.5, left: 6.0, right: 3.0),*/
+
+                              ),
                               height: infoBrdSmall.fontSize,
                             ),
+
                             Container(
-                              child: indicator(Color.fromRGBO(16, 16, 19, 1),
+                              child: Center(
+                                child:Icon(
+                                  Icons.accessible_forward,
+                                  color: Colors.white,
+                                  size: infoBrdSmall.fontSize,
+                                  semanticLabel: 'accessibility',
+                                ),
+                              ),
+                              /*indicator(Color.fromRGBO(16, 16, 19, 1),
                                   baseWhite, baseBlack, true),
                               margin: EdgeInsets.only(
-                                  top: 0, bottom: 1.5, left: 6.0, right: 3.0),
+                                  top: 0, bottom: 1.5, left: 6.0, right: 3.0),*/
                               height: infoBrdSmall.fontSize,
                             ),
                           ],
@@ -357,7 +376,7 @@ Widget drawLegend(BuildContext context) {
   );
 }
 
-Widget extrainfo(Bus bus) {
+Widget extrainfo(Bus bus, double maxWidth) {
   DateTime now = new DateTime.now();
   Time iStart = (Time(now.hour, now.minute, now.second) + bus.eTA);
   Time iEnd = (Time(now.hour, now.minute, now.second) + bus.eTA + bus.expErMarg);
@@ -365,77 +384,36 @@ Widget extrainfo(Bus bus) {
   String intervEnd = iEnd.hours.toString().padLeft(2,'0') + ':' + iEnd.mins.toString().padLeft(2,'0');
   return Container(
     padding: EdgeInsets.only(top: 5, bottom: 5),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Row(
       children: [
-        Text(
-          'Stanica : ' + selectedStations.elementAt(bus.stationNumber).name,
-          style: busDescrSmall,
-          textAlign: TextAlign.left,
-        ),
-        Text(
-          'Očekivani dolazak između ' + intervStart + ' i ' + intervEnd,
-          style: busDescrSmall,
-          textAlign: TextAlign.left,
-        ),
-        InkWell(
-          child: Text(
-            'pogledajte mesto na google maps',
-            style: busDescrSmallLink,
-            textAlign: TextAlign.left,
-          ),
-          onTap: () {
-            js.context.callMethod('open', ['https://www.google.com/maps/search/?api=1&query=' + selectedStations.elementAt(bus.stationNumber).pos.latitude.toString() + ',' + selectedStations.elementAt(bus.stationNumber).pos.longitude.toString() + '&z=14']);
-          },
-        ),
-        bus.reported ? Text(
-          'Poslata je Vasa prijava. Hvala.',
-          style: busDescrSmall,
-          textAlign: TextAlign.left,
-        ) : Container(),
-        bus.displayedOnMap && !bus.reported ? Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextButton(
-              onPressed: () {
-                bus.reported =  true;
-                // TODO: implement feedback POST
-              },
-              child: Container(
-                margin: EdgeInsets.only(left: 0, right: 10, top: 10, bottom: 5),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-                ),
-                child: Text(
-                  'Stigao je Bus!',
-                  style: busDescrSmall,
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            Text(
+              'Stanica : ' + selectedStations.elementAt(bus.stationNumber).name,
+              style: busDescrSmall,
+              textAlign: TextAlign.left,
             ),
-            TextButton(
-              onPressed: () {
-                bus.reported =  true;
-                // TODO: implement feedback POST
-              },
-              child: Container(
-                margin: EdgeInsets.only(left: 0, right: 10, top: 10, bottom: 5),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-                ),
-                child: Text(
-                  'Prijavi grešku!',
-                  style: busDescrSmall,
-                  textAlign: TextAlign.center,
-                ),
+            Text(
+              'Očekivani dolazak između ' + intervStart + ' i ' + intervEnd,
+              style: busDescrSmall,
+              textAlign: TextAlign.left,
+            ),
+            InkWell(
+              child: Text(
+                'pogledajte mesto na google maps',
+                style: busDescrSmallLink,
+                textAlign: TextAlign.left,
               ),
+              onTap: () {
+                js.context.callMethod('open', ['https://www.google.com/maps/search/?api=1&query=' + selectedStations.elementAt(bus.stationNumber).pos.latitude.toString() + ',' + selectedStations.elementAt(bus.stationNumber).pos.longitude.toString() + '&z=14']);
+              },
             ),
           ],
-        ) : Container(),
+        ),
+        Spacer(),
+        feedBackThumbs(bus,maxWidth),
       ],
-    ),
+    )
   );
 }

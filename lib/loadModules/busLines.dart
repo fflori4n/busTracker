@@ -19,7 +19,6 @@ List<BusLine> inactiveLines = [];
 
 Future loadLinesFromJson(List<Station> selectedStation, final String loadCityStr) async{
   user.progStatusString = 'Loading bus lines.';
-  print('loading bus lines');
   try {
     String rawBLineData = await rootBundle.loadString("assets/busLines.json");
     var stationObjsJson = jsonDecode(rawBLineData)[loadCityStr] as List;
@@ -28,11 +27,9 @@ Future loadLinesFromJson(List<Station> selectedStation, final String loadCityStr
       selectedStation.lines.clear();
 
       for(var objJson in stationObjsJson) {
-        //print(objJson);
         try{
           final String busLineName = objJson['name'] as String;
           if(!(selectedStation.servedLines.contains(busLineName))){
-            if(verbose){print('skipping' + busLineName);}  //DBG
             continue;
           }
 
@@ -47,10 +44,6 @@ Future loadLinesFromJson(List<Station> selectedStation, final String loadCityStr
         }
       }
     }
-
-   /* for (var busline in nsBusLines){
-      print(busline.name + ' ' + busline.description);
-    }*/
 
     user.progStatusString = '';
     return;
@@ -76,7 +69,6 @@ Color getLineColor(BusLine newBusline){
   hue = 303 - 108 + rand2.nextInt(300).toDouble();//rand2.nextInt(216).toDouble();
   hue = hue % 360;//(hue + hueVariation) % 360;
 
-  if(verbose){print(hue.toString() + sat.toString() + light.toString());}
   HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);
   return newColor.toColor();
 }

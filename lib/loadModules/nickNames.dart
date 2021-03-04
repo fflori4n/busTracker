@@ -15,7 +15,7 @@ Future loadNickName(Bus busRef) async{
     String digest = sha1.convert(utf8.encode(hashIn)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
     var rand = new Random(int.parse(digest));
     //print(hashIn);
-    print(rand.nextInt(1));
+    //print(rand.nextInt(1));
 
     String fileName = 'muskaImena.txt';
     if(rand.nextInt(2) == 0){

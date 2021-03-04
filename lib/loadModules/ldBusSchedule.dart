@@ -50,7 +50,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
     List<String> spaceSep = line.trim().split(' ');
     for(int i =1; i<spaceSep.length ; i++){
       if(spaceSep[i][0] == '#'){
-        print('skip');
+        //print('skip');
         continue;
       }
       Bus newBus = new Bus.empty();
@@ -64,7 +64,8 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
         DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
 
         if(now.difference(startDateTime).inMinutes > 120){
-          print('bus gone!'); // TODO test me and add max load limit
+          //print('bus gone!'); // TODO test me and add max load limit
+          continue;
         }
         else{
           newBus.displayedOnMap = false;

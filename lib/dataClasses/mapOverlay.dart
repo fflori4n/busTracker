@@ -10,7 +10,6 @@ class MapCanvas{
   }
 
   static Offset getOverlayOffset(Station station, Size size){
-    print('getOvarlayOffset!!');
     double y = size.height * (station.pos.latitude - mapController.bounds.northWest.latitude)/(mapController.bounds.southEast.latitude - mapController.bounds.northWest.latitude);
     if(y < 0 || y> size.height){
       return Offset(-1,0);

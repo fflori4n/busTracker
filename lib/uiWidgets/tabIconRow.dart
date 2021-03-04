@@ -7,10 +7,22 @@ import 'package:latlong/latlong.dart';
 import '../UIColors.dart';
 import '../main.dart';
 
-Widget showTabIconRow(){
+Widget showTabIconRow(double maxWidth){
+  print('screenwidfth = ' + maxWidth.toString());
+  maxWidth*= 0.85;
   return Row(
       children: <Widget>[
-        Tooltip(
+
+        Container(
+          transform: user.tabOpen == 5 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+          padding: EdgeInsets.all(5),
+          height:  maxWidth/10,
+          width: maxWidth/4.5,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(46, 46, 46, 1),
+            borderRadius: BorderRadius.all(const Radius.circular(5)),
+          ),
+          child: Tooltip(
           message: 'Red Voznje',
           child: FlatButton(
               onPressed: (){
@@ -21,17 +33,7 @@ Widget showTabIconRow(){
                   user.tabOpen = 5;
                 }
               },
-              child: Container(
-                transform: user.tabOpen == 5 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.zero,
-                height: screenWidth/50,
-                //width: screenWidth/50,
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(46, 46, 46, 1),
-                  borderRadius: BorderRadius.all(const Radius.circular(5)),
-                ),
-                child: Center(
+              child: Center(
                   child: Text("Red Voznje",style: TextStyle( color: Colors.white), textAlign: TextAlign.center,),
 
                 ),
@@ -39,10 +41,19 @@ Widget showTabIconRow(){
           ),
         ),
 
-        Tooltip(
+        Container(
+          transform: user.tabOpen == 4 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
+          padding: EdgeInsets.all(5),
+          margin: EdgeInsets.only(left: maxWidth/50,),
+          height:  maxWidth/10,
+          width: maxWidth/4.5,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(46, 46, 46, 1),
+            borderRadius: BorderRadius.all(const Radius.circular(5)),
+          ),
+          child: Tooltip(
           message: '#filteri',
-          child: Container(
-            child: FlatButton(
+          child: FlatButton(
                 onPressed: (){
                   if(user.tabOpen == 4){
                     user.tabOpen = 0;
@@ -51,30 +62,19 @@ Widget showTabIconRow(){
                     user.tabOpen = 4;
                   }
                 },
-                child: Container(
-                  transform: user.tabOpen == 4 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-                  padding: EdgeInsets.all(5),
-                  height: screenWidth/50,
-                  //width: screenWidth/50,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(46, 46, 46, 1),
-                    borderRadius: BorderRadius.all(const Radius.circular(5)),
-                  ),
-                  child: Center(
+                child: Center(
                     child: Text("#filteri",style: TextStyle( color: Colors.white),textAlign: TextAlign.center,),
-
                   ),
                 )
             ),
-          ),
         ),
         Spacer(),
 
         Container(
-          margin: EdgeInsets.only(left: screenWidth/50 * 0.15,),
+          margin: EdgeInsets.only(left: maxWidth/50,),
           transform: user.tabOpen == 1 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-          height: screenWidth/50,
-          width: screenWidth/50,
+          height: maxWidth/10,
+          width: maxWidth/10,
           decoration: BoxDecoration(
             color: Color.fromRGBO(46, 46, 46, 1),
             borderRadius: BorderRadius.all(const Radius.circular(5)),
@@ -94,7 +94,7 @@ Widget showTabIconRow(){
                   child: Icon(
                     Icons.favorite,
                     color: Colors.white,
-                    size: screenWidth/100,
+                    size: maxWidth/20,
                     semanticLabel: 'favourites',
                   ),
                 ),
@@ -103,10 +103,10 @@ Widget showTabIconRow(){
         ),
 
         Container(
-          margin: EdgeInsets.only(left: screenWidth/50 * 0.15,),
+          margin: EdgeInsets.only(left: maxWidth/50,),
           transform: user.tabOpen == 2 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-          height: screenWidth/50,
-          width: screenWidth/50,
+          height: maxWidth/10,
+          width: maxWidth/10,
           decoration: BoxDecoration(
             color: Color.fromRGBO(46, 46, 46, 1),
             borderRadius: BorderRadius.all(const Radius.circular(5)),
@@ -126,7 +126,7 @@ Widget showTabIconRow(){
                   child: Icon(
                     user.locationEnabled ?  (user.position == LatLng(-1,-1) ? Icons.place : Icons.gps_fixed) : Icons.not_listed_location, //: Icon.place,
                     color: user.locationEnabled ? Colors.white : baseYellow,
-                    size: screenWidth/100,
+                    size: maxWidth/20,
                     semanticLabel: 'location',
                   ),
                 ),
@@ -135,10 +135,10 @@ Widget showTabIconRow(){
         ),
 
         Container(
-          margin: EdgeInsets.only(left: screenWidth/50 * 0.15,),
+          margin: EdgeInsets.only(left: maxWidth/50,),
           transform: user.tabOpen == 3 ? Matrix4.translationValues(0.0, 8.0, 0.0) : Matrix4.translationValues(0.0, -5.0, 0.0),
-          height: screenWidth/50,
-          width: screenWidth/50,
+          height: maxWidth/10,
+          width: maxWidth/10,
           decoration: BoxDecoration(
             color: Color.fromRGBO(46, 46, 46, 1),
             borderRadius: BorderRadius.all(const Radius.circular(5)),
@@ -158,8 +158,8 @@ Widget showTabIconRow(){
                   child: Icon(
                     Icons.settings, //: Icon.place,
                     color:Colors.white,
-                    size: screenWidth/100,
-                    semanticLabel: 'location',
+                    size: maxWidth/20,
+                    semanticLabel: 'settings',
                   ),
                 ),
               )

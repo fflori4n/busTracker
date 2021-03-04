@@ -7002,14 +7002,6 @@
     },
     {
       "name" : "SVILOŠ III-BUNAR",
-      "lat" : 19.5878658776,
-      "lon" : 45.1727904079,
-      "zone" : "VIII",
-      "served_lines" : ["84A", "84B"],
-      "uid" : "7595ebba747ac0fb37c2e747c8c5e62a"
-    },
-    {
-      "name" : "SVILOŠ III-BUNAR",
       "lat" : 19.5879255866,
       "lon" : 45.1729277328,
       "zone" : "VIII",
@@ -7289,14 +7281,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "00b7b0a95da009ed3347baef764db0c9"
-    },
-    {
-      "name" : "Lifka",
-      "lat" : 19.6600208,
-      "lon" : 46.0984399,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0705c5f5a7112e8d5ebb2418d3ab8aec"
     },
     {
       "name" : "Preradovićeva",
@@ -7667,14 +7651,6 @@
       "uid" : "877366d484a54ed9d949fcacf26f1544"
     },
     {
-      "name" : "Lifka",
-      "lat" : 19.6598276,
-      "lon" : 46.0985422,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a9e20fcb2ea0b7be773e8c17bccf23ed"
-    },
-    {
       "name" : "Preradovićeva",
       "lat" : 19.6567217,
       "lon" : 46.0975936,
@@ -7687,7 +7663,7 @@
       "lat" : 19.6531409,
       "lon" : 46.0995763,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A","3B"],
       "uid" : "28f5283be64413e553952a833fe467c4"
     },
     {
@@ -7699,11 +7675,19 @@
       "uid" : "84c18b87118052def6b7fc6996dc8f17"
     },
     {
+      "name" : "Univerexport",
+      "lat" : 19.6430504,
+      "lon" : 46.1017504,
+      "zone" : "1",
+      "served_lines" : ["3A"],
+      "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
+    },
+    {
       "name" : "Drvara R",
       "lat" : 19.6430504,
       "lon" : 46.1017504,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3B"],
       "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
     },
     {
@@ -7711,7 +7695,7 @@
       "lat" : 19.6391451,
       "lon" : 46.1027938,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A", "3B"],
       "uid" : "f1a12d31304bf55a42d66d50557ea40b"
     },
     {
@@ -7719,7 +7703,7 @@
       "lat" : 19.634293,
       "lon" : 46.1027491,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A","3B"],
       "uid" : "d942360341c1cc73ffc4aa7453a6178c"
     },
     {
@@ -7727,7 +7711,7 @@
       "lat" : 19.6315598,
       "lon" : 46.1027343,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A","3B"],
       "uid" : "7ed887b76d9d305f44a30c9f91b1687e"
     },
     {
@@ -8051,11 +8035,11 @@
       "uid" : "743be9653c2538e9c75981ba0d3a1ebe"
     },
     {
-      "name" : "Lifka",
+      "name" : "Trg Žrtava fašizma",
       "lat" : 19.6598974,
       "lon" : 46.0985534,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A", "1AB"],
       "uid" : "77583d3b4dbe7dfe3033e2890e7c056d"
     },
     {
@@ -8363,14 +8347,6 @@
       "uid" : "0c27f4c83f91973c9dfd025b6c09aa34"
     },
     {
-      "name" : "Lifka",
-      "lat" : 19.6596533,
-      "lon" : 46.0984771,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5a1f399a245230bc4284d09ddc9bbcc4"
-    },
-    {
       "name" : "Sarvaš",
       "lat" : 19.6567002,
       "lon" : 46.0966693,
@@ -8593,14 +8569,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "ab13cf7a9d7cd406811f640e5b16d30d"
-    },
-    {
-      "name" : "Lifka",
-      "lat" : 19.6597257,
-      "lon" : 46.0985069,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3f2bb5d5d93b6b1676f7a5ff2cc1c116"
     },
     {
       "name" : "Široki progon",
@@ -8913,14 +8881,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "25751e2501a83b0900e4b46b4dd026fa"
-    },
-    {
-      "name" : "Lifka",
-      "lat" : 19.6597767,
-      "lon" : 46.0985217,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "suPapirna",

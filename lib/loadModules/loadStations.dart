@@ -19,13 +19,11 @@ List<Station> selectedStations = [new Station.namePos(paperStationName,LatLng(45
 
 Future<void> loadStationsFromJson( final String loadCityStr) async {
   user.progStatusString = 'Loading stations.';
-  //print('loading staions');
   try {
     String rawStationsData = await rootBundle.loadString("assets/stations.json");
 
     var stationObjsJson = jsonDecode(rawStationsData)[loadCityStr] as List;
     for(var objJson in stationObjsJson) {
-      print(objJson);
       try{
         stationList.add(Station.fromJson(objJson));
       }
@@ -69,13 +67,11 @@ selectClosest2Click(LatLng click){
 }
 
 void calcDistFromLineStart(){ // calculates distace from lineStart for active station
-  print('DBG -- loading selectedStations distances');
 
   /// calculate distance from line start for each served line and add them to [selectedStation.distFromLineStart] list
   for(Station selectedStation in selectedStations){
     for(String servedLine in selectedStation.servedLines){
       for(BusLine line in nsBusLines){
-       // print(line.name + ' - - ' + servedLine);
         if(line.name == servedLine){
           int i = selectedStation.servedLines.indexOf(servedLine);
           try{

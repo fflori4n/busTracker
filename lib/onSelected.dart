@@ -1,7 +1,5 @@
 
 import 'package:mapTest/session/shared_pref.dart';
-import 'dataClasses/Bus.dart';
-import 'dataClasses/BusLine.dart';
 import 'loadModules/busLines.dart';
 import 'loadModules/busLocator.dart';
 import 'loadModules/ldBusSchedule.dart';
@@ -16,10 +14,7 @@ Future<void> onStationSelected() async {
     for(int i=0; i< selectedStation.servedLines.length; i++){                   // init line from dist to be safe
       selectedStation.distFromLineStart.add(0.0);
     }
-    //print('DBG DBG -- ' + selectedStation.servedLines.toString());
   }
-
-  //await loadLinesFromFile(selectedStations,false);                            /// Load busline points for active bus lines
   ///
   
   await loadLinesFromJson(selectedStations, busLineCityStr);                    // DBG TODO:

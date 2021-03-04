@@ -16,7 +16,6 @@ Position getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   int i =0;
   for(;i<pointList.length;i++){
     if(i+2 >= pointList.length){   // path is not long enough
-      print('longer than path!');
       return new Position(LatLng(-1,-1),0);}
     distSum += normLoc(pointList[i], pointList[i+1]);
     if(distSum > distance){
@@ -27,13 +26,11 @@ Position getPOnPolyLineByDist (double distance, List<LatLng> polyLine){
   double sectionDist = normLoc(pointList[i], pointList[i+1]);
   double sectCompleted = 1 - (distance / sectionDist);
 
-  //print("dbg: next point " + distance.round().toString() + ", " + (sectCompleted*100).round().toString() + '%');
   LatLng newPos = LatLng(pointList[i].latitude + sectCompleted*(pointList[i+1].latitude-pointList[i].latitude), pointList[i].longitude + sectCompleted*(pointList[i+1].longitude-pointList[i].longitude));
   if(pointList[i] != prevSectionP){                                             //angle between i and i+1 points
     // TODO: test if aprox is worth implementing for atan2
     heading = atan2(pointList[i+1].latitude - pointList[i].latitude, pointList[i+1].longitude - pointList[i].longitude);
     prevSectionP = pointList[i];
-    //print('calculating heading');
   }
   return new Position(newPos,heading);
 }
@@ -47,7 +44,7 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
   for(int i = 0; i<(pointList.length - 1); i++){
     LatLng projection = pProjectionToLine(pointList[i], pointList[i+1], point);
     if(projection == null){
-      print("can't calculate projection!");
+      print("[  ER  ] can't calculate projection!");
       continue;
     }
     double dist = normLoc(projection, point);
@@ -57,8 +54,6 @@ double distToPprojection(LatLng point, List<LatLng> polyLine){   // not good nee
       mindex = i;
     }
   }
-  //addDBGMarker(minPoint); // DBG
-  //pointList.insert((mindex + 1), minPoint);
   pointList.insert((mindex+1), minPoint);
   double distSum = 0;
 

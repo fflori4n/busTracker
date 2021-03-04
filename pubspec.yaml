@@ -19,21 +19,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    #sdk: ">=2.6.0 <3.0.0"
-  #google_maps: ^3.4.1
-  #google_maps_flutter: ^0.5.21+8
   timer_builder: any
   js: any
-  #flutter_map:
-  #  path: /home/foska/AndroidStudioProjects/flutter_map-master
-  #flutter_map: ^0.9.0
   flutter_map: ^0.11.0
   map_controller: any #^0.8.0
   latlong: ^0.6.1
   flutter_html: ^0.8.2
-  #@^1.2.1
   path_provider: 1.6.14
-  #path_provider: ^1.6.7
   crypto: ^2.1.4
   google_fonts: any
   auto_size_text: ^2.1.0

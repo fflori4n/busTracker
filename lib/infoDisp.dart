@@ -64,7 +64,7 @@ class BuletinState extends State<Buletin> {
                     Container(
                       padding: EdgeInsets.only( left: 10, right: 10),//right: isMobile ? screenWidth/30 : 0.3 * screenWidth/30),
                       //margin: EdgeInsets.only(left: 8, right: 8),
-                      child: showTabIconRow(),
+                      child: showTabIconRow(isMobile ? screenWidth : width * wScaleFactor),
                   ),]
                 ),
                 showTabs(user),
@@ -72,7 +72,7 @@ class BuletinState extends State<Buletin> {
                   child: drawLegend(context),
                 ),
                 Expanded(
-                  child: getListView(context),
+                  child: getListView(context, width),
                 ),
               ],
             )),
@@ -81,7 +81,7 @@ class BuletinState extends State<Buletin> {
   }
 }
 
-Widget getListView(context) {
+Widget getListView(context, double maxWidth) {
   // TODO: this is slow, temp fix
   List<Bus> displayedBusList = [];
   if(busFilters.refreshFlg){
@@ -99,7 +99,7 @@ Widget getListView(context) {
   return ListView.separated(// lazy listview do not render stuff that isn't visible
     itemCount: displayedBusList.length,
     itemBuilder: (BuildContext context, int index) {
-      return drawBuletinitem(context, displayedBusList[index]);//, activeStation);
+      return drawBuletinitem(context, displayedBusList[index], maxWidth);//, activeStation);
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );

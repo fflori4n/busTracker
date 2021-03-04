@@ -27,36 +27,6 @@ const Color switchActive= Color.fromRGBO(45, 160, 230,0.8);                     
 const Color switchInactive= Color(0xff121314);                        // #5578BD
 const Color switchToggle= Color(0xffffffff);                        // #5578BD
 
-/*double setSize(double devSize, {int devScreenwidth= 1366}){
-  double newWidth = devSize * (screenWidth/devScreenwidth);
-
-  print('screen:' + screenWidth.toString());
-  print('in:' + devSize.toString() + ' out:' + newWidth.toString());
-  print(devScreenwidth/screenWidth);
-  return newWidth.toDouble();
-}*/
-
-/*Color giveMeColor(String seedStr){
-  String digest = sha1.convert(utf8.encode(seedStr.replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';}))).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
-  String digest2 = sha1.convert(utf8.encode(seedStr)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
-  var rand = new Random(int.parse(digest));
-  var rand2 = new Random(int.parse(digest2));
-  // #458BFA
-  double hue = 45; //new Random(int.parse(digest));
-  //double hueVariation = 25 * rand2.nextInt(5).toDouble();
-  double satVariation = 0.1 * rand2.nextInt(5).toDouble() - 0.5;
-  double sat = 110;
-  double light = 0.5; // const
-  //r = min + rnd.nextInt(max - min);
-  sat = (sat -50 + rand.nextInt(70+50) + satVariation)/255;
-  hue = 303 - 108 + rand.nextInt(216).toDouble();
-  hue = hue % 360;//(hue + hueVariation) % 360;
-
-  print(hue.toString() + sat.toString() + light.toString());
-  HSLColor newColor = new HSLColor.fromAHSL(1, hue, sat, light);
-  return newColor.toColor();
-}*/
-
 TextStyle listText =  GoogleFonts.robotoCondensed(
     fontSize: 15,
 
