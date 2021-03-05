@@ -7287,7 +7287,7 @@
       "lat" : 19.6569443,
       "lon" : 46.0974132,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A"],
       "uid" : "11c4df5d086f2adef976a526fea55762"
     },
     {
@@ -7627,11 +7627,11 @@
       "uid" : "298457e06e0b5788f8b7df267fd90e47"
     },
     {
-      "name" : "Patrija",
+      "name" : "Hotel Patrija",
       "lat" : 19.6692529,
       "lon" : 46.0994163,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A"],
       "uid" : "ee9895abb6e82e710f73ee91b4b5e811"
     },
     {
@@ -7643,14 +7643,6 @@
       "uid" : "0bce92f47466858682bf15f51f15be21"
     },
     {
-      "name" : "Matije Gupca",
-      "lat" : 19.6625045,
-      "lon" : 46.0972737,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "877366d484a54ed9d949fcacf26f1544"
-    },
-    {
       "name" : "Preradovićeva",
       "lat" : 19.6567217,
       "lon" : 46.0975936,
@@ -7659,7 +7651,7 @@
       "uid" : "179fe1b8c87b3f86c0d40831efb70a52"
     },
     {
-      "name" : "Bajski put (Sadecki)",
+      "name" : "Bajski put (Sadecki) - Trg Kralja Tomislava",
       "lat" : 19.6531409,
       "lon" : 46.0995763,
       "zone" : "1",
@@ -7667,41 +7659,49 @@
       "uid" : "28f5283be64413e553952a833fe467c4"
     },
     {
-      "name" : "OŠ Đuro Salaj",
-      "lat" : 19.6477282,
-      "lon" : 46.1005788,
+      "name" : "Bajski put - Stevana Mokranjca",
+      "lat" : 19.647731358041387,
+      "lon" : 46.1005658810723,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A"],
+      "uid" : "84c18b87118052def6b7fc6996dc8f17"
+    },
+    {
+      "name" : "OŠ Đuro Salaj",
+      "lat" : 19.648310715188604,
+      "lon" : 46.100379897803954,
+      "zone" : "1",
+      "served_lines" : ["3B"],
       "uid" : "84c18b87118052def6b7fc6996dc8f17"
     },
     {
       "name" : "Univerexport",
-      "lat" : 19.6430504,
-      "lon" : 46.1017504,
+      "lat" : 19.643150145043947,
+      "lon" : 46.101681767507905,
       "zone" : "1",
       "served_lines" : ["3A"],
       "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
     },
     {
-      "name" : "Drvara R",
-      "lat" : 19.6430504,
-      "lon" : 46.1017504,
+      "name" : "Drvara-Gajeva",
+      "lat" : 19.64389043473206,
+      "lon" : 46.10137676079174,
       "zone" : "1",
       "served_lines" : ["3B"],
       "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
     },
     {
       "name" : "Bajski put-Dom",
-      "lat" : 19.6391451,
-      "lon" : 46.1027938,
+      "lat" : 19.639534527291875,
+      "lon" : 46.10270092405232,
       "zone" : "1",
       "served_lines" : ["3A", "3B"],
       "uid" : "f1a12d31304bf55a42d66d50557ea40b"
     },
     {
       "name" : "Jasenovačka",
-      "lat" : 19.634293,
-      "lon" : 46.1027491,
+      "lat" : 19.63471727990113,
+      "lon" : 46.102686045990076,
       "zone" : "1",
       "served_lines" : ["3A","3B"],
       "uid" : "d942360341c1cc73ffc4aa7453a6178c"
@@ -7859,22 +7859,6 @@
       "uid" : "0e0f0390ceddd7da9787fdecd9869aec"
     },
     {
-      "name" : "Patrija",
-      "lat" : 19.6690893,
-      "lon" : 46.0993717,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "39ad1339c79967847b2e20dcd21be518"
-    },
-    {
-      "name" : "Pošta",
-      "lat" : 19.6643123,
-      "lon" : 46.0973705,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "76eec0a83bef6523261851a97b5ff0f8"
-    },
-    {
       "name" : "Politehnička škola",
       "lat" : 19.662255,
       "lon" : 46.0966972,
@@ -8011,35 +7995,19 @@
       "uid" : "78cccd4304ce1044d8816acdc1c2282f"
     },
     {
-      "name" : "Patrija",
-      "lat" : 19.6691376,
-      "lon" : 46.0993829,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "beec1ed58b9523a8af38cbe93d39c760"
-    },
-    {
-      "name" : "Pošta",
-      "lat" : 19.6643391,
-      "lon" : 46.0973891,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "109eca13a2bc4488b2a01adbda743288"
-    },
-    {
-      "name" : "Matije Gupca",
-      "lat" : 19.6624347,
-      "lon" : 46.0973482,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "743be9653c2538e9c75981ba0d3a1ebe"
-    },
-    {
-      "name" : "Trg Žrtava fašizma",
-      "lat" : 19.6598974,
-      "lon" : 46.0985534,
+      "name" : "Trg Žrtava fašizma (Lifka)",
+      "lat" : 19.660026604165655,
+      "lon" : 46.098415876199205,
       "zone" : "1",
       "served_lines" : ["3A", "1AB"],
+      "uid" : "77583d3b4dbe7dfe3033e2890e7c056d"
+    },
+    {
+      "name" : "Lifka",
+      "lat" : 19.660144621362306,
+      "lon" : 46.09835635930087,
+      "zone" : "1",
+      "served_lines" : ["3B", "1AA"],
       "uid" : "77583d3b4dbe7dfe3033e2890e7c056d"
     },
     {
@@ -8169,22 +8137,6 @@
       "zone" : "1",
       "served_lines" : [""],
       "uid" : "3c886cf3df79f6066c1b53913cbd561d"
-    },
-    {
-      "name" : "Patrija",
-      "lat" : 19.6691939,
-      "lon" : 46.0994071,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "151c6b42915f7927dca7a9cc89bf9c9b"
-    },
-    {
-      "name" : "Pošta I",
-      "lat" : 19.6642184,
-      "lon" : 46.0973351,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b26c009f3e0bb5c6739256d305e40970"
     },
     {
       "name" : "Politehnička škola",
@@ -8547,27 +8499,11 @@
       "uid" : "5c64b22e3032f0c32c0ad068b96a1517"
     },
     {
-      "name" : "Patrija",
-      "lat" : 19.6689633,
-      "lon" : 46.0993234,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "bec114baac763d6606d0b2296d872014"
-    },
-    {
-      "name" : "Pošta I",
-      "lat" : 19.6642694,
-      "lon" : 46.0973556,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4bd26787f350430e4d19f0ba2b581ae6"
-    },
-    {
       "name" : "Matije Gupca",
-      "lat" : 19.6623248,
-      "lon" : 46.0974374,
+      "lat" : 19.66235476159058,
+      "lon" : 46.0973668814545,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A"],
       "uid" : "ab13cf7a9d7cd406811f640e5b16d30d"
     },
     {
@@ -8859,28 +8795,12 @@
       "uid" : "288ad97bd03a7095835e695fa826adba"
     },
     {
-      "name" : "Patrija",
-      "lat" : 19.6690357,
-      "lon" : 46.0993531,
+      "name" : "Preko Pošte Br.2",
+      "lat" : 19.664436155786134,
+      "lon" : 46.097322242937565,
       "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d5a8a5dab3af12e45c1f92ba818f7e63"
-    },
-    {
-      "name" : "Pošta",
-      "lat" : 19.6644196,
-      "lon" : 46.0974225,
-      "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["3A"],
       "uid" : "230fb2231542781aca49d39adede697d"
-    },
-    {
-      "name" : "Matije Gupca",
-      "lat" : 19.6623784,
-      "lon" : 46.0973928,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "25751e2501a83b0900e4b46b4dd026fa"
     },
     {
       "name" : "suPapirna",

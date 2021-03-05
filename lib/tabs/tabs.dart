@@ -8,6 +8,7 @@ import 'package:mapTest/dataClasses/user.dart';
 import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/location/locationTest.dart';
 import 'package:mapTest/mapRelated/map.dart';
+import 'package:mapTest/tabs/settingsTab.dart';
 import 'package:map_controller/map_controller.dart';
 
 import '../UIColors.dart';
@@ -93,136 +94,7 @@ Widget getTab(int tabNum) {
     );
   } else if (tabNum == 3) {
     /// settings
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-                final List<String> languages = [
-                  'srb',
-                  'eng',
-                  'hun'
-                ]; // TODO: use array instead of string
-                int i = languages.indexOf(activeLang);
-                if (i < languages.length - 1)
-                  i++;
-                else
-                  i = 0;
-
-                activeLang = languages[i];
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'language:',
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  Text(
-                    activeLang,
-                    style: infoBrdSmall,
-                  ),
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-               /* if(busLineCityStr.contains('su')){
-                  router('ns');
-                }
-                else if(busLineCityStr.contains('ns')){
-                  router('su');
-                }*/ // TODO: this not working brah...
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'city:',
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  busLineCityStr.contains('su') ? Text('Subotica', style: infoBrdSmall,) : Text('Novi Sad', style: infoBrdSmall,),
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-                activeMapTile++;
-                if(activeMapTile>5){
-                  activeMapTile = 0;
-                }
-                mapTileSwitchController.add(activeMapTile);
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'map style:',
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  Text(mapProviderName, style: infoBrdSmall,),
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: Row(
-            children: [
-              Text(
-                'device location:',
-                style: infoBrdSmall,
-              ),
-              Spacer(),
-              FlutterSwitch(
-                  width: infoBrdSmall.fontSize * 2 * 1.3,
-                  height: infoBrdSmall.fontSize * 1.3,
-                  toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
-                  activeColor: switchActive,
-                  inactiveColor: switchInactive,
-                  toggleColor: switchToggle,
-                  value: user.locationEnabled,
-                  onToggle: (val) {
-                    user.locationEnabled = val;
-                    if (user.locationEnabled) {
-                      updatePos();
-                    }
-                  }),
-            ],
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: Row(
-            children: [
-              Text(
-                'cookies enabled:',
-                style: infoBrdSmall,
-              ),
-              Spacer(),
-              FlutterSwitch(
-                  width: infoBrdSmall.fontSize * 2 * 1.3,
-                  height: infoBrdSmall.fontSize * 1.3,
-                  toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
-                  activeColor: switchActive,
-                  inactiveColor: switchInactive,
-                  toggleColor: switchToggle,
-                  value: user.cookiesEnabled,
-                  onToggle: (val1) {
-                    user.cookiesEnabled = val1;
-                    /*if (user.locationEnabled) {
-                      user.cookiesEnabled = !user.cookiesEnabled;
-                    }*/
-                  }),
-            ],
-          ),
-        ),
-      ],
-    );
+    return showSettingsTab();
   } else if (tabNum == 4) {
     /// #filters
     return Column(

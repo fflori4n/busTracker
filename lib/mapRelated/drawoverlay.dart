@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' hide TextStyle;
+
+import 'package:flutter/cupertino.dart' hide TextStyle;
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart' hide Path;
 import 'package:mapTest/dataClasses/Station.dart';
@@ -38,6 +40,9 @@ class _MapOverlayState extends State<MapOverlay> {
 }
 
 class OverlayPainter extends CustomPainter {
+
+
+
   /// for static map objects
   ///
   final Paint nonSelectedCityBusStop = Paint()
@@ -69,16 +74,28 @@ class OverlayPainter extends CustomPainter {
     for (Station station in stationList) {
       double radius = 6;
       paint = nonSelectedCityBusStop;
-      if (selectedStations.contains(station)) {
+      /*if (selectedStations.contains(station)) {
         radius = 10;
         paint = selectedCityBusStop;
-      }
+      }*/
 
       Offset mapOffset = getOverlayOffset(station.pos, size);
       if (mapOffset.dx < 0) {
         continue;
       }
-      canvas.drawCircle(mapOffset, radius, paint);
+
+      if (selectedStations.contains(station)) {
+        final double iconSize = 35;
+        final icon = Icons.room;
+
+        TextPainter textPainter = TextPainter(textDirection: TextDirection.rtl);
+        textPainter.text = TextSpan(text: String.fromCharCode(icon.codePoint), style: TextStyle(color: Colors.blue, fontSize: iconSize,fontFamily: icon.fontFamily));
+        textPainter.layout();
+        textPainter.paint(canvas, Offset(mapOffset.dx - (iconSize/2), mapOffset.dy - (0.85 * iconSize)));
+      }
+      else{
+        canvas.drawCircle(mapOffset, radius, paint);
+      }
     }
 
     /// ********************************************************************** USER LOCATION

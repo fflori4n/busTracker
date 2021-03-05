@@ -67,4 +67,9 @@ class Time{
 
     return this;
   }
+
+  @override
+  String toString() {
+    return this.hours.toString()+':'+this.mins.toString()+':'+this.sex.toString();
+  }
 }

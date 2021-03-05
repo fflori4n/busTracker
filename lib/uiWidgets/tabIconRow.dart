@@ -8,7 +8,7 @@ import '../UIColors.dart';
 import '../main.dart';
 
 Widget showTabIconRow(double maxWidth){
-  print('screenwidfth = ' + maxWidth.toString());
+  //print('screenwidfth = ' + maxWidth.toString());
   maxWidth*= 0.85;
   return Row(
       children: <Widget>[

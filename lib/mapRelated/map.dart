@@ -19,6 +19,7 @@ MapController mapController = new MapController();
 MapPageState displayedMap;
 int activeMapTile = 0;
 String mapProviderName = 'Google classic';
+List<String> mapProviderNames = ['Google classic','OSM classic','Google hybrid','Google terrain','OSM white','Google satelite'];
 
 StreamController<int> mapTileSwitchController = new StreamController<int>();
 
@@ -42,8 +43,9 @@ class MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    mapTileSwitchController = new StreamController<int>();
-    widget.stream.listen((num) { switchTileUrl(num); });
+    if(!isMobile){
+      widget.stream.listen((num) { switchTileUrl(num); });
+    }
     statefulMapController = StatefulMapController(mapController: mapController);
 
     /// wait for the controller to be ready before using it
@@ -63,6 +65,8 @@ class MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+    this.switchTileUrl(activeMapTile);
+
     var displayedMap = ScrollDetector(
         onPointerScroll: processScroll, //processScroll,
         child: Container(
@@ -121,27 +125,22 @@ class MapPageState extends State<MapPage> {
         case 0:
           maptileUrl = 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}';     // Normal Google
           subdomains = ['mt0', 'mt1', 'mt2','mt3'];
-          mapProviderName = 'Google classic';
           break;
         case 5:
           maptileUrl = 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';     // Satelite Google
           subdomains = ['mt0', 'mt1', 'mt2','mt3'];
-          mapProviderName = 'Google satelite';
           break;
         case 2:
           maptileUrl = 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}';   // hybrid Google
           subdomains = ['mt0', 'mt1', 'mt2','mt3'];
-          mapProviderName = 'Google hybrid';
           break;
         case 3:
           maptileUrl = 'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}';     // terrain Google
           subdomains = ['mt0', 'mt1', 'mt2','mt3'];
-          mapProviderName = 'Google terrain';
           break;
         case 4:
           maptileUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png';     // OSM white
           subdomains = ['a','b','c'];
-          mapProviderName = 'OSM white';
           break;
         case 6:   // TODO: figure out how to use this
           maptileUrl = 'https://suboticagis.rs/map/tile?map=2_karta&g=383_ortofoto_2008&i=JPEG&t={x}&l={y}&s={z}';
@@ -149,7 +148,6 @@ class MapPageState extends State<MapPage> {
         case 1:
           maptileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';    // OSM classic
           subdomains = ['a','b','c'];
-          mapProviderName = 'OSM classic';
           break;
       }
     });
@@ -158,6 +156,7 @@ class MapPageState extends State<MapPage> {
   Future<void> onTap(LatLng tapPos) async {
     print('taped at: ' + tapPos.latitude.toString() + ',' + tapPos.longitude.toString());
     //mapController.move(tapPos, mapController.zoom);
+    print('"lat" : ' + tapPos.longitude.toString() + ',\n"lon" : ' + tapPos.latitude.toString() + ',');
 
     selectClosest2Click(tapPos);
     onStationSelected();
