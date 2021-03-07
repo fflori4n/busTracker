@@ -20,7 +20,7 @@ class BusLine{
       BusLine newLine = BusLine();
       newLine.name = json['name'] as String;
       newLine.description = json['descr'] as String;
-      newLine.color = getLineColor(newLine);
+      newLine.color = getLineColor(newLine.name);
 
       List pathPoints = json['points'] as List;
       for(String coords in pathPoints){

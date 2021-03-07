@@ -53,9 +53,9 @@ Future loadLinesFromJson(List<Station> selectedStation, final String loadCityStr
   }
 }
 
-Color getLineColor(BusLine newBusline){
-  String digest = sha1.convert(utf8.encode(newBusline.name.replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';}))).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
-  String digest2 = sha1.convert(utf8.encode(newBusline.name)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+Color getLineColor(String busLineName){
+  String digest = sha1.convert(utf8.encode(busLineName.replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';}))).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
+  String digest2 = sha1.convert(utf8.encode(busLineName)).toString().replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
   var rand = new Random(int.parse(digest));
   var rand2 = new Random(int.parse(digest2));
   // #458BFA

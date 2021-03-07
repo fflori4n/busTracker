@@ -26,28 +26,26 @@ Future<void> postBusFeedBack(bool isOK, Bus bus,User user) async {
   print('bus       \t' + bus.nickName);
 
   /// read local storage to get number of sent req, and date of last POST
-  makePostRequest(isOK,bus,user);//sendFeedback('hello world!');
-  return;
   try{
     String msg = await checkLocalStorage();
     if(msg == 'null'){
       print('msg is null');
+      makePostRequest(isOK,bus,user);//sendFeedback('hello world!');
       writeToLocalStorage(1);
-      //TODO: send!
     }
     else{
       var data = msg.split(',');
       double numOfReq = double.parse(data[0]);
       print('num of req:' + numOfReq.toString());
       if(numOfReq < postLmt){                                                   /// post feedback, if number is small
+        makePostRequest(isOK,bus,user);//sendFeedback('hello world!');
         writeToLocalStorage((numOfReq + 1));
-        //TODO: send!
       }
       else{                                                                     /// check time of last post, and clear number if time passed
         DateTime lastPost = DateTime.parse(data[1]);
         if(DateTime.now().difference(lastPost).inMinutes > timeLmtMins){
+          makePostRequest(isOK,bus,user);
           writeToLocalStorage(1);
-          //TODO: send!
         }
         else{
           print('[  Wr  ]  too many requests!');

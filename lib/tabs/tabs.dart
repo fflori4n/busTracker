@@ -13,8 +13,10 @@ import 'package:map_controller/map_controller.dart';
 
 import '../UIColors.dart';
 import '../main.dart';
+import 'filterTab.dart';
+import 'legacySchedule.dart';
 
-Widget showTabs(User user) {
+Widget showTabs(User user, double maxWidth) {
   double totalWidth = screenWidth;
   //double totalHeight = 60;//screenHeight * 0.08;
 
@@ -25,15 +27,16 @@ Widget showTabs(User user) {
   return SizedBox(
     width: totalWidth,
     child: Container(
+      padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: Color.fromRGBO(46, 46, 46, 1),
       ),
-      child: getTab(user.tabOpen),
+      child: getTab(user.tabOpen, maxWidth),
     ),
   );
 }
 
-Widget getTab(int tabNum) {
+Widget getTab(int tabNum, double maxWidth) {
   if (tabNum == 1) {
     return Column(
       children: <Widget>[
@@ -95,102 +98,10 @@ Widget getTab(int tabNum) {
   } else if (tabNum == 3) {
     /// settings
     return showSettingsTab();
-  } else if (tabNum == 4) {
-    /// #filters
-    return Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-            onTap: () {
-              busFilters.hideLine.clear();
-            },
-            child: Row(
-              children: <Widget>[
-                Text(
-                  lbl_filt_hiddenLines.print(),
-                  style: infoBrdSmall,
-                ),
-                Spacer(),
-                Text(
-                  busFilters.hideLine.toString(),
-                  style: infoBrdSmall,
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-                busFilters.left = !busFilters.left;
-                busFilters.refreshFlg = true;
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    lbl_filt_leftBuses.print(),
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  Container(
-                    child: indicator(baseBlue, baseYellow,
-                        Color.fromRGBO(46, 46, 46, 1), !busFilters.left),
-                    height: infoBrdSmall.fontSize,
-                  ),
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-                busFilters.eTAgt15mins = !busFilters.eTAgt15mins;
-                busFilters.refreshFlg = true;
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    lbl_filt_eta1.print(),
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  Container(
-                    child: indicator(baseBlue, baseYellow,
-                        Color.fromRGBO(46, 46, 46, 1), busFilters.eTAgt15mins),
-                    height: infoBrdSmall.fontSize,
-                  ),
-                ],
-              )),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: GestureDetector(
-              onTap: () {
-                busFilters.next10only = !busFilters.next10only;
-                busFilters.refreshFlg = true;
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    lbl_filt_onlyFirst10.print(),
-                    style: infoBrdSmall,
-                  ),
-                  Spacer(),
-                  Container(
-                    child: indicator(baseBlue, baseYellow,
-                        Color.fromRGBO(46, 46, 46, 1), !busFilters.next10only),
-                    height: infoBrdSmall.fontSize,
-                  ),
-                ],
-              )),
-        ),
-      ],
-    );
-  } else if (tabNum == 5) {
-    /// red voznje
-    return Column();
+  } else if (tabNum == 4) {/// #filters
+    return showFilterTab();
+  } else if (tabNum == 5) {/// red voznje
+    return showSimpleSchedule(maxWidth);
   }
   return Column();
 }

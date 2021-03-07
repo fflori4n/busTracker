@@ -39,7 +39,7 @@ Widget showFilterTab(){
         child: Row(
           children: [
             Text(
-              'cookies enabled:',
+              'Vidljivost prošlih buseva:',
               style: infoBrdSmall,
             ),
             Spacer(),
@@ -50,12 +50,60 @@ Widget showFilterTab(){
                 activeColor: switchActive,
                 inactiveColor: switchInactive,
                 toggleColor: switchToggle,
-                value: user.cookiesEnabled,
+                value: busFilters.left,
                 onToggle: (val1) {
-                  user.cookiesEnabled = val1;
-                  /*if (user.locationEnabled) {
-                      user.cookiesEnabled = !user.cookiesEnabled;
-                    }*/
+                  busFilters.left = val1;
+                  busFilters.refreshFlg = true;
+                }),
+          ],
+        ),
+      ),
+
+      Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+        child: Row(
+          children: [
+            Text(
+              'Samo vidljivi, koje stižu za <15min:',
+              style: infoBrdSmall,
+            ),
+            Spacer(),
+            FlutterSwitch(
+                width: infoBrdSmall.fontSize * 2 * 1.3,
+                height: infoBrdSmall.fontSize * 1.3,
+                toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
+                activeColor: switchActive,
+                inactiveColor: switchInactive,
+                toggleColor: switchToggle,
+                value: !busFilters.eTAgt15mins,
+                onToggle: (val1) {
+                  busFilters.eTAgt15mins = !val1;                               //busFilters.next10only
+                  busFilters.refreshFlg = true;
+                }),
+          ],
+        ),
+      ),
+
+      Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+        child: Row(
+          children: [
+            Text(
+              'Samo vidljivi, naredna 10:',
+              style: infoBrdSmall,
+            ),
+            Spacer(),
+            FlutterSwitch(
+                width: infoBrdSmall.fontSize * 2 * 1.3,
+                height: infoBrdSmall.fontSize * 1.3,
+                toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
+                activeColor: switchActive,
+                inactiveColor: switchInactive,
+                toggleColor: switchToggle,
+                value: busFilters.next10only,
+                onToggle: (val1) {
+                  busFilters.next10only = val1;                               //
+                  busFilters.refreshFlg = true;
                 }),
           ],
         ),

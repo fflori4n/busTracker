@@ -29,6 +29,7 @@ double screenWidth = 1920;
 double screenHeight = 1080;
 double wScaleFactor=1;
 double hScaleFactor=1;
+double maxTabWidth = 1920;
 bool isMobile = true;
 
 User user = new User();  // new user to store position
