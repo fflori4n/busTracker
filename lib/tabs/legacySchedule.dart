@@ -1,17 +1,24 @@
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/loadModules/busLines.dart';
+import 'package:mapTest/uiWidgets/scheduleDisplay.dart';
 
 import '../UIColors.dart';
+import '../main.dart';
 
 String selectedLine = '';
+bool isDescLoaded = false;
+String dispLineDescr = '';
 
-Widget showSimpleSchedule(double maxWidth) {
+// tabopen == 5 && selectedLine.notEmpty()
+Widget showSimpleSchedule(BuildContext context, double maxWidth) {
   if (selectedLine == '') {
     return lineChoser(maxWidth);
   }
   else {
-    return showSelectedLine(maxWidth);
+    return showSelectedLine(context, maxWidth);
   }
 }
 
@@ -102,7 +109,10 @@ Widget lineChoser(double maxWidth) {
   );
 }
 
-Widget showSelectedLine(double maxWidth) {
+Widget showSelectedLine(BuildContext context, double maxWidth) {
+  isDescLoaded = false;
+  loadDescription(selectedLine, busLineCityStr);
+
   return Column(
     children: [
       Row(
@@ -113,8 +123,8 @@ Widget showSelectedLine(double maxWidth) {
                 bottom: maxWidth / 90,
                 left: maxWidth / 90,
                 right: maxWidth / 90),
-            width: maxWidth / 12,
-            height: maxWidth / 12,
+            width: maxWidth / 20,
+            height: maxWidth / 20,
             decoration: BoxDecoration(
               color: getLineColor(selectedLine),
               borderRadius: new BorderRadius.all(Radius.circular(2.0)),
@@ -129,7 +139,7 @@ Widget showSelectedLine(double maxWidth) {
                     child: Icon(
                       Icons.arrow_back,
                       color: Colors.white,
-                      size: maxWidth/22,
+                      size: maxWidth/30,
                     ),
                   ),
                 )
@@ -141,8 +151,8 @@ Widget showSelectedLine(double maxWidth) {
                 bottom: maxWidth / 90,
                 left: maxWidth / 90,
                 right: maxWidth / 90),
-            width: maxWidth / 12,
-            height: maxWidth / 12,
+            width: maxWidth / 20,
+            height: maxWidth / 20,
             decoration: BoxDecoration(
               color: getLineColor(selectedLine),
               borderRadius: new BorderRadius.all(Radius.circular(2.0)),
@@ -151,8 +161,10 @@ Widget showSelectedLine(double maxWidth) {
               child: Text(selectedLine, style: infoBrdSmallBold),
             ),
           ),
+          isDescLoaded ? Text(dispLineDescr, style: infoBrdSmall,) : Text(dispLineDescr, style: infoBrdSmall,),
         ],
-      )
+      ),
+      showSchedule(context, maxWidth, selectedLine),
     ],
   );
 }

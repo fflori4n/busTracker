@@ -67,7 +67,7 @@ class BuletinState extends State<Buletin> {
                       child: showTabIconRow(isMobile ? screenWidth : width * wScaleFactor),
                   ),]
                 ),
-                showTabs(user, isMobile ? screenWidth : width * wScaleFactor),
+                showTabs(context,user, isMobile ? screenWidth : width * wScaleFactor),
                 (user.tabOpen != 5) ? Container(
                   child: drawLegend(context),
                 ) : Container(),

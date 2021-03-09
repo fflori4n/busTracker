@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
+import 'package:mapTest/tabs/legacySchedule.dart';
 
 import '../main.dart';
 import 'loadStations.dart';
@@ -15,6 +16,7 @@ import 'loadStations.dart';
 const bool verbose = false;
 
 List<BusLine> nsBusLines = [];
+List<BusLine> scheduleTabLines =[];
 List<BusLine> inactiveLines = [];
 
 Future loadLinesFromJson(List<Station> selectedStation, final String loadCityStr) async{
@@ -98,5 +100,36 @@ void removeUnusedBusLines(){                                                    
     if(! containsFlg){
       nsBusLines.remove(busLine);
     }
+  }
+}
+
+Future<String> loadDescription(String name, final String loadCityStr) async{
+  try {
+    String rawBLineData = await rootBundle.loadString("assets/busLines.json");
+    var stationObjsJson = jsonDecode(rawBLineData)[loadCityStr] as List;
+
+    for(var objJson in stationObjsJson) {
+        try{
+          final String busLineName = objJson['name'] as String;
+          if(name == busLineName){
+            BusLine newBusLine = BusLine.fromJson(objJson);
+            scheduleTabLines.clear();
+            scheduleTabLines.add(newBusLine);
+            
+            dispLineDescr = objJson['descr'] as String;
+            isDescLoaded = true;
+            print(dispLineDescr);
+            return dispLineDescr;
+          }
+        }
+        catch(e){
+          print(e);
+          continue;
+        }
+    }
+    return '';
+  }
+  catch(e) {
+    print('[  Er  ] laoding bus lines: ' + e);
   }
 }

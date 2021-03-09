@@ -7,6 +7,7 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
+import 'package:mapTest/tabs/legacySchedule.dart';
 
 import '../UIColors.dart';
 import '../geometryFuncts.dart';
@@ -59,44 +60,79 @@ class OverlayPainter extends CustomPainter {
     Paint paint;
 
     /// ********************************************************************** Bus Lines
-    for (var busline in nsBusLines) {
-      Paint busLinePaint = Paint()
-        ..color = busline.color.withOpacity(0.25)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 4
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round;
+    if(user.tabOpen == 5){
+      for (var busline in scheduleTabLines) {
+        Paint busLinePaint = Paint()
+          ..color = busline.color.withOpacity(0.4)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
 
-      drawPolyLine(canvas,size,busline.points, busLinePaint);
+        drawPolyLine(canvas,size,busline.points, busLinePaint);
+      }
+    }
+    else{
+      for (var busline in nsBusLines) {
+        Paint busLinePaint = Paint()
+          ..color = busline.color.withOpacity(0.4)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+
+        drawPolyLine(canvas,size,busline.points, busLinePaint);
+      }
     }
 
     /// ********************************************************************** City Bus Stop
-    for (Station station in stationList) {
-      double radius = 6;
-      paint = nonSelectedCityBusStop;
-      /*if (selectedStations.contains(station)) {
+      for (Station station in stationList) {
+        double radius = 6;
+        paint = nonSelectedCityBusStop;
+        /*if (selectedStations.contains(station)) {
         radius = 10;
         paint = selectedCityBusStop;
       }*/
 
-      Offset mapOffset = getOverlayOffset(station.pos, size);
-      if (mapOffset.dx < 0) {
-        continue;
+        Offset mapOffset = getOverlayOffset(station.pos, size);
+        if (mapOffset.dx < 0) {
+          continue;
+        }
+
+        if(user.tabOpen == 5){
+          final double iconSize = 25;
+          final icon = Icons.room;
+
+          for (var busline in scheduleTabLines) {
+            if (station.servedLines.contains(busline.name)) {
+              TextPainter textPainter = TextPainter(
+                  textDirection: TextDirection.rtl);
+              textPainter.text = TextSpan(
+                  text: String.fromCharCode(icon.codePoint),
+                  style: TextStyle(color: busline.color,
+                      fontSize: iconSize,
+                      fontFamily: icon.fontFamily));
+              textPainter.layout();
+              textPainter.paint(canvas, Offset(mapOffset.dx - (iconSize / 2),
+                  mapOffset.dy - (0.85 * iconSize)));
+            }
+          }
+        }
+        else if (selectedStations.contains(station)) {
+          final double iconSize = 35;
+          final icon = Icons.room;
+
+          TextPainter textPainter = TextPainter(textDirection: TextDirection.rtl);
+          textPainter.text = TextSpan(text: String.fromCharCode(icon.codePoint), style: TextStyle(color: Colors.blue, fontSize: iconSize,fontFamily: icon.fontFamily));
+          textPainter.layout();
+          textPainter.paint(canvas, Offset(mapOffset.dx - (iconSize/2), mapOffset.dy - (0.85 * iconSize)));
+        }
+        else{
+          canvas.drawCircle(mapOffset, radius, paint);
+        }
       }
 
-      if (selectedStations.contains(station)) {
-        final double iconSize = 35;
-        final icon = Icons.room;
 
-        TextPainter textPainter = TextPainter(textDirection: TextDirection.rtl);
-        textPainter.text = TextSpan(text: String.fromCharCode(icon.codePoint), style: TextStyle(color: Colors.blue, fontSize: iconSize,fontFamily: icon.fontFamily));
-        textPainter.layout();
-        textPainter.paint(canvas, Offset(mapOffset.dx - (iconSize/2), mapOffset.dy - (0.85 * iconSize)));
-      }
-      else{
-        canvas.drawCircle(mapOffset, radius, paint);
-      }
-    }
 
     /// ********************************************************************** USER LOCATION
     if (user.locationEnabled && user.position != LatLng(-1, -1)) {

@@ -6,6 +6,7 @@ import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/scrollDetector.dart';
+import 'package:mapTest/tabs/legacySchedule.dart';
 import 'package:map_controller/map_controller.dart';
 import '../main.dart';
 import '../onSelected.dart';
@@ -158,7 +159,14 @@ class MapPageState extends State<MapPage> {
     //mapController.move(tapPos, mapController.zoom);
     print('"lat" : ' + tapPos.longitude.toString() + ',\n"lon" : ' + tapPos.latitude.toString() + ',');
 
-    selectClosest2Click(tapPos);
+    if(user.tabOpen == 5){
+      selectedStations.clear();
+      selectClosest2Click(tapPos,name: selectedLine);
+      user.tabOpen = 0;
+    }
+    else{
+      selectClosest2Click(tapPos);
+    }
     onStationSelected();
   }
 

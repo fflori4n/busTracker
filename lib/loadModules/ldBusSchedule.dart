@@ -95,3 +95,31 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
 
   return;
 }
+
+Future<String> loadScheduleAsText(String lineName) async{
+  String rawFileContent;
+  String rawDayStr;
+  DateTime date = DateTime.now();
+  try{
+    rawFileContent= await rootBundle.loadString('NsBusData/' + lineName + '.txt');
+  }
+  catch(e){
+    print('[ ER ] opening file: ' + lineName + '.txt');
+    return ''; // TODO some signaling would be nice...
+  }
+  if(rawFileContent.isEmpty){
+    print('[ ER ] file is empty: ' + lineName + '.txt');
+    return '';
+  }
+  List<String> dayBlocks = rawFileContent.split('>');
+
+  if(date.weekday == DateTime.sunday){
+    rawDayStr = dayBlocks[3];
+  }else if(date.weekday == DateTime.saturday){
+    rawDayStr = dayBlocks[2];
+  }else{
+    rawDayStr = dayBlocks[1];
+  }
+
+  return rawDayStr.trim();
+}

@@ -16,7 +16,7 @@ import '../main.dart';
 import 'filterTab.dart';
 import 'legacySchedule.dart';
 
-Widget showTabs(User user, double maxWidth) {
+Widget showTabs(BuildContext context, User user, double maxWidth) {
   double totalWidth = screenWidth;
   //double totalHeight = 60;//screenHeight * 0.08;
 
@@ -31,12 +31,12 @@ Widget showTabs(User user, double maxWidth) {
       decoration: BoxDecoration(
         color: Color.fromRGBO(46, 46, 46, 1),
       ),
-      child: getTab(user.tabOpen, maxWidth),
+      child: getTab(context, user.tabOpen, maxWidth),
     ),
   );
 }
 
-Widget getTab(int tabNum, double maxWidth) {
+Widget getTab(BuildContext context, int tabNum, double maxWidth) {
   if (tabNum == 1) {
     return Column(
       children: <Widget>[
@@ -101,7 +101,7 @@ Widget getTab(int tabNum, double maxWidth) {
   } else if (tabNum == 4) {/// #filters
     return showFilterTab();
   } else if (tabNum == 5) {/// red voznje
-    return showSimpleSchedule(maxWidth);
+    return showSimpleSchedule(context, maxWidth);
   }
   return Column();
 }

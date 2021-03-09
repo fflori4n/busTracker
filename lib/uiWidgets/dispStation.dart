@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
@@ -139,60 +138,15 @@ Widget getStationLineLabels(Station station) {
   rowList.add(Row( children: labelList));
   return new Column(children: rowList, );
 }
-/*Widget getStationLineLabels(Station station) {
-  List<Widget> labelList = new List();
-  labelList.add(Text(' ', style: infoBrdSmall,));
-  //for (var line in activeStation.servedLines) {
-  for (var line in station.servedLines) {
-
-    var newText = new GestureDetector(
-      child: Text(
-        line,
-        style: nsBusLinesContainsName(line)
-            ? (busFilters.hideLine.contains(line) ? infoBrdSmallCrossedOut : infoBrdSmall) : infoBrdSmallSemiTransp,
-        textAlign: TextAlign.left,
-      ),
-      onTap: () {
-        if (busFilters.hideLine.contains(line)) {
-          busFilters.hideLine.remove(line);
-        } else {
-          busFilters.hideLine.add(line);
-        }
-        applyFilters(busFilters);
-      },
-    );
-
-    labelList.add(newText);
-    labelList.add(Text(' ', style: infoBrdSmall,));
-
-
-  }
-
-  List<Widget> rowList = [];
-
-  for(int i=0; i < labelList.length; i+=24) {
-    try {
-      rowList.add(Row( children: labelList.sublist(0, 24),));
-      rowList.add(Row( children: labelList.sublist(25, 49),));
-      rowList.add(Row( children: labelList.sublist(50, 74),));
-    }
-    catch (p) {
-      rowList.add(Row( children: labelList.sublist(i+48),));
-      break;
-    }
-  }
-
-  return new Column(children: rowList, );
-}*/
 
 List<Widget> displaySelectedStations(){
   List<Widget> stationDispList = new List();
 
-  if(selectedStations.length <= 1){
+  if(selectedStations.length <= 0){
     stationDispList.add(new StationLabelWidget(new Station.byName(lbl_noSelected.print()), "0", lbl_clickMap.print()).show());
   }
-  for(int i =1; i < selectedStations.length; i++){
-    stationDispList.add(new StationLabelWidget(selectedStations[i], i.toString()).show());
+  for(int i =0; i < selectedStations.length; i++){
+    stationDispList.add(new StationLabelWidget(selectedStations[i], (i+1).toString()).show());
   }
   return stationDispList;
 }
