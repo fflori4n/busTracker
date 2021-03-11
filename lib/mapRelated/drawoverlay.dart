@@ -73,15 +73,17 @@ class OverlayPainter extends CustomPainter {
       }
     }
     else{
-      for (var busline in nsBusLines) {
-        Paint busLinePaint = Paint()
-          ..color = busline.color.withOpacity(0.4)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 4
-          ..strokeJoin = StrokeJoin.round
-          ..strokeCap = StrokeCap.round;
+      if(user.showBusLinesMap){
+        for (var busline in nsBusLines) {
+          Paint busLinePaint = Paint()
+            ..color = busline.color.withOpacity(0.4)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 4
+            ..strokeJoin = StrokeJoin.round
+            ..strokeCap = StrokeCap.round;
 
-        drawPolyLine(canvas,size,busline.points, busLinePaint);
+          drawPolyLine(canvas,size,busline.points, busLinePaint);
+        }
       }
     }
 

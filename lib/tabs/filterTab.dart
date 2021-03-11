@@ -108,6 +108,76 @@ Widget showFilterTab(){
           ],
         ),
       ),
+
+      Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+        child: Row(
+          children: [
+            Text(
+              'Bus markers visible:',
+              style: infoBrdSmall,
+            ),
+            Spacer(),
+            FlutterSwitch(
+                width: infoBrdSmall.fontSize * 2 * 1.3,
+                height: infoBrdSmall.fontSize * 1.3,
+                toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
+                activeColor: switchActive,
+                inactiveColor: switchInactive,
+                toggleColor: switchToggle,
+                value: user.showBusMarkers,
+                onToggle: (val1) {
+                  user.showBusMarkers = val1;
+                }),
+          ],
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+        child: Row(
+          children: [
+            Text(
+              'Bus Eta on map visible:',
+              style: infoBrdSmall,
+            ),
+            Spacer(),
+            FlutterSwitch(
+                width: infoBrdSmall.fontSize * 2 * 1.3,
+                height: infoBrdSmall.fontSize * 1.3,
+                toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
+                activeColor: switchActive,
+                inactiveColor: switchInactive,
+                toggleColor: switchToggle,
+                value: user.showBusETAonMap,
+                onToggle: (val1) {
+                  user.showBusETAonMap = val1;
+                }),
+          ],
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+        child: Row(
+          children: [
+            Text(
+              'Bus lines visible:',
+              style: infoBrdSmall,
+            ),
+            Spacer(),
+            FlutterSwitch(
+                width: infoBrdSmall.fontSize * 2 * 1.3,
+                height: infoBrdSmall.fontSize * 1.3,
+                toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
+                activeColor: switchActive,
+                inactiveColor: switchInactive,
+                toggleColor: switchToggle,
+                value: user.showBusLinesMap,
+                onToggle: (val1) {
+                  user.showBusLinesMap = val1;
+                }),
+          ],
+        ),
+      ),
     ],
   );
 }

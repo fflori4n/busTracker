@@ -59,7 +59,7 @@ Widget drawBuletinitem(BuildContext context, Bus bus, double maxWidth) {
     erExp = '+00:00';
   }
 
-  String stationLet = bus.stationNumber.toString();
+  String stationLet = (bus.stationNumber + 1).toString();
 
   return FadeIn(
     1.5,

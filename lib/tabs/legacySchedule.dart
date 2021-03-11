@@ -53,7 +53,19 @@ Widget lineChoser(double maxWidth) {
     '12A',
     '12B',
     '13A',
-    '13B'
+    '13B',
+    '14A',
+    '14B',
+    '15A',
+    '15B',
+    '16A',
+    '16B',
+    '17A',
+    '17B',
+    '18A',
+    '18B',
+    '20A',
+    '20B'
   ];
   List<Widget> busLineButtons = [];
   List<Widget> rowList = [];

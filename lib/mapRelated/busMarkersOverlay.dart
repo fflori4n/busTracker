@@ -103,11 +103,13 @@ class BusOverlayPainter extends CustomPainter {
           paragraphBuilder.addText('\t' + bus.eTA.mins.toString().padLeft(2,'0') + ':' + bus.eTA.sex.toString().padLeft(2,'0'));
         }
 
-        final constraints = ui.ParagraphConstraints(width: 300);
-        final paragraph = paragraphBuilder.build();
-        paragraph.layout(constraints);
-        final offset = Offset(x + 5, y + 5 + (bus.twins * 12 * 1.3) );
-        canvas.drawParagraph(paragraph, offset);
+        if(user.showBusETAonMap){
+          final constraints = ui.ParagraphConstraints(width: 300);
+          final paragraph = paragraphBuilder.build();
+          paragraph.layout(constraints);
+          final offset = Offset(x + 5, y + 5 + (bus.twins * 12 * 1.3) );
+          canvas.drawParagraph(paragraph, offset);
+        }
       }
     }
   }

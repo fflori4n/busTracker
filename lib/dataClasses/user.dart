@@ -13,6 +13,10 @@ class User{
   //bool filtTabOpen = false;
   //bool locTabOpen = false;
 
+  bool showBusMarkers = true;
+  bool showBusETAonMap = true;
+  bool showBusLinesMap = true;
+
   int tabOpen = 0;
 
   String toString(){
