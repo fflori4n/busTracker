@@ -41,7 +41,7 @@ Future<void> loadStationsFromJson( final String loadCityStr) async {
   }
 }
 
-selectClosest2Click(LatLng click,{String name = ''} ){
+selectClosest2Click(LatLng click,String name){
   Station closestStation;
   double closestDist = 50000;   // fix this. 50 km for test
   for(int i =0; i < stationList.length; i++){
@@ -50,8 +50,10 @@ selectClosest2Click(LatLng click,{String name = ''} ){
     double dist = normLoc(click, stationList[i].pos);
     if(dist < closestDist){
       closestDist = dist;
-      if(name != '' && stationList[i].servedLines.contains(name)){
-        closestStation = stationList[i];
+      if(name != ''){
+        if(stationList[i].servedLines.contains(name)){
+          closestStation = stationList[i];
+        }
       }
       else{
         closestStation = stationList[i];

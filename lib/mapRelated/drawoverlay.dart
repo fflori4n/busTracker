@@ -70,6 +70,8 @@ class OverlayPainter extends CustomPainter {
           ..strokeCap = StrokeCap.round;
 
         drawPolyLine(canvas,size,busline.points, busLinePaint);
+        //replay
+        // outlined_flag
       }
     }
     else{
@@ -133,6 +135,21 @@ class OverlayPainter extends CustomPainter {
           canvas.drawCircle(mapOffset, radius, paint);
         }
       }
+    /// start and end markers
+
+    if(user.tabOpen == 5){
+      for(var busline in scheduleTabLines){
+        final Offset startOffs = getOverlayOffset(busline.points[0], size);
+
+        final double iconSize = 35;
+        final icon = Icons.outlined_flag;
+
+        TextPainter textPainter = TextPainter(textDirection: TextDirection.rtl);
+        textPainter.text = TextSpan(text: String.fromCharCode(icon.codePoint), style: TextStyle(color: Colors.blue, fontSize: iconSize,fontFamily: icon.fontFamily));
+        textPainter.layout();
+        textPainter.paint(canvas, Offset(startOffs.dx - (iconSize/3), startOffs.dy - (0.85 * iconSize)));
+      }
+    }
 
 
 

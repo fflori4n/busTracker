@@ -5965,7 +5965,7 @@
       "lat" : 19.8225995678,
       "lon" : 45.1847875226,
       "zone" : "I",
-      "served_lines" : ["74A74B"],
+      "served_lines" : ["74A","74B"],
       "uid" : "26d7e5d0e520ef8c7f3c72ff6a50cf33"
     },
     {

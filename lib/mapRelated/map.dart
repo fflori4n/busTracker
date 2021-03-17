@@ -16,13 +16,12 @@ import '../onSelected.dart';
 FlutterMap map = new FlutterMap();
 MapConfig mapConfig = new MapConfig();
 MapController mapController = new MapController();
+StreamController<int> mapTileSwitchController = new StreamController<int>();
 
 MapPageState displayedMap;
 int activeMapTile = 0;
 String mapProviderName = 'Google classic';
 List<String> mapProviderNames = ['Google classic','OSM classic','Google hybrid','Google terrain','OSM white','Google satelite'];
-
-StreamController<int> mapTileSwitchController = new StreamController<int>();
 
 class MapPage extends StatefulWidget {
   final Stream<int>stream;
@@ -37,16 +36,15 @@ class MapPageState extends State<MapPage> {
   String maptileUrl = 'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}';
   List<String> subdomains = ['mt0', 'mt1', 'mt2','mt3'];
 
-  StatefulMapController statefulMapController;
+  static StatefulMapController statefulMapController;
   StreamSubscription<StatefulMapControllerStateChange> sub;
-
-  //final LatLng mapRefPoint = mapRefPoint;
 
   @override
   void initState() {
     if(!isMobile){
       widget.stream.listen((num) { switchTileUrl(num); });
     }
+    mapController = new MapController();
     statefulMapController = StatefulMapController(mapController: mapController);
 
     /// wait for the controller to be ready before using it
@@ -84,6 +82,8 @@ class MapPageState extends State<MapPage> {
                       zoom: 14,
                       maxZoom: 17,
                       minZoom: 8,
+                      allowPanning: false,                                       // TODO: test
+                      rotationThreshold: 60,
                       //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
                       // nePanBoundary: LatLng(45.2901, 20.0442),
                       onPositionChanged: onPosChange,
@@ -161,11 +161,11 @@ class MapPageState extends State<MapPage> {
 
     if(user.tabOpen == 5){
       selectedStations.clear();
-      selectClosest2Click(tapPos,name: selectedLine);
+      selectClosest2Click(tapPos,selectedLine);
       user.tabOpen = 0;
     }
     else{
-      selectClosest2Click(tapPos);
+      selectClosest2Click(tapPos,'');
     }
     onStationSelected();
   }

@@ -35,6 +35,8 @@ bool isMobile = true;
 User user = new User();  // new user to store position
 Show busFilters = new Show();
 
+Widget mainMapPage = MapPage(mapTileSwitchController.stream);
+
 void main() {
   update();
   runApp(MyApp());
@@ -108,7 +110,7 @@ class Index extends StatelessWidget {
                 body: new Container(
                     child:new Stack(
                       children: <Widget>[
-                        MapPage(mapTileSwitchController.stream),
+                        mainMapPage,
                         MapOverlay(),
                         Buletin(),
                       ],

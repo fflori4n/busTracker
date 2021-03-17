@@ -23,6 +23,7 @@ Widget showSimpleSchedule(BuildContext context, double maxWidth) {
 }
 
 Widget lineChoser(double maxWidth) {
+  maxWidth*= 0.85;
   List<String> lineNames = [
     '1A',
     '1B',
@@ -65,7 +66,17 @@ Widget lineChoser(double maxWidth) {
     '18A',
     '18B',
     '20A',
-    '20B'
+    '20B',
+    '60A',
+    '60B',
+    '64A',
+    '64B',
+    '72A',
+    '72B',
+    '74A',
+    '74B',
+    '76A',
+    '76B'
   ];
   List<Widget> busLineButtons = [];
   List<Widget> rowList = [];
@@ -85,23 +96,34 @@ Widget lineChoser(double maxWidth) {
       ),
       child: Tooltip(
           message: name,
-          child: FlatButton(
-            onPressed: () {
-              selectedLine = name;
+          child: InkWell(
+            onTap: (){},
+            onHover: (isHovering){
+              if(isHovering){
+                loadDescription(name, busLineCityStr);
+              }
+              else{
+                scheduleTabLines.clear();
+              }
             },
-            child: Center(
-              child: Text(name, style: infoBrdSmallBold),
-            ),
-          )
+            child: FlatButton(
+              onPressed: () {
+                selectedLine = name;
+              },
+              child: Center(
+                child: Text(name, style: infoBrdSmallBold),
+              ),
+            )
+          ),
       ),
     );
     busLineButtons.add(newBut);
   }
 
   for (int i = 0; i < busLineButtons.length; i += 9) {
-    if ((i + 8) < busLineButtons.length) {
+    if ((i + 9) < busLineButtons.length) {
       rowList.add(Row(
-        children: busLineButtons.sublist(i, i + 8),
+        children: busLineButtons.sublist(i, i + 9),
       ));
     }
     else {
@@ -124,19 +146,16 @@ Widget lineChoser(double maxWidth) {
 Widget showSelectedLine(BuildContext context, double maxWidth) {
   isDescLoaded = false;
   loadDescription(selectedLine, busLineCityStr);
-
+  maxWidth*= 0.85;
   return Column(
     children: [
       Row(
         children: [
           Container(
             padding: EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 2),
-            margin: EdgeInsets.only(top: maxWidth / 90,
-                bottom: maxWidth / 90,
-                left: maxWidth / 90,
-                right: maxWidth / 90),
-            width: maxWidth / 20,
-            height: maxWidth / 20,
+            margin: EdgeInsets.only(left: maxWidth / 50, top: maxWidth/50, bottom: maxWidth/50),
+            width: maxWidth / 10,
+            height: maxWidth / 10,
             decoration: BoxDecoration(
               color: getLineColor(selectedLine),
               borderRadius: new BorderRadius.all(Radius.circular(2.0)),
@@ -151,7 +170,7 @@ Widget showSelectedLine(BuildContext context, double maxWidth) {
                     child: Icon(
                       Icons.arrow_back,
                       color: Colors.white,
-                      size: maxWidth/30,
+                      size: maxWidth/20,
                     ),
                   ),
                 )
@@ -159,19 +178,18 @@ Widget showSelectedLine(BuildContext context, double maxWidth) {
           ),
            Container(
             padding: EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 2),
-            margin: EdgeInsets.only(top: maxWidth / 90,
-                bottom: maxWidth / 90,
-                left: maxWidth / 90,
-                right: maxWidth / 90),
-            width: maxWidth / 20,
-            height: maxWidth / 20,
+            margin: EdgeInsets.only(left: maxWidth/50, right: maxWidth/50, top: maxWidth/50, bottom: maxWidth/50),
+            width: maxWidth / 10,
+            height: maxWidth / 10,
             decoration: BoxDecoration(
               color: getLineColor(selectedLine),
               borderRadius: new BorderRadius.all(Radius.circular(2.0)),
             ),
-            child: Center(
-              child: Text(selectedLine, style: infoBrdSmallBold),
-            ),
+            child: SizedBox(
+                width: maxWidth/20,
+                height: maxWidth/20,
+                child: Center(child: Text(selectedLine, style: infoBrdSmallBold),),
+            )
           ),
           isDescLoaded ? Text(dispLineDescr, style: infoBrdSmall,) : Text(dispLineDescr, style: infoBrdSmall,),
         ],
