@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
-import 'package:mapTest/tabs/legacySchedule.dart';
+import 'package:mapTest/uiElements/legacySchedule.dart';
 
 import '../main.dart';
 import 'loadStations.dart';

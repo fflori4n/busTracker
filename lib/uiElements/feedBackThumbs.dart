@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/resty/busFeedback.dart';
 
-import '../UIColors.dart';
+import 'UIColors.dart';
 import '../main.dart';
 
 Widget feedBackThumbs(Bus bus, double maxWidth){

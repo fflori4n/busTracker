@@ -1,23 +1,21 @@
-import 'dart:js';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mapTest/animatons/fadeInAnim.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/infoBoardItem/indicator.dart';
-import 'package:mapTest/infoBoardItem/stationSign.dart';
-import 'package:mapTest/UIColors.dart';
+import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
-import 'package:mapTest/uiWidgets/feedBackThumbs.dart';
+import 'package:mapTest/uiElements/animatons/fadeInAnim.dart';
+import 'package:mapTest/uiElements/feedBackThumbs.dart';
+import 'package:mapTest/uiElements/infoBoardItem/stationSign.dart';
 
-import '../main.dart';
+import '../../main.dart';
 import 'dart:js' as js;
+
+import 'indicator.dart';
 
 Widget drawBuletinitem(BuildContext context, Bus bus, double maxWidth) {
   //, //Station station){

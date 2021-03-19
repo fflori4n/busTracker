@@ -1,19 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/dataClasses/user.dart';
-import 'package:mapTest/infoBoardItem/indicator.dart';
 import 'package:mapTest/location/locationTest.dart';
-import 'package:mapTest/mapRelated/map.dart';
-import 'package:mapTest/tabs/settingsTab.dart';
-import 'package:map_controller/map_controller.dart';
+import 'package:mapTest/uiElements/tabs/filterTab.dart';
+import 'package:mapTest/uiElements/tabs/settingsTab.dart';
 
-import '../UIColors.dart';
+import 'UIColors.dart';
 import '../main.dart';
-import 'filterTab.dart';
 import 'legacySchedule.dart';
 
 Widget showTabs(BuildContext context, User user, double maxWidth) {

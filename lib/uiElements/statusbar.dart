@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mapTest/UIColors.dart';
+import 'package:mapTest/uiElements/UIColors.dart';
 
 import '../main.dart';
 

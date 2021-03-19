@@ -7,9 +7,9 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
-import 'package:mapTest/tabs/legacySchedule.dart';
+import 'package:mapTest/uiElements/legacySchedule.dart';
 
-import '../UIColors.dart';
+import '../uiElements/UIColors.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
 import 'busMarkersOverlay.dart';

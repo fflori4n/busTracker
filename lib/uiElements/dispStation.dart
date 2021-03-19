@@ -3,22 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/infoBoardItem/stationSign.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 
-import '../UIColors.dart';
+import 'UIColors.dart';
 import '../filters.dart';
 import '../main.dart';
+import 'infoBoardItem/stationSign.dart';
 
 class StationLabelWidget {
   BuildContext context;
   Station stationDisp;
   String stationNumber;
   String displayMsg = '';
+  Size constraints;
 
 
-  StationLabelWidget(Station dispThisStation, String stationNumber, [String displayMsg = '']) {
+  StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints,[String displayMsg = '']) {
     this.context = context;
     this.stationDisp = dispThisStation;
     this.stationNumber = stationNumber;
@@ -26,12 +27,9 @@ class StationLabelWidget {
   }
 
   Widget show() {
-    double totalWidth = screenWidth;
-    double totalHeight = 55 + (stationDisp.servedLines.length / 12) * 25.0;//screenHeight * 0.08;
+    double totalWidth = constraints.width;
+    double totalHeight = constraints.height;
 
-    if(!isMobile){
-      totalWidth = screenWidth * 0.3;
-    }
     return Column(
       children: <Widget>[
         SizedBox(
@@ -65,7 +63,7 @@ class StationLabelWidget {
                                 stationLetter(stationNumber),
                                 Expanded(
                                   flex: 3,
-                                  child: Text(stationDisp.name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal)),// decoration: TextDecoration.lineThrough, decorationColor: Colors.red)),
+                                  child: Text(stationDisp.name, style: TextStyle(color: Colors.white, fontSize: 0.22*totalHeight, fontWeight: FontWeight.normal)),// decoration: TextDecoration.lineThrough, decorationColor: Colors.red)),
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(right: 2),
@@ -139,14 +137,14 @@ Widget getStationLineLabels(Station station) {
   return new Column(children: rowList, );
 }
 
-List<Widget> displaySelectedStations(){
+List<Widget> displaySelectedStations(Size constraints){
   List<Widget> stationDispList = new List();
 
   if(selectedStations.length <= 0){
-    stationDispList.add(new StationLabelWidget(new Station.byName(lbl_noSelected.print()), "0", lbl_clickMap.print()).show());
+    stationDispList.add(new StationLabelWidget(new Station.byName(lbl_noSelected.print()), "0", constraints, lbl_clickMap.print()).show());
   }
   for(int i =0; i < selectedStations.length; i++){
-    stationDispList.add(new StationLabelWidget(selectedStations[i], (i+1).toString()).show());
+    stationDispList.add(new StationLabelWidget(selectedStations[i], (i+1).toString(), constraints).show());
   }
   return stationDispList;
 }

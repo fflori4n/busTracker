@@ -1,16 +1,19 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mapTest/infoBoardItem/infoItem.dart';
+import 'package:mapTest/dataClasses/DeviceInfo.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
-import 'package:mapTest/UIColors.dart';
-import 'package:mapTest/navbar/statusbar.dart';
-import 'package:mapTest/tabs/tabs.dart';
-import 'package:mapTest/uiWidgets/dispStation.dart';
-import 'package:mapTest/uiWidgets/tabIconRow.dart';
-import 'dataClasses/Bus.dart';
-import 'filters.dart';
+import 'package:mapTest/uiElements/UIColors.dart';
+import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
+import 'package:mapTest/uiElements/statusbar.dart';
+import 'package:mapTest/uiElements/tabs.dart';
+import 'package:mapTest/uiElements/dispStation.dart';
+import 'package:mapTest/uiElements/tabIconRow.dart';
+import '../dataClasses/Bus.dart';
+import '../filters.dart';
+import 'infoBoardItem/infoItem.dart';
 
 class Buletin extends StatefulWidget {
   BuletinState createState() => BuletinState();
@@ -27,57 +30,69 @@ class BuletinState extends State<Buletin> {
 
   @override
   Widget build(BuildContext context) {
-    double width = 370, height = 800;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-            decoration: new BoxDecoration(
-                color: Color.fromRGBO(16, 16, 16, 1),
-                borderRadius: new BorderRadius.only(
-                  topRight: const Radius.circular(4.0),
-                  bottomRight: const Radius.circular(4.0),
-                )),
-            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 6.0),
-            //padding: EdgeInsets.only(left: 0.0, top: 0.0),
-            height: isMobile ? screenHeight : height * hScaleFactor,
-            width: isMobile ? screenWidth: width * wScaleFactor,
+    double width = 480;
+    double height = 600;
 
-            //350
-            alignment: Alignment.topLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                isMobile ? Container() : StatusBar(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: displaySelectedStations(),
-                ),
-                Stack(
+    return RespWrap(
+      builder: (context, deviceInfo){
+        if(deviceInfo.deviceType == DeviceType.desktop){
+          width = max(deviceInfo.widgetSize.width * 0.25, 480);
+          height = deviceInfo.widgetSize.height*0.9;
+        }
+        else{
+          width = deviceInfo.widgetSize.width;
+          height = deviceInfo.widgetSize.height*0.8;
+        }
+        return Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+                decoration: new BoxDecoration(
+                    color: Color.fromRGBO(16, 16, 16, 1),
+                    borderRadius: new BorderRadius.only(
+                      topRight: const Radius.circular(4.0),
+                      bottomRight: const Radius.circular(4.0),
+                    )),
+
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.symmetric(vertical: 6.0),
+                height: height,
+                width: width,
+
+                child: Column(
+                  //crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(16, 16, 19, 1),
-                      ),
+                    //deviceInfo.isMobile ? Container() : StatusBar(),            // TODO: responsive status bar
+                    Column(
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: displaySelectedStations(Size(width,0.08 * height)),
                     ),
-                    Container(
-                      padding: EdgeInsets.only( left: 10, right: 10),//right: isMobile ? screenWidth/30 : 0.3 * screenWidth/30),
-                      //margin: EdgeInsets.only(left: 8, right: 8),
-                      child: showTabIconRow(isMobile ? screenWidth : width * wScaleFactor),
-                  ),]
-                ),
-                showTabs(context,user, isMobile ? screenWidth : width * wScaleFactor),
-                (user.tabOpen != 5) ? Container(
-                  child: drawLegend(context),
-                ) : Container(),
-                (user.tabOpen != 5) ? Expanded(
-                  child: getListView(context, width),
-                ) : Container(),
-              ],
-            )),
-      ],
-    );
+                    Stack(
+                        children: <Widget>[
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(16, 16, 19, 1),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only( left: 10, right: 10),//right: isMobile ? screenWidth/30 : 0.3 * screenWidth/30),
+                            //margin: EdgeInsets.only(left: 8, right: 8),
+                            child: showTabIconRow(width),
+                          ),]
+                    ),
+                    showTabs(context,user,width),
+                    (user.tabOpen != 5) ? Container(
+                      child: drawLegend(context),
+                    ) : Container(),
+                    (user.tabOpen != 5) ? Expanded(
+                      child: getListView(context, width),
+                    ) : Container(),
+                  ],
+                )),
+          ],
+        );
+      });
   }
 }
 
@@ -105,7 +120,7 @@ Widget getListView(context, double maxWidth) {
   );
 }
 
-Widget infoLegend() {
+Widget infoLegend(double maxWidth) {                                            // TODO: this not used?
   // TODO: fix ui alignment
   return Container(
     margin: EdgeInsets.only(top: 0.0, bottom: 4.0, left: 0.0, right: 0.0),

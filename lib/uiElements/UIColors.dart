@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:math';
-import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapTest/main.dart';
 
 const Color mainBCG = Color.fromRGBO(20, 20, 20, 0.5);
 const Color inactiveStationCol = Color.fromRGBO(20, 20, 20, 0.5);
@@ -26,6 +22,8 @@ const Color buletinBCG= baseGray;
 const Color switchActive= Color.fromRGBO(45, 160, 230,0.8);                        // #5578BD
 const Color switchInactive= Color(0xff121314);                        // #5578BD
 const Color switchToggle= Color(0xffffffff);                        // #5578BD
+
+TextStyle primaryFont = GoogleFonts.robotoCondensed();
 
 TextStyle listText =  GoogleFonts.robotoCondensed(
     fontSize: 15,

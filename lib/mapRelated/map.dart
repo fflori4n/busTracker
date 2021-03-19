@@ -6,7 +6,7 @@ import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/scrollDetector.dart';
-import 'package:mapTest/tabs/legacySchedule.dart';
+import 'package:mapTest/uiElements/legacySchedule.dart';
 import 'package:map_controller/map_controller.dart';
 import '../main.dart';
 import '../onSelected.dart';

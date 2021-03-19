@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 
-import '../UIColors.dart';
+import 'UIColors.dart';
 import '../main.dart';
 
 Widget showTabIconRow(double maxWidth){

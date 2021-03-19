@@ -7,7 +7,8 @@ import 'package:mapTest/location/locationTest.dart';
 import 'package:mapTest/mapRelated/map.dart';
 
 import '../UIColors.dart';
-import '../main.dart';
+import '../../main.dart';
+
 
 Widget showSettingsTab(){
   return Column(

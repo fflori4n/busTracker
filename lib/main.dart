@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/infoDisp.dart';
+import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
+import 'package:mapTest/uiElements/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/drawoverlay.dart';
-import 'package:mapTest/navbar/mobileUI.dart';
 import 'package:mapTest/session/shared_pref.dart';
+import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
+import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'dart:async';
+import 'dataClasses/DeviceInfo.dart';
 import 'dataClasses/Show.dart';
 import 'dataClasses/user.dart';
 import 'mapRelated/map.dart';
@@ -77,48 +80,27 @@ Widget router(String page){     // TODO: welp. whatever... at this point everyth
     loadStationsFromJson("nsBusStops");
     busLineCityStr = "nsCityBusLines";
   }
-  return Index();
+  return RespWrap(
+    builder: (context, deviceInfo){
+      return Index(deviceInfo);
+    },
+  );
 }
 
 class Index extends StatelessWidget {
-  const Index({Key key}) : super(key: key);
+  DeviceInfo deviceInfo;
+  Index(this.deviceInfo, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    mainViewContext = context;
-    screenWidth = MediaQuery.of(context).size.width;
-    screenHeight = MediaQuery.of(context).size.height;
-
-    wScaleFactor = screenWidth / 1366;  // dev screen width
-    hScaleFactor = screenHeight / 900;
-
     onLoad();
-
-    return LayoutBuilder(
-      builder: (context,constraints){
-          if(constraints.maxWidth < smTresh){                                   // MOBILE VIEW
-            print('** MOBILE VIEW DBG **');
-            isMobile = true;
-            return Scaffold(
-                body: MobileUI());
-          }           // DESKTOP VIEW
-          else{
-            print('** DESKTOP VIEW DBG **');
-            isMobile = false;
-            return Scaffold(
-                body: new Container(
-                    child:new Stack(
-                      children: <Widget>[
-                        mainMapPage,
-                        MapOverlay(),
-                        Buletin(),
-                      ],
-                    )
-                ));
-          }
-      }
-    );
+    if(deviceInfo.deviceType == DeviceType.desktop){
+      return DesktopUI();
+    }
+    if(deviceInfo.deviceType == DeviceType.desktop){
+      return DesktopUI();
+    }
+    return MobileUI();
   }
 }
 

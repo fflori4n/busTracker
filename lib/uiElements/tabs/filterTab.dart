@@ -4,7 +4,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 
 import '../UIColors.dart';
-import '../main.dart';
+import '../../main.dart';
 
 Widget showFilterTab(){
   return Column(

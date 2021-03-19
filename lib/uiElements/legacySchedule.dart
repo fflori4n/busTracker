@@ -3,9 +3,9 @@ import 'dart:js';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapTest/loadModules/busLines.dart';
-import 'package:mapTest/uiWidgets/scheduleDisplay.dart';
+import 'package:mapTest/uiElements/scheduleDisplay.dart';
 
-import '../UIColors.dart';
+import 'UIColors.dart';
 import '../main.dart';
 
 String selectedLine = '';
