@@ -15,7 +15,7 @@ Widget showSettingsTab(){
     children: [
       Container(
         padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-        child: Row(
+        child: Container(),/*Row(
           children: <Widget>[
             Text(
               'language:',
@@ -148,7 +148,7 @@ Widget showSettingsTab(){
                     }*/
                 }),
           ],
-        ),
+        ),*/
       ),
     ],
   );

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../UIColors.dart';
 
-Widget stationLetter(String letter) {
+Widget stationLetter(double width, String letter) {
   return Center(
     child: Container(
-      height: infoBrdSmall.fontSize,
-      width: infoBrdSmall.fontSize,
-      margin: EdgeInsets.only(left: 10, right: 10),
-      padding: EdgeInsets.all(0.5),
+      height: width,
+      width: width,
+     // margin: EdgeInsets.only(left: 10, right: 10),
+      //padding: EdgeInsets.all(0.5),
       child: Center(child:Text(letter, style: infoBrdSmaller, textAlign: TextAlign.center,),),
       decoration: BoxDecoration(
           shape: BoxShape.circle,

@@ -8,6 +8,7 @@ import 'UIColors.dart';
 import '../main.dart';
 
 Widget feedBackThumbs(Bus bus, double maxWidth){
+  maxWidth*= 0.85;
   if(!bus.reported && bus.displayedOnMap){
     return Row(
       children: [
@@ -18,7 +19,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           height: maxWidth/10,
           decoration: BoxDecoration(
             color: Colors.green,
-            borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(5.0)),
           ),
           child: Tooltip(
               message: 'Stigao je bus, dobra predikcija!',
@@ -44,7 +45,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           height: maxWidth/10,
           decoration: BoxDecoration(
             color: Colors.red,
-            borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(5.0)),
           ),
           child: Tooltip(
               message: 'Nije došao na vreme, loša predikcija!',
@@ -75,7 +76,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           height: maxWidth/10,
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(5.0)),
           ),
           child: Tooltip(
               message: 'Nije krenuo bus, ne možete glasati!',
@@ -94,7 +95,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           height: maxWidth/10,
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(5.0)),
           ),
           child: Tooltip(
               message: 'Nije krenuo bus, ne možete glasati!',
@@ -120,7 +121,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           decoration: BoxDecoration(
             //color: Colors.grey,
             border: Border.all(color: Colors.grey, width: 1),
-            borderRadius: new BorderRadius.all(Radius.circular(2.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(5.0)),
           ),
           child: Tooltip(
             message: 'Poslato je. Hvala!',

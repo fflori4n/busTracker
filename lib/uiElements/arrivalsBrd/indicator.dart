@@ -6,8 +6,9 @@ class indicatorShape extends CustomPainter {
   Color offColor;
   Color pinColor;
   bool isSet;
+  double width;
 
-  indicatorShape(this.onColor, this.offColor,this.pinColor, this.isSet);
+  indicatorShape(this.width, this.onColor, this.offColor,this.pinColor, this.isSet);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -21,14 +22,14 @@ class indicatorShape extends CustomPainter {
       ..style = PaintingStyle.fill;
 
    Path big = Path()
-      ..addOval(Rect.fromCircle(center: Offset(0, size.height/2), radius: size.height / 2));
+      ..addOval(Rect.fromCircle(center: Offset(0, width/2), radius: width / 2));
 
    Path pin = Path();
    if(isSet){
-     pin.addOval(Rect.fromCircle(center: Offset(0, size.height), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(0, width), radius: width / 6));
    }
    else{
-     pin.addOval(Rect.fromCircle(center: Offset(size.height / 2, size.height/2), radius: size.height / 6));
+     pin.addOval(Rect.fromCircle(center: Offset(width / 2, width/2), radius: width / 6));
    }
 
 
@@ -40,12 +41,16 @@ class indicatorShape extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
-Widget indicator(Color onColor, Color offColor,Color pinColor, bool isSet) {
-    return Center(
-      child: CustomPaint(
-        painter: indicatorShape(onColor, offColor,pinColor,isSet),
-        child: Container(
-            child: Text(' ')),
+Widget indicator(double width, Color onColor, Color offColor,Color pinColor, bool isSet) {
+    return Container(
+      width: width,
+      height: width,
+      child: Center(
+        child: CustomPaint(
+          painter: indicatorShape(width, onColor, offColor,pinColor,isSet),
+          child: Container(
+              child: Text(' ')),
+        ),
       ),
     );
 }

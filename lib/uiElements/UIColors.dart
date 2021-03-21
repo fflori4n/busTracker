@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,70 +57,89 @@ TextStyle infoBrdYellow =  GoogleFonts.robotoCondensed(
     color: baseYellow,
     letterSpacing: 1.1
 );
-TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
-    //fontSize: 10 * wScaleFactor,
-    fontSize: 15,
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-TextStyle infoBrdSmallBold =  GoogleFonts.robotoCondensed(
+/*TextStyle infoBrdSmallBold =  GoogleFonts.robotoCondensed(
   //fontSize: 10 * wScaleFactor,
     fontSize: 14,
     fontWeight: FontWeight.bold,
     color: baseWhite,
     letterSpacing: 1.1
-);
+);*/
 
-TextStyle infoBrdSmallCrossedOut =  GoogleFonts.robotoCondensed(
-  //fontSize: 10 * wScaleFactor,
-    fontSize: 15,
+
+// legend for station name and lines
+
+// bus line description under infoitem
+
+double infoBrdWidth = 1920;
+
+final Color infoDispDarkBlue = Color.fromRGBO(23, 67, 108, 1);
+final Color infoDispLiteBlue = Color.fromRGBO(0, 90, 152, 1);
+
+TextStyle stationDisplay = GoogleFonts.robotoCondensed(
+    color: Colors.white,
+    fontSize: max(0.035 * infoBrdWidth, 15),
     fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1,
-    decoration: TextDecoration.lineThrough,
-    decorationColor: Color.fromRGBO(16, 16, 19, 1),
+    letterSpacing: 1.1
 );
 
-TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(
-//fontSize: 10 * wScaleFactor,
-fontSize: 15,
-fontWeight: FontWeight.normal,
-color: baseWhite.withOpacity(0.5),
-letterSpacing: 1.1
-);
-
-TextStyle infoBrdSmaller = GoogleFonts.robotoCondensed(
-    //fontSize: 8 * wScaleFactor,
-    fontSize: 12,
+TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
+    //fontSize: max(0.030 * infoBrdWidth, 2),
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1
 );
-// legend for station name and lines
+
+TextStyle infoBrdSmallCrossedOut =  GoogleFonts.robotoCondensed(
+  fontSize: max(0.030 * infoBrdWidth, 2),
+  fontWeight: FontWeight.normal,
+  color: baseWhite,
+  letterSpacing: 1.1,
+  decoration: TextDecoration.lineThrough,
+  decorationColor: Color.fromRGBO(16, 16, 19, 1),
+);
+
+TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(
+    fontSize: max(0.030 * infoBrdWidth, 2),
+    fontWeight: FontWeight.normal,
+    color: baseWhite.withOpacity(0.5),
+    letterSpacing: 1.1
+);
+
 TextStyle infoBrdLabel = GoogleFonts.robotoCondensed(
-  //fontSize: 10 * wScaleFactor,
-  fontSize: 15,
+  fontSize: max(0.030 * infoBrdWidth, 2),                                        // ekv 15
   letterSpacing: 1.1,
   fontWeight: FontWeight.normal,
   fontStyle: FontStyle.normal,
   color: baseWhite.withOpacity(0.8),
 );
-// bus line description under infoitem
+
+TextStyle infoBrdSmaller = GoogleFonts.robotoCondensed(
+    fontSize: max(0.025 * infoBrdWidth, 2),
+    fontWeight: FontWeight.normal,
+    color: baseWhite,
+    letterSpacing: 1.1
+);
+TextStyle busDescrSmallLink = GoogleFonts.robotoCondensed(
+  fontSize: max(0.025 * infoBrdWidth, 2),
+  letterSpacing: 1.1,
+  fontWeight: FontWeight.normal,
+  decoration: TextDecoration.underline,
+  color: infoDispLiteBlue,
+);
 TextStyle busDescrSmall = GoogleFonts.robotoCondensed(
-  //fontSize: 8 * wScaleFactor,
-  fontSize: 12,
+  fontSize: max(0.025 * infoBrdWidth, 2),                                        // ekv 12
   letterSpacing: 1.1,
   fontWeight: FontWeight.normal,
   color: baseWhite,
 );
 
-TextStyle busDescrSmallLink = GoogleFonts.robotoCondensed(
-  //fontSize: 8 * wScaleFactor,
-  fontSize: 12,
-  letterSpacing: 1.1,
-  fontWeight: FontWeight.normal,
-  decoration: TextDecoration.underline,
-  color: Colors.blue,
-);
+/// https://stackoverflow.com/questions/50751226/how-to-dynamically-resize-text-in-flutter - Taur
+/// really smart solution for fixed area, modified it for const width, thanks!
 
+double autoSizeOneLine({@required int stringLength, @required double maxWidth}) {
+  assert(stringLength != null, "`quoteLength` may not be null");
+  assert(maxWidth != null, "`parentArea` may not be null");
+
+  final double letterSize = (maxWidth *1.4) / stringLength;
+  return letterSize;
+}

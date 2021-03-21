@@ -111,7 +111,7 @@ Widget lineChoser(double maxWidth) {
                 selectedLine = name;
               },
               child: Center(
-                child: Text(name, style: infoBrdSmallBold),
+                child: Text(name, style: infoBrdSmall),
               ),
             )
           ),
@@ -188,7 +188,7 @@ Widget showSelectedLine(BuildContext context, double maxWidth) {
             child: SizedBox(
                 width: maxWidth/20,
                 height: maxWidth/20,
-                child: Center(child: Text(selectedLine, style: infoBrdSmallBold),),
+                child: Center(child: Text(selectedLine, style: infoBrdSmall),),
             )
           ),
           isDescLoaded ? Text(dispLineDescr, style: infoBrdSmall,) : Text(dispLineDescr, style: infoBrdSmall,),

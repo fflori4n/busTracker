@@ -11,6 +11,7 @@ import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'dart:async';
 import 'dataClasses/DeviceInfo.dart';
 import 'dataClasses/Show.dart';
+import 'dataClasses/StateMan.dart';
 import 'dataClasses/user.dart';
 import 'mapRelated/map.dart';
 
@@ -39,6 +40,8 @@ User user = new User();  // new user to store position
 Show busFilters = new Show();
 
 Widget mainMapPage = MapPage(mapTileSwitchController.stream);
+
+StateMan globalStates = new StateMan();
 
 void main() {
   update();
@@ -80,10 +83,12 @@ Widget router(String page){     // TODO: welp. whatever... at this point everyth
     loadStationsFromJson("nsBusStops");
     busLineCityStr = "nsCityBusLines";
   }
-  return RespWrap(
-    builder: (context, deviceInfo){
-      return Index(deviceInfo);
-    },
+  return Scaffold(
+    body: RespWrap(
+      builder: (context, deviceInfo){
+        return Index(deviceInfo);
+      },
+    ),
   );
 }
 

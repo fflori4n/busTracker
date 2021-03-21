@@ -9,7 +9,7 @@ import 'package:mapTest/loadModules/loadStations.dart';
 import 'UIColors.dart';
 import '../filters.dart';
 import '../main.dart';
-import 'infoBoardItem/stationSign.dart';
+import 'arrivalsBrd/stationSign.dart';
 
 class StationLabelWidget {
   BuildContext context;
@@ -18,8 +18,7 @@ class StationLabelWidget {
   String displayMsg = '';
   Size constraints;
 
-
-  StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints,[String displayMsg = '']) {
+  StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints, [String displayMsg = '']) {
     this.context = context;
     this.stationDisp = dispThisStation;
     this.stationNumber = stationNumber;
@@ -28,76 +27,75 @@ class StationLabelWidget {
 
   Widget show() {
     double totalWidth = constraints.width;
-    double totalHeight = constraints.height;
+    double totalHeight = totalWidth * 0.15;
 
     return Column(
       children: <Widget>[
-        SizedBox(
-            width: totalWidth,
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  height: totalHeight + 3.0,
-                  decoration: BoxDecoration(
-                    color:  Color.fromRGBO(23, 67, 108, 1),
-                  ),
+        Container(
+          height: totalHeight,
+          width: totalWidth + 10,
+          decoration: BoxDecoration(
+            color: infoDispDarkBlue,
+          ),
+          child: Container(
+              padding: EdgeInsets.only(top: totalHeight * 0.01),
+              alignment: Alignment.topLeft,
+              height: totalHeight * 0.90,
+              width: totalWidth,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [infoDispLiteBlue, infoDispDarkBlue]),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(totalHeight * 0.2),
                 ),
-
-                    Container(
-                      padding: EdgeInsets.only(top: 5, bottom: 10),
-                      height: totalHeight,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Color.fromRGBO(0, 90, 152, 1),Color.fromRGBO(23, 67, 108, 1)]
-                        ),
-                        borderRadius: BorderRadius.only(
-                          //topLeft: Radius.circular(totalHeight * 0.1),
-                          bottomLeft: Radius.circular(totalHeight * 0.1),
-                        ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        width: totalWidth*0.1,
+                        child: stationLetter(8,stationNumber),
                       ),
-                      child: Column(
-                        children: <Widget>[
-                          Expanded(
-                            child: Row(
+                      Container(
+                        width: totalWidth*0.8,
+                        child: Text(stationDisp.name, style: stationDisplay),
+                      ),
+                      Container(
+                          width: totalWidth*0.1,
+                          child: FlatButton(
+                            onPressed: () {
+                              selectedStations.remove(stationDisp);
+                              removeUnusedBusLines();
+                            },
+                            child: Icon(
+                              Icons.clear, //: Icon.place,
+                              color: Colors.white,
+                              size:  totalWidth*0.05,
+                            ), //stationX(),
+                          )),
+                    ],
+                  ),
+                  Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: totalWidth*0.1),
+                      child: displayMsg == ''
+                          ? Container(
+                              child: getStationLineLabels(stationDisp),
+                            )
+                          : Row(
                               children: <Widget>[
-                                stationLetter(stationNumber),
-                                Expanded(
-                                  flex: 3,
-                                  child: Text(stationDisp.name, style: TextStyle(color: Colors.white, fontSize: 0.22*totalHeight, fontWeight: FontWeight.normal)),// decoration: TextDecoration.lineThrough, decorationColor: Colors.red)),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(right: 2),
-                                  child: FlatButton(
-                                    onPressed: () {
-                                      print('station number was' + selectedStations.indexOf(stationDisp).toString());
-                                      selectedStations.remove(stationDisp);
-                                      removeUnusedBusLines();
-                                    },
-                                    child: Icon(
-                                      Icons.clear, //: Icon.place,
-                                      color:Colors.white,
-                                      size: screenWidth/100,
-                                      semanticLabel: 'location',
-                                    ),//stationX(),
-                                  )
+                                Text(
+                                  displayMsg,
+                                  style: infoBrdSmall,
+                                  textAlign: TextAlign.left,
                                 ),
                               ],
-                            )
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10 + totalHeight * 0.4),
-                              child: displayMsg == '' ? Container(
-                                child: getStationLineLabels(stationDisp),
-                              ) : Row( children: <Widget>[Text(displayMsg, style: infoBrdSmall, textAlign: TextAlign.left,),],),
                             ),
-                          ),
-                        ],
-                      )
                     ),
-              ],
-            )
-           ),
+                ],
+              )),
+        ),
       ],
     );
   }
@@ -106,13 +104,16 @@ class StationLabelWidget {
 Widget getStationLineLabels(Station station) {
   List<Widget> rowList = [];
   List<Widget> labelList = [];
-  int i=0;
-  for(String line in station.servedLines){
+  int i = 0;
+  for (String line in station.servedLines) {
     var newText = new GestureDetector(
       child: Text(
         line.padLeft(3),
         style: nsBusLinesContainsName(line)
-            ? (busFilters.hideLine.contains(line) ? infoBrdSmallCrossedOut : infoBrdSmall) : infoBrdSmallSemiTransp,
+            ? (busFilters.hideLine.contains(line)
+                ? infoBrdSmallCrossedOut
+                : infoBrdSmall)
+            : infoBrdSmallSemiTransp,
         textAlign: TextAlign.left,
       ),
       onTap: () {
@@ -126,25 +127,37 @@ Widget getStationLineLabels(Station station) {
     );
 
     labelList.add(newText);
-    labelList.add(Text(' ', style: infoBrdSmall,));
+    labelList.add(Text(
+      ' ',
+      style: infoBrdSmall,
+    ));
 
-    if(labelList.length > 24){
-      rowList.add(Row( children: labelList));
+    if (labelList.length > 24) {
+      rowList.add(Row(children: labelList));
       labelList = [];
     }
   }
-  rowList.add(Row( children: labelList));
-  return new Column(children: rowList, );
+  rowList.add(Row(children: labelList));
+  return new Column(
+    children: rowList,
+  );
 }
 
-List<Widget> displaySelectedStations(Size constraints){
+List<Widget> displaySelectedStations(Size constraints) {
   List<Widget> stationDispList = new List();
 
-  if(selectedStations.length <= 0){
-    stationDispList.add(new StationLabelWidget(new Station.byName(lbl_noSelected.print()), "0", constraints, lbl_clickMap.print()).show());
+  if (selectedStations.length <= 0) {
+    stationDispList.add(new StationLabelWidget(
+            new Station.byName(lbl_noSelected.print()),
+            "0",
+            constraints,
+            lbl_clickMap.print())
+        .show());
   }
-  for(int i =0; i < selectedStations.length; i++){
-    stationDispList.add(new StationLabelWidget(selectedStations[i], (i+1).toString(), constraints).show());
+  for (int i = 0; i < selectedStations.length; i++) {
+    stationDispList.add(new StationLabelWidget(
+            selectedStations[i], (i + 1).toString(), constraints)
+        .show());
   }
   return stationDispList;
 }
