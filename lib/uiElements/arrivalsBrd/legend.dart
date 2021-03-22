@@ -8,13 +8,8 @@ import 'package:mapTest/dataClasses/multiLang.dart';
 import '../UIColors.dart';
 
 Widget legend(BuildContext context, Size constraints) {
-  //, //Station station){
-
-
-
 
   String lineName = lbl_lineName.print().padRight(5, ' ');
-  Color lineColor = Colors.white70;
 
   String startTime = lbl_departsAt.print();
   String ETAtime = lbl_arrivesIn.print();
@@ -24,7 +19,7 @@ Widget legend(BuildContext context, Size constraints) {
 
   final TextStyle busSmallTextStyle = GoogleFonts.robotoCondensed(
       fontSize: autoSizeOneLine(
-          stringLength: [lineName.length,startTime.length,ETAtime.length,nickName.length, erExp.length].reduce(max) + 2,
+          stringLength: [lineName.length,startTime.length,ETAtime.length,nickName.length, erExp.length].reduce(max) + 1,
           maxWidth:  0.19 * constraints.width * 0.95),
       fontWeight: FontWeight.normal,
       color: baseWhite,
@@ -54,7 +49,7 @@ Widget legend(BuildContext context, Size constraints) {
                             padding: EdgeInsets.only(left: 0.1 * 0.15 * 0.7 * constraints.width,),
                             height: 2 * constraints.height/3,
                             width: 0.15 * 0.7 * constraints.width,
-                            child: Text(lineName, style: busSmallTextStyle.apply(color: baseYellow), textAlign: TextAlign.start,),
+                            child: Text(lineName, style: busSmallTextStyle, textAlign: TextAlign.start,),
 
                           ),
                           Container(
@@ -86,7 +81,7 @@ Widget legend(BuildContext context, Size constraints) {
                             alignment: Alignment.centerRight,
                             height: 2 * constraints.height/3,
                             width: 0.3 * 0.7 * constraints.width,
-                            child: Text(ETAtime, style: busSmallTextStyle.apply(color: baseYellow))
+                            child: Text(ETAtime, style: busSmallTextStyle)
 
                           ),
 

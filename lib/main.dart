@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
 }
 
 Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
-  selectedStations = [paperStation];  // DBG !!!!!
+  selectedStations = [];  // DBG !!!!!
   if(page.contains('su')){
     mapRefPoint = suMapRefPoint;
     print('** In subotica! **');

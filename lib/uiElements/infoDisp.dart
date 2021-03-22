@@ -8,7 +8,7 @@ import 'package:mapTest/main.dart';
 import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'package:mapTest/uiElements/tabs.dart';
-import 'package:mapTest/uiElements/dispStation.dart';
+import 'package:mapTest/uiElements/arrivalsBrd/stationNameBrd.dart';
 import 'package:mapTest/uiElements/tabIconRow.dart';
 import '../dataClasses/Bus.dart';
 import '../filters.dart';
