@@ -88,8 +88,9 @@ Widget showTabIconRow(double maxWidth) {
                   ),
                 )),
           ),
-          Spacer(),
+          Spacer(),                                                               // TODO: alignment issue on mobile, possibly bug in flutter
           Container(
+            alignment: Alignment.center,
             margin: EdgeInsets.only(
               left: maxWidth / 50,
             ),
@@ -112,14 +113,12 @@ Widget showTabIconRow(double maxWidth) {
                       user.tabOpen = 1;
                     }
                   },
-                  child: Center(
-                    child: Icon(
+                  child:  Icon(
                       Icons.favorite,
                       color: Colors.white,
                       size: maxWidth / 20,
                       semanticLabel: 'favourites',
                     ),
-                  ),
                 )),
           ),
           Container(
