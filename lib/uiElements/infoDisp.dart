@@ -43,7 +43,7 @@ class BuletinState extends State<Buletin> {
             }
             else{
               width = deviceInfo.widgetSize.width;
-              height = deviceInfo.widgetSize.height*0.9;
+              height = deviceInfo.widgetSize.height;
             }
             infoBrdWidth = width;
             return Column(

@@ -35,7 +35,7 @@ class RespWrap extends StatelessWidget{
         screenSize: mediaQuery.size,
         widgetSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
       );
-      print(deviceInfo.toString());   // TODO: DBG
+      //print(deviceInfo.toString());   // TODO: DBG
       return builder(context, deviceInfo);
     },
     );

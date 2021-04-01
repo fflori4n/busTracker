@@ -5,6 +5,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mapTest/dataClasses/user.dart';
 import 'package:mapTest/location/locationTest.dart';
 import 'package:mapTest/uiElements/tabs/filterTab.dart';
+import 'package:mapTest/uiElements/tabs/navigationTab.dart';
 import 'package:mapTest/uiElements/tabs/settingsTab.dart';
 
 import 'UIColors.dart';
@@ -57,39 +58,7 @@ Widget getTab(BuildContext context, int tabNum, double maxWidth) {
     );
   } else if (tabNum == 2) {
     /// navigation
-    return Container(
-      margin: EdgeInsets.all(5),
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: [
-              Text(
-                'device location:',
-                style: infoBrdSmall,
-              ),
-              Spacer(),
-              Container(
-                margin: EdgeInsets.all(5),
-                child: FlutterSwitch(
-               width: infoBrdSmall.fontSize * 2 * 1.3,
-                    height: infoBrdSmall.fontSize * 1.3,
-                    toggleSize: infoBrdSmall.fontSize * 0.7 * 1.3,
-                    activeColor: switchActive,
-                    inactiveColor: switchInactive,
-                    toggleColor: switchToggle,
-                    value: user.locationEnabled,
-                    onToggle: (val) {
-                      user.locationEnabled = val;
-                      if (user.locationEnabled) {
-                        updatePos();
-                      }
-                    }),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+    return showNavigationTab(Size(maxWidth,0));
   } else if (tabNum == 3) {
     /// settings
     return showSettingsTab(Size(maxWidth,0));

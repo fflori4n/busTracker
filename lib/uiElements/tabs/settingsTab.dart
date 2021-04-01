@@ -181,6 +181,104 @@ Widget showSettingsTab(Size constraints){
                 ],
               ),
 
+              Row(
+                children: [
+                  Container(
+                    height: settingsTextStyle.fontSize * 1.5,
+                    alignment: Alignment.centerLeft,
+                    width: 20 * constraints.width / 25,
+                    child: Text(
+                      'Bus markers visible:',
+                      style: settingsTextStyle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      child: Tooltip(
+                        message: 'toggle',
+                        child: FlutterSwitch(
+                            width: settingsTextStyle.fontSize * 2 * 1.3,
+                            height: settingsTextStyle.fontSize * 1.3,
+                            toggleSize: settingsTextStyle.fontSize * 0.7 * 1.3,
+                            activeColor: switchActive,
+                            inactiveColor: switchInactive,
+                            toggleColor: switchToggle,
+                            value: user.showBusMarkers,
+                            onToggle: (val1) {
+                              user.showBusMarkers = val1;
+                            }),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              ///
+              Row(
+                children: [
+                  Container(
+                    height: settingsTextStyle.fontSize * 1.5,
+                    alignment: Alignment.centerLeft,
+                    width: 20 * constraints.width / 25,
+                    child: Text(
+                      'Bus Eta on map visible:',
+                      style: settingsTextStyle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      child: Tooltip(
+                        message: 'toggle',
+                        child: FlutterSwitch(
+                            width: settingsTextStyle.fontSize * 2 * 1.3,
+                            height: settingsTextStyle.fontSize * 1.3,
+                            toggleSize: settingsTextStyle.fontSize * 0.7 * 1.3,
+                            activeColor: switchActive,
+                            inactiveColor: switchInactive,
+                            toggleColor: switchToggle,
+                            value: user.showBusETAonMap,
+                            onToggle: (val1) {
+                              user.showBusETAonMap = val1;
+                            }),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+
+              Row(
+                children: [
+                  Container(
+                    height: settingsTextStyle.fontSize * 1.5,
+                    alignment: Alignment.centerLeft,
+                    width: 20 * constraints.width / 25,
+                    child: Text(
+                      'Bus lines visible:',
+                      style: settingsTextStyle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      child: Tooltip(
+                        message: 'toggle',
+                        child: FlutterSwitch(
+                            width: settingsTextStyle.fontSize * 2 * 1.3,
+                            height: settingsTextStyle.fontSize * 1.3,
+                            toggleSize: settingsTextStyle.fontSize * 0.7 * 1.3,
+                            activeColor: switchActive,
+                            inactiveColor: switchInactive,
+                            toggleColor: switchToggle,
+                            value: user.showBusLinesMap,
+                            onToggle: (val1) {
+                              user.showBusLinesMap = val1;
+                            }),
+                      ),
+                    ),
+                  )
+                ],
+              ),
 
             ],
           ),

@@ -35,6 +35,13 @@ Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
       fontWeight: FontWeight.normal,
       color: baseWhite,
       letterSpacing: 1.1);
+  final TextStyle timeTextStyleSmol = GoogleFonts.robotoCondensed(
+      fontSize: autoSizeOneLine(
+          stringLength: 9,
+          maxWidth: 0.3 * 0.7 * constraints.width * 1.2) * 0.8,
+      fontWeight: FontWeight.normal,
+      color: baseWhite,
+      letterSpacing: 1.1);
 
   final TextStyle busDescrTextStyle = GoogleFonts.robotoCondensed(
       fontSize: autoSizeOneLine(
@@ -158,7 +165,7 @@ Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
                                     width: 0.3 * 0.7 * constraints.width,
                                     child: msgInsteadOfETA.isEmpty
                                         ? Text(eTAhours + ':' + eTAmins + ':' + eTAsex, style: timeTextStyle.apply(color: baseYellow))
-                                        : Text(msgInsteadOfETA,  style: timeTextStyle),
+                                        : Text(msgInsteadOfETA,  style: timeTextStyleSmol),
                                   ),
 
                                 ],
