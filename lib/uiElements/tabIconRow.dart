@@ -9,7 +9,6 @@ import 'UIColors.dart';
 import '../main.dart';
 
 Widget showTabIconRow(double maxWidth) {
-  print('screenwidfth = ' + maxWidth.toString());
   maxWidth *= 0.85;
 
   final double btnPadding = maxWidth / 80;

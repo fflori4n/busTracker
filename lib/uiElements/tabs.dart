@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mapTest/dataClasses/user.dart';
+import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/location/locationTest.dart';
+import 'package:mapTest/uiElements/tabs/favourites.dart';
 import 'package:mapTest/uiElements/tabs/filterTab.dart';
 import 'package:mapTest/uiElements/tabs/navigationTab.dart';
 import 'package:mapTest/uiElements/tabs/settingsTab.dart';
@@ -34,28 +36,7 @@ Widget showTabs(BuildContext context, User user, double maxWidth) {
 
 Widget getTab(BuildContext context, int tabNum, double maxWidth) {
   if (tabNum == 1) {
-    return Column(
-      children: <Widget>[
-        TextButton(
-          onPressed: () {
-            // TODO: implement
-          },
-          child: Container(
-            margin: EdgeInsets.only(left: 0, right: 10, top: 10, bottom: 5),
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: baseBlue,
-              borderRadius: new BorderRadius.all(Radius.circular(2.0)),
-            ),
-            child: Text(
-              'Save current as favourite!',
-              style: busDescrSmall,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ],
-    );
+    return showFavourites(Size(maxWidth,0));
   } else if (tabNum == 2) {
     /// navigation
     return showNavigationTab(Size(maxWidth,0));

@@ -6,12 +6,6 @@ import 'package:mapTest/loadModules/busLines.dart';
 DeviceType getDevType(MediaQueryData mediaQuery){
   double deviceScreenWidth = mediaQuery.size.width;
 
-  /*if(mediaQuery.orientation == Orientation.landscape){
-    deviceScreenWidth = mediaQuery.size.height;
-  } else{
-    deviceScreenWidth = mediaQuery.size.width;
-  }*/
-
   if(deviceScreenWidth > 950){
     return DeviceType.desktop;
   }

@@ -2,6 +2,7 @@ import 'dart:js';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/uiElements/scheduleDisplay.dart';
 
@@ -12,7 +13,6 @@ String selectedLine = '';
 bool isDescLoaded = false;
 String dispLineDescr = '';
 
-// tabopen == 5 && selectedLine.notEmpty()
 Widget showSimpleSchedule(BuildContext context, double maxWidth) {
   if (selectedLine == '') {
     return lineChoser(maxWidth);
@@ -23,7 +23,19 @@ Widget showSimpleSchedule(BuildContext context, double maxWidth) {
 }
 
 Widget lineChoser(double maxWidth) {
-  maxWidth*= 0.85;
+
+  final int linesInRow = 8;
+  final double paddingWidth = maxWidth*0.85/50;
+  final double buttonWidth = (maxWidth*0.85 - (linesInRow+ 1)) / (linesInRow);
+
+  final TextStyle scheduleBtnStyle = GoogleFonts.robotoCondensed(
+      fontSize: autoSizeOneLine(
+          stringLength: 5,
+          maxWidth: buttonWidth),
+      fontWeight: FontWeight.bold,
+      color: baseWhite,
+      letterSpacing: 1.1);
+
   List<String> lineNames = [
     '1A',
     '1B',
@@ -84,12 +96,12 @@ Widget lineChoser(double maxWidth) {
   for (String name in lineNames) {
     Container newBut = Container(
       padding: EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 2),
-      margin: EdgeInsets.only(top: maxWidth / 90,
-          bottom: maxWidth / 90,
-          left: maxWidth / 90,
-          right: maxWidth / 90),
-      width: maxWidth / 10,
-      height: maxWidth / 10,
+      margin: EdgeInsets.only(top: paddingWidth,
+          //bottom: paddingWidth,
+          left: paddingWidth,),
+          //right: paddingWidth),
+      width: buttonWidth,
+      height: buttonWidth,
       decoration: BoxDecoration(
         color: getLineColor(name),
         borderRadius: new BorderRadius.all(Radius.circular(2.0)),
@@ -111,7 +123,7 @@ Widget lineChoser(double maxWidth) {
                 selectedLine = name;
               },
               child: Center(
-                child: Text(name, style: infoBrdSmall),
+                child: Text(name, style: scheduleBtnStyle),
               ),
             )
           ),
@@ -120,10 +132,10 @@ Widget lineChoser(double maxWidth) {
     busLineButtons.add(newBut);
   }
 
-  for (int i = 0; i < busLineButtons.length; i += 9) {
-    if ((i + 9) < busLineButtons.length) {
+  for (int i = 0; i < busLineButtons.length; i += linesInRow ) {
+    if ((i + linesInRow ) < busLineButtons.length) {
       rowList.add(Row(
-        children: busLineButtons.sublist(i, i + 9),
+        children: busLineButtons.sublist(i, i + linesInRow ),
       ));
     }
     else {

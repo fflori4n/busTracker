@@ -3,13 +3,11 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapTest/dataClasses/DeviceInfo.dart';
 import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import '../infoDisp.dart';
-import 'package:mapTest/dataClasses/multiLang.dart';
 
 bool isScheduleView = true;
 
