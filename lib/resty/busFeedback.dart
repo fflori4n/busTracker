@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter_user_agent/flutter_user_agent.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/user.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
@@ -24,6 +25,12 @@ Future<void> postBusFeedBack(bool isOK, Bus bus,User user) async {
   print('isOK      \t' + isOK.toString());                                      //
   print('userPos   \t' + user.position.toString());
   print('bus       \t' + bus.nickName);
+
+  //String ua = await FlutterUserAgent.getPropertyAsync('userAgent');
+  print(DateTime.now().toLocal().toString());
+  //print(ua);
+
+  print('___________________');
 
   /// read local storage to get number of sent req, and date of last POST
   try{
@@ -69,15 +76,26 @@ Future<void> writeToLocalStorage(double numOfReq) async {
 }
 
 makePostRequest(bool isOK, Bus bus,User user) async {
-  String url = 'http://127.0.0.1:5000/';
-  String json = '{"bus_stop":"'+selectedStations[bus.stationNumber].name+'","bus_stop_pos": "'+selectedStations[bus.stationNumber].pos.toString()+'","isOK": '+isOK.toString()+',"bus_line" = "' + bus.busLine.name.toString() + '", "bus_start_time" = "' + bus.startTime.toString()+ '","bus_ETA" = "' +bus.eTA.toString()+ '", "bus_exp_er" = "' + bus.expErMarg.toString()+ '", "user_pos" = "' + user.position.toString()+ '"}';
-
+  String url = 'http://sandorr.eunetddns.net/logResponse.php';
+  //String json = '{"bus_stop":"'+selectedStations[bus.stationNumber].name+'","bus_stop_pos": "'+selectedStations[bus.stationNumber].pos.toString()+'","isOK": '+isOK.toString()+',"bus_line" = "' + bus.busLine.name.toString() + '", "bus_start_time" = "' + bus.startTime.toString()+ '","bus_ETA" = "' +bus.eTA.toString()+ '", "bus_exp_er" = "' + bus.expErMarg.toString()+ '", "user_pos" = "' + user.position.toString()+ '"}';
   for(int i=0; i<10; i++){
     try{
-      http.Response response = await http.post(url, body: json);
+      http.Response response = await http.post(url, body: {
+        "bus_stop" : selectedStations[bus.stationNumber].name,
+        "bus_stop_pos" : selectedStations[bus.stationNumber].pos.toString(),
+        "isOK" : isOK.toString(),
+        "bus_line" : bus.busLine.name.toString(),
+        "bus_start_time" : bus.startTime.toString(),
+        "user_time" : DateTime.now().toLocal().toString(),
+        "bus_ETA" : bus.eTA.toString(),
+        "bus_exp_er" : bus.expErMarg.toString(),
+        "user_pos" : user.position.toString(),
+        //"user_agent" : ua,
+      });
       int statusCode = response.statusCode;
       //String body = response.body;
       if(statusCode == 200){
+        print('msg sent!:' + statusCode.toString());                            //DBG
         break;
       }
       else{
