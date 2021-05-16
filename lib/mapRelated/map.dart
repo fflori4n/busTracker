@@ -18,7 +18,7 @@ FlutterMap map = new FlutterMap();
 MapConfig mapConfig = new MapConfig();
 MapController mapController = new MapController();
 
-StreamController<int> mapTileSwitchController = new StreamController<int>();
+StreamController<int> mapTileSwitchController = new StreamController<int>.broadcast();
 
 MapPageState displayedMap;
 int activeMapTile = 0;
@@ -43,9 +43,7 @@ class MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    if(!isMobile){
-      widget.stream.listen((num) { switchTileUrl(num); });
-    }
+    widget.stream.listen((num) { switchTileUrl(num); });
     mapController = new MapController();
     statefulMapController = StatefulMapController(mapController: mapController);
 
