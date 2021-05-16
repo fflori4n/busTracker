@@ -5,6 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/mapConfig.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/mapRelated/scrollDetector.dart';
 import 'package:mapTest/uiElements/legacySchedule.dart';
 import 'package:map_controller/map_controller.dart';
@@ -16,6 +17,7 @@ import '../onSelected.dart';
 FlutterMap map = new FlutterMap();
 MapConfig mapConfig = new MapConfig();
 MapController mapController = new MapController();
+
 StreamController<int> mapTileSwitchController = new StreamController<int>();
 
 MapPageState displayedMap;
@@ -82,10 +84,10 @@ class MapPageState extends State<MapPage> {
                       zoom: 14,
                       maxZoom: 17,
                       minZoom: 8,
-                      allowPanning: false,                                       // TODO: test
                       rotationThreshold: 60,
                       //swPanBoundary: LatLng(45.1934, 19.6247),      //TODO: dbg only
                       // nePanBoundary: LatLng(45.2901, 20.0442),
+                      interactiveFlags: InteractiveFlag.pinchZoom | InteractiveFlag.drag,
                       onPositionChanged: onPosChange,
                       onTap: onTap,
                       interactive: true,
@@ -168,6 +170,7 @@ class MapPageState extends State<MapPage> {
       selectClosest2Click(tapPos,'');
     }
     onStationSelected();
+    redrawOverlayController.add(tapPos.latitude.toInt());                               // stram - add any data
   }
 
   static double scrollDist = 0;

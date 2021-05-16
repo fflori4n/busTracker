@@ -3,10 +3,12 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mapTest/mapRelated/map.dart';
 import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
+import 'package:swipedetector/swipedetector.dart';
 import '../infoDisp.dart';
 
 bool isScheduleView = true;
@@ -21,12 +23,31 @@ class MobileUIState extends State<MobileUI> {
   _update() {
     setState(() {
       if (isScheduleView) {
-        mobileMainView = Buletin();
+        mobileMainView = SwipeDetector(
+          child: Buletin(),
+          onSwipeUp: () {
+
+          },
+          onSwipeRight: () {
+            isScheduleView = false;
+            print("swipe right!");
+            setState(() {
+              _update();
+            });
+          },
+          swipeConfiguration: SwipeConfiguration(
+              verticalSwipeMinVelocity: 100.0,
+              verticalSwipeMinDisplacement: 50.0,
+              verticalSwipeMaxWidthThreshold:100.0,
+              horizontalSwipeMaxHeightThreshold: 50.0,
+              horizontalSwipeMinDisplacement:50.0,
+              horizontalSwipeMinVelocity: 200.0),
+        );
       } else {
         mobileMainView = new Stack(
           children: <Widget>[
             mainMapPage,
-            MapOverlay(),
+            MapOverlay(redrawOverlayController.stream),
           ],
         );
       }

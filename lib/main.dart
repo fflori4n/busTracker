@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
-import 'package:mapTest/uiElements/infoDisp.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
-import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/session/shared_pref.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';

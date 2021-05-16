@@ -1,7 +1,5 @@
 
 import 'dart:convert';
-
-import 'package:flutter_user_agent/flutter_user_agent.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/user.dart';
 import 'package:mapTest/loadModules/loadStations.dart';

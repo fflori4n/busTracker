@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' hide TextStyle;
 
 import 'package:flutter/cupertino.dart' hide TextStyle;
@@ -14,14 +15,22 @@ import '../geometryFuncts.dart';
 import '../main.dart';
 import 'busMarkersOverlay.dart';
 
+
+StreamController<int> redrawOverlayController = StreamController<int>.broadcast();
+
 class MapOverlay extends StatefulWidget {
+  final Stream<int>stream;
+  MapOverlay(this.stream);
+
   @override
   _MapOverlayState createState() => _MapOverlayState();
 }
 
 class _MapOverlayState extends State<MapOverlay> {
   @override
-  void initState();
+  void initState(){
+    widget.stream.listen((num) { setState(() {}); });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -83,7 +83,6 @@ TextStyle stationDisplay = GoogleFonts.robotoCondensed(
 );
 
 TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
-    //fontSize: max(0.030 * infoBrdWidth, 2),
     fontWeight: FontWeight.normal,
     color: baseWhite,
     letterSpacing: 1.1

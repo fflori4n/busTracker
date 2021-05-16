@@ -165,13 +165,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_user_agent:
-    dependency: "direct main"
-    description:
-      name: flutter_user_agent
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -525,6 +518,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
+  swipedetector:
+    dependency: "direct main"
+    description:
+      name: swipedetector
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   term_glyph:
     dependency: transitive
     description:

@@ -17,7 +17,7 @@ class DesktopUIState extends State<DesktopUI> {
         child:new Stack(
         children: <Widget>[
           mainMapPage, 
-          MapOverlay(),
+          MapOverlay(redrawOverlayController.stream),
           Buletin(),
     ],
     ),);
