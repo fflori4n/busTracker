@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="website or PWA for viewing bus schedule / estimated arrival time of buses in selected station.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="mapTest">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Dibus.rs">
+  <link rel="apple-touch-icon" href="assets/splash/tabIconDI.svg">
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="assets/splash/tabIconDI.svg"/>
@@ -19,13 +19,14 @@
 </head>
 <body>
 <!-- Splash screen ***********************************-->
+<!-- Splash screen ***********************************-->
 <style>
 .center {
   display: block;
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: -32vh;
   bottom: 0;
   margin: auto;
   width: 35vh;
@@ -35,7 +36,17 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top:  -15vh;
+  bottom: 0;
+  margin: auto;
+  width: 49vh;
+}
+.bottom-center {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top:  60vh;
   bottom: 0;
   margin: auto;
   width: 49vh;
@@ -92,7 +103,739 @@
 }
 
 </style>
-<img src= "assets/splash/splashLogo.svg", class= "center"></img>
+<style>
+@keyframes FadeIn {
+  0% {
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 0, 180deg);
+  }
+}
+
+.dot{
+  animation: FadeIn 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.active0  { animation-delay: 0.3s }
+.active10 { animation-delay: 0.6s }
+.active18 { animation-delay: 0.9s }
+.active28 { animation-delay: 1.2s }
+.active36 { animation-delay: 1.5s }
+.active1  { animation-delay: 1.8s }
+.active37 { animation-delay: 2.1s }
+.active11 { animation-delay: 2.4s }
+.active19 { animation-delay: 2.7s }
+.active29 { animation-delay: 3s }
+
+.active2 { animation-delay: 3.3s }
+.active12 { animation-delay: 3.6s }
+.active20 { animation-delay: 3.9s }
+.active30 { animation-delay: 4.2s }
+.active38 { animation-delay: 4.5s }
+
+.active3 { animation-delay: 4.8s }
+.active13 { animation-delay: 5.1s }
+.active21 { animation-delay: 5.1s }
+.active31 { animation-delay: 5.6s }
+.active39 { animation-delay: 5.9s }
+.active4 { animation-delay: 6.2s }
+.active22 { animation-delay: 6.5s }
+.active40 { animation-delay: 6.8s }
+.active14 { animation-delay: 7.1s }
+.active32 { animation-delay: 7.4s }
+.active41 { animation-delay: 7.7 }
+
+
+.active5 { animation-delay: 8s }
+.active15 { animation-delay: 8.3s }
+.active23 { animation-delay: 8.6s }
+.active33 { animation-delay: 8.5s }
+.active42 { animation-delay: 9.2s }
+.active6 { animation-delay: 9.5s }
+.active16 { animation-delay: 9.8s }
+.active24 { animation-delay: 10.1s }
+.active34 { animation-delay: 10.4s }
+.active43 { animation-delay: 10.7s }
+
+.active7 { animation-delay: 11s }
+.active17 { animation-delay: 11.5s }
+.active25 { animation-delay: 12s }
+.active44 { animation-delay: 12.5s }
+.active8 { animation-delay: 13s }
+.active26 { animation-delay: 13.5s }
+.active45 { animation-delay: 14s }
+.active9 { animation-delay: 14.5s }
+.active27 { animation-delay: 15.5s }
+.active35 { animation-delay: 15.5s }
+.active46 { animation-delay: 16s }
+
+
+
+
+
+body {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+.flip-card {
+  display:inline-block;
+  background-color: transparent;
+  width: 1em;
+  height: 1em;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner{
+  transform: rotate3d(1, 1, 0, 180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  border-radius: 40%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animate: ;
+}
+
+.flip-card-front {
+  background-color: #eee;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+
+}
+.animated-banner{
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 28vh;
+  bottom: 0;
+  margin: auto;
+  width: 23em;
+
+}
+
+.background{
+    position:absolute;
+    z-index:0;
+	top: -28vh;
+    background:white;
+    display:block;
+    min-height:50%;
+    min-width:50%;
+}
+.bg-text
+{
+    color:rgb(155, 173, 240);
+    font-size: 2em;
+    text-align: justify;
+
+    opacity: 0.15;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+}
+
+.wait-text
+{
+    color:black;
+	text-align: center;
+    font-size: 1.2em;
+    opacity: 0.5;
+	z-index:1;
+	animation: fade-out 35s linear forwards;
+}
+
+.error-text
+{
+    color:black;
+	text-align: center;
+    font-size: 1.2em;
+    opacity: 0.5;
+	z-index:1;
+	animation: fade-in 35s linear forwards;
+}
+.eng{
+	color:rgb(63, 61, 61);
+}
+
+@keyframes fade-out {
+  0% {opacity: 1;}
+  98%{opacity: 1;}
+  100% {
+	opacity: 0;
+    visibility:hidden;
+  }
+}
+@keyframes fade-in {
+  0% {
+	  opacity: 0;
+	  }
+  98%{opacity: 0;}
+  100% {
+	opacity: 1;
+  }
+}
+
+</style>
+<div class="background">
+  <p class="bg-text">BORN IN WEST READING, PENNSYLVANIA, SWIFT RELOCATED TO NASHVILLE, TENNESSEE, IN 2004 TO PURSUE A CAREER IN COUNTRY MUSIC. SHE BROKE INTO THE COUNTRY MUSIC SCENE WITH HER EPONYMOUS DEBUT STUDIO ALBUM IN 2006, WHICH INCLUDED THE SINGLES "TEARDROPS ON MY GUITAR" AND "OUR SONG". SWIFT ROSE TO MAINSTREAM PROMINENCE WITH HER SECOND STUDIO ALBUM, FEARLESS (2008), A COUNTRY POP RECORD WITH CROSSOVER APPEAL. AIDED BY THE TOP-FIVE SINGLES "LOVE STORY" AND "YOU BELONG WITH ME", FEARLESS WAS CERTIFIED DIAMOND BY THE RECORDING INDUSTRY ASSOCIATION OF AMERICA (RIAA). SWIFT'S THIRD STUDIO ALBUM, SPEAK NOW (2010), BLENDED COUNTRY POP WITH ELEMENTS OF ROCK AND FEATURED THE TOP-TEN SINGLES "MINE" AND "BACK TO DECEMBER".
+
+    DRAWING INSPIRATION FROM VARIOUS POP, ROCK, AND ELECTRONIC GENRES, SWIFT'S FOURTH STUDIO ALBUM RED (2012) SAW HER TRANSCENDING HER COUNTRY ROOTS. SHE COMPLETELY MOVED TO POP WITH HER SYNTH-POP FIFTH STUDIO ALBUM, 1989 (2014), AND EXPANDED THE ELECTROPOP SOUND ON HER NEXT TWO STUDIO ALBUMS, REPUTATION (2017) AND LOVER (2019), WHICH RESPECTIVELY EMBRACED URBAN AND RETRO STYLES. THE FOUR ALBUMS SPAWNED A STRING OF INTERNATIONAL TOP-FIVE SINGLES, INCLUDING "WE ARE NEVER EVER GETTING BACK TOGETHER", "I KNEW YOU WERE TROUBLE", "SHAKE IT OFF", "BLANK SPACE", "BAD BLOOD", "LOOK WHAT YOU MADE ME DO", "ME!" AND "YOU NEED TO CALM DOWN". SWIFT EXPERIMENTED WITH FOLK AND ALTERNATIVE ROCK ON HER EIGHTH AND NINTH STUDIO ALBUMS, FOLKLORE AND EVERMORE (BOTH 2020), WHOSE LEAD SINGLES "CARDIGAN" AND "WILLOW" TOPPED CHARTS AROUND THE WORLD. SHE ALSO RELEASED THE CRITICALLY ACCLAIMED DOCUMENTARIES MISS AMERICANA AND FOLKLORE: THE LONG POND STUDIO SESSIONS THAT YEAR.
+
+    WITH SALES OF OVER 200 MILLION RECORDS WORLDWIDE, SWIFT IS ONE OF THE BEST-SELLING MUSIC ARTISTS. HER ACCOLADES INCLUDE 11 GRAMMY AWARDS (INCLUDING THREE ALBUM OF THE YEAR WINS), A BRIT AWARD, AN EMMY AWARD, 28 GUINNESS WORLD RECORDS, 32 AMERICAN MUSIC AWARDS (THE MOST WINS BY AN ARTIST), AND 23 BILLBOARD MUSIC AWARDS (THE MOST WINS BY A WOMAN). SHE RANKED EIGHTH ON BILLBOARD'S GREATEST OF ALL TIME ARTISTS CHART (2019) AND WAS LISTED ON ROLLING STONE'S 100 GREATEST SONGWRITERS OF ALL TIME (2015). SWIFT HAS BEEN INCLUDED IN VARIOUS POWER RANKINGS, SUCH AS TIME'S ANNUAL LIST OF THE 100 MOST INFLUENTIAL PEOPLE IN THE WORLD (2010, 2015 AND 2019) AND FORBES CELEBRITY 100 (PLACING FIRST IN 2016 AND 2019). SHE WAS NAMED WOMAN OF THE DECADE (2010S) BY BILLBOARD AND ARTIST OF THE DECADE (2010S) BY THE AMERICAN MUSIC AWARDS.
+    BORN IN WEST READING, PENNSYLVANIA, SWIFT RELOCATED TO NASHVILLE, TENNESSEE, IN 2004 TO PURSUE A CAREER IN COUNTRY MUSIC. SHE BROKE INTO THE COUNTRY MUSIC SCENE WITH HER EPONYMOUS DEBUT STUDIO ALBUM IN 2006, WHICH INCLUDED THE SINGLES "TEARDROPS ON MY GUITAR" AND "OUR SONG". SWIFT ROSE TO MAINSTREAM PROMINENCE WITH HER SECOND STUDIO ALBUM, FEARLESS (2008), A COUNTRY POP RECORD WITH CROSSOVER APPEAL. AIDED BY THE TOP-FIVE SINGLES "LOVE STORY" AND "YOU BELONG WITH ME", FEARLESS WAS CERTIFIED DIAMOND BY THE RECORDING INDUSTRY ASSOCIATION OF AMERICA (RIAA). SWIFT'S THIRD STUDIO ALBUM, SPEAK NOW (2010), BLENDED COUNTRY POP WITH ELEMENTS OF ROCK AND FEATURED THE TOP-TEN SINGLES "MINE" AND "BACK TO DECEMBER".
+
+    DRAWING INSPIRATION FROM VARIOUS POP, ROCK, AND ELECTRONIC GENRES, SWIFT'S FOURTH STUDIO ALBUM RED (2012) SAW HER TRANSCENDING HER COUNTRY ROOTS. SHE COMPLETELY MOVED TO POP WITH HER SYNTH-POP FIFTH STUDIO ALBUM, 1989 (2014), AND EXPANDED THE ELECTROPOP SOUND ON HER NEXT TWO STUDIO ALBUMS, REPUTATION (2017) AND LOVER (2019), WHICH RESPECTIVELY EMBRACED URBAN AND RETRO STYLES. THE FOUR ALBUMS SPAWNED A STRING OF INTERNATIONAL TOP-FIVE SINGLES, INCLUDING "WE ARE NEVER EVER GETTING BACK TOGETHER", "I KNEW YOU WERE TROUBLE", "SHAKE IT OFF", "BLANK SPACE", "BAD BLOOD", "LOOK WHAT YOU MADE ME DO", "ME!" AND "YOU NEED TO CALM DOWN". SWIFT EXPERIMENTED WITH FOLK AND ALTERNATIVE ROCK ON HER EIGHTH AND NINTH STUDIO ALBUMS, FOLKLORE AND EVERMORE (BOTH 2020), WHOSE LEAD SINGLES "CARDIGAN" AND "WILLOW" TOPPED CHARTS AROUND THE WORLD. SHE ALSO RELEASED THE CRITICALLY ACCLAIMED DOCUMENTARIES MISS AMERICANA AND FOLKLORE: THE LONG POND STUDIO SESSIONS THAT YEAR.
+
+    WITH SALES OF OVER 200 MILLION RECORDS WORLDWIDE, SWIFT IS ONE OF THE BEST-SELLING MUSIC ARTISTS. HER ACCOLADES INCLUDE 11 GRAMMY AWARDS (INCLUDING THREE ALBUM OF THE YEAR WINS), A BRIT AWARD, AN EMMY AWARD, 28 GUINNESS WORLD RECORDS, 32 AMERICAN MUSIC AWARDS (THE MOST WINS BY AN ARTIST), AND 23 BILLBOARD MUSIC AWARDS (THE MOST WINS BY A WOMAN). SHE RANKED EIGHTH ON BILLBOARD'S GREATEST OF ALL TIME ARTISTS CHART (2019) AND WAS LISTED ON ROLLING STONE'S 100 GREATEST SONGWRITERS OF ALL TIME (2015). SWIFT HAS BEEN INCLUDED IN VARIOUS POWER RANKINGS, SUCH AS TIME'S ANNUAL LIST OF THE 100 MOST INFLUENTIAL PEOPLE IN THE WORLD (2010, 2015 AND 2019) AND FORBES CELEBRITY 100 (PLACING FIRST IN 2016 AND 2019). SHE WAS NAMED WOMAN OF THE DECADE (2010S) BY BILLBOARD AND ARTIST OF THE DECADE (2010S) BY THE AMERICAN MUSIC AWARDS.
+    BORN IN WEST READING, PENNSYLVANIA, SWIFT RELOCATED TO NASHVILLE, TENNESSEE, IN 2004 TO PURSUE A CAREER IN COUNTRY MUSIC. SHE BROKE INTO THE COUNTRY MUSIC SCENE WITH HER EPONYMOUS DEBUT STUDIO ALBUM IN 2006, WHICH INCLUDED THE SINGLES "TEARDROPS ON MY GUITAR" AND "OUR SONG". SWIFT ROSE TO MAINSTREAM PROMINENCE WITH HER SECOND STUDIO ALBUM, FEARLESS (2008), A COUNTRY POP RECORD WITH CROSSOVER APPEAL. AIDED BY THE TOP-FIVE SINGLES "LOVE STORY" AND "YOU BELONG WITH ME", FEARLESS WAS CERTIFIED DIAMOND BY THE RECORDING INDUSTRY ASSOCIATION OF AMERICA (RIAA). SWIFT'S THIRD STUDIO ALBUM, SPEAK NOW (2010), BLENDED COUNTRY POP WITH ELEMENTS OF ROCK AND FEATURED THE TOP-TEN SINGLES "MINE" AND "BACK TO DECEMBER".
+
+    DRAWING INSPIRATION FROM VARIOUS POP, ROCK, AND ELECTRONIC GENRES, SWIFT'S FOURTH STUDIO ALBUM RED (2012) SAW HER TRANSCENDING HER COUNTRY ROOTS. SHE COMPLETELY MOVED TO POP WITH HER SYNTH-POP FIFTH STUDIO ALBUM, 1989 (2014), AND EXPANDED THE ELECTROPOP SOUND ON HER NEXT TWO STUDIO ALBUMS, REPUTATION (2017) AND LOVER (2019), WHICH RESPECTIVELY EMBRACED URBAN AND RETRO STYLES. THE FOUR ALBUMS SPAWNED A STRING OF INTERNATIONAL TOP-FIVE SINGLES, INCLUDING "WE ARE NEVER EVER GETTING BACK TOGETHER", "I KNEW YOU WERE TROUBLE", "SHAKE IT OFF", "BLANK SPACE", "BAD BLOOD", "LOOK WHAT YOU MADE ME DO", "ME!" AND "YOU NEED TO CALM DOWN". SWIFT EXPERIMENTED WITH FOLK AND ALTERNATIVE ROCK ON HER EIGHTH AND NINTH STUDIO ALBUMS, FOLKLORE AND EVERMORE (BOTH 2020), WHOSE LEAD SINGLES "CARDIGAN" AND "WILLOW" TOPPED CHARTS AROUND THE WORLD. SHE ALSO RELEASED THE CRITICALLY ACCLAIMED DOCUMENTARIES MISS AMERICANA AND FOLKLORE: THE LONG POND STUDIO SESSIONS THAT YEAR.
+
+    WITH SALES OF OVER 200 MILLION RECORDS WORLDWIDE, SWIFT IS ONE OF THE BEST-SELLING MUSIC ARTISTS. HER ACCOLADES INCLUDE 11 GRAMMY AWARDS (INCLUDING THREE ALBUM OF THE YEAR WINS), A BRIT AWARD, AN EMMY AWARD, 28 GUINNESS WORLD RECORDS, 32 AMERICAN MUSIC AWARDS (THE MOST WINS BY AN ARTIST), AND 23 BILLBOARD MUSIC AWARDS (THE MOST WINS BY A WOMAN). SHE RANKED EIGHTH ON BILLBOARD'S GREATEST OF ALL TIME ARTISTS CHART (2019) AND WAS LISTED ON ROLLING STONE'S 100 GREATEST SONGWRITERS OF ALL TIME (2015). SWIFT HAS BEEN INCLUDED IN VARIOUS POWER RANKINGS, SUCH AS TIME'S ANNUAL LIST OF THE 100 MOST INFLUENTIAL PEOPLE IN THE WORLD (2010, 2015 AND 2019) AND FORBES CELEBRITY 100 (PLACING FIRST IN 2016 AND 2019). SHE WAS NAMED WOMAN OF THE DECADE (2010S) BY BILLBOARD AND ARTIST OF THE DECADE (2010S) BY THE AMERICAN MUSIC AWARDS. </p>
+</div>
+<!-- <img src= "assets/splash/splashLogo.svg", class= "center"></img> -->
+<div class="animated-banner">
+  <div class="flip-card">
+    <div class="dot flip-card-inner active0">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active1">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active2">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active3">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active4">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner ">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active5">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner ">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active6">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active7">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active8">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active9">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  </br>
+
+  <div class="flip-card">
+    <div class="dot flip-card-inner active10">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active11">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active12">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active13">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active14">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active15">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active16">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active17">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  </br>
+
+  <div class="flip-card">
+    <div class="dot flip-card-inner active18">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active19">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active20">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active21">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active22">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active23">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active24">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active25">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active26">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active27">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  </br>
+
+  <div class="flip-card">
+    <div class="dot flip-card-inner active28">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active29">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active30">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active31">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active32">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active33">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active34">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active35">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  </br>
+
+  <div class="flip-card">
+    <div class="dot flip-card-inner active36">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active37">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active38">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active39">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active40">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active41">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active42">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active43">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active44">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="dot flip-card-inner active45">
+      <div class="flip-card-front"></div>
+      <div class="flip-card-back"></div>
+    </div>
+  </div>
+  </br>
+</div>
 <div class= "center">
   <img src= "assets/splash/obj1.svg", class= "doodle object", id="obj"></img>
   <img src= "assets/splash/lamp1.svg", class= "doodle lamp", id="lamp"></img>
@@ -113,6 +856,15 @@
   <img src= "assets/splash/persBlank.svg", class='pers' id='p10'></img>
   <img src= "assets/splash/persBlank.svg", class='pers' id='p11'></img>
 </div>
+
+<div class= "bottom-center">
+  <p class="wait-text">Učitava se stranica, molimo sačekajte!</p>
+  <p class="wait-text eng">Website is loading, please wait!</p>
+  <p class="error-text">Nije uspešno prikazana stranica, kliknite 'refresh' u browseru!</p>
+  <p class="error-text eng">Page did not load correctly, refresh page to try again!</p>
+</div>
+
+
 
 <script>
 	function shuffle(array) {

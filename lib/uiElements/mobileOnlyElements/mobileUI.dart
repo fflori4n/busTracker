@@ -100,7 +100,7 @@ class MobileUIState extends State<MobileUI> {
                             Container(
                               transform: Matrix4.translationValues(0.0, constraints.height * 0.15, 0.0),
                               decoration: BoxDecoration(
-                                color: isScheduleView ? Colors.black45 : infoDispDarkBlue,
+                                color: isScheduleView ? infoDispDarkBlue : Colors.black45 ,
                                 borderRadius: BorderRadius.all(const Radius.circular(2),),
                               ),
                               width: 5*constraints.width/50,
@@ -134,7 +134,7 @@ class MobileUIState extends State<MobileUI> {
                           Container(
                             transform: Matrix4.translationValues(0.0, constraints.height * 0.15, 0.0),
                             decoration: BoxDecoration(
-                              color: isScheduleView ? infoDispDarkBlue : Colors.black45,
+                              color: isScheduleView ? Colors.black45 : infoDispDarkBlue,
                               borderRadius: BorderRadius.all(const Radius.circular(2),),
                             ),
                             width: 5*constraints.width/50,
