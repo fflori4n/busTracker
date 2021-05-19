@@ -11,6 +11,7 @@ import 'dataClasses/DeviceInfo.dart';
 import 'dataClasses/Show.dart';
 import 'dataClasses/StateMan.dart';
 import 'dataClasses/user.dart';
+import 'loadModules/busLines.dart';
 import 'mapRelated/map.dart';
 
 final LatLng nsMapRefPoint = LatLng(45.2603, 19.8260);
@@ -69,6 +70,10 @@ class MyApp extends StatelessWidget {
 
 Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
   selectedStations = [];  // DBG !!!!!
+  buslist = [];
+  stationList = [];
+  scheduleTabLines =[];
+
   if(page.contains('su')){
     mapRefPoint = suMapRefPoint;
     print('** In subotica! **');

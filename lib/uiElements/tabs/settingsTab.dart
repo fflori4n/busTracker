@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/location/locationTest.dart';
-import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/mapRelated/map.dart';
 
 import '../UIColors.dart';
 import '../../main.dart';
 
-Widget showSettingsTab(Size constraints){
+Widget showSettingsTab(Size constraints, BuildContext context){
 
   final settingsTextStyle = TextStyle( //GoogleFonts.robotoCondensed
       fontSize: autoSizeOneLine(
@@ -77,7 +76,12 @@ Widget showSettingsTab(Size constraints){
                         message: 'Switch city',
                         child: FlatButton(
                           onPressed: (){
-                            // TODO: switch city
+                            if(busLineCityStr.contains('su')){
+                              Navigator.pushNamed(context, '/ns');
+                            }
+                            else{
+                              Navigator.pushNamed(context, '/su');
+                            }
                           },
                           child: busLineCityStr.contains('su') ? Text('Subotica', style: settingsTextStyle,) : Text('Novi Sad', style: settingsTextStyle,),
                         ),

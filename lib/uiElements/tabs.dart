@@ -42,7 +42,7 @@ Widget getTab(BuildContext context, int tabNum, double maxWidth) {
     return showNavigationTab(Size(maxWidth,0));
   } else if (tabNum == 3) {
     /// settings
-    return showSettingsTab(Size(maxWidth,0));
+    return showSettingsTab(Size(maxWidth,0),context);
   } else if (tabNum == 4) {/// #filters
     return showFilterTab(Size(maxWidth,0));
   } else if (tabNum == 5) {/// red voznje

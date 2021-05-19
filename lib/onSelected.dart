@@ -8,7 +8,9 @@ import 'main.dart';
 
 Future<void> onStationSelected() async {
 
-  buslist.clear();                                                              // not very efficient, but fine for now
+  buslist.clear();
+  //selectedStations.clear();                                                      // not very efficient, but fine for now
+  nsBusLines.clear();
   for(var selectedStation in selectedStations){
     selectedStation.distFromLineStart.clear();
     for(int i=0; i< selectedStation.servedLines.length; i++){                   // init line from dist to be safe

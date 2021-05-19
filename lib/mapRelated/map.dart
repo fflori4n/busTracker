@@ -156,7 +156,6 @@ class MapPageState extends State<MapPage> {
 
   Future<void> onTap(LatLng tapPos) async {
     print('taped at: ' + tapPos.latitude.toString() + ',' + tapPos.longitude.toString());
-    //mapController.move(tapPos, mapController.zoom);
     print('"lat" : ' + tapPos.longitude.toString() + ',\n"lon" : ' + tapPos.latitude.toString() + ',');
 
     if(user.tabOpen == 5){
@@ -175,7 +174,6 @@ class MapPageState extends State<MapPage> {
   void processScroll(PointerScrollEvent details){
     final double scrollSensitivity = 30;
 
-    //print(details.scrollDelta.dy);
     scrollDist += details.scrollDelta.dy;
     if(scrollDist >= scrollSensitivity || scrollDist <= -scrollSensitivity){
       print('scroll at:');
@@ -200,8 +198,4 @@ class MapPageState extends State<MapPage> {
     mapConfig.mapCenter = mapPos.center;
     mapConfig.mapZoom = mapPos.zoom;
   }
-
-  /*void setCenter(LatLng center, double zoom){
-    mapController.move(center, zoom);
-  }*/
 }
