@@ -40,7 +40,8 @@ Show busFilters = new Show();
 
 Widget mainMapPage = MapPage(mapTileSwitchController.stream);
 
-StateMan globalStates = new StateMan();
+//StateMan globalStates = new StateMan();
+StreamController<int> redrawMobLayoutController = StreamController<int>.broadcast();
 
 void main() {
   update();
@@ -108,7 +109,7 @@ class Index extends StatelessWidget {
     if(deviceInfo.deviceType == DeviceType.desktop){
       return DesktopUI();
     }
-    return MobileUI();
+    return MobileUI(redrawMobLayoutController.stream);
   }
 }
 

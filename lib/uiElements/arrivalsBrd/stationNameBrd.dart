@@ -6,6 +6,7 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 
 import '../UIColors.dart';
 import '../../filters.dart';
@@ -21,8 +22,9 @@ class StationLabelWidget {
   TextStyle stationNameStyle;
 
   double spaceUnit;
+  bool clickable = false;
 
-  StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints, [String displayMsg = '']) {
+  StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints, this.clickable, [String displayMsg = '']) {
     this.context = context;
     this.stationDisp = dispThisStation;
     this.stationNumber = stationNumber;
@@ -68,18 +70,28 @@ class StationLabelWidget {
               children: [
                 Row(
                   children: [
-                    Container(
+                    clickable ? Container() : Container(
                       alignment: Alignment.centerLeft,
                       width: 1.5* spaceUnit,
                       height: stationNameStyle.fontSize * 2,
                       child: stationLetter(stationNameStyle.fontSize ,stationNumber),
                     ),
-                    Container(
+                    clickable ? FlatButton(
+                      onPressed: () {
+                        isScheduleView = false;
+                        redrawMobLayoutController.add(1); // write to stream, flag for update
+                      },
+                      child: Container(
+                        width: 20.5* spaceUnit,
+                        alignment: Alignment.centerLeft,
+                        child:  Text(stationDisp.name, style: stationNameStyle),
+                      ),
+                    ) : Container(
                         width: 20.5* spaceUnit,
                         alignment: Alignment.centerLeft,
                         child:  Text(stationDisp.name, style: stationNameStyle),
                     ),
-                    Container(
+                    clickable ? Container() : Container(
                       alignment: Alignment.center,
                       width: 2* spaceUnit,
                       child: FlatButton(
@@ -190,12 +202,14 @@ List<Widget> displaySelectedStations(Size constraints) {
             new Station.byName(lbl_noSelected.print()),
             "0",
             constraints,
-            lbl_clickMap.print())
+            true,
+            lbl_clickMap.print(),
+            )
         .show());
   }
   for (int i = 0; i < selectedStations.length; i++) {
     stationDispList.add(new StationLabelWidget(
-            selectedStations[i], (i + 1).toString(), constraints)
+            selectedStations[i], (i + 1).toString(), constraints, false)
         .show());
   }
   return stationDispList;

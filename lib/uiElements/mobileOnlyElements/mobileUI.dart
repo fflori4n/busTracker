@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -12,13 +13,22 @@ import 'package:swipedetector/swipedetector.dart';
 import '../infoDisp.dart';
 
 bool isScheduleView = true;
+//StreamController<int> redrawMobLayoutController = StreamController<int>.broadcast(); // moved to main
 
 class MobileUI extends StatefulWidget {
+  final Stream<int>stream;
+  MobileUI(this.stream);
+  
   MobileUIState createState() => MobileUIState();
 }
 
 class MobileUIState extends State<MobileUI> {
   Widget mobileMainView = Buletin();
+
+  @override
+  void initState(){
+    widget.stream.listen((num) { _update(); });
+  }
 
   _update() {
     setState(() {

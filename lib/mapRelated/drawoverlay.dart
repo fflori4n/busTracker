@@ -67,6 +67,28 @@ class OverlayPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint;
 
+    /// station hower text and prompts
+    ///
+    final promtStyle = TextStyle(
+      color: Colors.black87,
+      fontSize: 0.035 * size.width,
+    );
+
+    String promtText = '';
+    for(var station in selectedStations){
+      promtText += '\n' + 'Br. '+ (selectedStations.indexOf(station) + 1).toString() + ' ' + station.name;
+    }
+    if(promtText.length == 0){
+      promtText = 'kliknite stanicu polaska!' + promtText;
+    }
+    else{
+      promtText = 'kliknite na "DOLASCI" da bi videli oček. vreme dolaska.\n Ili izaberite drugu stanicu !' + promtText;
+    }
+    TextPainter textPainter = TextPainter(textDirection: TextDirection.rtl, textAlign: TextAlign.left);
+    textPainter.text = TextSpan(text: promtText, style: promtStyle);
+    textPainter.layout();
+    textPainter.paint(canvas, Offset(0.05 * size.width, 0.025 * size.width));
+
     /// ********************************************************************** Bus Lines
     if(user.tabOpen == 5){
       for (var busline in scheduleTabLines) {
