@@ -1,5 +1,6 @@
 
 import 'package:mapTest/session/shared_pref.dart';
+import 'package:mapTest/uiElements/mobileOnlyElements/overMapDisp.dart';
 import 'loadModules/busLines.dart';
 import 'loadModules/busLocator.dart';
 import 'loadModules/ldBusSchedule.dart';
@@ -20,6 +21,7 @@ Future<void> onStationSelected() async {
   ///
   
   await loadLinesFromJson(selectedStations, busLineCityStr);                    // DBG TODO:
+  redrawOverMapDisp.add(1);                                                     // TODO: cool, but dont do it here
   calcDistFromLineStart();/// fill out buslinestart to station distance table
   loadBuses(selectedStations);
 

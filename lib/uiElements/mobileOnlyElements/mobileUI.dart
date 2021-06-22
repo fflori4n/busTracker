@@ -11,6 +11,7 @@ import 'package:mapTest/mapRelated/drawoverlay.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'package:swipedetector/swipedetector.dart';
 import '../infoDisp.dart';
+import 'overMapDisp.dart';
 
 bool isScheduleView = true;
 //StreamController<int> redrawMobLayoutController = StreamController<int>.broadcast(); // moved to main
@@ -58,6 +59,7 @@ class MobileUIState extends State<MobileUI> {
           children: <Widget>[
             mainMapPage,
             MapOverlay(redrawOverlayController.stream),
+            OverMapDisp(redrawOverMapDisp.stream),
           ],
         );
       }
