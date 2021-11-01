@@ -74,7 +74,7 @@ Future<void> writeToLocalStorage(double numOfReq) async {
 }
 
 makePostRequest(bool isOK, Bus bus,User user) async {
-  String url = 'http://sandorr.eunetddns.net/logResponse.php';
+  Uri url = new Uri.http("sandorr.eunetddns.net", "/logResponse.php");
   //String json = '{"bus_stop":"'+selectedStations[bus.stationNumber].name+'","bus_stop_pos": "'+selectedStations[bus.stationNumber].pos.toString()+'","isOK": '+isOK.toString()+',"bus_line" = "' + bus.busLine.name.toString() + '", "bus_start_time" = "' + bus.startTime.toString()+ '","bus_ETA" = "' +bus.eTA.toString()+ '", "bus_exp_er" = "' + bus.expErMarg.toString()+ '", "user_pos" = "' + user.position.toString()+ '"}';
   for(int i=0; i<10; i++){
     try{

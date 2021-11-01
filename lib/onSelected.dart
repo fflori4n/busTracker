@@ -10,22 +10,22 @@ import 'main.dart';
 Future<void> onStationSelected() async {
 
   buslist.clear();
-  //selectedStations.clear();                                                      // not very efficient, but fine for now
+  //selectedStations.clear();                                                   /// not very efficient, but fine for now
   nsBusLines.clear();
   for(var selectedStation in selectedStations){
     selectedStation.distFromLineStart.clear();
-    for(int i=0; i< selectedStation.servedLines.length; i++){                   // init line from dist to be safe
+    for(int i=0; i< selectedStation.servedLines.length; i++){                   /// init line from dist to be safe
       selectedStation.distFromLineStart.add(0.0);
     }
   }
   ///
   
-  await loadLinesFromJson(selectedStations, busLineCityStr);                    // DBG TODO:
+  await loadLinesFromJson(selectedStations, user.busLinesFile);                    // DBG TODO:
   redrawOverMapDisp.add(1);                                                     // TODO: cool, but dont do it here
   calcDistFromLineStart();/// fill out buslinestart to station distance table
   loadBuses(selectedStations);
 
   await writeCookie();                                                          //TODO: find good place for writing cookie
 
-  removeUnusedBusLines(); /// dgb
+  //removeUnusedBusLines(); /// dgb
 }

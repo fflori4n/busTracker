@@ -21,7 +21,6 @@ StreamController<int> redrawOverlayController = StreamController<int>.broadcast(
 class MapOverlay extends StatefulWidget {
   final Stream<int>stream;
   MapOverlay(this.stream);
-
   @override
   _MapOverlayState createState() => _MapOverlayState();
 }
@@ -29,7 +28,10 @@ class MapOverlay extends StatefulWidget {
 class _MapOverlayState extends State<MapOverlay> {
   @override
   void initState(){
-    widget.stream.listen((num) { setState(() {}); });
+    widget.stream.listen((num) {
+      if (!mounted) return;
+      setState(() {});
+    });
   }
 
   @override
@@ -39,7 +41,7 @@ class _MapOverlayState extends State<MapOverlay> {
         builder: (_, constraints) => Container(
           width: constraints.widthConstraints().maxWidth,
           height: constraints.heightConstraints().maxHeight,
-          color: Colors.blueGrey.withOpacity(0.2),
+          //color: Colors.blueGrey.withOpacity(0.2),                            /// DBG tint map
           child: CustomPaint(
             painter: OverlayPainter(),
             foregroundPainter: BusOverlayPainter(),),
@@ -50,9 +52,6 @@ class _MapOverlayState extends State<MapOverlay> {
 }
 
 class OverlayPainter extends CustomPainter {
-
-
-
   /// for static map objects
   ///
   final Paint nonSelectedCityBusStop = Paint()

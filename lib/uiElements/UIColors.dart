@@ -57,18 +57,7 @@ TextStyle infoBrdYellow =  GoogleFonts.robotoCondensed(
     color: baseYellow,
     letterSpacing: 1.1
 );
-/*TextStyle infoBrdSmallBold =  GoogleFonts.robotoCondensed(
-  //fontSize: 10 * wScaleFactor,
-    fontSize: 14,
-    fontWeight: FontWeight.bold,
-    color: baseWhite,
-    letterSpacing: 1.1
-);*/
 
-
-// legend for station name and lines
-
-// bus line description under infoitem
 
 double infoBrdWidth = 1920;
 

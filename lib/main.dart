@@ -1,64 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:latlong/latlong.dart';
+import 'dart:async';
 import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
+import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
-import 'package:mapTest/session/shared_pref.dart';
-import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
-import 'dart:async';
 import 'dataClasses/DeviceInfo.dart';
 import 'dataClasses/Show.dart';
-import 'dataClasses/StateMan.dart';
 import 'dataClasses/user.dart';
-import 'loadModules/busLines.dart';
 import 'mapRelated/map.dart';
 
-final LatLng nsMapRefPoint = LatLng(45.2603, 19.8260);
-final LatLng suMapRefPoint = LatLng(46.100217,19.664413);
-
-LatLng mapRefPoint = nsMapRefPoint;
-String busLineCityStr = "nsCityBusLines";
-
-final double smTresh = 1000;
-final double mlTresh = 1000;
-final int mapRefreshPeriod = 500;
-
-String city = '';
-
+final int mapRefreshPeriod = 1000;
 BuildContext mainViewContext;
 
 double screenWidth = 1920;
 double screenHeight = 1080;
-double wScaleFactor=1;
-double hScaleFactor=1;
-double maxTabWidth = 1920;
-bool isMobile = true;
 
 User user = new User();  // new user to store position
 Show busFilters = new Show();
-
 Widget mainMapPage = MapPage(mapTileSwitchController.stream);
-
-//StateMan globalStates = new StateMan();
-StreamController<int> redrawMobLayoutController = StreamController<int>.broadcast();
+StreamController<int> redrawLayoutController = StreamController<int>.broadcast();
 
 void main() {
-  update();
+  update();                                                                     /// run bus locating functions paralel to main
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  /// This widget is the root of your application. Set title, theme and navigation routes
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DiBus',
-      theme: ThemeData(
-        // This is the theme of your application.
-        primarySwatch: Colors.blue,
-      ),
-      //home: Index(),//Index(),
+      theme: ThemeData(primarySwatch: Colors.blue,),
       initialRoute: '/ns',
       routes: {
         '/': (context) => router('x'),
@@ -70,23 +44,17 @@ class MyApp extends StatelessWidget {
 }
 
 Widget router(String page){     // TODO: welp. whatever... at this point everything is spaghetti
-  selectedStations = [];  // DBG !!!!!
-  buslist = [];
-  stationList = [];
-  scheduleTabLines =[];
 
   if(page.contains('su')){
-    mapRefPoint = suMapRefPoint;
-    print('** In subotica! **');
-    loadStationsFromJson("suBusStops");
-    busLineCityStr = "suCityBusLines";
+    user.setCity("subotica");
   }
   else if(page.contains('ns')){
-    mapRefPoint = nsMapRefPoint;
-    print('** In novi sad! **');
-    loadStationsFromJson("nsBusStops");
-    busLineCityStr = "nsCityBusLines";
+    user.setCity("novi_sad");
   }
+  buslist.clear();
+  stationList.clear();
+  selectedStations.clear();
+  loadStationsFromJson(user.stationsFile);
   return Scaffold(
     body: RespWrap(
       builder: (context, deviceInfo){
@@ -102,14 +70,13 @@ class Index extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    onLoad();
+    //onLoad();
     if(deviceInfo.deviceType == DeviceType.desktop){
-      return DesktopUI();
+      return DesktopUI(redrawLayoutController.stream);
     }
-    if(deviceInfo.deviceType == DeviceType.desktop){
-      return DesktopUI();
+    else{
+      return MobileUI(redrawLayoutController.stream);
     }
-    return MobileUI(redrawMobLayoutController.stream);
   }
 }
 
@@ -120,11 +87,11 @@ void update() async {
   }
 }
 
-Future<void> onLoad() async {
+/*Future<void> onLoad() async {
   //await loadStationsFromFiles();
   //await writeCookie();
-  await readCookie();
-}
+  //await readCookie();
+}*/
 
 
 

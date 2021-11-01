@@ -1,6 +1,7 @@
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
+import 'package:mapTest/uiElements/infoDisp.dart';
 import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
@@ -10,7 +11,8 @@ final LatLng initMapCenter = new LatLng(0, 0);
 const double avrgBusSpeed = 17;
 
 List<Bus> buslist = [];
-bool isSorted = false; // TODO: convert to static? instead of global
+//bool isSorted = false;                                                          /// TODO: convert to static? instead of global
+bool changeFlag = false;
 
 void calcBusPos() {
   DateTime refTime = DateTime.now();
@@ -23,15 +25,16 @@ void calcBusPos() {
       bus.expErMarg.decrease(Time(0, 0, 1));
     }
   }
+  if(changeFlag){                                                               /// sort all buses if time has changed
+    changeFlag = false;
+    sortAllByEta();
+  }
+  redrawInfoBrd.add(1);                                                         /// refresh values on infobrd
 }
 
-double getEstDistPassed(var startTime) {
-  // basic estimation of pos for const speed
-
+double getEstDistPassed(var startTime) {                                        /// basic estimation of pos for const speed
   int elapsedTime;
-
-  if (startTime is Time) {
-    // is = instanceof in dart ;) cool
+  if (startTime is Time) {                                                      /// is = instanceof in dart ;) cool
     DateTime now = DateTime.now();
     DateTime startDateTime = new DateTime(now.year, now.month, now.day,
         startTime.hours, startTime.mins, startTime.sex);
@@ -45,7 +48,7 @@ double getEstDistPassed(var startTime) {
 }
 
 void sortByEta(Bus bus) {
-  // TODO: convert everithing to index instead of ref.
+                                                                                /// TODO: convert everithing to index instead of ref.
   int busIndex = buslist.indexOf(bus);
   if ((busIndex - 1) > 0) {
     int prevBusSex = buslist[busIndex - 1].eTA.inSex();
@@ -78,11 +81,9 @@ int updateBusPos(Bus bus, DateTime refTime) {
   double distPassed;
 
   try {
-    if (bus.noPosUpdateTicks > 0) {
-      /// do not update position on map
+    if (bus.noPosUpdateTicks > 0) {                                             /// do not update position on map
       bus.noPosUpdateTicks--;
-    } else if (bus.noPosUpdateTicks == 0) {
-      /// try to display/update pos of bus on map
+    } else if (bus.noPosUpdateTicks == 0) {                                     /// try to display/update pos of bus on map
       DateTime startDateTime = new DateTime(
           refTime.year,
           refTime.month,
@@ -92,8 +93,7 @@ int updateBusPos(Bus bus, DateTime refTime) {
           bus.startTime.sex);
       int elapsedTime = refTime.difference(startDateTime).inSeconds;
 
-      if (elapsedTime < 0) {
-        /// not departed - not displayed
+      if (elapsedTime < 0) {                                                    /// not departed - not displayed
         bus.displayedOnMap = false;
         bus.noPosUpdateTicks = elapsedTime.abs() * 1000 ~/ mapRefreshPeriod;
         return 0;
@@ -129,8 +129,7 @@ int updateBusTime(Bus bus){
 
   if (bus.noEtaUpdateTicks > 0) {
     bus.noEtaUpdateTicks--;
-    if (bus.eTA.hours <= 0 && bus.eTA.mins < 15 && bus.eTA.inSex() > 0) {
-      // do not update if time is more than 15mins
+    if (bus.eTA.hours <= 0 && bus.eTA.mins < 15 && bus.eTA.inSex() > 0) {       /// do not update if time is more than 15mins
       bus.eTA.decrease(Time(0, 0, 1));
     }
   } else if (bus.noEtaUpdateTicks == 0) {
@@ -179,14 +178,10 @@ int updateBusTime(Bus bus){
             newETAsecs %= 60;
           eta.sex = newETAsecs;
 
-          bus.setETA(eta);
-          // if(!isSorted && buslist.indexOf(bus) == buslist.length){
-          sortAllByEta();
-          /*   isSorted = true;
+          if(!bus.eTA.equals(eta.hours, eta.mins, eta.sex)){
+            bus.setETA(eta);
+            changeFlag = true;
           }
-          else{
-            sortByEta(bus);
-          }*/
         }
       }
       if (containsLine == false) {

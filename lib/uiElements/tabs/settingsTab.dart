@@ -76,14 +76,14 @@ Widget showSettingsTab(Size constraints, BuildContext context){
                         message: 'Switch city',
                         child: FlatButton(
                           onPressed: (){
-                            if(busLineCityStr.contains('su')){
+                            if(user.cityString == "subotica"){
                               Navigator.pushNamed(context, '/ns');
                             }
                             else{
                               Navigator.pushNamed(context, '/su');
                             }
                           },
-                          child: busLineCityStr.contains('su') ? Text('Subotica', style: settingsTextStyle,) : Text('Novi Sad', style: settingsTextStyle,),
+                          child: (user.cityString == "subotica") ? Text('Subotica', style: settingsTextStyle,) : Text('Novi Sad', style: settingsTextStyle,),
                         ),
                       ),
                     ),)

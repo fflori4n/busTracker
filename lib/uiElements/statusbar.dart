@@ -58,8 +58,8 @@ class _statusBarState extends State<StatusBar> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 6.0, left:6.0, right:6.0, bottom:0.0),
-      height: 28 * hScaleFactor,
-      width: isMobile ? screenWidth : 370 * wScaleFactor,  //350
+      //height: 28 * hScaleFactor,
+      //width: isMobile ? screenWidth : 370 * wScaleFactor,  //350
       decoration: BoxDecoration(
         color: baseWhite,
         borderRadius: new BorderRadius.all(Radius.circular(2.0)),

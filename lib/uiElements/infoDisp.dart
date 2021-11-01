@@ -15,7 +15,13 @@ import '../filters.dart';
 import 'arrivalsBrd/infoItem.dart';
 import 'arrivalsBrd/legend.dart';
 
+
+StreamController<int> redrawInfoBrd = StreamController<int>.broadcast();
+
 class Buletin extends StatefulWidget {
+  final Stream<int>stream;
+  Buletin(this.stream);
+
   BuletinState createState() => BuletinState();
 }
 
@@ -23,11 +29,7 @@ class BuletinState extends State<Buletin> {
 
   @override
   void initState() {
-    Timer.periodic(Duration(seconds: 1), (v) {
-      setState(() {});
-      //globalStates.reDrawInfoBrd;
-    });
-    super.initState();
+    widget.stream.listen((num) {setState(() {});});
   }
 
   @override
@@ -87,7 +89,7 @@ Widget getListView(context, double maxWidth) {
   // TODO: this is slow, temp fix
   List<Bus> displayedBusList = [];
   if(busFilters.refreshFlg){
-    applyFilters(busFilters); // this also slow, but easy to implement, maybe worth it?
+    applyFilters(busFilters); /// this also slow, but easy to implement, maybe worth it?
     busFilters.refreshFlg = false;
   }
   for (var bus in buslist){
@@ -98,7 +100,7 @@ Widget getListView(context, double maxWidth) {
       displayedBusList.add(bus);
     }
   }
-  return ListView.separated(// lazy listview do not render stuff that isn't visible
+  return ListView.separated(/// lazy listview do not render stuff that isn't visible
     itemCount: displayedBusList.length,
     itemBuilder: (BuildContext context, int index) {
       return infoWidget(context, displayedBusList[index], Size(maxWidth, maxWidth/10));

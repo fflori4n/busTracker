@@ -69,7 +69,7 @@ class _OverMapDispState extends State<OverMapDisp> {
                     child: FlatButton(
                       onPressed: (){
                         isScheduleView = true;
-                        redrawMobLayoutController.add(1); // write to stream, flag for update
+                        redrawLayoutController.add(1); // write to stream, flag for update
                       },
                       child: Center(
                         child: Icon(

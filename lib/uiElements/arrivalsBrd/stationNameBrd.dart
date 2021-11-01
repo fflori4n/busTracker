@@ -6,11 +6,13 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
+import 'package:mapTest/onSelected.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 
 import '../UIColors.dart';
 import '../../filters.dart';
 import '../../main.dart';
+import '../infoDisp.dart';
 import 'stationSign.dart';
 
 class StationLabelWidget {
@@ -79,7 +81,7 @@ class StationLabelWidget {
                     clickable ? FlatButton(
                       onPressed: () {
                         isScheduleView = false;
-                        redrawMobLayoutController.add(1); // write to stream, flag for update
+                        redrawLayoutController.add(1); // write to stream, flag for update
                       },
                       child: Container(
                         width: 20.5* spaceUnit,
@@ -97,7 +99,9 @@ class StationLabelWidget {
                       child: FlatButton(
                         onPressed: () {
                           selectedStations.remove(stationDisp);
-                          removeUnusedBusLines();
+                          //removeUnusedBusLines();
+                          onStationSelected();
+                          redrawInfoBrd.add(1);
                         },
                         child: Icon(
                           Icons.clear, //: Icon.place,

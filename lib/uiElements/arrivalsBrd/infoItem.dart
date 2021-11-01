@@ -283,7 +283,7 @@ Widget drawLegend(BuildContext context) {
                                     ' ',
                                     style: TextStyle(
                                         color: lineColor,
-                                        fontSize: 10 * wScaleFactor),
+                                        fontSize: 10 ),
                                   ),
                                 ),
                               ],

@@ -24,7 +24,7 @@ class MobileUI extends StatefulWidget {
 }
 
 class MobileUIState extends State<MobileUI> {
-  Widget mobileMainView = Buletin();
+  Widget mobileMainView = Buletin(redrawInfoBrd.stream);
 
   @override
   void initState(){
@@ -35,7 +35,7 @@ class MobileUIState extends State<MobileUI> {
     setState(() {
       if (isScheduleView) {
         mobileMainView = SwipeDetector(
-          child: Buletin(),
+          child: Buletin(redrawInfoBrd.stream),
           onSwipeUp: () {
 
           },

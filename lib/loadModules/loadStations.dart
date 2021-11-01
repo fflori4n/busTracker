@@ -10,11 +10,8 @@ import 'package:mapTest/dataClasses/BusLine.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-final String paperStationName = 'Paper Station';
-//Station paperStation = new Station.namePos(paperStationName,LatLng(45.230727,19.823666));
-
-List<Station> stationList = [];//paperStation
 final String stationLetters = 'ABCDEFGHIJK';
+List<Station> stationList = [];//paperStation
 List<Station> selectedStations = [];//[new Station.namePos(paperStationName,LatLng(45.230727,19.823666))];
 
 Future<void> loadStationsFromJson( final String loadCityStr) async {

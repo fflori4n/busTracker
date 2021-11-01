@@ -5,6 +5,7 @@ import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 
+import '../main.dart';
 import 'nickNames.dart';
 
 
@@ -25,14 +26,14 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
   String rawDayStr;
 
   try{
-    rawFileContent= await rootBundle.loadString('NsBusData/' + bbusline.name + '.txt');
+    rawFileContent= await rootBundle.loadString('schedules/' + user.cityString + '/' + bbusline.name + '.txt');
   }
   catch(e){
-    print('[ ER ] opening file: ' + lineName + '.txt');
+    print('[ ER ] LD SCH - No permission or missing file: ' + lineName + '.txt in:' + user.cityString);
     return; // TODO some signaling would be nice...
   }
   if(rawFileContent.isEmpty){
-    print('[ ER ] file is empty: ' + lineName + '.txt');
+    print('[ ER ] LD SCH - file is empty: ' + lineName + '.txt in:' + user.cityString);
     return;
   }
   List<String> dayBlocks = rawFileContent.split('>');
@@ -87,8 +88,8 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
           //print(' added to buslist:' + newBus.busLine.name + ' ' + newBus.nickName);
         }
       }catch(e){
-        print('[ ER ] creating new bus:' + lineName + ' '+ line.toString());
-        print('[ ER ] $e');
+        print('[ ER ] LD SCH - creating new bus:' + lineName + ' '+ line.toString());
+        print('[ ER ] LD SCH - $e');
       }
     }
   }
@@ -101,14 +102,14 @@ Future<String> loadScheduleAsText(String lineName) async{
   String rawDayStr;
   DateTime date = DateTime.now();
   try{
-    rawFileContent= await rootBundle.loadString('NsBusData/' + lineName + '.txt');
+    rawFileContent= await rootBundle.loadString('schedules/' + user.cityString + '/' + lineName + '.txt');
   }
   catch(e){
-    print('[ ER ] opening file: ' + lineName + '.txt');
+    print('[ ER ] LD SCH TX - opening file: ' + lineName + '.txt');
     return ''; // TODO some signaling would be nice...
   }
   if(rawFileContent.isEmpty){
-    print('[ ER ] file is empty: ' + lineName + '.txt');
+    print('[ ER ] LD SCH TX - file is empty: ' + lineName + '.txt');
     return '';
   }
   List<String> dayBlocks = rawFileContent.split('>');

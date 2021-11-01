@@ -112,7 +112,7 @@ Widget lineChoser(double maxWidth) {
             onTap: (){},
             onHover: (isHovering){
               if(isHovering){
-                loadDescription(name, busLineCityStr);
+                loadDescription(name, user.busLinesFile);
               }
               else{
                 scheduleTabLines.clear();
@@ -157,7 +157,7 @@ Widget lineChoser(double maxWidth) {
 
 Widget showSelectedLine(BuildContext context, double maxWidth) {
   isDescLoaded = false;
-  loadDescription(selectedLine, busLineCityStr);
+  loadDescription(selectedLine, user.busLinesFile);
   maxWidth*= 0.85;
   return Column(
     children: [

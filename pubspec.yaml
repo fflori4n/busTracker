@@ -21,25 +21,27 @@ dependencies:
     sdk: flutter
   timer_builder: any
   js: any
-  flutter_map: ^0.11.0
-  map_controller: 0.9.0 #any #^0.8.0
+  flutter_map: ^0.11.0 #^0.11.0
+  map_controller: ^0.9.0 #any #^0.8.0
   latlong: ^0.6.1
+  google_fonts: ^2.1.0
   flutter_html: ^0.8.2
-  path_provider: 1.6.14
-  crypto: ^2.1.4
-  google_fonts: any
+  #path_provider: 1.6.14
+  crypto: ^3.0.1
   auto_size_text: ^2.1.0
   shared_preferences: ^0.5.4+8
   simple_animations: ^2.5.0
-  flutter_svg: ^0.19.2+1
+  #flutter_svg: ^0.19.2+1
   flutter_switch: ^0.2.1
-  rxdart: ^0.25.0
+ # rxdart: ^0.25.0
   swipedetector: ^1.2.0
+  #webview_flutter: ^0.3.0
+ # easy_web_view: ^1.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
+  #cupertino_icons: ^0.1.3
 
 dev_dependencies:
   flutter_test:
@@ -58,8 +60,8 @@ flutter:
 
   assets:
     - assets/
-    - assets/NsBusData/
-    - assets/svg/
+    - assets/novi_sad/
+    - google_fonts/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

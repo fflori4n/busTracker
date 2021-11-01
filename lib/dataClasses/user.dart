@@ -11,6 +11,11 @@ class User{
   double heading;  // not used
   double posAcc;
 
+  String cityString = 'novi_sad';
+  String stationsFile = "nsBusStops";
+  String busLinesFile = "nsCityBusLines";
+  LatLng mapStartPoint = LatLng(46.100217,19.664413);
+
   bool locationEnabled = false;
   bool cookiesEnabled = false;
 
@@ -70,6 +75,24 @@ class User{
   void dbgPrintFavourites() {
     for (var favourite in this.favourites) {
       print(favourite.nickName);
+    }
+  }
+
+  void setCity(String newCityString){
+    if(newCityString == "novi_sad"){
+      mapStartPoint = LatLng(45.2603, 19.8260);                                 /// map center point for novi_sad
+      cityString = newCityString;
+      stationsFile = "nsBusStops";
+      busLinesFile = "nsCityBusLines";
+    }
+    else if(newCityString == "subotica"){
+      mapStartPoint = LatLng(46.100217,19.664413);                              /// map center point for subotica
+      cityString = newCityString;
+      stationsFile = "suBusStops";
+      busLinesFile = "suCityBusLines";
+    }
+    else{
+      return;
     }
   }
 }
