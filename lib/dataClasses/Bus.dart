@@ -14,6 +14,8 @@ class Bus{
   Color color = Colors.white;
   Color lineColor = Colors.transparent;
   Time startTime = new Time(-1,-1,0);
+  //DateTime startDT;
+  var unixStartDT;
   Time eTA = new Time(-1,-1,-1);
   Time expErMarg = new Time(0,0,0);                                             // expected margin of + error
   //String busLine = '';
@@ -21,6 +23,7 @@ class Bus{
   String nickName = '';
   String etcInfo = '';
   String lineDescr = '';
+  int descScrollPos = 0;
 
   int stationNumber = 0;
   int noPosUpdateTicks = 0;

@@ -68,6 +68,16 @@ class Time{
     return this;
   }
 
+  Time addSex(int sex){
+    this.sex += sex;
+
+    this.mins += this.sex~/60;
+    this.sex %= 60;
+    this.hours += this.mins~/60;
+    this.mins %= 60;
+    this.hours %= 24;
+  }
+
   @override
   String toString() {
     return this.hours.toString()+':'+this.mins.toString()+':'+this.sex.toString();

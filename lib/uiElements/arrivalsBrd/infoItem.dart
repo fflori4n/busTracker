@@ -63,6 +63,15 @@ Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
   String lineName = bus.busLine.name.padRight(5, ' ');
   Color lineColor = bus.lineColor;
 
+  String dispBusDescript = bus.lineDescr;
+  if(bus.lineDescr.length > 32){
+    if(bus.descScrollPos >= (bus.lineDescr.length + 10)){                                /// shift description if too long
+      bus.descScrollPos = 0;
+    }
+    dispBusDescript = (bus.lineDescr + "           " + bus.lineDescr).substring(bus.descScrollPos, bus.descScrollPos+32);
+    bus.descScrollPos++;
+  }
+
   String startHours = bus.startTime.hours.toString().padLeft(2, '0');
   String startMins = bus.startTime.mins.toString().padLeft(2, '0');
 
@@ -178,7 +187,7 @@ Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
                               padding: EdgeInsets.only(left: 0.1 * 0.15 * 0.7 * constraints.width),
                               width: 0.7 * constraints.width,
                               //height: constraints.height/3,
-                              child:  Text( bus.lineDescr.toUpperCase(), style: busDescrTextStyle,),
+                              child:  Text( dispBusDescript.toUpperCase(), style: busDescrTextStyle,),
                             ),
                           )
                         ],

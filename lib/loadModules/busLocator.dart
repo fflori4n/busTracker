@@ -7,19 +7,20 @@ import '../geometryFuncts.dart';
 import '../main.dart';
 import 'loadStations.dart';
 
-final LatLng initMapCenter = new LatLng(0, 0);
+//final LatLng initMapCenter = new LatLng(0, 0);
 const double avrgBusSpeed = 17;
+const double slownessFactor = 0.5;
 
-List<Bus> buslist = [];
-//bool isSorted = false;                                                          /// TODO: convert to static? instead of global
+List<Bus> buslist = []; /// TODO: convert to static? instead of global
 bool changeFlag = false;
 
 void calcBusPos() {
-  DateTime refTime = DateTime.now();
+  var unixNow = new DateTime.now().millisecondsSinceEpoch~/1000;                /// now seconds
+  //unixNow += 3600;  // 7200 when no daylight saving
 
   for (var bus in buslist) {
-    updateBusPos(bus, refTime);                                                 /// func. to update position down below
-    updateBusTime(bus);
+    updateBusPos(bus, unixNow);                                                 /// func. to update position down below
+    updateBusTime(bus, unixNow);
 
     if (bus.eTA.sex == -1) {                                                    /// decrease ER margin timer when bus is arriving
       bus.expErMarg.decrease(Time(0, 0, 1));
@@ -32,27 +33,23 @@ void calcBusPos() {
   redrawInfoBrd.add(1);                                                         /// refresh values on infobrd
 }
 
-double getEstDistPassed(var startTime) {                                        /// basic estimation of pos for const speed
-  int elapsedTime;
-  if (startTime is Time) {                                                      /// is = instanceof in dart ;) cool
-    DateTime now = DateTime.now();
-    DateTime startDateTime = new DateTime(now.year, now.month, now.day,
-        startTime.hours, startTime.mins, startTime.sex);
-    elapsedTime = now.difference(startDateTime).inSeconds;
-  } else if (startTime is int) {
-    elapsedTime = startTime;
-  }
-  double distance = (elapsedTime) * 0.2777 * avrgBusSpeed; //1000/3600
-  // print('Est dist: ' + distance.round().toString() + ' m');
+double getEstDistPassed(var reftime, var startTime) {                                        /// basic estimation of pos for const speed
+  var elapsedTime = reftime - startTime;
+  //print("timediff" + elapsedTime.toString());
+  var distance = (elapsedTime) * 0.2777 * avrgBusSpeed; //1000/3600
+  //print('Est dist: ' + distance.round().toString() + ' m');
   return distance;
+}
+int getEstTime2Station(double dist2Station){
+  return dist2Station ~/ (0.2777 * avrgBusSpeed);
 }
 
 void sortByEta(Bus bus) {
                                                                                 /// TODO: convert everithing to index instead of ref.
   int busIndex = buslist.indexOf(bus);
   if ((busIndex - 1) > 0) {
-    int prevBusSex = buslist[busIndex - 1].eTA.inSex();
-    if (prevBusSex > bus.eTA.inSex()) {
+    double prevBusSex = buslist[busIndex - 1].unixStartDT;
+    if (prevBusSex > bus.unixStartDT) {
       Bus temp = buslist[busIndex];
       buslist[busIndex] = buslist[busIndex - 1];
       buslist[busIndex - 1] = temp;
@@ -64,7 +61,7 @@ void sortAllByEta() {
   for (int i = 0; i < (buslist.length - 1); i++) {
     bool flg = true;
     for (int j = 0; j < (buslist.length - 1); j++) {
-      if (buslist[j].eTA.inSex() > buslist[j + 1].eTA.inSex()) {
+      if (buslist[j].unixStartDT > buslist[j + 1].unixStartDT) {
         Bus temp = buslist[j];
         buslist[j] = buslist[j + 1];
         buslist[j + 1] = temp;
@@ -77,29 +74,22 @@ void sortAllByEta() {
   }
 }
 
-int updateBusPos(Bus bus, DateTime refTime) {
+int updateBusPos(Bus bus, var refTime) {                                   /// TODO: mayor bug here probably? trows a bunch of exceptions in subotica
   double distPassed;
 
   try {
     if (bus.noPosUpdateTicks > 0) {                                             /// do not update position on map
       bus.noPosUpdateTicks--;
     } else if (bus.noPosUpdateTicks == 0) {                                     /// try to display/update pos of bus on map
-      DateTime startDateTime = new DateTime(
-          refTime.year,
-          refTime.month,
-          refTime.day,
-          bus.startTime.hours,
-          bus.startTime.mins,
-          bus.startTime.sex);
-      int elapsedTime = refTime.difference(startDateTime).inSeconds;
+      double elapsedTime = refTime - bus.unixStartDT;
 
       if (elapsedTime < 0) {                                                    /// not departed - not displayed
         bus.displayedOnMap = false;
-        bus.noPosUpdateTicks = elapsedTime.abs() * 1000 ~/ mapRefreshPeriod;
+        bus.noPosUpdateTicks = elapsedTime.abs() * 1000 ~/ mapRefreshPeriod;    /// TODO: make it const
         return 0;
       }
-
-      distPassed = getEstDistPassed(elapsedTime);
+      //print('calculating bus' + bus.nickName);
+      distPassed = getEstDistPassed(refTime, bus.unixStartDT);
       bus.busPos = getPOnPolyLineByDist(distPassed, bus.busLine.points);
 
       if (bus.busPos.busPoint == LatLng(-1, -1)) {                              /// bus is not on path, so it completed the route
@@ -107,13 +97,6 @@ int updateBusPos(Bus bus, DateTime refTime) {
         bus.noPosUpdateTicks = -1; // never update Pos
         return 0;
       }
-
-      // TODO: check if same bus is displayed for other station, do not draw double bus
-      /*if(bus.findInBuslist() != buslist.indexOf(bus)){    // TODO: this but faster
-        bus.displayedOnMap = false;
-        bus.noPosUpdateTicks = -1;
-        return 0;
-      }*/
 
       bus.displayedOnMap = true;
       bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod; // bus pos update time
@@ -124,8 +107,7 @@ int updateBusPos(Bus bus, DateTime refTime) {
   }
   return 0;
 }
-int updateBusTime(Bus bus){
-  double distPassed;
+int updateBusTime(Bus bus, var unixNow){
 
   if (bus.noEtaUpdateTicks > 0) {
     bus.noEtaUpdateTicks--;
@@ -133,50 +115,48 @@ int updateBusTime(Bus bus){
       bus.eTA.decrease(Time(0, 0, 1));
     }
   } else if (bus.noEtaUpdateTicks == 0) {
-    bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod; // every 15 sex
+    bus.noEtaUpdateTicks = 15000 ~/ mapRefreshPeriod;                           /// every 15 sex
 
     try {
       Time eta = new Time(0, 0, 0);
       bool containsLine = false;
-      double postStationDist;
+
 
       for (var selectedStation in selectedStations) {
-        if (selectedStation.servedLines.contains(bus.busLine.name) &&
-            selectedStations.indexOf(selectedStation) == bus.stationNumber) {
+        if (selectedStation.servedLines.contains(bus.busLine.name) && selectedStations.indexOf(selectedStation) == bus.stationNumber) {
           containsLine = true;
           int i = selectedStation.servedLines.indexOf(bus.busLine.name);
 
-          distPassed = getEstDistPassed(bus.startTime);
-          postStationDist =
-          (selectedStation.distFromLineStart[i] - distPassed);
+          int time2StationSex = getEstTime2Station(selectedStation.distFromLineStart[i]);
+          bus.expErMarg.set(bus.expErMarg.sex2Time(time2StationSex * slownessFactor));
+          //print('time to station ' + time2StationSex.toString());
 
-          if (postStationDist < 0) {
-            if (bus.expErMarg.inSex() <= 0) {
-              // ************************************
-              eta.sex = -2;
-              bus.expErMarg.set(Time(0, 0, 0));
-              bus.noEtaUpdateTicks = -1; // never update this
-            } else {
-              eta.sex = -1;
-            }
+         if(bus.unixStartDT + time2StationSex + bus.expErMarg.inSex() < unixNow){ /// bus left
+            eta.sex = -2;
+            bus.expErMarg.set(Time(0, 0, 0));
+            bus.noEtaUpdateTicks = -1; /// never update this
             bus.setETA(eta);
             filterBus(bus, busFilters);
             continue;
           }
-          int newETAsecs =
-          ((selectedStation.distFromLineStart[i] - distPassed) ~/
-              (0.2777 * avrgBusSpeed)); // m/km/h
-          bus.expErMarg.set(bus.expErMarg
-              .sex2Time((distPassed) ~/ (0.2777 * avrgBusSpeed) * 0.5));
+          if((bus.unixStartDT + time2StationSex < unixNow) && (unixNow < bus.unixStartDT + time2StationSex + bus.expErMarg.inSex())){                      ///bus is arriving
+            eta.sex = -1;
+            bus.setETA(eta);
+            filterBus(bus, busFilters);
+            continue;
+          }
+          double uETA =(bus.unixStartDT + time2StationSex) - unixNow;
+          print('eta for' + bus.nickName + " " + uETA.toString());
 
-          eta.hours = newETAsecs ~/ 3600;
-          newETAsecs %= 3600;
-          eta.mins = newETAsecs ~/ 60;
+
+          eta.hours = uETA ~/ 3600;
+          uETA %= 3600;
+          eta.mins = uETA ~/ 60;
           if (eta.hours != 0 || eta.mins > 30)
             eta.sex = 0;
           else
-            newETAsecs %= 60;
-          eta.sex = newETAsecs;
+            uETA %= 60;
+          eta.sex = uETA.toInt();
 
           if(!bus.eTA.equals(eta.hours, eta.mins, eta.sex)){
             bus.setETA(eta);

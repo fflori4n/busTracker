@@ -29,7 +29,12 @@ class BuletinState extends State<Buletin> {
 
   @override
   void initState() {
-    widget.stream.listen((num) {setState(() {});});
+
+    widget.stream.listen((num) {
+      if(mounted){
+        setState(() {});
+      }
+    });
   }
 
   @override

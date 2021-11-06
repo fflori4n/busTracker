@@ -21,7 +21,6 @@ void loadBuses(List<Station> selectedStations){
 }
 
 Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int numOfTwins = 0]) async {
-  String lineName = bbusline.name;
   String rawFileContent;
   String rawDayStr;
 
@@ -29,24 +28,37 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
     rawFileContent= await rootBundle.loadString('schedules/' + user.cityString + '/' + bbusline.name + '.txt');
   }
   catch(e){
-    print('[ ER ] LD SCH - No permission or missing file: ' + lineName + '.txt in:' + user.cityString);
+    print('[ ER ] LD SCH - No permission or missing file: ' + bbusline.name + '.txt in:' + user.cityString);
     return; // TODO some signaling would be nice...
   }
   if(rawFileContent.isEmpty){
-    print('[ ER ] LD SCH - file is empty: ' + lineName + '.txt in:' + user.cityString);
+    print('[ ER ] LD SCH - file is empty: ' + bbusline.name + '.txt in:' + user.cityString);
     return;
   }
   List<String> dayBlocks = rawFileContent.split('>');
 
-  if(date.weekday == DateTime.sunday){
-    rawDayStr = dayBlocks[3];
-  }else if(date.weekday == DateTime.saturday){
-    rawDayStr = dayBlocks[2];
-  }else{
-    rawDayStr = dayBlocks[1];
-  }
+  var unixDate = new DateTime(date.year, date.month, date.day).millisecondsSinceEpoch~/1000;
+  unixDate -= (24*60*60);
+  for( int i=0; i< 3; i++){
+    DateTime loadDay = new DateTime.fromMillisecondsSinceEpoch(unixDate * 1000);
 
-  List<String> lines = rawDayStr.trim().split('\n');
+    if(loadDay.weekday == DateTime.sunday){                                          /// dayblocks 3 sunday, dayblocks 2 saturday, dayblocks 1 weekday
+      rawDayStr = dayBlocks[3];
+    }else if(loadDay.weekday == DateTime.saturday){
+      rawDayStr = dayBlocks[2];
+    }else{
+      rawDayStr = dayBlocks[1];
+    }
+
+    print(" loading " + loadDay.weekday.toString() + " for " + bbusline.name);
+    loadBusDay(rawDayStr, bbusline, unixDate, statNumber, numOfTwins);
+    unixDate += (24*60*60);
+  }
+  return;
+}
+
+Future<void> loadBusDay(String rawDayString, BusLine bbusline, var unixStartDT, [int statNumber = 0 , int numOfTwins = 0]) async {
+  List<String> lines = rawDayString.trim().split('\n');
   for(var line in lines){
     List<String> spaceSep = line.trim().split(' ');
     for(int i =1; i<spaceSep.length ; i++){
@@ -61,40 +73,37 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
         }
         spaceSep[i] = spaceSep[i].replaceAllMapped(RegExp(r'[^0-9]'), (match) {return '';});
         newBus.startTime = Time(int.parse(spaceSep[0]),int.parse(spaceSep[i]),0);
-        DateTime now = DateTime.now();
-        DateTime startDateTime = new DateTime(now.year,now.month,now.day,newBus.startTime.hours,newBus.startTime.mins, newBus.startTime.sex);
+        newBus.unixStartDT = unixStartDT + (newBus.startTime.hours * 60 * 60) + (newBus.startTime.mins * 60);
+        var nowTime = (DateTime.now().millisecondsSinceEpoch~/1000);
+        /// >0 past bus
+        /// <0 future bus
+        if((newBus.unixStartDT >= (nowTime - (60*60*2))) && (newBus.unixStartDT <= (nowTime + (60*60*8)))){
+         // print(newBus.unixStartDT  + " " + (nowTime));
 
-        if(now.difference(startDateTime).inMinutes > 120){
-          //print('bus gone!'); // TODO test me and add max load limit
-          continue;
-        }
-        else{
           newBus.displayedOnMap = false;
           newBus.busLine = bbusline;
           newBus.lineColor = bbusline.color;
           newBus.lineDescr = bbusline.description;
           newBus.color = bbusline.color.withAlpha(200);
           newBus.busPos = new Position(bbusline.points[0], -1);
-
           await loadNickName(newBus);   // test only
           /// *********************
-
           newBus.stationNumber = statNumber;
           newBus.twins = numOfTwins;
-
           buslist.add(newBus);
 
           ///*****************************
           //print(' added to buslist:' + newBus.busLine.name + ' ' + newBus.nickName);
         }
+        else{
+          continue;
+        }
       }catch(e){
-        print('[ ER ] LD SCH - creating new bus:' + lineName + ' '+ line.toString());
+        print('[ ER ] LD SCH - creating new bus:' + bbusline.name + ' '+ line.toString());
         print('[ ER ] LD SCH - $e');
       }
     }
   }
-
-  return;
 }
 
 Future<String> loadScheduleAsText(String lineName) async{
