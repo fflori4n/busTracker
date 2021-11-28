@@ -24,6 +24,7 @@ class StationLabelWidget {
   TextStyle stationNameStyle;
 
   double spaceUnit;
+  double verticalSpaceUnit;
   bool clickable = false;
 
   StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints, this.clickable, [String displayMsg = '']) {
@@ -41,26 +42,27 @@ class StationLabelWidget {
     letterSpacing: 1.1);
 
     this.spaceUnit = constraints.width / 25;
+    this.verticalSpaceUnit = constraints.height * 0.08;
   }
 
   Widget show() {
     double totalWidth = constraints.width;
-    double totalHeight = constraints.width * 0.15;
+    double totalHeight = constraints.height * 0.15;
     final double overFlowHeight = stationNameStyle.fontSize * (stationDisp.servedLines.length~/13).toDouble();
 
     return Container(
       child: Stack(
         children: [
           Container(
-            height: totalHeight + overFlowHeight,
+            height: verticalSpaceUnit + overFlowHeight,
             width: totalWidth,
             color: infoDispDarkBlue,
           ),
           Container(
             alignment: Alignment.topCenter,
-            height: (totalHeight * 0.94) + overFlowHeight,
+            height: (verticalSpaceUnit * 0.94) + overFlowHeight,
             width: totalWidth,
-            padding: EdgeInsets.symmetric(vertical: 0.5 * spaceUnit, horizontal: 0.5 * spaceUnit),
+            padding: EdgeInsets.symmetric(vertical: verticalSpaceUnit * 0.94 * 0.05, horizontal: 0.5 * spaceUnit),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [infoDispLiteBlue, infoDispDarkBlue]),

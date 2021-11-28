@@ -9,16 +9,13 @@ import 'Time.dart';
 final LatLng initMapCenter = new LatLng(0,0);
 
 class Bus{
-  //LatLng busPos = initMapCenter;
   Position busPos;
   Color color = Colors.white;
   Color lineColor = Colors.transparent;
   Time startTime = new Time(-1,-1,0);
-  //DateTime startDT;
   var unixStartDT;
   Time eTA = new Time(-1,-1,-1);
-  Time expErMarg = new Time(0,0,0);                                             // expected margin of + error
-  //String busLine = '';
+  double expErMarg = 0;                                             // expected margin of + error
   BusLine busLine;
   String nickName = '';
   String etcInfo = '';
@@ -34,6 +31,7 @@ class Bus{
   bool displayedOnSchedule = true;
   bool isRampAccesible = false;
   bool isHighLighted = false;
+  bool isTargMarkered = false;
   bool reported = false;
 
 

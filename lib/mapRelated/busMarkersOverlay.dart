@@ -20,6 +20,43 @@ Point(double x, double y){
 
 }
 class BusOverlayPainter extends CustomPainter {
+
+  Path paintTarget(double x, double y) {
+    final double size = 28;
+    var points = new List.unmodifiable([
+      Point(-size/2,size/6),
+      Point(-size/2,size/2),
+      Point(-size/6,size/2),
+
+      Point(size/6,size/2),
+      Point(size/2,size/2),
+      Point(size/2,size/6),
+
+      Point(size/2,-size/6),
+      Point(size/2,-size/2),
+      Point(size/6,-size/2),
+
+      Point(-size/6,-size/2),
+      Point(-size/2,-size/2),
+      Point(-size/2,-size/6),
+    ]);
+
+    Path marker = new Path()
+      ..moveTo(x + points[0].x, y + points[0].y)
+      ..lineTo(x + points[1].x, y + points[1].y)
+      ..lineTo(x + points[2].x, y + points[2].y)
+      ..moveTo(x + points[3].x, y + points[3].y)
+      ..lineTo(x + points[4].x, y + points[4].y)
+      ..lineTo(x + points[5].x, y + points[5].y)
+      ..moveTo(x + points[6].x, y + points[6].y)
+      ..lineTo(x + points[7].x, y + points[7].y)
+      ..lineTo(x + points[8].x, y + points[8].y)
+      ..moveTo(x + points[9].x, y + points[9].y)
+      ..lineTo(x + points[10].x, y + points[10].y)
+      ..lineTo(x + points[11].x, y + points[11].y);
+
+    return marker;
+  }
   Path getTrianglePath(double x, double y, double heading) {
     final double size = 18;
     var points = new List.unmodifiable([
@@ -68,22 +105,33 @@ class BusOverlayPainter extends CustomPainter {
       if(bus.twins == 0){
         final paint = Paint()
           ..color = bus.color
-        //..style = PaintingStyle.stroke
-          ..strokeWidth = 1
+          ..style = PaintingStyle.fill
+          //..strokeWidth = 3
           ..strokeJoin = StrokeJoin.round
           ..strokeCap = StrokeCap.round;
-        final stroke = Paint()
+        Paint stroke = Paint()
           ..color = Colors.black87
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 1
+          ..strokeWidth = 3
           ..strokeJoin = StrokeJoin.round
           ..strokeCap = StrokeCap.round;
+
+        Paint strokeTarg = Paint()
+          ..color = Colors.black87
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2
+          ..strokeJoin = StrokeJoin.round
+          ..strokeCap = StrokeCap.round;
+
 
         if (bus.busPos.heading != -1) {
           canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
               paint); // paint bus markers
           canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
-              stroke); // TODO: maybe do both stroke and fill at once?}
+              stroke); /// TODO: maybe do both stroke and fill at once?}
+          if(bus.isHighLighted || bus.isTargMarkered){
+            canvas.drawPath(paintTarget(x, y), strokeTarg);
+          }
         }
         else {
           canvas.drawCircle(Offset(x, y), 6, paint);

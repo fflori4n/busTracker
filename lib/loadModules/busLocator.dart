@@ -22,9 +22,9 @@ void calcBusPos() {
     updateBusPos(bus, unixNow);                                                 /// func. to update position down below
     updateBusTime(bus, unixNow);
 
-    if (bus.eTA.sex == -1) {                                                    /// decrease ER margin timer when bus is arriving
+    /*if (bus.eTA.sex == -1) {                                                    /// decrease ER margin timer when bus is arriving
       bus.expErMarg.decrease(Time(0, 0, 1));
-    }
+    }*/
   }
   if(changeFlag){                                                               /// sort all buses if time has changed
     changeFlag = false;
@@ -128,25 +128,25 @@ int updateBusTime(Bus bus, var unixNow){
           int i = selectedStation.servedLines.indexOf(bus.busLine.name);
 
           int time2StationSex = getEstTime2Station(selectedStation.distFromLineStart[i]);
-          bus.expErMarg.set(bus.expErMarg.sex2Time(time2StationSex * slownessFactor));
+          bus.expErMarg = time2StationSex * slownessFactor;
           //print('time to station ' + time2StationSex.toString());
 
-         if(bus.unixStartDT + time2StationSex + bus.expErMarg.inSex() < unixNow){ /// bus left
+         if(bus.unixStartDT + time2StationSex + bus.expErMarg < unixNow){ /// bus left
             eta.sex = -2;
-            bus.expErMarg.set(Time(0, 0, 0));
+            bus.expErMarg = 0;
             bus.noEtaUpdateTicks = -1; /// never update this
             bus.setETA(eta);
             filterBus(bus, busFilters);
             continue;
           }
-          if((bus.unixStartDT + time2StationSex < unixNow) && (unixNow < bus.unixStartDT + time2StationSex + bus.expErMarg.inSex())){                      ///bus is arriving
+          if((bus.unixStartDT + time2StationSex < unixNow) && (unixNow < bus.unixStartDT + time2StationSex + bus.expErMarg)){                      ///bus is arriving
             eta.sex = -1;
             bus.setETA(eta);
             filterBus(bus, busFilters);
             continue;
           }
           double uETA =(bus.unixStartDT + time2StationSex) - unixNow;
-          print('eta for' + bus.nickName + " " + uETA.toString());
+          //print('eta for' + bus.nickName + " " + uETA.toString());
 
 
           eta.hours = uETA ~/ 3600;

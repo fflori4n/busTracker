@@ -43,7 +43,8 @@ Widget showSettingsTab(Size constraints, BuildContext context){
                             final List<String> languages = [
                             'srb',
                             'eng',
-                            'hun'
+                            'hun',
+                            'cpb',
                           ]; // TODO: use array instead of string
                           int i = languages.indexOf(activeLang);
                           if (i < languages.length - 1)

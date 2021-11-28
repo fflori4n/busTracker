@@ -110,6 +110,6 @@ Widget getListView(context, double maxWidth) {
     itemBuilder: (BuildContext context, int index) {
       return infoWidget(context, displayedBusList[index], Size(maxWidth, maxWidth/10));
     },
-    separatorBuilder: (BuildContext context, int index) => const Divider(),
+    separatorBuilder: (BuildContext context, int index) =>  const Divider( height: 0,),
   );
 }
