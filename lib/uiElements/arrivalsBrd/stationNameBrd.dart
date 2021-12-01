@@ -26,6 +26,7 @@ class StationLabelWidget {
   double spaceUnit;
   double verticalSpaceUnit;
   bool clickable = false;
+  double mobileMultip = 1;
 
   StationLabelWidget(Station dispThisStation, String stationNumber, this.constraints, this.clickable, [String displayMsg = '']) {
     this.context = context;
@@ -43,26 +44,29 @@ class StationLabelWidget {
 
     this.spaceUnit = constraints.width / 25;
     this.verticalSpaceUnit = constraints.height * 0.08;
+    if(this.constraints.width < 950){ /// quick and dirty fix, have no idea why it doesn't want to work
+      mobileMultip = 3;
+    }
   }
 
   Widget show() {
     double totalWidth = constraints.width;
     double totalHeight = constraints.height * 0.15;
-    final double overFlowHeight = stationNameStyle.fontSize * (stationDisp.servedLines.length~/13).toDouble();
+    final double overFlowHeight = stationNameStyle.fontSize * 1.2 * (stationDisp.servedLines.length~/13).toDouble();
 
     return Container(
       child: Stack(
         children: [
           Container(
-            height: verticalSpaceUnit + overFlowHeight,
+            height: ((constraints.height * mobileMultip )+ overFlowHeight) ,
             width: totalWidth,
             color: infoDispDarkBlue,
           ),
           Container(
             alignment: Alignment.topCenter,
-            height: (verticalSpaceUnit * 0.94) + overFlowHeight,
+            height: ((constraints.height * 0.94 * mobileMultip) + overFlowHeight),
             width: totalWidth,
-            padding: EdgeInsets.symmetric(vertical: verticalSpaceUnit * 0.94 * 0.05, horizontal: 0.5 * spaceUnit),
+            padding: EdgeInsets.symmetric(horizontal: 0.5 * spaceUnit),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [infoDispLiteBlue, infoDispDarkBlue]),
@@ -74,28 +78,18 @@ class StationLabelWidget {
               children: [
                 Row(
                   children: [
-                    clickable ? Container() : Container(
+                    Container(
                       alignment: Alignment.centerLeft,
                       width: 1.5* spaceUnit,
                       height: stationNameStyle.fontSize * 2,
                       child: stationLetter(stationNameStyle.fontSize ,stationNumber),
                     ),
-                    clickable ? FlatButton(
-                      onPressed: () {
-                        isScheduleView = false;
-                        redrawLayoutController.add(1); // write to stream, flag for update
-                      },
-                      child: Container(
-                        width: 20.5* spaceUnit,
-                        alignment: Alignment.centerLeft,
-                        child:  Text(stationDisp.name, style: stationNameStyle),
-                      ),
-                    ) : Container(
+                    Container(
                         width: 20.5* spaceUnit,
                         alignment: Alignment.centerLeft,
                         child:  Text(stationDisp.name, style: stationNameStyle),
                     ),
-                    clickable ? Container() : Container(
+                    Container(
                       alignment: Alignment.center,
                       width: 2* spaceUnit,
                       child: FlatButton(
@@ -124,7 +118,7 @@ class StationLabelWidget {
                     children: <Widget>[
                       Text(
                         displayMsg,
-                        style: infoBrdSmall,
+                        style: stationNameStyle.apply(fontSizeFactor: 0.8),
                         textAlign: TextAlign.left,
                       ),
                     ],

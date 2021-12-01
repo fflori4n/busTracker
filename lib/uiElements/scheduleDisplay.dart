@@ -16,7 +16,7 @@ Future<Column> _readSingleScheduleFromJson(String selectedLine) async{
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(outStr, style: infoBrdSmall,),
+      Text(outStr,),
     ],
   );
 

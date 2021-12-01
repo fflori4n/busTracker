@@ -126,7 +126,7 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
           child: Tooltip(
             message: 'Poslato je. Hvala!',
             child:  Center(
-              child:  Text('Hvala!', style: infoBrdSmall,)
+              child:  Text('Hvala!', style: TextStyle(color: baseWhite))
             ),
           ),
         ),

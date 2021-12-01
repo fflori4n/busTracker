@@ -1,0 +1,2 @@
+pi@192.168.1.199:/var/www/html/assets/schedules/novi_sad/
+foska000

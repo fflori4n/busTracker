@@ -25,7 +25,7 @@ const Color switchActive= Color.fromRGBO(45, 160, 230,0.8);                     
 const Color switchInactive= Color(0xff121314);                        // #5578BD
 const Color switchToggle= Color(0xffffffff);                        // #5578BD
 
-TextStyle primaryFont = GoogleFonts.robotoCondensed();
+/*TextStyle primaryFont = GoogleFonts.robotoCondensed();
 
 TextStyle listText =  GoogleFonts.robotoCondensed(
     fontSize: 15,
@@ -56,15 +56,13 @@ TextStyle infoBrdYellow =  GoogleFonts.robotoCondensed(
     fontWeight: FontWeight.normal,
     color: baseYellow,
     letterSpacing: 1.1
-);
+);*/
 
-
-double infoBrdWidth = 1920;
 
 final Color infoDispDarkBlue = Color.fromRGBO(23, 67, 108, 1);
 final Color infoDispLiteBlue = Color.fromRGBO(0, 90, 152, 1);
 
-TextStyle stationDisplay = GoogleFonts.robotoCondensed(
+/*TextStyle stationDisplay = GoogleFonts.robotoCondensed(
     color: Colors.white,
     fontSize: max(0.035 * infoBrdWidth, 15),
     fontWeight: FontWeight.normal,
@@ -119,7 +117,7 @@ TextStyle busDescrSmall = GoogleFonts.robotoCondensed(
   letterSpacing: 1.1,
   fontWeight: FontWeight.normal,
   color: baseWhite,
-);
+);*/
 
 /// https://stackoverflow.com/questions/50751226/how-to-dynamically-resize-text-in-flutter - Taur
 /// really smart solution for fixed area, modified it for const width, thanks!

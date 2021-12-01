@@ -7299,35 +7299,67 @@
       "uid" : "11c4df5d086f2adef976a526fea55762"
     },
     {
-      "name" : "Sadecki",
+      "name" : "Sadecki - Karađorđev Put ka Subotici",
+      "lat" : 19.65334084118653,
+      "lon" : 46.1000235761643,
+      "zone" : "1",
+      "served_lines" : ["1AA"],
+      "uid" : "Sadecki"
+    },
+    {
+      "name" : "Sadecki - Karađorđev Put ka Kelebiji",
       "lat" : 19.6535352,
       "lon" : 46.1000822,
       "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a12c33198b0b7135394a7df78f993bd8"
+      "served_lines" : ["1AB"],
+      "uid" : "Sadecki"
     },
     {
-      "name" : "Zdravstvena stanica",
+      "name" : "Apoteka Br.6 Novo Selo",
       "lat" : 19.6481064,
       "lon" : 46.1040621,
       "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "6ce209e423baf32f6c82326928e95a9c"
+      "served_lines" : ["1AA"],
+      "uid" : "#Zdravstvena stanica"
     },
     {
-      "name" : "Škola Sečenji Ištvan",
+      "name" : "Subotička Džamija",
+      "lat" : 19.647997880828864,
+      "lon" : 46.10420435559094,
+      "zone" : "1",
+      "served_lines" : ["1AB"],
+      "uid" : "#Zdravstvena stanica"
+    },
+    {
+      "name" : "OS Sečenji Ištvan ka Subotici",
       "lat" : 19.6439999,
       "lon" : 46.1070152,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["1AA"],
       "uid" : "747f43334ee2912a1052c0e8d1f91467"
     },
     {
-      "name" : "Zorka pruga",
+      "name" : "OS Sečenji Ištvan ka Kelebiji",
+      "lat" : 19.643438125503547,
+      "lon" : 46.1071649293344,
+      "zone" : "1",
+      "served_lines" : ["1AB"],
+      "uid" : "747f43334ee2912a1052c0e8d1f91467"
+    },
+    {
+      "name" : "Zorka pruga ka Subotici",
       "lat" : 19.6381152,
       "lon" : 46.1108236,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["1AA"],
+      "uid" : "c83529c672ee0cbdb0b61c9201a24177"
+    },
+    {
+      "name" : "Zorka pruga ka Kelebiji",
+      "lat" : 19.63638928021241,
+      "lon" : 46.111471610750286,
+      "zone" : "1",
+      "served_lines" : ["1AB"],
       "uid" : "c83529c672ee0cbdb0b61c9201a24177"
     },
     {
@@ -7343,7 +7375,7 @@
       "lat" : 19.6296448,
       "lon" : 46.1155614,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["1AA", "1AB"],
       "uid" : "ee93e481dd56224d860f9de0bcfd5038"
     },
     {
@@ -7351,7 +7383,7 @@
       "lat" : 19.6225101,
       "lon" : 46.118908,
       "zone" : "1",
-      "served_lines" : [""],
+      "served_lines" : ["1AA", "1AB"],
       "uid" : "89fa63e6a7a8c5b985919ed4f8268af1"
     },
     {

@@ -51,28 +51,22 @@ class BuletinState extends State<Buletin> {
             else{
               width = deviceInfo.widgetSize.width;
               height = deviceInfo.widgetSize.height;
+              print('mobile layout!');
             }
-            infoBrdWidth = width;
-            return Column(
-              children: <Widget>[
-                Container(
+            return Container(
                     decoration: new BoxDecoration(
                         color: Color.fromRGBO(16, 16, 16, 1),
                         borderRadius: new BorderRadius.only(
                           topRight: const Radius.circular(4.0),
                           bottomRight: const Radius.circular(4.0),
                         )),
-
                     alignment: Alignment.topLeft,
-                    margin: EdgeInsets.symmetric(vertical: 6.0),
                     height: height,
                     width: width,
-
                     child: Column(
                       children: <Widget>[
-                        //deviceInfo.isMobile ? Container() : StatusBar(),            // TODO: responsive status bar
                         Column(
-                          children: displaySelectedStations(Size(width, height)),
+                          children: displaySelectedStations(Size(width, (width/10)*2/3)),
                         ),
                         showTabIconRow(width),
                         showTabs(context,user,width),
@@ -83,9 +77,7 @@ class BuletinState extends State<Buletin> {
                           child: getListView(context, width),
                         ) : Container(),
                       ],
-                    )),
-              ],
-            );
+                    ));
           });
   }
 }

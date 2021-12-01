@@ -200,10 +200,10 @@ Widget showSelectedLine(BuildContext context, double maxWidth) {
             child: SizedBox(
                 width: maxWidth/20,
                 height: maxWidth/20,
-                child: Center(child: Text(selectedLine, style: infoBrdSmall),),
+                child: Center(child: Text(selectedLine),),
             )
           ),
-          isDescLoaded ? Text(dispLineDescr, style: infoBrdSmall,) : Text(dispLineDescr, style: infoBrdSmall,),
+          isDescLoaded ? Text(dispLineDescr,) : Text(dispLineDescr,),
         ],
       ),
       showSchedule(context, maxWidth, selectedLine),

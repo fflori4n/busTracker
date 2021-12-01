@@ -290,7 +290,7 @@ Widget extrainfo(Bus bus, Size constraints) {
             InkWell(
               child: Text(
                 'pogledajte mesto na google maps',
-                style: busDescrSmallLink,
+                style: busSmallTextStyle.apply(color: infoDispLiteBlue),
                 textAlign: TextAlign.left,
               ),
               onTap: () {

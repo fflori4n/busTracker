@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapTest/mapRelated/map.dart';
 import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapRelated/drawoverlay.dart';
@@ -19,7 +18,6 @@ bool isScheduleView = true;
 class MobileUI extends StatefulWidget {
   final Stream<int>stream;
   MobileUI(this.stream);
-  
   MobileUIState createState() => MobileUIState();
 }
 

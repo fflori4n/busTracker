@@ -106,15 +106,15 @@ class BusOverlayPainter extends CustomPainter {
         final paint = Paint()
           ..color = bus.color
           ..style = PaintingStyle.fill
-          //..strokeWidth = 3
-          ..strokeJoin = StrokeJoin.round
-          ..strokeCap = StrokeCap.round;
-        Paint stroke = Paint()
+          ..strokeWidth = 0;
+          //..strokeJoin = StrokeJoin.round
+          //..strokeCap = StrokeCap.round;
+        /*Paint stroke = Paint()
           ..color = Colors.black87
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 3
+          ..strokeWidth = 1
           ..strokeJoin = StrokeJoin.round
-          ..strokeCap = StrokeCap.round;
+          ..strokeCap = StrokeCap.round;*/
 
         Paint strokeTarg = Paint()
           ..color = Colors.black87
@@ -127,8 +127,8 @@ class BusOverlayPainter extends CustomPainter {
         if (bus.busPos.heading != -1) {
           canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
               paint); // paint bus markers
-          canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
-              stroke); /// TODO: maybe do both stroke and fill at once?}
+          //canvas.drawPath(getTrianglePath(x, y, bus.busPos.heading),
+           //   stroke); /// TODO: maybe do both stroke and fill at once?}
           if(bus.isHighLighted || bus.isTargMarkered){
             canvas.drawPath(paintTarget(x, y), strokeTarg);
           }
