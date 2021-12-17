@@ -9,6 +9,7 @@ import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/main.dart';
 
 import '../../onSelected.dart';
+import '../UIColors.dart';
 import 'mobileUI.dart';
 
 StreamController<int> redrawOverMapDisp = StreamController<int>.broadcast();
@@ -22,6 +23,14 @@ class OverMapDisp extends StatefulWidget {
 }
 
 class _OverMapDispState extends State<OverMapDisp> {
+
+  final double width = screenWidth;
+  final double height = 0.1* screenHeight;
+  final promtStyle = TextStyle(
+    color: Colors.black87,
+    fontSize: 0.01 * screenWidth,
+  );
+
   @override
   void initState(){
     widget.stream.listen((num) { setState(() {}); });
@@ -30,10 +39,7 @@ class _OverMapDispState extends State<OverMapDisp> {
   @override
   Widget build(BuildContext context) {
 
-    final promtStyle = TextStyle(
-      color: Colors.black87,
-      fontSize: 0.01 * screenWidth,
-    );
+
 
     List<Widget> lines = [];
     for(var station in selectedStations){
@@ -44,9 +50,13 @@ class _OverMapDispState extends State<OverMapDisp> {
     }
 
     return Container(
-      width: screenWidth,
-      height: 0.1* screenHeight,
-      padding: EdgeInsets.all(0.1*0.04* screenHeight),
+      margin: EdgeInsets.symmetric(horizontal: width/100),
+      decoration: BoxDecoration(
+        borderRadius: new BorderRadius.only(bottomLeft: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
+      ),
+      width: width,
+      height: promtStyle.fontSize * 2,
+      color: baseWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

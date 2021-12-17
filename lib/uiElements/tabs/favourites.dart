@@ -5,11 +5,13 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 
 import '../../main.dart';
 import '../../onSelected.dart';
 import '../UIColors.dart';
+import 'favouriteItem.dart';
 
 Widget showFavourites(Size constraints){
 
@@ -21,67 +23,13 @@ Widget showFavourites(Size constraints){
       letterSpacing: 1.1);
 
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: constraints.width / 25),
+    padding: EdgeInsets.symmetric(horizontal: constraints.width / 20),
     width: constraints.width,
     child: Column(
       children: [
-        Row(
-          children: [
-            Container(
-              height: settingsTextStyle.fontSize * 2,
-              alignment: Alignment.centerLeft,
-              width: 18 * constraints.width / 25,
-              child: Text(
-                'Save current as favourite:',
-                style: settingsTextStyle,
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: settingsTextStyle.fontSize* 1.3,
-                alignment: Alignment.centerRight,
-                child: Tooltip(
-                  message: 'save as favourite',
-                  child: TextButton(
-                    onPressed: () {
-                      print(selectedStations.toString());
-                      String nickName = DateTime.now().toLocal().toString();
-                      user.addFavourite(nickName, selectedStations);
-                      user.dbgPrintFavourites();
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: baseBlue,
-                        borderRadius: new BorderRadius.all(Radius.circular(settingsTextStyle.fontSize* 0.2)),
-                      ),
-                      child: Text(
-                        'Save!',
-                        style: settingsTextStyle,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Container(
-              height: settingsTextStyle.fontSize * 1.5,
-              alignment: Alignment.centerLeft,
-              width: 18 * constraints.width / 25,
-              child: Text(
-                'load or remove favourites:',
-                style: settingsTextStyle,
-              ),
-            ),
-           ],
-        ),
-        Column(
-          children: listFavourites(constraints),
-        )
+        favItem(new Station.empty(), constraints),
+        favItem(new Station.empty(), constraints),
+        favItem(new Station.empty(), constraints),
       ],
     ),
   );
