@@ -19,7 +19,7 @@ import 'indicator.dart';
 
 
  
-Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
+Widget infoWidget(BuildContext context, Bus bus, int listIndex, Size constraints) {
   //, //Station station){
 
   if (!bus.displayedOnSchedule) {
@@ -102,8 +102,8 @@ Widget infoWidget(BuildContext context, Bus bus, Size constraints) {
 
   String stationLet = (bus.stationNumber + 1).toString();
 
-    return FadeIn(
-        1.5,
+    return FadeIn(                                                              /// TODO: convert item list to animated list for more control
+      (listIndex * 150.0),
         InkWell(
               onTap: (){
                 bus.isHighLighted = !bus.isHighLighted;

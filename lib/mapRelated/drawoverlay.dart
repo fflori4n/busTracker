@@ -58,6 +58,10 @@ class OverlayPainter extends CustomPainter {
     ..color = Colors.black.withOpacity(0.15)
     ..style = PaintingStyle.stroke
     ..strokeWidth = 2;
+  final Paint nonSelectedLongDistanceBusStop = Paint()
+    ..color = Colors.blueGrey.withOpacity(0.20)
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2;
   final Paint selectedCityBusStop = Paint()
     ..color = Colors.black.withOpacity(0.8)
     ..style = PaintingStyle.stroke
@@ -124,11 +128,9 @@ class OverlayPainter extends CustomPainter {
       for (Station station in stationList) {
         double radius = 6;
         paint = nonSelectedCityBusStop;
-        /*if (selectedStations.contains(station)) {
-        radius = 10;
-        paint = selectedCityBusStop;
-      }*/
-
+        if(station.stationGroup != "I"){
+          paint = nonSelectedLongDistanceBusStop;
+        }
         Offset mapOffset = getOverlayOffset(station.pos, size);
         if (mapOffset.dx < 0) {
           continue;

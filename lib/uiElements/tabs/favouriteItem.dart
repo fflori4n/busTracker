@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
-import 'package:mapTest/uiElements/animatons/fadeInAnim.dart';
 
 import '../UIColors.dart';
 
@@ -15,8 +15,9 @@ Widget favItem(Station favStation, Size constraints) {
       letterSpacing: 1.1);
 
   return FadeIn(
-    1.5,
-    Container(
+    duration: Duration(milliseconds: 1000),
+    curve: Curves.easeIn,
+    child: Container(
       height: settingsTextStyle.fontSize * 2,
       width: constraints.width,
       child: Column(
@@ -42,7 +43,6 @@ Widget favItem(Station favStation, Size constraints) {
                   onHover: (isHovering) {},
                   child: Container(
                       alignment: Alignment.center,
-
                       height: settingsTextStyle.fontSize * 1.8,
                       width: settingsTextStyle.fontSize * 1.8,
                       color: baseBlue,
