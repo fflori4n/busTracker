@@ -64,12 +64,13 @@ class User{
   }
 
   void addFavourite(String nickName, List<Station> stations){
-    if(stations.length <= 0){
+    /*if(stations.length <= 0){
       print('no selected stations ');
       return;
     }
     this.favourites.add(FavStation(nickName, stations));
-    print('added ' + nickName);
+    print('added ' + nickName);*/
+    print("[  ER  ]  eyyo not implemented");
   }
 
   void dbgPrintFavourites() {

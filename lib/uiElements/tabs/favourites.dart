@@ -35,7 +35,7 @@ Widget showFavourites(Size constraints){
   );
 }
 
-List<Row> listFavourites(Size constraints){
+/*List<Row> listFavourites(Size constraints){
   List<Row> rows = [];
 
   final settingsTextStyle = TextStyle(
@@ -97,4 +97,4 @@ List<Row> listFavourites(Size constraints){
     rows.add(newRow);
   }
   return rows;
-}
+}*/

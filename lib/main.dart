@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mapTest/session/favStations.dart';
 import 'dart:async';
 import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
@@ -54,7 +55,8 @@ Widget router(String page){     // TODO: welp. whatever... at this point everyth
   buslist.clear();
   stationList.clear();
   selectedStations.clear();
-  loadStationsFromJson(user.stationsFile);
+  loadStationsFromJson(user.stationsFile);                                       /// LOAD STATIONS FROM FILE !!! I Know you;re looking for this all the time
+  loadFavouritesFromLocal();                                                     /// DBG
   return Scaffold(
     body: RespWrap(
       builder: (context, deviceInfo){
