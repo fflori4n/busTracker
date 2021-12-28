@@ -29,9 +29,7 @@ Future<void> onStationSelected() async {
 
   await writeCookie();                                                          //TODO: find good place for writing cookie
 
-  if(((favouriteStations.firstWhere((favStat) => favStat.stationStr == selectedStations.first.name, orElse: () => null)) == null)){  /// do not add same favourite multiple times
-    favouriteStations.add(FavStation(selectedStations.first, "", selectedStations.first.name,1)); /// DBG DBG
-  }
+  FavStation.addFavStation(selectedStations.first, "",1);
   saveFavouritesToLocal();
 
   //removeUnusedBusLines(); /// dgb

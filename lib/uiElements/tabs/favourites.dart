@@ -1,15 +1,13 @@
 
-import 'dart:js';
+
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mapTest/dataClasses/FavStation.dart';
 import 'package:mapTest/dataClasses/Station.dart';
-import 'package:mapTest/loadModules/loadStations.dart';
 
-import '../../main.dart';
-import '../../onSelected.dart';
 import '../UIColors.dart';
 import 'favouriteItem.dart';
 
@@ -26,13 +24,17 @@ Widget showFavourites(Size constraints){
     padding: EdgeInsets.symmetric(horizontal: constraints.width / 20),
     width: constraints.width,
     child: Column(
-      children: [
-        favItem(new Station.empty(), constraints),
-        favItem(new Station.empty(), constraints),
-        favItem(new Station.empty(), constraints),
-      ],
+      children: listOfFavourites(constraints),
     ),
   );
+}
+
+List<Widget> listOfFavourites(Size constraints) {
+  List<Widget> favourites = [];
+  for(FavStation favStation in favouriteStations){
+    favourites.add(favItem(favStation.station, constraints));
+  }
+  return favourites;
 }
 
 /*List<Row> listFavourites(Size constraints){

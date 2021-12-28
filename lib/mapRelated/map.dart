@@ -211,7 +211,7 @@ class MapPageState extends State<MapPage> {
   }
 
   Future<void> onTap(LatLng tapPos) async {
-    print('taped at: ' +
+    /*print('taped at: ' +
         tapPos.latitude.toString() +
         ',' +
         tapPos.longitude.toString());
@@ -220,6 +220,10 @@ class MapPageState extends State<MapPage> {
         ',\n"lon" : ' +
         tapPos.latitude.toString() +
         ',');
+*/
+    /// Printout for station JSON
+    print('{\n"name" : "*****",\n"lat" : ' + tapPos.longitude.toString() + ',\n"lon" : ' + tapPos.latitude.toString() + ',\n"zone" : "1",\n"served_lines" : ["1AA", "1AB"],\n"uid" : "706a0090ec569e902895518a520cfb9e"\n},');
+    ///
 
     if (user.tabOpen == 5) {
       selectedStations.clear();

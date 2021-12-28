@@ -55,8 +55,7 @@ Widget router(String page){     // TODO: welp. whatever... at this point everyth
   buslist.clear();
   stationList.clear();
   selectedStations.clear();
-  loadStationsFromJson(user.stationsFile);                                       /// LOAD STATIONS FROM FILE !!! I Know you;re looking for this all the time
-  loadFavouritesFromLocal();                                                     /// DBG
+  loadStationsFromJson(user.stationsFile);                                       /// LOAD STATIONS FROM FILE !!! I Know you;re looking for this all the time/// DBG
   return Scaffold(
     body: RespWrap(
       builder: (context, deviceInfo){

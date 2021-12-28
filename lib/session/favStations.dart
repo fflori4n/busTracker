@@ -1,10 +1,5 @@
-import 'dart:convert';
-
 import 'package:mapTest/dataClasses/FavStation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-List<FavStation> favouriteStations = [];
-
 
 Future<void> saveFavouritesToLocal() async {
   print("saving favstation to local");
@@ -18,16 +13,24 @@ Future<void> saveFavouritesToLocal() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString('fav_stat', favStationsStr);
 }
-Future<void> loadFavouritesFromLocal() async {
+Future<void> loadFavouritesFromLocal() async {                                  /// TODO: this is called from loadStations.dart
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String raw = prefs.getString('fav_stat');
-  List favStatElements = raw.split(",");                                          /// TODO: ',' in name or nickname can break it FIX THIS!!
-  for(int i=0; i<favStatElements.length; i+=3){
-    try{
-      favouriteStations.add(FavStation.fromString(favStatElements[i], favStatElements[i+1], favStatElements[i+2]));
+  if(raw == null || raw.isEmpty){
+    return;
+  }
+  List<String> favStatElements = raw.split('\n');                                          /// TODO: ',' in name or nickname can break it FIX THIS!!
+  for(String favStatSrt in favStatElements){
+    if(favStatSrt.isEmpty){
+      favStatElements.remove(favStatSrt);
+      print("removed fav");
+      continue;
     }
-    catch(E){
-      print('ERROR loading favourite');
+    List<String> favAtrib = favStatSrt.split(',');
+    if(favAtrib.length < 3 || favAtrib[0].length == 0){
+      print('skippin');
+      continue;
     }
+    FavStation.addFavStationfromStr(favAtrib.elementAt(0), favAtrib.elementAt(1),favAtrib.elementAt(2));
   }
 }

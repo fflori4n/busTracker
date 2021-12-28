@@ -36,60 +36,18 @@ Widget lineChoser(double maxWidth) {
       color: baseWhite,
       letterSpacing: 1.1);
 
-  List<String> lineNames = [
-    '1A',
-    '1B',
-    '2A',
-    '2B',
-    '3A',
-    '3AA',
-    '3AB',
-    '3B',
-    '3BA',
-    '3BB',
-    '4A',
-    '4B',
-    '5A',
-    '5B',
-    '6A',
-    '6B',
-    '7A',
-    '7B',
-    '8A',
-    '8B',
-    '9A',
-    '9B',
-    '10A',
-    '10B',
-    '11A',
-    '11B',
-    '12A',
-    '12B',
-    '13A',
-    '13B',
-    '14A',
-    '14B',
-    '15A',
-    '15B',
-    '16A',
-    '16B',
-    '17A',
-    '17B',
-    '18A',
-    '18B',
-    '20A',
-    '20B',
-    '60A',
-    '60B',
-    '64A',
-    '64B',
-    '72A',
-    '72B',
-    '74A',
-    '74B',
-    '76A',
-    '76B'
-  ];
+  List<String> lineNames = [];
+  if(user.cityString == "novi_sad"){
+    lineNames = [
+      '1A', '1B', '2A', '2B', '3A', '3AA', '3AB', '3B', '3BA', '3BB', '4A', '4B', '5A','5B','6A','6B','7A','7B','8A','8B','9A','9B','10A','10B',
+      '11A', '11B', '12A', '12B', '13A', '13B', '14A', '14B', '15A', '15B', '16A', '16B', '17A', '17B', '18A', '18B', '20A', '20B', '60A', '60B', '64A', '64B', '72A', '72B', '74A', '74B', '76A', '76B'
+    ];
+  }
+  else if(user.cityString == "subotica"){
+    lineNames = [
+      '1AA', '1AB', '2A', '2B', '3A', '3B', '4A', '4B', '6A', '6B', '7A', '7B', '8A', '8B', '8AA', '8AB', '9A', '9B', '10A', '10B', '16A', '16B'
+    ];
+  }
   List<Widget> busLineButtons = [];
   List<Widget> rowList = [];
 

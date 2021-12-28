@@ -50,7 +50,7 @@ Future ldLineSchedule(BusLine bbusline, DateTime date, [int statNumber = 0 , int
       rawDayStr = dayBlocks[1];
     }
 
-    print(" loading " + loadDay.weekday.toString() + " for " + bbusline.name);
+    //print(" loading " + loadDay.weekday.toString() + " for " + bbusline.name);
     loadBusDay(rawDayStr, bbusline, unixDate, statNumber, numOfTwins);
     unixDate += (24*60*60);
   }

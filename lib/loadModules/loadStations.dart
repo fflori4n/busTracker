@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:latlong/latlong.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLines.dart';
+import 'package:mapTest/session/favStations.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
 import 'busLines.dart';
@@ -31,6 +32,7 @@ Future<void> loadStationsFromJson( final String loadCityStr) async {
     }
 
     user.progStatusString = '';
+    loadFavouritesFromLocal();                                                  /// TODO: move this, invent proper signaling
     return;
   }
   catch(e) {

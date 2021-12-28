@@ -28,7 +28,7 @@ Widget favItem(Station favStation, Size constraints) {
                 onTap: () {},
                 onHover: (isHovering) {},
                 child: Text(
-                  "BUL. MIHAJLA PUPINA - POTHODNIK",
+                  favStation.name,
                   style: settingsTextStyle,
                 ),
               ),
