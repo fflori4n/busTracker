@@ -6,10 +6,13 @@ import 'package:mapTest/dataClasses/multiLang.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
+import 'package:mapTest/resty/busFeedback.dart';
 import 'package:mapTest/uiElements/animatons/fadeInAnim.dart';
 import 'package:mapTest/uiElements/arrivalsBrd/stationSign.dart';
 import 'dart:js' as js;
 
+import '../../main.dart';
+import '../feedBackBtn.dart';
 import '../infoDisp.dart';
 import 'indicator.dart';
 
@@ -126,8 +129,8 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
         },
       child:Container(
         width: constraints.width,
-        padding: EdgeInsets.symmetric(vertical: constraints.width * _itemVerticalPadding, horizontal: (constraints.width * _itemPadding)),
-        child: Container(
+        padding: (bus.isHighLighted && !bus.reported && bus.displayedOnMap) ? EdgeInsets.only(bottom: constraints.width * _itemVerticalPadding + 20 * scaleRatio, top: constraints.width * _itemVerticalPadding, left: (constraints.width * _itemPadding), right: (constraints.width * _itemPadding)) : EdgeInsets.symmetric(vertical: constraints.width * _itemVerticalPadding, horizontal: (constraints.width * _itemPadding)),
+          child: Container(
           width: (_maxWidth * constraints.width),
           //height: ,
           decoration: BoxDecoration(
@@ -299,9 +302,9 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
                           size: 60 * scaleRatio ,
                           color: Colors.white,
                         ) : Icon(
-                          Icons.hiking,
+                          Icons.texture,
                           size: 60 * scaleRatio ,
-                          color: Colors.white,
+                          color: yellow,
                         )
                     ),
                   ],
@@ -334,7 +337,7 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
 
                           },
                           child: Container(
-                            margin: EdgeInsets.only(left: (20 * scaleRatio), bottom: (10 * scaleRatio)),
+                            margin: EdgeInsets.only(left: (20 * scaleRatio)),
                             width: 290 * scaleRatio,
                             height: 70 * scaleRatio,
                             decoration: BoxDecoration(
@@ -402,6 +405,98 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
                 ],
               ) :
               Container(),
+              bus.isHighLighted ? Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(left: (20 * scaleRatio)),
+                        height: 65 * scaleRatio,
+                        width: 900 * scaleRatio,
+                        alignment: Alignment.centerLeft,
+                        child:
+                            Text("OCENI TAČNOST VREMENA DOLASKA:", style: White28),
+                      ),
+                    ]
+                  ),
+                  (!bus.reported && bus.displayedOnMap) ?  Container(
+                    transform: Matrix4.translationValues(0.0, 20.0 * scaleRatio, 0.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: (20 * scaleRatio)),
+                          child: SQRBtn(
+                            onTap: () {
+                              bus.reported =  true;
+                              postBusFeedBack("IN_STATION",true, bus,user);        /// TODO: evaluate if prediction is correct using ETA and ERmargin
+                            },
+                            scaleRatio: scaleRatio,
+                            icon: Icons.tour,
+                            iconSize: 74,
+                            color: Colors.blueAccent,
+                            btnLabel: "KONAČNO U STANICI",
+                          ),
+                        ),
+                        Spacer(),
+                        Container(
+                          child: SQRBtn(
+                            onTap: () {
+                              bus.reported =  true;
+                              postBusFeedBack("EARLY",false, bus,user);
+                            },
+                            scaleRatio: scaleRatio,
+                            icon: Icons.hourglass_top_rounded,
+                            iconSize: 74,
+                            color: Color.fromARGB(255, 200, 30, 30),
+                            btnLabel: "RANIJE",
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: (19 * scaleRatio)),
+                          child: SQRBtn(
+                            onTap: () {
+                              bus.reported =  true;
+                              postBusFeedBack("OK",true, bus,user);
+                            },
+                            scaleRatio: scaleRatio,
+                            icon: Icons.thumb_up,
+                            iconSize: 56,
+                            color: Colors.white,
+                            btnLabel: "NA VREME",
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: (19 * scaleRatio)),
+                          padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                          child: SQRBtn(
+                            onTap: () {
+                              bus.reported =  true;
+                              postBusFeedBack("LATE",false, bus,user);
+                            },
+                            scaleRatio: scaleRatio,
+                            icon: Icons.hourglass_bottom_rounded,
+                            iconSize: 74,
+                            color: Color.fromARGB(255, 200, 30, 30),
+                            btnLabel: "KASNIJE",
+                          ),
+                        )
+
+                      ],
+                    ),
+                  ) : Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(left: (20 * scaleRatio)),
+                        height: 65 * scaleRatio,
+                        width: 900 * scaleRatio,
+                        alignment: Alignment.centerLeft,
+                        child: bus.reported ? Text(" POSLATA JE OCENA, HVALA!", style: White28) : Text("TEK NAKON ŠTO JE KRENUO !", style: White28),
+                      ),
+                    ],
+                  ),
+                ],
+              ) : Container(),
+
             ],
           ),
         )

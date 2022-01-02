@@ -7,7 +7,7 @@ import 'package:mapTest/resty/busFeedback.dart';
 import 'UIColors.dart';
 import '../main.dart';
 
-Widget feedBackThumbs(Bus bus, double maxWidth){
+/*Widget feedBackThumbs(Bus bus, double maxWidth){
   maxWidth*= 0.85;
   if(!bus.reported && bus.displayedOnMap){
     return Row(
@@ -133,4 +133,4 @@ Widget feedBackThumbs(Bus bus, double maxWidth){
       ],
     );
   }
-}
+}*/

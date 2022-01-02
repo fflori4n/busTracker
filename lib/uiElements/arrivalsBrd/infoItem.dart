@@ -19,7 +19,7 @@ import 'indicator.dart';
 
 
  
-Widget infoWidget(BuildContext context, Bus bus, int listIndex, Size constraints) {
+/*Widget infoWidget(BuildContext context, Bus bus, int listIndex, Size constraints) {
   //, //Station station){
 
   if (!bus.displayedOnSchedule) {
@@ -254,9 +254,9 @@ Widget infoWidget(BuildContext context, Bus bus, int listIndex, Size constraints
               )
           ),
     );
-}
+}*/
 
-Widget extrainfo(Bus bus, Size constraints) {
+/*Widget extrainfo(Bus bus, Size constraints) {
 
   double time2Station = getEstTime2Station(selectedStations.elementAt(bus.stationNumber).distFromLineStart[bus.stationNumber]).toDouble();
   DateTime intervStart = DateTime.fromMillisecondsSinceEpoch((bus.unixStartDT + time2Station) * 1000);
@@ -304,6 +304,6 @@ Widget extrainfo(Bus bus, Size constraints) {
       ],
     )
   );
-}
+}*/
 
 
