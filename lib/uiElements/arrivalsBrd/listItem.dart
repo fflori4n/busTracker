@@ -32,15 +32,17 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
   String lblLineName = bus.busLine.name.padRight(5, ' ');
   String lblNickName = bus.nickName.toUpperCase();
   String stationLet = (bus.stationNumber + 1).toString();
-  String lblTOA = "00:00";
-  Color lineColor = bus.lineColor;
 
-  String lblBusDescription = bus.lineDescr;
+  final double time2Station = getEstTime2Station(selectedStations.elementAt(bus.stationNumber).distFromLineStart[bus.stationNumber]).toDouble();
+  DateTime TOA = DateTime.fromMillisecondsSinceEpoch((bus.unixStartDT + time2Station) * 1000);
+  String lblTOA = TOA.hour.toString().padLeft(2, '0') + ":" + TOA.minute.toString().padLeft(2, '0');
+
+  String lblBusDescription = bus.lineDescr.toUpperCase();
   if(bus.lineDescr.length > 27){
     if(bus.descScrollPos >= (bus.lineDescr.length + 10)){                                /// shift description if too long
       bus.descScrollPos = 0;
     }
-    lblBusDescription = (bus.lineDescr + "           " + bus.lineDescr).substring(bus.descScrollPos, bus.descScrollPos+27);
+    lblBusDescription = (bus.lineDescr.toUpperCase() + "           " + bus.lineDescr.toUpperCase()).substring(bus.descScrollPos, bus.descScrollPos+27);
    // if(shiftText){
     bus.descScrollPos++;
     //}
@@ -69,8 +71,8 @@ Widget busListItem(BuildContext context, Bus bus, int listIndex, Size constraint
   String lblTOAEnd = '';
 
   if(bus.isHighLighted){
-    double time2Station = getEstTime2Station(selectedStations.elementAt(bus.stationNumber).distFromLineStart[bus.stationNumber]).toDouble();
-    DateTime intervStart = DateTime.fromMillisecondsSinceEpoch((bus.unixStartDT + time2Station) * 1000);
+    //double time2Station = getEstTime2Station(selectedStations.elementAt(bus.stationNumber).distFromLineStart[bus.stationNumber]).toDouble();
+    DateTime intervStart = TOA; //DateTime.fromMillisecondsSinceEpoch((bus.unixStartDT + time2Station) * 1000);
     DateTime intervEnd = intervStart.add(Duration(seconds: bus.expErMarg.toInt()));
 
     lblTOAStart = intervStart.hour.toString().padLeft(2, '0') + ':' + intervStart.minute.toString().padLeft(2, '0');

@@ -15,8 +15,10 @@ List<Bus> buslist = []; /// TODO: convert to static? instead of global
 bool changeFlag = false;
 
 void calcBusPos() {
-  var unixNow = new DateTime.now().millisecondsSinceEpoch~/1000;                /// now seconds
+  DateTime timeNow = new DateTime.now();
+  var unixNow = timeNow.millisecondsSinceEpoch~/1000;                /// now seconds
   //unixNow += 3600;  // 7200 when no daylight saving
+
 
   for (var bus in buslist) {
     updateBusPos(bus, unixNow);                                                 /// func. to update position down below

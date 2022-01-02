@@ -71,9 +71,9 @@ class BuletinState extends State<Buletin> {
                         ),
                         showTabIconRow(width),
                         showTabs(context,user,width),
-                        (user.tabOpen != 5) ? Container(
+                        /*(user.tabOpen != 5) ? Container(
                           child: legend(context,Size(width,width/10)),
-                        ) : Container(),
+                        ) : Container(),*/
                         (user.tabOpen != 5) ? Expanded(
                           child: getListView(context, width),
                         ) : Container(),
