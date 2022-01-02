@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mapTest/session/favStations.dart';
 import 'dart:async';
 import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
@@ -23,6 +22,7 @@ Widget mainMapPage = MapPage(mapTileSwitchController.stream);
 StreamController<int> redrawLayoutController = StreamController<int>.broadcast();
 
 void main() {
+  //setPathUrlStrategy();
   update();                                                                     /// run bus locating functions paralel to main
   runApp(MyApp());
 }

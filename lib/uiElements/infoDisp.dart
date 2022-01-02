@@ -14,6 +14,7 @@ import '../dataClasses/Bus.dart';
 import '../filters.dart';
 import 'arrivalsBrd/infoItem.dart';
 import 'arrivalsBrd/legend.dart';
+import 'arrivalsBrd/listItem.dart';
 
 
 StreamController<int> redrawInfoBrd = StreamController<int>.broadcast();
@@ -100,7 +101,8 @@ Widget getListView(context, double maxWidth) {
   return ListView.separated(/// lazy listview do not render stuff that isn't visible
     itemCount: displayedBusList.length,
     itemBuilder: (BuildContext context, int index) {
-      return infoWidget(context, displayedBusList[index], index, Size(maxWidth, maxWidth/10));
+      //return infoWidget(context, displayedBusList[index], index, Size(maxWidth, maxWidth/10));
+      return busListItem(context, displayedBusList[index], index, Size(maxWidth, maxWidth/10));
     },
     separatorBuilder: (BuildContext context, int index) =>  const Divider( height: 0,),
   );
