@@ -4,7 +4,6 @@ import 'dart:ui' hide TextStyle;
 import 'package:flutter/cupertino.dart' hide TextStyle;
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart' hide Path;
-import 'package:mapTest/dataClasses/DeviceInfo.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';

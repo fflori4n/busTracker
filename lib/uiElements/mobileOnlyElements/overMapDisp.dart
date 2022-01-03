@@ -56,7 +56,7 @@ class _OverMapDispState extends State<OverMapDisp> {
       ),
       width: width,
       height: promtStyle.fontSize * 2,
-      color: baseWhite,
+     // color: baseWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
