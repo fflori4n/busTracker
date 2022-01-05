@@ -1,7 +1,10 @@
 import 'package:latlong/latlong.dart';
+import 'package:mapTest/boilerplate/stateManBareMinimum.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
+import 'package:mapTest/mapRelated/map.dart';
 import 'package:mapTest/uiElements/infoDisp.dart';
+import 'package:mapTest/uiElements/mobileOnlyElements/overMapDisp.dart';
 import '../filters.dart';
 import '../geometryFuncts.dart';
 import '../main.dart';
@@ -11,8 +14,10 @@ import 'loadStations.dart';
 const double avrgBusSpeed = 17;
 const double slownessFactor = 0.5;
 
-List<Bus> buslist = []; /// TODO: convert to static? instead of global
+List<Bus> buslist = [];                                                         /// main list
+List<Bus> displayedBusList = [];                                                /// list only for displayed buses
 bool changeFlag = false;
+bool posChangeFlag = false;
 
 void calcBusPos() {
   DateTime timeNow = new DateTime.now();
@@ -23,19 +28,33 @@ void calcBusPos() {
   for (var bus in buslist) {
     updateBusPos(bus, unixNow);                                                 /// func. to update position down below
     updateBusTime(bus, unixNow);
-
-    /*if (bus.eTA.sex == -1) {                                                    /// decrease ER margin timer when bus is arriving
-      bus.expErMarg.decrease(Time(0, 0, 1));
-    }*/
   }
-  if(changeFlag){                                                               /// sort all buses if time has changed
+  if(changeFlag || busFilters.refreshFlg){                                      /// sort all buses if time has changed or filters have changed
     changeFlag = false;
     sortAllByEta();
+    if(busFilters.refreshFlg){
+      applyFilters(busFilters);                                                 /// this also slow, but easy to implement, maybe worth it?
+      busFilters.refreshFlg = false;
+    }
+    displayedBusList.clear();
+    for (var bus in buslist){                                                   /// Double iteration, find a soulution to loop only once over buslist...
+      if(bus.displayedOnSchedule){
+        if(busFilters.next10only && displayedBusList.length >= 10){
+          break;
+        }
+        displayedBusList.add(bus);
+      }
+    }
+  }
+  if(posChangeFlag){
+    posChangeFlag = false;
+    redrawOverMapDisp.add(1);
+    callMapRefresh.add(1);
   }
   redrawInfoBrd.add(1);                                                         /// refresh values on infobrd
 }
 
-double getEstDistPassed(var reftime, var startTime) {                                        /// basic estimation of pos for const speed
+double getEstDistPassed(var reftime, var startTime) {                           /// basic estimation of pos for const speed
   var elapsedTime = reftime - startTime;
   //print("timediff" + elapsedTime.toString());
   var distance = (elapsedTime) * 0.2777 * avrgBusSpeed; //1000/3600
@@ -79,15 +98,19 @@ void sortAllByEta() {
 int updateBusPos(Bus bus, var refTime) {                                   /// TODO: mayor bug here probably? trows a bunch of exceptions in subotica
   double distPassed;
 
+  const double refreshArriving = 3000;
+  const double refreshLeft = 3000;
+
   try {
     if (bus.noPosUpdateTicks > 0) {                                             /// do not update position on map
       bus.noPosUpdateTicks--;
     } else if (bus.noPosUpdateTicks == 0) {                                     /// try to display/update pos of bus on map
+      posChangeFlag = true;
       double elapsedTime = refTime - bus.unixStartDT;
 
       if (elapsedTime < 0) {                                                    /// not departed - not displayed
         bus.displayedOnMap = false;
-        bus.noPosUpdateTicks = elapsedTime.abs() * 1000 ~/ mapRefreshPeriod;    /// TODO: make it const
+        bus.noPosUpdateTicks = elapsedTime.abs() * refreshLeft ~/ mapRefreshPeriod;    /// TODO: make it const
         return 0;
       }
       //print('calculating bus' + bus.nickName);
@@ -101,7 +124,7 @@ int updateBusPos(Bus bus, var refTime) {                                   /// T
       }
 
       bus.displayedOnMap = true;
-      bus.noPosUpdateTicks = 1000 ~/ mapRefreshPeriod; // bus pos update time
+      bus.noPosUpdateTicks = refreshArriving ~/ mapRefreshPeriod; // bus pos update time
     }
   } catch (e) {
     print('[  ER  ] calculate Pos: ' + bus.nickName + '--' + e.toString());

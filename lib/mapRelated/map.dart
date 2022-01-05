@@ -18,8 +18,8 @@ FlutterMap map = new FlutterMap();
 MapConfig mapConfig = new MapConfig();
 MapController mapController = new MapController();
 
-StreamController<int> mapTileSwitchController =
-    new StreamController<int>.broadcast();
+StreamController<int> mapTileSwitchController = new StreamController<int>.broadcast();
+StreamController<int> callMapRefresh = new StreamController<int>.broadcast();
 
 MapPageState displayedMap;
 int activeMapTile = 0; // DBG TODO
@@ -74,9 +74,10 @@ List<String> mapProviderNames = [
 
 
 class MapPage extends StatefulWidget {
-  final Stream<int> stream;
+  final Stream<int> switchStream;
+  final Stream<int> refreshStream;
 
-  MapPage(this.stream);
+  MapPage(this.switchStream, this.refreshStream);
 
   @override
   MapPageState createState() => MapPageState();
@@ -91,8 +92,13 @@ class MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    widget.stream.listen((num) {
+    widget.switchStream.listen((num) {
       switchTileUrl(num);
+    });
+    widget.refreshStream.listen((num) {
+      if(this.mounted){
+        setState(() {});
+      }
     });
     mapController = new MapController();
     statefulMapController = StatefulMapController(mapController: mapController);
@@ -173,41 +179,42 @@ class MapPageState extends State<MapPage> {
     /// s = satellite only
     /// t = terrain only
     /// y = hybrid
-
-    setState(() {
-      switch (tyleUrlNum) {
-        case 0:
-          maptileUrl =
-              'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}'; // Normal Google
-          subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
-          break;
-        case 1:
-          maptileUrl =
-              'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'; // Satelite Google
-          subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
-          break;
-        case 2:
-          maptileUrl =
-              'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}'; // hybrid Google
-          subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
-          break;
-        case 3:
-          maptileUrl =
-              'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'; // terrain Google
-          subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
-          break;
-        case 4:
-          maptileUrl =
-              'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'; // OSM white
-          subdomains = ['a', 'b', 'c'];
-          break;
-        case 5:
-          maptileUrl =
-              'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'; // OSM classic
-          subdomains = ['a', 'b', 'c'];
-          break;
-      }
-    });
+    if(this.mounted){
+      setState(() {
+        switch (tyleUrlNum) {
+          case 0:
+            maptileUrl =
+            'http://{s}.google.com/vt/lyrs=r&x={x}&y={y}&z={z}'; // Normal Google
+            subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
+            break;
+          case 1:
+            maptileUrl =
+            'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'; // Satelite Google
+            subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
+            break;
+          case 2:
+            maptileUrl =
+            'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}'; // hybrid Google
+            subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
+            break;
+          case 3:
+            maptileUrl =
+            'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'; // terrain Google
+            subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
+            break;
+          case 4:
+            maptileUrl =
+            'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'; // OSM white
+            subdomains = ['a', 'b', 'c'];
+            break;
+          case 5:
+            maptileUrl =
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'; // OSM classic
+            subdomains = ['a', 'b', 'c'];
+            break;
+        }
+      });
+    }
   }
 
   Future<void> onTap(LatLng tapPos) async {

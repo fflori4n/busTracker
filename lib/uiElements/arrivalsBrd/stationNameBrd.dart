@@ -4,15 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/onSelected.dart';
-import 'package:mapTest/uiElements/mobileOnlyElements/mobileUI.dart';
 
 import '../UIColors.dart';
 import '../../filters.dart';
 import '../../main.dart';
 import '../infoDisp.dart';
+import '../selectedStationsBrd.dart';
 import 'stationSign.dart';
 
 class StationLabelWidget {
@@ -207,10 +206,8 @@ List<Widget> displaySelectedStations(Size constraints) {
             )
         .show());
   }
-  for (int i = 0; i < selectedStations.length; i++) {
-    stationDispList.add(new StationLabelWidget(
-            selectedStations[i], (i + 1).toString(), constraints, false)
-        .show());
+  for ( Station station in selectedStations) {
+    stationDispList.add(ActStation(station: station, constraints: constraints).show());
   }
   return stationDispList;
 }

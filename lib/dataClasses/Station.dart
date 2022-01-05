@@ -16,6 +16,7 @@ class Station{
   List<BusLine> lines = [];       // TODO: use always this insted of servedLines
   List<double> distFromLineStart = [];
   bool selected = false;
+  bool isActiveFocused = false;
   int shade = 0;
 
   Station(LatLng pos){
@@ -67,6 +68,16 @@ class Station{
     if(this.servedLines.indexOf(key) >= 0)
       return true;
     return false;
+  }
+
+  void setActiveFocused(){
+    for(Station station in selectedStations){
+      station.isActiveFocused = false;
+    }
+    this.isActiveFocused = true;
+  }
+  void clearActiveFocused(){
+    this.isActiveFocused = false;
   }
 
   Future<void> activeStationLoad( String rawData) async {

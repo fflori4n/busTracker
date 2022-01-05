@@ -154,7 +154,7 @@ class OverlayPainter extends CustomPainter {
             }
           }
         }
-        else if (selectedStations.contains(station)) {
+        if (selectedStations.contains(station)) {   ///else
           final double iconSize = 35;
           final icon = Icons.room;
 

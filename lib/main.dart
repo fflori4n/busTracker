@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:mapTest/uiElements/desktopOnlyElements/desktopUI.dart';
@@ -15,10 +17,11 @@ BuildContext mainViewContext;
 
 double screenWidth = 1920;
 double screenHeight = 1080;
+String deviceType = 'MOB';
 
 User user = new User();  // new user to store position
 Show busFilters = new Show();
-Widget mainMapPage = MapPage(mapTileSwitchController.stream);
+Widget mainMapPage = MapPage(mapTileSwitchController.stream, callMapRefresh.stream);
 StreamController<int> redrawLayoutController = StreamController<int>.broadcast();
 
 void main() {
@@ -57,25 +60,34 @@ Widget router(String page){     // TODO: welp. whatever... at this point everyth
   selectedStations.clear();
   loadStationsFromJson(user.stationsFile);                                       /// LOAD STATIONS FROM FILE !!! I Know you;re looking for this all the time/// DBG
   return Scaffold(
-    body: RespWrap(
-      builder: (context, deviceInfo){
-        return Index(deviceInfo);
-      },
-    ),
-  );
+    body: Index());
 }
 
 class Index extends StatelessWidget {
-  DeviceInfo deviceInfo;
-  Index(this.deviceInfo, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //onLoad();
-    if(deviceInfo.deviceType == DeviceType.desktop){
+    // Full screen width and height
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+
+// Height (without SafeArea)
+    var appPadding = MediaQuery.of(context).viewPadding;
+    double height1 = screenHeight - appPadding.top - appPadding.bottom;
+
+// Height (without status bar)
+    double height2 = screenHeight - appPadding.top;
+
+// Height (without status and toolbar)
+    screenHeight = screenHeight - appPadding.top - kToolbarHeight;              /// use this for stuff?
+
+    if(screenWidth > 1000){/// TODO: use some better criteria
+      deviceType = 'DES';
       return DesktopUI(redrawLayoutController.stream);
     }
     else{
+      deviceType = 'MOB';
       return MobileUI(redrawLayoutController.stream);
     }
   }

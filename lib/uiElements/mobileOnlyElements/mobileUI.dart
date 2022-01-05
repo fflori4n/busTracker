@@ -164,12 +164,10 @@ class MobileUIState extends State<MobileUI> {
 
   @override
   Widget build(BuildContext context) {
-    double width;
-    double height;
-    return RespWrap(
-        builder: (context, deviceInfo){
-        width = deviceInfo.widgetSize.width;
-        height = deviceInfo.widgetSize.height;
+    double width = screenWidth;
+    double height = screenHeight;
+
+
       return Container(
         child: new Column(
       children: <Widget>[
@@ -179,6 +177,6 @@ class MobileUIState extends State<MobileUI> {
         ), // in infodisp
         showMobileBottomNav(Size(width, height*0.05)),
       ],
-    ));});
+    ));
   }
 }

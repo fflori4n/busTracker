@@ -25,99 +25,8 @@ const Color switchActive= Color.fromRGBO(45, 160, 230,0.8);                     
 const Color switchInactive= Color(0xff121314);                        // #5578BD
 const Color switchToggle= Color(0xffffffff);                        // #5578BD
 
-/*TextStyle primaryFont = GoogleFonts.robotoCondensed();
-
-TextStyle listText =  GoogleFonts.robotoCondensed(
-    fontSize: 15,
-
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-TextStyle legendText =  GoogleFonts.robotoCondensed(
-    fontSize: 12,
-
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-
-// info board style
-TextStyle infoBrdLarge =  GoogleFonts.robotoCondensed(
-    //fontSize: 15 * wScaleFactor,
-    fontSize: 20,
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-TextStyle infoBrdYellow =  GoogleFonts.robotoCondensed(
-    //fontSize: 15 * wScaleFactor,
-    fontSize: 20,
-    fontWeight: FontWeight.normal,
-    color: baseYellow,
-    letterSpacing: 1.1
-);*/
-
-
 final Color infoDispDarkBlue = Color.fromRGBO(23, 67, 108, 1);
 final Color infoDispLiteBlue = Color.fromRGBO(0, 90, 152, 1);
-
-/*TextStyle stationDisplay = GoogleFonts.robotoCondensed(
-    color: Colors.white,
-    fontSize: max(0.035 * infoBrdWidth, 15),
-    fontWeight: FontWeight.normal,
-    letterSpacing: 1.1
-);
-
-TextStyle infoBrdSmall =  GoogleFonts.robotoCondensed(
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-
-TextStyle infoBrdSmallCrossedOut =  GoogleFonts.robotoCondensed(
-  fontSize: max(0.030 * infoBrdWidth, 2),
-  fontWeight: FontWeight.normal,
-  color: baseWhite,
-  letterSpacing: 1.1,
-  decoration: TextDecoration.lineThrough,
-  decorationColor: Color.fromRGBO(16, 16, 19, 1),
-);
-
-TextStyle infoBrdSmallSemiTransp = GoogleFonts.robotoCondensed(
-    fontSize: max(0.030 * infoBrdWidth, 2),
-    fontWeight: FontWeight.normal,
-    color: baseWhite.withOpacity(0.5),
-    letterSpacing: 1.1
-);
-
-TextStyle infoBrdLabel = GoogleFonts.robotoCondensed(
-  fontSize: max(0.030 * infoBrdWidth, 2),                                        // ekv 15
-  letterSpacing: 1.1,
-  fontWeight: FontWeight.normal,
-  fontStyle: FontStyle.normal,
-  color: baseWhite.withOpacity(0.8),
-);
-
-TextStyle infoBrdSmaller = GoogleFonts.robotoCondensed(
-    fontSize: max(0.025 * infoBrdWidth, 2),
-    fontWeight: FontWeight.normal,
-    color: baseWhite,
-    letterSpacing: 1.1
-);
-TextStyle busDescrSmallLink = GoogleFonts.robotoCondensed(
-  fontSize: max(0.025 * infoBrdWidth, 2),
-  letterSpacing: 1.1,
-  fontWeight: FontWeight.normal,
-  decoration: TextDecoration.underline,
-  color: infoDispLiteBlue,
-);
-TextStyle busDescrSmall = GoogleFonts.robotoCondensed(
-  fontSize: max(0.025 * infoBrdWidth, 2),                                        // ekv 12
-  letterSpacing: 1.1,
-  fontWeight: FontWeight.normal,
-  color: baseWhite,
-);*/
 
 /// https://stackoverflow.com/questions/50751226/how-to-dynamically-resize-text-in-flutter - Taur
 /// really smart solution for fixed area, modified it for const width, thanks!
@@ -129,3 +38,4 @@ double autoSizeOneLine({@required int stringLength, @required double maxWidth}) 
   final double letterSize = (maxWidth *1.4) / stringLength;
   return letterSize;
 }
+

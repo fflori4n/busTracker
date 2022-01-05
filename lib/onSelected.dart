@@ -2,6 +2,7 @@
 import 'package:mapTest/dataClasses/FavStation.dart';
 import 'package:mapTest/session/favStations.dart';
 import 'package:mapTest/session/shared_pref.dart';
+import 'package:mapTest/uiElements/infoDisp.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/overMapDisp.dart';
 import 'loadModules/busLines.dart';
 import 'loadModules/busLocator.dart';
@@ -23,14 +24,14 @@ Future<void> onStationSelected() async {
   ///
   
   await loadLinesFromJson(selectedStations, user.busLinesFile);                    // DBG TODO:
-  redrawOverMapDisp.add(1);                                                     // TODO: cool, but dont do it here
   calcDistFromLineStart();/// fill out buslinestart to station distance table
   loadBuses(selectedStations);
 
   await writeCookie();                                                          //TODO: find good place for writing cookie
 
-  FavStation.addFavStation(selectedStations.first, "",1);
-  saveFavouritesToLocal();
+  //FavStation.addFavStation(selectedStations.first, "",1);
+  //saveFavouritesToLocal();
 
   //removeUnusedBusLines(); /// dgb
+  //redrawInfoBrd.add(1);
 }

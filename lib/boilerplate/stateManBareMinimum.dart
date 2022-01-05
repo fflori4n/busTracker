@@ -3,6 +3,8 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:mapTest/uiElements/animatons/fadeInAnim.dart';
 
 StreamController<int> redrawOverlayController = StreamController<int>.broadcast();
 
@@ -22,6 +24,22 @@ class _MapOverlayState extends State<MapOverlay> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return FadeIn(
+        (150.0),
+        InkWell(
+          onTap: (){},
+          onDoubleTap: (){},
+          onHover: (isHovering) {
+
+          },
+          child: Column(
+            children: [
+              Container(
+                //width: 1000*scaleRatio,
+              ),
+              Container(),
+            ],
+          ),
+        ));
   }
 }

@@ -3,7 +3,7 @@ import 'package:mapTest/dataClasses/DeviceInfo.dart';
 import 'package:mapTest/loadModules/busLines.dart';
 
 
-DeviceType getDevType(MediaQueryData mediaQuery){
+/*DeviceType getDevType(MediaQueryData mediaQuery){
   double deviceScreenWidth = mediaQuery.size.width;
 
   if(deviceScreenWidth > 950){
@@ -35,4 +35,4 @@ class RespWrap extends StatelessWidget{
     );
   }
 
-}
+}*/
