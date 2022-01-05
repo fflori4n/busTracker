@@ -1,9 +1,4 @@
-
-import 'package:mapTest/dataClasses/FavStation.dart';
-import 'package:mapTest/session/favStations.dart';
 import 'package:mapTest/session/shared_pref.dart';
-import 'package:mapTest/uiElements/infoDisp.dart';
-import 'package:mapTest/uiElements/mobileOnlyElements/overMapDisp.dart';
 import 'loadModules/busLines.dart';
 import 'loadModules/busLocator.dart';
 import 'loadModules/ldBusSchedule.dart';
@@ -11,7 +6,7 @@ import 'loadModules/loadStations.dart';
 import 'main.dart';
 
 Future<void> onStationSelected() async {
-
+  selectedStations.last.setActiveFocused();
   buslist.clear();
   //selectedStations.clear();                                                   /// not very efficient, but fine for now
   nsBusLines.clear();
