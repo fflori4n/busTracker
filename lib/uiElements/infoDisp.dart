@@ -2,18 +2,11 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mapTest/dataClasses/DeviceInfo.dart';
 import 'package:mapTest/loadModules/busLocator.dart';
 import 'package:mapTest/main.dart';
-import 'package:mapTest/uiElements/UIColors.dart';
-import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'package:mapTest/uiElements/tabs.dart';
 import 'package:mapTest/uiElements/arrivalsBrd/stationNameBrd.dart';
 import 'package:mapTest/uiElements/tabIconRow.dart';
-import '../dataClasses/Bus.dart';
-import '../filters.dart';
-import 'arrivalsBrd/infoItem.dart';
-import 'arrivalsBrd/legend.dart';
 import 'arrivalsBrd/listItem.dart';
 
 
