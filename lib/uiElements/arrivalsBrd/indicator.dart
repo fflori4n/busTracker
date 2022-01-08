@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-class indicatorShape extends CustomPainter {
+/*class indicatorShape extends CustomPainter {
   Color onColor;
   Color offColor;
   Color pinColor;
@@ -53,4 +50,4 @@ Widget indicator(double width, Color onColor, Color offColor,Color pinColor, boo
         ),
       ),
     );
-}
+}*/

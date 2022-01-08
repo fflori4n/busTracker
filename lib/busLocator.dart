@@ -1,14 +1,13 @@
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/boilerplate/stateManBareMinimum.dart';
 import 'package:mapTest/dataClasses/Time.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
-import 'package:mapTest/mapRelated/map.dart';
+import 'package:mapTest/extensions/listFunctions.dart';
 import 'package:mapTest/uiElements/infoDisp.dart';
 import 'package:mapTest/uiElements/mobileOnlyElements/overMapDisp.dart';
-import '../filters.dart';
-import '../geometryFuncts.dart';
-import '../main.dart';
-import 'loadStations.dart';
+import 'filters.dart';
+import 'geometryFuncts.dart';
+import 'main.dart';
+import 'loadModules/loadStations.dart';
 
 //final LatLng initMapCenter = new LatLng(0, 0);
 const double avrgBusSpeed = 17;
@@ -18,6 +17,7 @@ List<Bus> buslist = [];                                                         
 List<Bus> displayedBusList = [];                                                /// list only for displayed buses
 bool changeFlag = false;
 bool posChangeFlag = false;
+int sortPresc = 15;
 
 void calcBusPos() {
   DateTime timeNow = new DateTime.now();
@@ -25,33 +25,25 @@ void calcBusPos() {
   //unixNow += 3600;  // 7200 when no daylight saving
 
 
-  for (var bus in buslist) {
-    updateBusPos(bus, unixNow);                                                 /// func. to update position down below
-    updateBusTime(bus, unixNow);
+  for (int i=0; i<buslist.length; i++) {
+    updateBusPos(buslist[i], unixNow);                                                 /// func. to update position down below
+    updateBusTime(buslist[i], unixNow);
+    if(i > 0 && buslist.elementAt(i).eTA.inSex() < buslist.elementAt(i-1).eTA.inSex()){   /// half ass sort, only one place up down per refresh, but it's fast...
+      buslist.swap(i, i-1);
+    }
   }
-  if(changeFlag || busFilters.refreshFlg){                                      /// sort all buses if time has changed or filters have changed
-    changeFlag = false;
+
+  if(sortPresc >= 15){                                      /// sort all buses if time has changed or filters have changed
+    sortPresc = 0;
     sortAllByEta();
-    if(busFilters.refreshFlg){
-      applyFilters(busFilters);                                                 /// this also slow, but easy to implement, maybe worth it?
-      busFilters.refreshFlg = false;
-    }
-    displayedBusList.clear();
-    for (var bus in buslist){                                                   /// Double iteration, find a soulution to loop only once over buslist...
-      if(bus.displayedOnSchedule){
-        if(busFilters.next10only && displayedBusList.length >= 10){
-          break;
-        }
-        displayedBusList.add(bus);
-      }
-    }
   }
+  sortPresc++;
   if(posChangeFlag){
     posChangeFlag = false;
     redrawOverMapDisp.add(1);
-    callMapRefresh.add(1);
+    //callMapRefresh.add(1);
   }
-  redrawInfoBrd.add(1);                                                         /// refresh values on infobrd
+  redrawInfoBrd.add(1);                               /// refresh values on infobrd
 }
 
 double getEstDistPassed(var reftime, var startTime) {                           /// basic estimation of pos for const speed

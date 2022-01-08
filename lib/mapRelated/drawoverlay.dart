@@ -94,7 +94,7 @@ class OverlayPainter extends CustomPainter {
       textPainter.paint(canvas, Offset(0.05 * size.width, 0.025 * size.width));
     }*/
     /// ********************************************************************** Bus Lines
-    if(user.tabOpen == 5){
+    if(scheduleTabLines.isNotEmpty){
       for (var busline in scheduleTabLines) {
         Paint busLinePaint = Paint()
           ..color = busline.color.withOpacity(0.4)
@@ -135,7 +135,7 @@ class OverlayPainter extends CustomPainter {
           continue;
         }
 
-        if(user.tabOpen == 5){
+        if(scheduleTabLines.isNotEmpty){
           final double iconSize = 25;
           final icon = Icons.room;
 

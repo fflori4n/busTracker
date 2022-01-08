@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
-import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/busLocator.dart';
 
 import 'BusLine.dart';
 import 'Time.dart';

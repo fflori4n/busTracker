@@ -39,3 +39,21 @@ double autoSizeOneLine({@required int stringLength, @required double maxWidth}) 
   return letterSize;
 }
 
+final Color uIYellow = Color.fromARGB(255, 230, 168, 37);
+final Color uIWhite = Colors.white;
+
+TextStyle white(size, scaleRatio){
+  return GoogleFonts.roboto(
+      fontSize: (size * scaleRatio),
+      fontWeight: FontWeight.normal,
+      color: uIWhite,
+      letterSpacing: 1);
+}
+
+TextStyle yellow(size, scaleRatio){
+  return GoogleFonts.roboto(
+      fontSize: (size * scaleRatio),
+      fontWeight: FontWeight.normal,
+      color: uIYellow,
+      letterSpacing: 1);
+}

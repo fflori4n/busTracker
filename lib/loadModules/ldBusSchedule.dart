@@ -3,7 +3,7 @@ import 'package:mapTest/dataClasses/Bus.dart';
 import 'package:mapTest/dataClasses/BusLine.dart';
 import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/Time.dart';
-import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/busLocator.dart';
 
 import '../main.dart';
 import 'nickNames.dart';

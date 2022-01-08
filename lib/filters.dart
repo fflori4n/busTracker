@@ -1,4 +1,4 @@
-import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/busLocator.dart';
 import 'dataClasses/Bus.dart';
 import 'dataClasses/Show.dart';
 

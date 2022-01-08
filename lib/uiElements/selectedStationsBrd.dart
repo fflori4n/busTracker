@@ -10,6 +10,7 @@ import 'package:mapTest/loadModules/loadStations.dart';
 import '../filters.dart';
 import '../main.dart';
 import '../onSelected.dart';
+import 'UIColors.dart';
 import 'animatons/fadeInAnim.dart';
 import 'infoDisp.dart';
 
@@ -22,16 +23,7 @@ class ActStation{
 
   Widget show() {
     double scaleRatio = (this.constraints.width)/1000;
-
-    final TextStyle White36 = GoogleFonts.roboto(
-        fontSize: (36 * scaleRatio),
-        fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 1);
-
-    return FadeIn(
-        (150.0),
-        InkWell(
+    return InkWell(
           onTap: (){
               if(station.isActiveFocused){
                 station.isActiveFocused = false;
@@ -78,7 +70,7 @@ class ActStation{
                               height: 84 *scaleRatio,
                               width: 855 *scaleRatio,
                               alignment: Alignment.centerLeft,
-                              child: Text(station.name.toUpperCase(), style: White36,),
+                              child: Text(station.name.toUpperCase(), style: white(36,scaleRatio),),
                             ),
                             InkWell(
                               onTap: (){
@@ -130,16 +122,12 @@ class ActStation{
               ],
             ),
           ),
-        ));
+        );
   }
 }
 
 Widget busLinesDisp({double scaleRatio, Station station}){
-  final TextStyle white30 = GoogleFonts.roboto(
-      fontSize: (30 * scaleRatio),
-      fontWeight: FontWeight.normal,
-      color: Colors.white,
-      letterSpacing: 1);
+  final TextStyle white30 = white(30,scaleRatio);
   final TextStyle white30dim = white30.apply(color: Colors.white.withOpacity(0.5));
   final TextStyle white30crossed = white30.apply(decoration: TextDecoration.lineThrough,);
 
@@ -183,11 +171,7 @@ Widget busLinesDisp({double scaleRatio, Station station}){
 ///(selectedStations.indexOf(station) + 1).toString()
 Widget stationNum({double scaleRatio, String statNum}){
 
-  final TextStyle White24 = GoogleFonts.roboto(
-      fontSize: (24 * scaleRatio),
-      fontWeight: FontWeight.normal,
-      color: Colors.white,
-      letterSpacing: 1);
+
   return Container(
       width: 35 * scaleRatio,
       height: 35 * scaleRatio,
@@ -201,7 +185,7 @@ Widget stationNum({double scaleRatio, String statNum}){
         ),
       ),
       child: Center(
-        child: Text(statNum, style: White24),
+        child: Text(statNum, style: white(24,scaleRatio)),
       )
   );
 }
@@ -214,18 +198,6 @@ class InfoBrdBanner{
 
   Widget show() {
     double scaleRatio = (this.constraints.width)/1000;
-
-    final TextStyle White36 = GoogleFonts.roboto(
-        fontSize: (36 * scaleRatio),
-        fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 1);
-    final TextStyle White24 = GoogleFonts.roboto(
-        fontSize: (24 * scaleRatio),
-        fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 1);
-
     return FadeIn(
         (20.0),
         InkWell(
@@ -262,7 +234,7 @@ class InfoBrdBanner{
                               height: 84 *scaleRatio,
                               width: 855 *scaleRatio,
                               alignment: Alignment.centerLeft,
-                              child: Text(topText, style: White36,),
+                              child: Text(topText, style: white(36,scaleRatio),),
                             ),
                             InkWell(
                               onTap: (){
@@ -294,7 +266,7 @@ class InfoBrdBanner{
                               height: 66 *scaleRatio,
                               width: 855 *scaleRatio,
                               alignment: Alignment.topLeft,
-                              child: Text(bottomText, style: White24,),
+                              child: Text(bottomText, style: white(24,scaleRatio),),
                             ),
                           ],
                         ),

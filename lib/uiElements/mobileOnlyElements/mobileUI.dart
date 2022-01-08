@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/uiElements/UIColors.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/mapRelated/drawoverlay.dart';
-import 'package:mapTest/uiElements/responsive/ResponsiveWrapper.dart';
 import 'package:swipedetector/swipedetector.dart';
 import '../infoDisp.dart';
 import 'overMapDisp.dart';
@@ -173,7 +172,7 @@ class MobileUIState extends State<MobileUI> {
       children: <Widget>[
         Container(
           child: mobileMainView,
-          height: 0.94 * height,
+          height: height, ///int sordPresc = 0;
         ), // in infodisp
         showMobileBottomNav(Size(width, height*0.05)),
       ],

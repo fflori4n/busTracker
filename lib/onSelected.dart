@@ -1,12 +1,11 @@
 import 'package:mapTest/session/shared_pref.dart';
 import 'loadModules/busLines.dart';
-import 'loadModules/busLocator.dart';
+import 'busLocator.dart';
 import 'loadModules/ldBusSchedule.dart';
 import 'loadModules/loadStations.dart';
 import 'main.dart';
 
 Future<void> onStationSelected() async {
-  selectedStations.last.setActiveFocused();
   buslist.clear();
   //selectedStations.clear();                                                   /// not very efficient, but fine for now
   nsBusLines.clear();
@@ -18,9 +17,13 @@ Future<void> onStationSelected() async {
   }
   ///
   
-  await loadLinesFromJson(selectedStations, user.busLinesFile);                    // DBG TODO:
-  calcDistFromLineStart();/// fill out buslinestart to station distance table
+  await loadLinesFromJson(selectedStations, user.busLinesFile);                 // DBG TODO:
+  try{
+    selectedStations.last.setActiveFocused();
+  }catch(er){}
+  calcDistFromLineStart();                                                      /// fill out buslinestart to station distance table
   loadBuses(selectedStations);
+  scheduleTabLines.clear();
 
   await writeCookie();                                                          //TODO: find good place for writing cookie
 

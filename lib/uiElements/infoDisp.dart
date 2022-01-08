@@ -2,11 +2,12 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/busLocator.dart';
 import 'package:mapTest/main.dart';
 import 'package:mapTest/uiElements/tabs.dart';
 import 'package:mapTest/uiElements/arrivalsBrd/stationNameBrd.dart';
 import 'package:mapTest/uiElements/tabIconRow.dart';
+import '../filters.dart';
 import 'arrivalsBrd/listItem.dart';
 
 
@@ -73,25 +74,32 @@ class BuletinState extends State<Buletin> {
 }
 
 Widget getListView(context, double maxWidth) {
+  if(busFilters.refreshFlg){
+    applyFilters(busFilters);                                                 /// this also slow, but easy to implement, maybe worth it?
+    busFilters.refreshFlg = false;
+  }
+  displayedBusList.clear();
+  for (var bus in buslist){                                                   /// Double iteration, find a soulution to loop only once over buslist...
+    if(bus.displayedOnSchedule){
+      if(busFilters.next10only && displayedBusList.length >= 10){
+        break;
+      }
+      displayedBusList.add(bus);
+    }
+  }
   if(displayedBusList.length <= 0){
     return SizedBox.shrink();
   }
   return Expanded(child: ListView.builder(
     itemCount: displayedBusList.length,
-    //shrinkWrap: true,
     itemBuilder: (BuildContext context, int index) {
-     // return busListItem(context, displayedBusList[index], Size(maxWidth, maxWidth/10));
      try{
-        return busListItem(context, displayedBusList[index], Size(maxWidth, maxWidth/10));
+        return busListItem(context, displayedBusList[index], Size(maxWidth, maxWidth/10), index);
       }
       catch(E){
         print("[  ER  ] "+ E.toString());
         print(displayedBusList[index].nickName);
         print(displayedBusList.length);
-        /*for(var bus in displayedBusList){
-          print(bus.nickName);
-
-        }*/
         return SizedBox.shrink();
       }
       },

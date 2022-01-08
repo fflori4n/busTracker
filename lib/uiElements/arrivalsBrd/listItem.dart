@@ -2,18 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mapTest/dataClasses/Bus.dart';
+import 'package:mapTest/dataClasses/Station.dart';
 import 'package:mapTest/dataClasses/multiLang.dart';
-import 'package:mapTest/loadModules/busLocator.dart';
+import 'package:mapTest/busLocator.dart';
+import 'package:mapTest/loadModules/busLines.dart';
 import 'package:mapTest/loadModules/loadStations.dart';
 import 'package:mapTest/mapRelated/map.dart';
 import 'package:mapTest/resty/busFeedback.dart';
+import 'package:mapTest/uiElements/animatons/fadeInAnim.dart';
 import 'dart:js' as js;
 
 import '../../main.dart';
+import '../UIColors.dart';
 import '../feedBackBtn.dart';
 import '../infoDisp.dart';
+import '../legacySchedule.dart';
 
-Widget busListItem(BuildContext context, Bus bus, Size constraints) {
+Widget busListItem(BuildContext context, Bus bus, Size constraints, int listIndex) {
  try{
    //, //Station station){
    bool shiftText = false;
@@ -37,7 +42,9 @@ Widget busListItem(BuildContext context, Bus bus, Size constraints) {
    String lblBusDescription = bus.lineDescr.toUpperCase();
    double time2Station = 0;
    try{
-      time2Station = getEstTime2Station(selectedStations.elementAt(bus.stationNumber).distFromLineStart[bus.stationNumber]).toDouble();
+     final Station selectedStation = selectedStations.elementAt(bus.stationNumber);
+     final double distance = selectedStation.distFromLineStart[selectedStation.lines.indexOf(bus.busLine)];
+     time2Station = getEstTime2Station(distance).toDouble();
    }
    catch(E){
      print("[  Wr  ] " + E.toString());
@@ -87,195 +94,175 @@ Widget busListItem(BuildContext context, Bus bus, Size constraints) {
      lblTOAEnd = intervEnd.hour.toString().padLeft(2, '0') + ":" + intervEnd.minute.toString().padLeft(2, '0');
    }
 
-
-   final Color yellow = Color.fromARGB(255, 230, 168, 37);
-   final TextStyle White36 = GoogleFonts.roboto(
-       fontSize: (36 * scaleRatio),
-       fontWeight: FontWeight.normal,
-       color: Colors.white,
-       letterSpacing: 1);
-   final TextStyle White28 = GoogleFonts.roboto(
-       fontSize: (28 * scaleRatio),
-       fontWeight: FontWeight.normal,
-       color: Colors.white,
-       letterSpacing: 1);
-   final TextStyle White24 = GoogleFonts.roboto(
-       fontSize: (24 * scaleRatio),
-       fontWeight: FontWeight.normal,
-       color: Colors.white,
-       letterSpacing: 1);
-   final TextStyle Yellow42 = GoogleFonts.roboto(
-       fontSize: (42 * scaleRatio),
-       fontWeight: FontWeight.normal,
-       color: yellow,
-       letterSpacing: 1);
-   final TextStyle Yellow36 = White36.apply(color: yellow);
-   final TextStyle Yellow28 = White28.apply(color: yellow);
-
-
    return Container(
-     child: InkWell(
-         onTap: (){
-           bus.isHighLighted = !bus.isHighLighted;
-           shiftText = !shiftText;
-           redrawInfoBrd.add(1); /// test if laggy
-           if(bus.displayedOnMap){
-             mapController.move(
-                 bus.busPos.busPoint, mapConfig.mapZoom);
-           }
-         },
-         onHover: (isHovering){
-           if(isHovering){
-             bus.isTargMarkered = true;
-             shiftText = true;
-             redrawInfoBrd.add(1);
-           }
-           else{
-             bus.isTargMarkered = false;
-             redrawInfoBrd.add(1);
-             shiftText = false;
-           }
-         },
-         child:Container(
-             width: constraints.width,
-             padding: (bus.isHighLighted && !bus.reported && bus.displayedOnMap) ? EdgeInsets.only(bottom: constraints.width * _itemVerticalPadding + 20 * scaleRatio, top: constraints.width * _itemVerticalPadding, left: (constraints.width * _itemPadding), right: (constraints.width * _itemPadding)) : EdgeInsets.symmetric(vertical: constraints.width * _itemVerticalPadding, horizontal: (constraints.width * _itemPadding)),
-             child: Container(
-               width: (_maxWidth * constraints.width),
-               //height: ,
-               decoration: BoxDecoration(
-                 border: Border.all(
-                   color: Colors.white,
-                   width: 2 * scaleRatio,
+     child: FadeIn(
+       50 * listIndex.toDouble(),
+       InkWell(
+           onTap: (){
+             if(bus.isHighLighted && scheduleTabLines.contains(bus.busLine)){
+               scheduleTabLines.remove(bus.busLine);
+             }
+             bus.isHighLighted = !bus.isHighLighted;
+             shiftText = !shiftText;
+             redrawInfoBrd.add(1); /// test if laggy
+             if(bus.displayedOnMap){
+               mapController.move(
+                   bus.busPos.busPoint, mapConfig.mapZoom);
+             }
+           },
+           onHover: (isHovering){
+             if(isHovering){
+               bus.isTargMarkered = true;
+               shiftText = true;
+               redrawInfoBrd.add(1);
+             }
+             else{
+               bus.isTargMarkered = false;
+               redrawInfoBrd.add(1);
+               shiftText = false;
+             }
+           },
+           child:Container(
+               width: constraints.width,
+               padding: (bus.isHighLighted && !bus.reported && bus.displayedOnMap) ? EdgeInsets.only(bottom: constraints.width * _itemVerticalPadding + 20 * scaleRatio, top: constraints.width * _itemVerticalPadding, left: (constraints.width * _itemPadding), right: (constraints.width * _itemPadding)) : EdgeInsets.symmetric(vertical: constraints.width * _itemVerticalPadding, horizontal: (constraints.width * _itemPadding)),
+               child: Container(
+                 width: (_maxWidth * constraints.width),
+                 //height: ,
+                 decoration: BoxDecoration(
+                   border: Border.all(
+                     color: Colors.white,
+                     width: 2 * scaleRatio,
+                   ),
+                   borderRadius: BorderRadius.all(
+                       Radius.circular(5.0 * scaleRatio) //                 <--- border radius here
+                   ),
                  ),
-                 borderRadius: BorderRadius.all(
-                     Radius.circular(5.0 * scaleRatio) //                 <--- border radius here
-                 ),
-               ),
-               child: Column(
-                 children: [
-                   Row(
-                     children: [
-                       Container(
-                         padding: EdgeInsets.only(left: (20 * scaleRatio)),
-                         height: 65 * scaleRatio,
-                         width: 160 * scaleRatio,
-                         alignment: Alignment.centerLeft,
-                         child:  Text(lblLineName, style: Yellow42),
-                       ),
-                       Container(
-                         height: 65 * scaleRatio,
-                         width: 45 * scaleRatio,
-                         alignment: Alignment.center,
-                         child:   Container(
+                 child: Column(
+                   children: [
+                     Row(
+                       children: [
+                         Container(
+                           padding: EdgeInsets.only(left: (20 * scaleRatio)),
+                           height: 65 * scaleRatio,
+                           width: 160 * scaleRatio,
+                           alignment: Alignment.centerLeft,
+                           child:  Text(lblLineName, style: yellow(42, scaleRatio)),
+                         ),
+                         Container(
+                           height: 65 * scaleRatio,
+                           width: 45 * scaleRatio,
+                           alignment: Alignment.center,
+                           child:   Container(
+                               width: 35 * scaleRatio,
+                               height: 35 * scaleRatio,
+                               decoration: BoxDecoration(
+                                 border: Border.all(
+                                   color: Colors.white,
+                                   width: 2 * scaleRatio,
+                                 ),
+                                 borderRadius: BorderRadius.all(
+                                     Radius.circular(18.5 * scaleRatio) //                 <--- border radius here
+                                 ),
+                               ),
+                               child: Center(
+                                 child: Text(stationLet, style: white(24, scaleRatio)),
+                               )
+                           ),//stationLetter(30, stationLet),
+                         ),
+                         Container(
+                           height: 65 * scaleRatio,
+                           width: 45 * scaleRatio,
+                           alignment: Alignment.center,
+                           child: Container(
                              width: 35 * scaleRatio,
                              height: 35 * scaleRatio,
                              decoration: BoxDecoration(
+                               color: bus.lineColor,
                                border: Border.all(
-                                 color: Colors.white,
+                                 color: bus.lineColor,
                                  width: 2 * scaleRatio,
                                ),
                                borderRadius: BorderRadius.all(
                                    Radius.circular(18.5 * scaleRatio) //                 <--- border radius here
                                ),
                              ),
-                             child: Center(
-                               child: Text(stationLet, style: White24),
-                             )
-                         ),//stationLetter(30, stationLet),
-                       ),
-                       Container(
-                         height: 65 * scaleRatio,
-                         width: 45 * scaleRatio,
-                         alignment: Alignment.center,
-                         child: Container(
-                           width: 35 * scaleRatio,
-                           height: 35 * scaleRatio,
-                           decoration: BoxDecoration(
-                             color: bus.lineColor,
-                             border: Border.all(
-                               color: bus.lineColor,
-                               width: 2 * scaleRatio,
-                             ),
-                             borderRadius: BorderRadius.all(
-                                 Radius.circular(18.5 * scaleRatio) //                 <--- border radius here
-                             ),
                            ),
                          ),
-                       ),
-                       Container(
-                         height: 65 * scaleRatio,
-                         width: 225 * scaleRatio,
-                         alignment: Alignment.centerRight,
-                         child: Text(lblStartTime, style: White36,),
-                       ),
-                       Spacer(),
-                       Container(
-                         height: 65 * scaleRatio,
-                         width: 215 * scaleRatio,
-                         alignment: Alignment.centerLeft,
-                         child: lblETAMsg.isEmpty
-                             ? Text(lblETATime, style: Yellow36)
-                             : Text(lblETAMsg, style: Yellow36.apply(fontSizeFactor: 0.8)),
-                       ),
-                       Container(
-                           padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                         Container(
                            height: 65 * scaleRatio,
-                           width: 205 * scaleRatio,
-                           child: Row(
-                             children: [
-                               Container(
-                                   alignment: Alignment.centerLeft,
-                                   child: Text(lblErMarg, style: White28,)
-                               ),
-                               Spacer(),
-                               Container(
-                                   alignment: Alignment.centerRight,
-                                   child: Icon(
-                                     Icons.near_me,
-                                     size: (48 * scaleRatio),
-                                     color: bus.displayedOnMap ? Colors.white : Colors.white24,
-                                   )
-                               )
-                             ],
-                           )
-                       )
-                     ],
-                   ),
-                   Row(
-                     children: [
-                       Container(
-                         padding: EdgeInsets.only(left: (20 * scaleRatio)),
-                         height: 50 * scaleRatio,
-                         width: 475 * scaleRatio,
-                         alignment: Alignment.centerLeft,
-                         child: Text(lblBusDescription, style: White28),
-                       ),
-                       Spacer(),
-                       Container(
-                           padding: EdgeInsets.only(right: (20 * scaleRatio)),
-                           height: 50 * scaleRatio,
+                           width: 225 * scaleRatio,
+                           alignment: Alignment.centerRight,
+                           child: Text(lblStartTime, style: white(36, scaleRatio),),
+                         ),
+                         Spacer(),
+                         Container(
+                           height: 65 * scaleRatio,
                            width: 215 * scaleRatio,
                            alignment: Alignment.centerLeft,
-                           child: Text(lblTOA, style: Yellow28,)
-                       ),
-                       Container(
-                           padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                           child: lblETAMsg.isEmpty
+                               ? Text(lblETATime, style: yellow(36, scaleRatio))
+                               : Text(lblETAMsg, style: yellow(36, scaleRatio).apply(fontSizeFactor: 0.8)),
+                         ),
+                         Container(
+                             padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                             height: 65 * scaleRatio,
+                             width: 205 * scaleRatio,
+                             child: Row(
+                               children: [
+                                 Container(
+                                     alignment: Alignment.centerLeft,
+                                     child: Text(lblErMarg, style: white(28, scaleRatio),)
+                                 ),
+                                 Spacer(),
+                                 Container(
+                                     alignment: Alignment.centerRight,
+                                     child: Icon(
+                                       Icons.near_me,
+                                       size: (48 * scaleRatio),
+                                       color: bus.displayedOnMap ? Colors.white : Colors.white24,
+                                     )
+                                 )
+                               ],
+                             )
+                         )
+                       ],
+                     ),
+                     Row(
+                       children: [
+                         Container(
+                           padding: EdgeInsets.only(left: (20 * scaleRatio)),
                            height: 50 * scaleRatio,
-                           width: 205 * scaleRatio,
+                           width: 475 * scaleRatio,
                            alignment: Alignment.centerLeft,
-                           child: Text(lblNickName, style: White28)
-                       ),
-                     ],
-                   ),
-                   arrivalInfo(bus,scaleRatio, lblTOAStart, lblTOAEnd),
-                   accesInfo(bus, scaleRatio),
-                   stationInfo(bus, scaleRatio),
-                   feedBackPanel(bus, scaleRatio),
-                 ],
-               ),
-             )
-         )
-     ),
+                           child: Text(lblBusDescription, style: white(28, scaleRatio)),
+                         ),
+                         Spacer(),
+                         Container(
+                             padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                             height: 50 * scaleRatio,
+                             width: 215 * scaleRatio,
+                             alignment: Alignment.centerLeft,
+                             child: Text(lblTOA, style: yellow(28,scaleRatio),)
+                         ),
+                         Container(
+                             padding: EdgeInsets.only(right: (20 * scaleRatio)),
+                             height: 50 * scaleRatio,
+                             width: 205 * scaleRatio,
+                             alignment: Alignment.centerLeft,
+                             child: Text(lblNickName, style: white(28, scaleRatio))
+                         ),
+                       ],
+                     ),
+                     arrivalInfo(bus,scaleRatio, lblTOAStart, lblTOAEnd),
+                     accesInfo(bus, scaleRatio),
+                     stationInfo(bus, scaleRatio),
+                     feedBackPanel(bus, scaleRatio),
+                   ],
+                 ),
+               )
+           )
+       ),
+     )
    );
  }
  catch(E){
@@ -315,12 +302,7 @@ Widget arrivalInfo(Bus bus, double scaleRatio, String lblTOAStart, String lblTOA
 }
 
 Widget accesInfo(Bus bus, double scaleRatio){
-  final Color yellow = Color.fromARGB(255, 230, 168, 37);
-  final TextStyle White28 = GoogleFonts.roboto(
-      fontSize: (28 * scaleRatio),
-      fontWeight: FontWeight.normal,
-      color: Colors.white,
-      letterSpacing: 1);
+
   return bus.isHighLighted ?                                               /// Ramp
   Container(
       color: Color.fromARGB(255, 34, 34, 34),
@@ -331,7 +313,7 @@ Widget accesInfo(Bus bus, double scaleRatio){
             height: 65 * scaleRatio,
             width: 475 * scaleRatio,
             alignment: Alignment.centerLeft,
-            child: bus.isRampAccesible ? Text("NISKOPODNI BUS SA RAMPOM", style: White28) : Text("BUS BEZ RAMPE", style: White28),
+            child: bus.isRampAccesible ? Text("NISKOPODNI BUS SA RAMPOM", style: white(28,scaleRatio)) : Text("BUS BEZ RAMPE", style: white(28,scaleRatio)),
           ),
           Spacer(),
           Container(
@@ -346,7 +328,7 @@ Widget accesInfo(Bus bus, double scaleRatio){
               ) : Icon(
                 Icons.texture,
                 size: 60 * scaleRatio ,
-                color: yellow,
+                color: uIYellow,
               )
           ),
         ],
@@ -356,11 +338,6 @@ Widget accesInfo(Bus bus, double scaleRatio){
 }
 
 Widget stationInfo(Bus bus, double scaleRatio){
-  final TextStyle White28 = GoogleFonts.roboto(
-      fontSize: (28 * scaleRatio),
-      fontWeight: FontWeight.normal,
-      color: Colors.white,
-      letterSpacing: 1);
   return bus.isHighLighted ?                                               /// stanica
   Column(
     children: [
@@ -373,8 +350,8 @@ Widget stationInfo(Bus bus, double scaleRatio){
               alignment: Alignment.centerLeft,
               child: Row(
                 children: [
-                  Text("STANICA: ", style: White28),
-                  Text(selectedStations.elementAt(bus.stationNumber).name, style: White28.apply(color: Colors.white60)),
+                  Text("STANICA: ", style: white(28,scaleRatio)),
+                  Text(selectedStations.elementAt(bus.stationNumber).name, style: white(28,scaleRatio).apply(color: Colors.white60)),
                 ],
               )
           ),
@@ -401,12 +378,18 @@ Widget stationInfo(Bus bus, double scaleRatio){
                 ),
               ),
               alignment: Alignment.center,
-              child: Text("RED VOŽNJE", style: White28.apply(color: Colors.blueAccent)),
+              child: Text("RED VOŽNJE", style: white(28,scaleRatio).apply(color: Colors.blueAccent)),
             ),
           ),
           Spacer(),
           InkWell(
             onTap: (){
+              if(scheduleTabLines.contains(bus.busLine)){
+                scheduleTabLines.remove(bus.busLine);
+              }
+              else{
+                scheduleTabLines.add(bus.busLine);
+              }
 
             },
             child: Container(
@@ -414,6 +397,7 @@ Widget stationInfo(Bus bus, double scaleRatio){
               height: 70 * scaleRatio,
               decoration: BoxDecoration(
                 //color: bus.lineColor,
+                color: scheduleTabLines.contains(bus.busLine) ? Colors.blueAccent : Colors.transparent,
                 border: Border.all(
                   color: Colors.blueAccent,
                   width: 2 * scaleRatio,
@@ -423,7 +407,7 @@ Widget stationInfo(Bus bus, double scaleRatio){
                 ),
               ),
               alignment: Alignment.center,
-              child: Text("PRIKAZ LINIJE", style: White28.apply(color: Colors.blueAccent)),
+              child: Text("PRIKAZ LINIJE", style: scheduleTabLines.contains(bus.busLine) ? white(28,scaleRatio) : white(28,scaleRatio).apply(color: Colors.blueAccent)) ,
             ),
           ),
           Spacer(),
@@ -447,7 +431,7 @@ Widget stationInfo(Bus bus, double scaleRatio){
 
                 ),
                 alignment: Alignment.center,
-                child: Text("MESTO NA GOOGLE", style: White28.apply(color: Colors.blueAccent)),
+                child: Text("MESTO NA GOOGLE", style: white(28,scaleRatio).apply(color: Colors.blueAccent)),
               )
           ),
         ],
@@ -457,12 +441,6 @@ Widget stationInfo(Bus bus, double scaleRatio){
 }
 
 Widget feedBackPanel(Bus bus, double scaleRatio){
-  final TextStyle White28 = GoogleFonts.roboto(
-      fontSize: (28 * scaleRatio),
-      fontWeight: FontWeight.normal,
-      color: Colors.white,
-      letterSpacing: 1);
-
   return bus.isHighLighted ? Column(
     children: [
       Row(
@@ -473,7 +451,7 @@ Widget feedBackPanel(Bus bus, double scaleRatio){
               width: 900 * scaleRatio,
               alignment: Alignment.centerLeft,
               child:
-              Text("OCENI TAČNOST VREMENA DOLASKA:", style: White28),
+              Text("OCENI TAČNOST VREMENA DOLASKA:", style: white(28,scaleRatio)),
             ),
           ]
       ),
@@ -547,7 +525,7 @@ Widget feedBackPanel(Bus bus, double scaleRatio){
             height: 65 * scaleRatio,
             width: 900 * scaleRatio,
             alignment: Alignment.centerLeft,
-            child: bus.reported ? Text(" POSLATA JE OCENA, HVALA!", style: White28) : Text("TEK NAKON ŠTO JE KRENUO !", style: White28),
+            child: bus.reported ? Text(" POSLATA JE OCENA, HVALA!", style: white(28,scaleRatio)) : Text("TEK NAKON ŠTO JE KRENUO !", style: white(28,scaleRatio)),
           ),
         ],
       ),
