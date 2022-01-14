@@ -6945,7 +6945,7 @@
   ],
   "suCityBusLines": [
     {
-      "name":"1AA",
+      "name":"1A",
       "descr":"Kelebija Opština - Jadran - Bolnica - Novo Naselje",
       "points":[
         "19.6112394,46.1242363",
@@ -7014,7 +7014,7 @@
       ]
     },
     {
-      "name":"1AB",
+      "name":"1AR",
       "descr":"Novo naselje-Kelebija opština",
       "points":[
         "19.6745986,46.0662933",
@@ -7083,7 +7083,7 @@
       ]
     },
     {
-      "name":"2A",
+      "name":"2",
       "descr":"Srpski šor (Široki progon)-Pačirski put (KTC)",
       "points":[
         "19.6333838,46.1369357",
@@ -7129,7 +7129,7 @@
       ]
     },
     {
-      "name":"2B",
+      "name":"2R",
       "descr":"Pačirski put (KTC)-Srpski šor (Široki progon)",
       "points":[
         "19.6655273,46.0781874",
@@ -7175,7 +7175,7 @@
       ]
     },
     {
-      "name":"3A",
+      "name":"3",
       "descr":"Makova Sedmica-Bajski put",
       "points":[
         "19.6721605,46.1506375",
@@ -7251,7 +7251,7 @@
       ]
     },
     {
-      "name":"3B",
+      "name":"3R",
       "descr":"Bajski put-Makova Sedmica",
       "points":[
         "19.6244305,46.1017486",
@@ -7327,7 +7327,7 @@
       ]
     },
     {
-      "name":"4A",
+      "name":"4",
       "descr":"Veliki Radanovac-Lifka",
       "points":[
         "19.7228247,46.1293298",
@@ -7367,7 +7367,7 @@
       ]
     },
     {
-      "name":"4B",
+      "name":"4R",
       "descr":"Lifka-Veliki Radanovac",
       "points":[
         "19.6601307,46.0983674",
@@ -7407,7 +7407,7 @@
       ]
     },
     {
-      "name":"6B",
+      "name":"6",
       "descr":"Vikend naselje-Mali Bajmok",
       "points":[
         "19.7684035,46.0884141",
@@ -7455,7 +7455,7 @@
       ]
     },
     {
-      "name":"6A",
+      "name":"6R",
       "descr":"Mali Bajmok-Vikend naselje",
       "points":[
         "19.6361303,46.0751955",
@@ -7503,7 +7503,7 @@
       ]
     },
     {
-      "name":"8AA",
+      "name":"8A",
       "descr":"Železničko naselje-Jadran-Lifka",
       "points":[
         "19.6603185,46.1359767",
@@ -7537,7 +7537,7 @@
       ]
     },
     {
-      "name":"8AB",
+      "name":"8AR",
       "descr":"Lifka-Jadran-Železničko naselje",
       "points":[
         "19.6597767,46.0988435",
@@ -7571,7 +7571,7 @@
       ]
     },
     {
-      "name":"8A",
+      "name":"8",
       "descr":"Ž.Naselje - Lifka - Aleksandrovo",
       "points":[
         "19.6601898,46.1359246",
@@ -7643,7 +7643,7 @@
       ]
     },
     {
-      "name":"8B",
+      "name":"8R",
       "descr":" Aleksandrovo  - Lifka - Ž.Naselje",
       "points":[
         "19.6875751,46.0660588",
@@ -7715,7 +7715,7 @@
       ]
     },
     {
-      "name":"9A",
+      "name":"9",
       "descr":"Srpski šor- Hala sportova - Sutrans - Sever",
       "points":[
         "19.6333838,46.1369357",
@@ -7751,7 +7751,7 @@
       ]
     },
     {
-      "name":"9B",
+      "name":"9R",
       "descr":"Sever - Sutrans -  Hala sportova - Srpski šor",
       "points":[
         "19.6931273,46.0973668",
@@ -7787,7 +7787,7 @@
       ]
     },
     {
-      "name":"10A",
+      "name":"10",
       "descr":"Palić (naselje) - Radanovac - Lifka",
       "points":[
         "19.7637606,46.1095703",
@@ -7821,7 +7821,7 @@
       ]
     },
     {
-      "name":"10B",
+      "name":"10R",
       "descr":"Lifka - Radanovac - Palić (naselje)",
       "points":[
         "19.6598518,46.098717",
@@ -7855,7 +7855,7 @@
       ]
     },
     {
-      "name":"16A",
+      "name":"16",
       "descr":"Teslino naselje-Aleksandrovo",
       "points":[
         "19.6852255,46.1135867",
@@ -7899,7 +7899,7 @@
       ]
     },
     {
-      "name":"16B",
+      "name":"16R",
       "descr":"Aleksandrovo-Teslino naselje",
       "points":[
         "19.6875751,46.0659955",

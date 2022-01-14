@@ -45,7 +45,7 @@ Widget lineChoser(double maxWidth) {
   }
   else if(user.cityString == "subotica"){
     lineNames = [
-      '1AA', '1AB', '2A', '2B', '3A', '3B', '4A', '4B', '6A', '6B', '7A', '7B', '8A', '8B', '8AA', '8AB', '9A', '9B', '10A', '10B', '16A', '16B'
+      '1A', '1AR', '2', '2R', '3', '3R', '4', '4R', '6', '6R', '7', '7R', '8', '8R', '8A', '8AR', '9', '9R', '10', '10R', '16', '16R'
     ];
   }
   List<Widget> busLineButtons = [];

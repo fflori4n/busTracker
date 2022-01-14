@@ -7147,1707 +7147,2059 @@
   ],
   "suBusStops": [
     {
-      "name" : "Novo naselje okretnica",
-      "lat" : 19.6746147,
-      "lon" : 46.0663454,
+      "name" : "PSub",
+      "lat" : 19.748784566772468,
+      "lon" : 46.070302640921625,
       "zone" : "1",
-      "served_lines" : ["1AA", "1AB"],
+      "served_lines" : ["1A", "1AR", "2", "2R", "3","3R","4","4R","6","6R","8", "8R", "8A", "8AR", "10", "10R", "16", "16R"],
       "uid" : "706a0090ec569e902895518a520cfb9e"
     },
     {
-      "name" : "Petra Horvatskog",
-      "lat" : 19.67094,
-      "lon" : 46.0653516,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7cc05e5cc4ba16bd4d05947048de0522"
+      "name" : "Kelebija Opština",
+      "lat" : 19.611252999999998,
+      "lon" : 46.124224,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Josipa Šokčića",
-      "lat" : 19.668636,
-      "lon" : 46.0677858,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "55b4ac7c6f146694493bbb085a4dddf8"
+      "name" : "Novo Naselje Okretište",
+      "lat" : 19.674816,
+      "lon" : 46.066337999999995,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Josipa Lihta",
-      "lat" : 19.6707657,
-      "lon" : 46.0692503,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "85df0c5ec35a5605c27f3a5dfec33385"
+      "name" : "Veliki Progon",
+      "lat" : 19.6224618,
+      "lon" : 46.1189713,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Pijaca Novo naselje",
-      "lat" : 19.6741265,
-      "lon" : 46.0714145,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3916eec4c45a37d28880865a5e789b2c"
-    },
-    {
-      "name" : "Dušana Krnjajskog",
-      "lat" : 19.6701944,
-      "lon" : 46.0758058,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5bf8b07454d32aa714afe313620de4d3"
-    },
-    {
-      "name" : "Pačirski put",
-      "lat" : 19.666678,
-      "lon" : 46.0783493,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3fa52d6d239519e470ed343efcd8003a"
-    },
-    {
-      "name" : "Bolnica",
-      "lat" : 19.6723804,
-      "lon" : 46.0825987,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ff6e2a3fc84960985dcd355a5795cadc"
-    },
-    {
-      "name" : "Bajnatska II",
-      "lat" : 19.6738744,
-      "lon" : 46.0839066,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "8ae3cb3faf102df24f077f262219e20d"
-    },
-    {
-      "name" : "Bajnatska I",
-      "lat" : 19.6786943,
-      "lon" : 46.0856442,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0ab04ebd068d6e638fe826d9b38cb97c"
-    },
-    {
-      "name" : "Senćansko groblje",
-      "lat" : 19.6838173,
-      "lon" : 46.0881463,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e2083af378eeb4e054c5ae40507d1717"
-    },
-    {
-      "name" : "Dinamotrans",
-      "lat" : 19.6805692,
-      "lon" : 46.0911319,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "87349ab8cff4c57ce0f993a673c02375"
-    },
-    {
-      "name" : "Autobuska stanica Subotica",
-      "lat" : 19.6742231,
-      "lon" : 46.0947851,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4911dea3259183ca7170f18852b7996d"
-    },
-    {
-      "name" : "MEŠC",
-      "lat" : 19.6704519,
-      "lon" : 46.0988286,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "38d2274fa88fb660fea47592f8091afc"
-    },
-    {
-      "name" : "Jadran",
-      "lat" : 19.6690625,
-      "lon" : 46.1015589,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "6a22f4318c84ec4f8ddcbdb6a162c9f2"
-    },
-    {
-      "name" : "Higjenski zavod",
-      "lat" : 19.6678823,
-      "lon" : 46.1039654,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ba42e461abd874f83d60fc4da2439c7d"
-    },
-    {
-      "name" : "Arsenija Čarnojevića",
-      "lat" : 19.664492,
-      "lon" : 46.1034149,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "09003ef5ed8d2047331a47d94ea780ed"
-    },
-    {
-      "name" : "Sinagoga",
-      "lat" : 19.6603453,
-      "lon" : 46.1013469,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "00b7b0a95da009ed3347baef764db0c9"
-    },
-    {
-      "name" : "Preradovićeva",
-      "lat" : 19.6569443,
-      "lon" : 46.0974132,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "11c4df5d086f2adef976a526fea55762"
-    },
-    {
-      "name" : "Sadecki - Karađorđev Put ka Subotici",
-      "lat" : 19.65334084118653,
-      "lon" : 46.1000235761643,
-      "zone" : "1",
-      "served_lines" : ["1AA"],
-      "uid" : "Sadecki"
-    },
-    {
-      "name" : "Sadecki - Karađorđev Put ka Kelebiji",
-      "lat" : 19.6535352,
-      "lon" : 46.1000822,
-      "zone" : "1",
-      "served_lines" : ["1AB"],
-      "uid" : "Sadecki"
-    },
-    {
-      "name" : "Apoteka Br.6 Novo Selo",
-      "lat" : 19.6481064,
-      "lon" : 46.1040621,
-      "zone" : "1",
-      "served_lines" : ["1AA"],
-      "uid" : "#Zdravstvena stanica"
-    },
-    {
-      "name" : "Subotička Džamija",
-      "lat" : 19.647997880828864,
-      "lon" : 46.10420435559094,
-      "zone" : "1",
-      "served_lines" : ["1AB"],
-      "uid" : "#Zdravstvena stanica"
-    },
-    {
-      "name" : "OS Sečenji Ištvan ka Subotici",
-      "lat" : 19.6439999,
-      "lon" : 46.1070152,
-      "zone" : "1",
-      "served_lines" : ["1AA"],
-      "uid" : "747f43334ee2912a1052c0e8d1f91467"
-    },
-    {
-      "name" : "OS Sečenji Ištvan ka Kelebiji",
-      "lat" : 19.643438125503547,
-      "lon" : 46.1071649293344,
-      "zone" : "1",
-      "served_lines" : ["1AB"],
-      "uid" : "747f43334ee2912a1052c0e8d1f91467"
-    },
-    {
-      "name" : "Zorka pruga ka Subotici",
-      "lat" : 19.6381152,
-      "lon" : 46.1108236,
-      "zone" : "1",
-      "served_lines" : ["1AA"],
-      "uid" : "c83529c672ee0cbdb0b61c9201a24177"
-    },
-    {
-      "name" : "Zorka pruga ka Kelebiji",
-      "lat" : 19.63638928021241,
-      "lon" : 46.111471610750286,
-      "zone" : "1",
-      "served_lines" : ["1AB"],
-      "uid" : "c83529c672ee0cbdb0b61c9201a24177"
+      "name" : "Zorka Pekara Okretište",
+      "lat" : 19.629737,
+      "lon" : 46.115283,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Zorka",
-      "lat" : 19.6326971,
-      "lon" : 46.1137206,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d21b70f8347e870d430e866786419c30"
+      "lat" : 19.632783,
+      "lon" : 46.113645,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Zorka okretnica",
-      "lat" : 19.6296448,
-      "lon" : 46.1155614,
-      "zone" : "1",
-      "served_lines" : ["1AA", "1AB"],
-      "uid" : "ee93e481dd56224d860f9de0bcfd5038"
+      "name" : "Zorka Pruga",
+      "lat" : 19.637665,
+      "lon" : 46.11101,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Veliki progon",
-      "lat" : 19.6225101,
-      "lon" : 46.118908,
-      "zone" : "1",
-      "served_lines" : ["1AA", "1AB"],
-      "uid" : "89fa63e6a7a8c5b985919ed4f8268af1"
+      "name" : "O.Š. Sečenji Ištvan",
+      "lat" : 19.643451,
+      "lon" : 46.107174,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Kelebija opština",
-      "lat" : 19.6113762,
-      "lon" : 46.1241861,
-      "zone" : "1",
-      "served_lines" : ["1AA", "1AB"],
-      "uid" : "63486cc16dd1a991425b28c426bd11ab"
+      "name" : "Zdravstvena Stanica",
+      "lat" : 19.647978,
+      "lon" : 46.10393,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "EV-PRO",
-      "lat" : 19.6645617,
-      "lon" : 46.0765501,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e049448638e840b279dde84f0d2aad9c"
-    },
-    {
-      "name" : "Pačirski put",
-      "lat" : 19.6659887,
-      "lon" : 46.0786061,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a0f42045602a14b7792510feb2facdc4"
-    },
-    {
-      "name" : "Bolnica",
-      "lat" : 19.6726137,
-      "lon" : 46.0826769,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "af8816026b45d5839c5a7c2e8f1afded"
-    },
-    {
-      "name" : "Bajnatska II",
-      "lat" : 19.6746066,
-      "lon" : 46.0841726,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0f42ecc67bae8de0a56b005c2c1f096d"
-    },
-    {
-      "name" : "Bajnatska I",
-      "lat" : 19.6786809,
-      "lon" : 46.0856237,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9927ab06855889ff9762b74a43104b2f"
-    },
-    {
-      "name" : "Senćansko groblje",
-      "lat" : 19.6837798,
-      "lon" : 46.0881035,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0c2a602a43ce49774b66250bb603023b"
-    },
-    {
-      "name" : "Dinamotrans",
-      "lat" : 19.680478,
-      "lon" : 46.0911654,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "fe32d2e15e5f18b56ccaa7f906cb63bf"
-    },
-    {
-      "name" : "Autobuska stanica grad",
-      "lat" : 19.6743304,
-      "lon" : 46.0947293,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "672ed8cb5cc119256d2b0009dbdac8e3"
-    },
-    {
-      "name" : "MEŠC",
-      "lat" : 19.6704948,
-      "lon" : 46.0987691,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "66b627f3659c607c7fae1e3116a52c7a"
-    },
-    {
-      "name" : "Jadran",
-      "lat" : 19.6690947,
-      "lon" : 46.1014994,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3f6abd2f35c1ddb709c1fdc4cb01a24d"
-    },
-    {
-      "name" : "Higjenski zavod",
-      "lat" : 19.6679252,
-      "lon" : 46.1040323,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ee63850c362ca16249ff182f28fde35e"
-    },
-    {
-      "name" : "Arsenija Čarnojevića",
-      "lat" : 19.6645188,
-      "lon" : 46.1034707,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "cfa278697b13c64cf02904910ad4bcdd"
-    },
-    {
-      "name" : "Samoposluga br. 23",
-      "lat" : 19.6594387,
-      "lon" : 46.1051556,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d109fe807b45a6ce75b24a7ef0f98249"
-    },
-    {
-      "name" : "Hala sportova",
-      "lat" : 19.6562308,
-      "lon" : 46.1087818,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b2e24e981dc439b1da94f3a72bda89b9"
-    },
-    {
-      "name" : "Dudova šuma groblje",
-      "lat" : 19.6575719,
-      "lon" : 46.1102695,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "2fc2b9ff0e9267564ba423eb04a45a82"
-    },
-    {
-      "name" : "Bazeni",
-      "lat" : 19.6546108,
-      "lon" : 46.113583,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "48263dd39cfba06c9b73c19db8c8bb67"
-    },
-    {
-      "name" : "Somborska pruga",
-      "lat" : 19.6525159,
-      "lon" : 46.1164222,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "daa0207063f42294e9080b927ea0a4fa"
-    },
-    {
-      "name" : "Drvara Subotica",
-      "lat" : 19.6502897,
-      "lon" : 46.1194658,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "cdb56982f3b861c7835303a6b83774aa"
-    },
-    {
-      "name" : "Padejska",
-      "lat" : 19.6483344,
-      "lon" : 46.1222843,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "6c02ccf20fe65a15dfd38da8c1409e6c"
-    },
-    {
-      "name" : "Zorkina",
-      "lat" : 19.6458399,
-      "lon" : 46.1251769,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9c6e905b2f691484b60241ca927ab871"
-    },
-    {
-      "name" : "Prodavnica Farex",
-      "lat" : 19.6425784,
-      "lon" : 46.1287015,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0f74fa014aed27d507da1b3b7827142d"
-    },
-    {
-      "name" : "Dr Ferenca Bodrogvarija",
-      "lat" : 19.6388555,
-      "lon" : 46.1319916,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "85ad3c0a34bd967442cde19ba01f9b5a"
-    },
-    {
-      "name" : "Ganjo šor",
-      "lat" : 19.6360606,
-      "lon" : 46.1345381,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "bfe5a9a8d29d4e11383603bdab389217"
-    },
-    {
-      "name" : "Makova Sedmica",
-      "lat" : 19.6722007,
-      "lon" : 46.1501637,
-      "zone" : "1",
-      "served_lines" : ["3A", "3B"],
-      "uid" : "2b7b450dbfd461760b8f706fbd9f1739"
-    },
-    {
-      "name" : "Slovinov put",
-      "lat" : 19.6765164,
-      "lon" : 46.1450795,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ca50168575efff62411ea424beae0532"
-    },
-    {
-      "name" : "MZ Graničar",
-      "lat" : 19.6814221,
-      "lon" : 46.1396622,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "88c68099c4259b269932ee95a904acf0"
-    },
-    {
-      "name" : "Oficirski stanovi",
-      "lat" : 19.6777394,
-      "lon" : 46.1338541,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "942eed8bcb85f89a6c40203cbb9fbe84"
-    },
-    {
-      "name" : "I krivina",
-      "lat" : 19.6744323,
-      "lon" : 46.1309693,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "795390ab6b907696449a26520dcf2374"
-    },
-    {
-      "name" : "II krivina",
-      "lat" : 19.6767765,
-      "lon" : 46.1259466,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0ee8ff89de9de1706346781cdf896592"
-    },
-    {
-      "name" : "Kolar",
-      "lat" : 19.674392,
-      "lon" : 46.1204437,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c32ffcfc24b44b1cdef4a35a4bfb4341"
-    },
-    {
-      "name" : "OŠ Majšanski put",
-      "lat" : 19.672654,
-      "lon" : 46.1151597,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d88ed118c31046ed1a6fbd95f1ca9a62"
-    },
-    {
-      "name" : "Skrob",
-      "lat" : 19.6699959,
-      "lon" : 46.1112178,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f2f99aa29a026a77aa1d7db0e318b1a3"
-    },
-    {
-      "name" : "Željezničar",
-      "lat" : 19.6707684,
-      "lon" : 46.1060315,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b7db4f2dbf57bb5649fd596096160b47"
-    },
-    {
-      "name" : "Radio Subotica",
-      "lat" : 19.6734157,
-      "lon" : 46.1010586,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "298457e06e0b5788f8b7df267fd90e47"
-    },
-    {
-      "name" : "Hotel Patrija",
-      "lat" : 19.6692529,
-      "lon" : 46.0994163,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "ee9895abb6e82e710f73ee91b4b5e811"
-    },
-    {
-      "name" : "Pošta I",
-      "lat" : 19.6645027,
-      "lon" : 46.09743,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0bce92f47466858682bf15f51f15be21"
+      "name" : "Sadecki",
+      "lat" : 19.653378,
+      "lon" : 46.100052,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Preradovićeva",
-      "lat" : 19.6567217,
-      "lon" : 46.0975936,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "179fe1b8c87b3f86c0d40831efb70a52"
-    },
-    {
-      "name" : "Bajski put (Sadecki) - Trg Kralja Tomislava",
-      "lat" : 19.6531409,
-      "lon" : 46.0995763,
-      "zone" : "1",
-      "served_lines" : ["3A","3B"],
-      "uid" : "28f5283be64413e553952a833fe467c4"
-    },
-    {
-      "name" : "Bajski put - Stevana Mokranjca",
-      "lat" : 19.647731358041387,
-      "lon" : 46.1005658810723,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "84c18b87118052def6b7fc6996dc8f17"
-    },
-    {
-      "name" : "OŠ Đuro Salaj",
-      "lat" : 19.648310715188604,
-      "lon" : 46.100379897803954,
-      "zone" : "1",
-      "served_lines" : ["3B"],
-      "uid" : "84c18b87118052def6b7fc6996dc8f17"
-    },
-    {
-      "name" : "Univerexport",
-      "lat" : 19.643150145043947,
-      "lon" : 46.101681767507905,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
-    },
-    {
-      "name" : "Drvara-Gajeva",
-      "lat" : 19.64389043473206,
-      "lon" : 46.10137676079174,
-      "zone" : "1",
-      "served_lines" : ["3B"],
-      "uid" : "bbe75ba0c7406ad94a61c01524da3cb3"
-    },
-    {
-      "name" : "Bajski put-Dom",
-      "lat" : 19.639534527291875,
-      "lon" : 46.10270092405232,
-      "zone" : "1",
-      "served_lines" : ["3A", "3B"],
-      "uid" : "f1a12d31304bf55a42d66d50557ea40b"
-    },
-    {
-      "name" : "Jasenovačka",
-      "lat" : 19.63471727990113,
-      "lon" : 46.102686045990076,
-      "zone" : "1",
-      "served_lines" : ["3A","3B"],
-      "uid" : "d942360341c1cc73ffc4aa7453a6178c"
-    },
-    {
-      "name" : "Bunar",
-      "lat" : 19.6315598,
-      "lon" : 46.1027343,
-      "zone" : "1",
-      "served_lines" : ["3A","3B"],
-      "uid" : "7ed887b76d9d305f44a30c9f91b1687e"
-    },
-    {
-      "name" : "Bajski put",
-      "lat" : 19.6244842,
-      "lon" : 46.1018155,
-      "zone" : "1",
-      "served_lines" : ["3A", "3B"],
-      "uid" : "41b5e213b89850459edb111bdbf9971c"
-    },
-    {
-      "name" : "Veliki Radanovac Okretnica",
-      "lat" : 19.7227442,
-      "lon" : 46.1292852,
-      "zone" : "1",
-      "served_lines" : ["4A", "4B"],
-      "uid" : "e6e69ae1ed3112899cadb1462050400c"
-    },
-    {
-      "name" : "Rasadnik",
-      "lat" : 19.7260165,
-      "lon" : 46.1255636,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "86b0c6d70951eccdbb8379e2c14836dd"
-    },
-    {
-      "name" : "Kestenova",
-      "lat" : 19.7277358,
-      "lon" : 46.1224758,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "10201782640ad6ca0e4c89eabbe3474f"
-    },
-    {
-      "name" : "Peščarin voćnjak",
-      "lat" : 19.7291467,
-      "lon" : 46.1191311,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "2d976c2ec97542c7df1dc382a9d11da2"
-    },
-    {
-      "name" : "Vrtna",
-      "lat" : 19.7304046,
-      "lon" : 46.1160039,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c3a1779e9ecd2082a404264a4f9d0671"
-    },
-    {
-      "name" : "Beli golub",
-      "lat" : 19.7317833,
-      "lon" : 46.1126087,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "8b2d8989fc21ba33f09f10ca5d96333d"
-    },
-    {
-      "name" : "Palmina",
-      "lat" : 19.7318986,
-      "lon" : 46.1093602,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "98fc414e34fa4d0318c239e73c1d3ec7"
-    },
-    {
-      "name" : "Mesna zajednica Veliki Radanovac",
-      "lat" : 19.7279853,
-      "lon" : 46.1073425,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "431fa11c9be5a9aa208f71f0160054ba"
-    },
-    {
-      "name" : "Trgopromet",
-      "lat" : 19.7287416,
-      "lon" : 46.1054829,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ed0e8936d7aff6df51cb8f7ae55c1c78"
-    },
-    {
-      "name" : "Radanovac",
-      "lat" : 19.7274649,
-      "lon" : 46.1051742,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "8eee0a6faab15cc4612df82e6cbb7359"
-    },
-    {
-      "name" : "Kasarna",
-      "lat" : 19.7130829,
-      "lon" : 46.1035897,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "8efebd0053f23d3496f8922c4f064b26"
-    },
-    {
-      "name" : "Aurometal",
-      "lat" : 19.6997845,
-      "lon" : 46.1020648,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0a5a85872c872ef3e7460a233cadefe3"
-    },
-    {
-      "name" : "Subotica-trans",
-      "lat" : 19.6948144,
-      "lon" : 46.1015198,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "73b4ed57b8096da01b09a6785184d94d"
-    },
-    {
-      "name" : "SUT",
-      "lat" : 19.6912819,
-      "lon" : 46.1010121,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9deb8fa5ded5c8386f0994d6200ff0dc"
-    },
-    {
-      "name" : "Partizan Bus stop ",
-      "lat" : 19.6862447,
-      "lon" : 46.1000822,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "cb2d892d9a6b85b85f7e2bccefd2d6ef"
-    },
-    {
-      "name" : "SUP",
-      "lat" : 19.680478,
-      "lon" : 46.0999929,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5ef0b793d287f5cb98ea03c0425d7371"
-    },
-    {
-      "name" : "Teretna stanica",
-      "lat" : 19.6752369,
-      "lon" : 46.1001938,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0e0f0390ceddd7da9787fdecd9869aec"
-    },
-    {
-      "name" : "Politehnička škola",
-      "lat" : 19.662255,
-      "lon" : 46.0966972,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "016e270d97676d7ca027dc07f40cc72c"
-    },
-    {
-      "name" : "Vatrogasci",
-      "lat" : 19.6605545,
-      "lon" : 46.095224,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c01f7d127fc9115f1ee080cfb3062fc1"
-    },
-    {
-      "name" : "Vikend naselje",
-      "lat" : 19.7683096,
-      "lon" : 46.0883081,
-      "zone" : "1",
-      "served_lines" : ["6A", "6B"],
-      "uid" : "57f2bbb3a3288ffcf193dfeabcfd1746"
-    },
-    {
-      "name" : "Štrand",
-      "lat" : 19.7672018,
-      "lon" : 46.0938458,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c7cb67aaa2b0f1e00f962fb561afe7f6"
-    },
-    {
-      "name" : "Lovranska",
-      "lat" : 19.7646376,
-      "lon" : 46.0995168,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "1de00a1defacaf8af5ce4909efe5df40"
-    },
-    {
-      "name" : "Palić centar",
-      "lat" : 19.7607109,
-      "lon" : 46.1022953,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "43b943dd5341a35a2f05837129610912"
-    },
-    {
-      "name" : "Palić Toranj",
-      "lat" : 19.7580528,
-      "lon" : 46.1023288,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "2dbd3b14bfe23da4526a6982b4c25c5a"
-    },
-    {
-      "name" : "ZOO vrt",
-      "lat" : 19.7516933,
-      "lon" : 46.1031006,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4c5557ccc26edfb1d00a378c9d3a95af"
-    },
-    {
-      "name" : "Benzinska pumpa",
-      "lat" : 19.7425282,
-      "lon" : 46.1039226,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "124586d63537fda96f71bb3bb952773c"
-    },
-    {
-      "name" : "Radanovac",
-      "lat" : 19.7274864,
-      "lon" : 46.1051519,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ca7ecd72de979b7b84d705194553137a"
-    },
-    {
-      "name" : "Kasarna",
-      "lat" : 19.7131607,
-      "lon" : 46.1035935,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d830d79b0195d38eaf716e4eef7ae1d3"
-    },
-    {
-      "name" : "Autometal",
-      "lat" : 19.6998274,
-      "lon" : 46.1020722,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5637c2c3ce2895e25c5807624bf5ddc5"
-    },
-    {
-      "name" : "Subotica-trans",
-      "lat" : 19.6947366,
-      "lon" : 46.1015087,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a2eec01151f6865988ade9491defd5c1"
-    },
-    {
-      "name" : "SUT",
-      "lat" : 19.6912095,
-      "lon" : 46.1010102,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5a0150879d45d451b0ae53785a0a3699"
-    },
-    {
-      "name" : "Partizan",
-      "lat" : 19.6861267,
-      "lon" : 46.1000487,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7d3adebc849ed4fc5754a9615043e020"
-    },
-    {
-      "name" : "SUP",
-      "lat" : 19.6805424,
-      "lon" : 46.0999929,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e838e97d554e31ef058c110d6ffdf635"
-    },
-    {
-      "name" : "Teretna stanica",
-      "lat" : 19.6753442,
-      "lon" : 46.1001938,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "78cccd4304ce1044d8816acdc1c2282f"
-    },
-    {
-      "name" : "Trg Žrtava fašizma (Lifka)",
-      "lat" : 19.660026604165655,
-      "lon" : 46.098415876199205,
-      "zone" : "1",
-      "served_lines" : ["3A", "1AB"],
-      "uid" : "77583d3b4dbe7dfe3033e2890e7c056d"
+      "lat" : 19.656544,
+      "lon" : 46.097539999999995,
+      "zone" : "I",
+      "served_lines" : ["1A", "3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Lifka",
-      "lat" : 19.660144621362306,
-      "lon" : 46.09835635930087,
-      "zone" : "1",
-      "served_lines" : ["3B", "1AA"],
-      "uid" : "77583d3b4dbe7dfe3033e2890e7c056d"
-    },
-    {
-      "name" : "Sarvaš",
-      "lat" : 19.6567351,
-      "lon" : 46.09666,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "1a4aa32e43342ee864ccd27805c9da96"
-    },
-    {
-      "name" : "Drvena ambulanta",
-      "lat" : 19.6537954,
-      "lon" : 46.094852,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e3d489a13ae80780207bf89e4a2efecd"
-    },
-    {
-      "name" : "Gajeva",
-      "lat" : 19.6510112,
-      "lon" : 46.093204,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7242add8be9d1c7b2f77bd81565fbd96"
-    },
-    {
-      "name" : "Slavica",
-      "lat" : 19.6486804,
-      "lon" : 46.0918145,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "548532c23d971d57dc717ffeb4153e42"
-    },
-    {
-      "name" : "Dom",
-      "lat" : 19.6441716,
-      "lon" : 46.0886504,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e892d31ef66b80112dc9de2e05a8f3ea"
-    },
-    {
-      "name" : "Mali Bajmok",
-      "lat" : 19.6404272,
-      "lon" : 46.0860348,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "2e87ca267e953eff9a5effd734714f08"
-    },
-    {
-      "name" : "Dunkermotoren",
-      "lat" : 19.6355778,
-      "lon" : 46.0800964,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "6e06d6c9f3d596e0a558f06ade3c2f8c"
-    },
-    {
-      "name" : "Calzedonia",
-      "lat" : 19.6325201,
-      "lon" : 46.0779865,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0e72c870381abef93e673ae743ccacd4"
-    },
-    {
-      "name" : "Swarovski",
-      "lat" : 19.6361303,
-      "lon" : 46.0751955,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e6bab2cfd050aa5a7167fb89d8597957"
-    },
-    {
-      "name" : "Teslino naselje",
-      "lat" : 19.6855608,
-      "lon" : 46.1131572,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "933f580fea1b896a8239ec5a04036c7f"
-    },
-    {
-      "name" : "Radnoti Mikloša",
-      "lat" : 19.6875671,
-      "lon" : 46.1091631,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "12f6aac3277770a787e7668bb35b6c66"
-    },
-    {
-      "name" : "Teslino naselje Pijaca",
-      "lat" : 19.688707,
-      "lon" : 46.1070171,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "068897406914887701e9e84bcd511d6e"
-    },
-    {
-      "name" : "SUT",
-      "lat" : 19.6911264,
-      "lon" : 46.1009972,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "13fe0d0b7694bebe92ef70dfc090bb26"
-    },
-    {
-      "name" : "Partizan2",
-      "lat" : 19.6863171,
-      "lon" : 46.1000952,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b3424979d6331fcbc168177935d19b5a"
-    },
-    {
-      "name" : "SUP",
-      "lat" : 19.680419,
-      "lon" : 46.0999892,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "70cc6f08a9209e94394ef845c2f78aaa"
-    },
-    {
-      "name" : "Teretna stanica",
-      "lat" : 19.6751833,
-      "lon" : 46.1002049,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3c886cf3df79f6066c1b53913cbd561d"
-    },
-    {
-      "name" : "Politehnička škola",
-      "lat" : 19.6621585,
-      "lon" : 46.0966897,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "831a4353933a3a021bd28b23dfc7fe71"
-    },
-    {
-      "name" : "Vatrogasci",
-      "lat" : 19.6604794,
-      "lon" : 46.0951794,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9fa7299e4d46124ddba1ac9b34bbb2f7"
-    },
-    {
-      "name" : "Kerska crkva",
-      "lat" : 19.6654361,
-      "lon" : 46.089614,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "62f56c8b45be19a2767e51e7dc8e1cd3"
-    },
-    {
-      "name" : "Prozivka",
-      "lat" : 19.6691751,
-      "lon" : 46.0865743,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "62a25fc74ff3691fe199705738bcce25"
-    },
-    {
-      "name" : "Masloš",
-      "lat" : 19.6712565,
-      "lon" : 46.0849447,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e69a75bde50009c317c355e169efabea"
-    },
-    {
-      "name" : "Bolnica-Beogradski put",
-      "lat" : 19.6736705,
-      "lon" : 46.0822062,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "210bb529021fa45ccbd7e1b6c1e5df3b"
-    },
-    {
-      "name" : "Veterinarski zavod",
-      "lat" : 19.6773184,
-      "lon" : 46.0760849,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0657c6a4a6a43cffefe9126f9c8e2ee9"
-    },
-    {
-      "name" : "Aleksandrovo Peščara",
-      "lat" : 19.6795231,
-      "lon" : 46.0717308,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "83070a1c7b62745a0b8b2736f741935b"
-    },
-    {
-      "name" : "Aleksandrovo groblje",
-      "lat" : 19.680993,
-      "lon" : 46.0661333,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "af2c3f89f552ed28b6a33eb16e8e2b73"
-    },
-    {
-      "name" : "Aleksandrovo okretnica",
-      "lat" : 19.6875483,
-      "lon" : 46.0662263,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "702c397f1360d08fd112d6f2703cf732"
-    },
-    {
-      "name" : "Đerđa Lukača",
-      "lat" : 19.6600664,
-      "lon" : 46.1359283,
-      "zone" : "1",
-      "served_lines" : ["8A","8B"],
-      "uid" : "81952d52fdfb6da1bb1b69f7e401c750"
-    },
-    {
-      "name" : "Jovana Mikića 263",
-      "lat" : 19.6640307,
-      "lon" : 46.1269653,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "172bc96db51acebb6aa66b7b29c0803a"
-    },
-    {
-      "name" : "Jovana Mikića 198",
-      "lat" : 19.6646154,
-      "lon" : 46.1255599,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a9f2a31f53eb63182e141a2e0408574d"
-    },
-    {
-      "name" : "Višnjička",
-      "lat" : 19.6650982,
-      "lon" : 46.1224181,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "74efcc50c82cccbc2f906d7854f8a821"
-    },
-    {
-      "name" : "Železničko naselje",
-      "lat" : 19.6652591,
-      "lon" : 46.1186403,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4f1e8641cddbafcfc08903f75e65f1b2"
-    },
-    {
-      "name" : "Pruga",
-      "lat" : 19.6660531,
-      "lon" : 46.1145685,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "dcdee570335b0d95fc231a6c74b225a4"
-    },
-    {
-      "name" : "Gubo Đar",
-      "lat" : 19.6641031,
-      "lon" : 46.1116009,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "165b62e74dfdd3ca5ff5a1ef704d427e"
-    },
-    {
-      "name" : "Hala sportova",
-      "lat" : 19.6558338,
-      "lon" : 46.1086591,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f3c178e710a388f122adb66fcf013283"
-    },
-    {
-      "name" : "Samoposluga br. 23",
-      "lat" : 19.6595246,
-      "lon" : 46.1046572,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "79fec135f9be6d2ce7fe972503f95784"
+      "lat" : 19.660073,
+      "lon" : 46.098422,
+      "zone" : "I",
+      "served_lines" : ["1A", "3R", "4R", "6", "7", "8R", "8A", "10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Sinagoga",
-      "lat" : 19.6604231,
-      "lon" : 46.1012706,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "0c27f4c83f91973c9dfd025b6c09aa34"
-    },
-    {
-      "name" : "Sarvaš",
-      "lat" : 19.6567002,
-      "lon" : 46.0966693,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "bf1042860a75008ada1e68d089e2f03f"
-    },
-    {
-      "name" : "Drvena ambulanta",
-      "lat" : 19.6537659,
-      "lon" : 46.0948279,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "665e074dc5d4bfda2b1938c21c40b8b8"
-    },
-    {
-      "name" : "Bife Gard",
-      "lat" : 19.6565393,
-      "lon" : 46.0907561,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "31648387c7ca0c76044939c778e62792"
-    },
-    {
-      "name" : "Kersko groblje",
-      "lat" : 19.6613377,
-      "lon" : 46.0875845,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "00296f546fc80ab375e5d325a6449cac"
-    },
-    {
-      "name" : "Berber Milan",
-      "lat" : 19.6637383,
-      "lon" : 46.0870654,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4412fb42f8645aa2fa3a7eb7902a3e2a"
-    },
-    {
-      "name" : "Obdanište Ker",
-      "lat" : 19.6657312,
-      "lon" : 46.083728,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "79476da1edae153f12297d014eca27c9"
-    },
-    {
-      "name" : "Kolevka",
-      "lat" : 19.6690196,
-      "lon" : 46.0815066,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "6742b5595c13315b0379e9284db2b580"
-    },
-    {
-      "name" : "Pačirski put",
-      "lat" : 19.6662354,
-      "lon" : 46.078954,
-      "zone" : "1",
-      "served_lines" : ["2A", "2B"],
-      "uid" : "c899d1c155a702b1fee56344e5c78120"
-    },
-    {
-      "name" : "Dušana Krnjajskog",
-      "lat" : 19.6702963,
-      "lon" : 46.0755156,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "62c4315e3b750a7fbbf459f71540de84"
-    },
-    {
-      "name" : "Pijaca Novo naselje",
-      "lat" : 19.673987,
-      "lon" : 46.071314,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9e138a759d15bcbd01c17b7d6ffa005c"
-    },
-    {
-      "name" : "Plate Dobrojevića I",
-      "lat" : 19.6754676,
-      "lon" : 46.0676183,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "838a396d7a491dc17c07b259ff54b765"
-    },
-    {
-      "name" : "Plate Dobrojevića II",
-      "lat" : 19.6794024,
-      "lon" : 46.0684464,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "356fceb3975f26e056f1dd277be2c910"
-    },
-    {
-      "name" : "Aleksandrovo groblje",
-      "lat" : 19.6809822,
-      "lon" : 46.066029,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3989641a88d7a3840c4a02c8dc1567af"
-    },
-    {
-      "name" : "Aleksandrovo okretište",
-      "lat" : 19.6875429,
-      "lon" : 46.066137,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "af2ec37152efcfe651f84d775a03492c"
-    },
-    {
-      "name" : "Jovana Mikića 263",
-      "lat" : 19.6640253,
-      "lon" : 46.1270322,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3850ff131944f5cfae3c684a5e497171"
-    },
-    {
-      "name" : "Jovana Mikića 198",
-      "lat" : 19.6646154,
-      "lon" : 46.1255599,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a9f2a31f53eb63182e141a2e0408574d"
-    },
-    {
-      "name" : "Višnjička",
-      "lat" : 19.6648407,
-      "lon" : 46.1225334,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "19d8ba8592d262a921fac55b5055e028"
-    },
-    {
-      "name" : "Železničko naselje",
-      "lat" : 19.665302,
-      "lon" : 46.1186143,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7c8acad7b66e43a065cf58c1e29afa34"
-    },
-    {
-      "name" : "Pruga",
-      "lat" : 19.6660316,
-      "lon" : 46.1144643,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "39738975aa2c8ac88ae5b90d2e18cfb3"
-    },
-    {
-      "name" : "Gubo Đar",
-      "lat" : 19.6640682,
-      "lon" : 46.1116046,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b2ba704ac48eb8e25e52389095bc9dad"
-    },
-    {
-      "name" : "Hala sportova",
-      "lat" : 19.6558446,
-      "lon" : 46.1084323,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "242840ce853bb990cf338051fe11365c"
-    },
-    {
-      "name" : "Samoposluga br. 23",
-      "lat" : 19.6595085,
-      "lon" : 46.1046553,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7f69125a07fe63562982fcf23710ad95"
+      "lat" : 19.660853,
+      "lon" : 46.10062,
+      "zone" : "I",
+      "served_lines" : ["1A", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Arsenija Čarnojevića",
-      "lat" : 19.6654254,
-      "lon" : 46.10356,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "239f1f47722861de4111fe2b01454eeb"
+      "lat" : 19.6656347,
+      "lon" : 46.1037106,
+      "zone" : "I",
+      "served_lines" : ["1A", "2", "8A", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Higjenski zavod",
-      "lat" : 19.668113,
-      "lon" : 46.10279,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "1a40288fca6ac8f074b2904515f74ee9"
+      "name" : "Higijenski Zavod",
+      "lat" : 19.668193,
+      "lon" : 46.102784,
+      "zone" : "I",
+      "served_lines" : ["1A", "2", "8A", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Bioskop Jadran",
-      "lat" : 19.6692663,
-      "lon" : 46.1004802,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "5c64b22e3032f0c32c0ad068b96a1517"
+      "name" : "Jadran",
+      "lat" : 19.669294,
+      "lon" : 46.100594,
+      "zone" : "I",
+      "served_lines" : ["1A", "2", "8A", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Matije Gupca",
-      "lat" : 19.66235476159058,
-      "lon" : 46.0973668814545,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "ab13cf7a9d7cd406811f640e5b16d30d"
+      "name" : "Mešc",
+      "lat" : 19.670768,
+      "lon" : 46.097497,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Široki progon",
-      "lat" : 19.6335232,
-      "lon" : 46.1369952,
-      "zone" : "1",
-      "served_lines" : ["2A", "2B", "9A", "9B"],
-      "uid" : "0269bfc7ae5d4e9f03e1a1e5aaa0e9b7"
+      "name" : "Autobuska Stanica Grad",
+      "lat" : 19.673747,
+      "lon" : 46.094787,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dinamotrans",
+      "lat" : 19.680520899999998,
+      "lon" : 46.0911282,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zentai úti temető",
+      "lat" : 19.6837986,
+      "lon" : 46.088077399999996,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajnatska I",
+      "lat" : 19.678787,
+      "lon" : 46.085784,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajnatska II",
+      "lat" : 19.674823,
+      "lon" : 46.084356,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bolnica 1 Subotica",
+      "lat" : 19.672691,
+      "lon" : 46.08284,
+      "zone" : "I",
+      "served_lines" : ["1A", "2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pačirski Put",
+      "lat" : 19.666484999999998,
+      "lon" : 46.079068,
+      "zone" : "I",
+      "served_lines" : ["1A", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dušana Krnjanskog",
+      "lat" : 19.670467,
+      "lon" : 46.075378,
+      "zone" : "I",
+      "served_lines" : ["1A", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Novo Naselje Pijaca",
+      "lat" : 19.673937,
+      "lon" : 46.071476999999994,
+      "zone" : "I",
+      "served_lines" : ["1A", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Josipa Lihta",
+      "lat" : 19.6707228,
+      "lon" : 46.069226099999995,
+      "zone" : "I",
+      "served_lines" : ["1A", "1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Josipa Šokčića",
+      "lat" : 19.668383,
+      "lon" : 46.06769,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Petra Horvatskog",
+      "lat" : 19.670868,
+      "lon" : 46.065408,
+      "zone" : "I",
+      "served_lines" : ["1A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Novo Naselje Okretište",
+      "lat" : 19.6747059,
+      "lon" : 46.0661742,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kelebija Opština",
+      "lat" : 19.6115988,
+      "lon" : 46.1241433,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Petra Horvatskog",
+      "lat" : 19.67006,
+      "lon" : 46.066077,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Josipa Šokčića",
+      "lat" : 19.6688506,
+      "lon" : 46.067718799999994,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Novo Naselje Pijaca",
+      "lat" : 19.673989,
+      "lon" : 46.071666,
+      "zone" : "I",
+      "served_lines" : ["1AR", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dušana Krnjanskog",
+      "lat" : 19.670128,
+      "lon" : 46.075786,
+      "zone" : "I",
+      "served_lines" : ["1AR", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pačirski Put",
+      "lat" : 19.6666968,
+      "lon" : 46.078314,
+      "zone" : "I",
+      "served_lines" : ["1AR", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bolnica 1 Subotica",
+      "lat" : 19.672468,
+      "lon" : 46.082499,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajnatska II",
+      "lat" : 19.6737778,
+      "lon" : 46.0838359,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajnatska I",
+      "lat" : 19.6787882,
+      "lon" : 46.0856553,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Senćansko Groblje",
+      "lat" : 19.683376,
+      "lon" : 46.088467,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dinamotrans",
+      "lat" : 19.680246,
+      "lon" : 46.091263,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Autobuska Stanica Grad",
+      "lat" : 19.674466,
+      "lon" : 46.094570999999995,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mešc",
+      "lat" : 19.670883,
+      "lon" : 46.097640999999996,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jadran",
+      "lat" : 19.6695399,
+      "lon" : 46.1005397,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R", "8AR", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dispanzer",
+      "lat" : 19.667657,
+      "lon" : 46.1042406,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R", "8AR", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Arsenija Čarnojevića",
+      "lat" : 19.663984,
+      "lon" : 46.103297,
+      "zone" : "I",
+      "served_lines" : ["1AR", "2R", "8AR", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zsinagóga",
+      "lat" : 19.660543699999998,
+      "lon" : 46.1012427,
+      "zone" : "I",
+      "served_lines" : ["1AR", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Lifka",
+      "lat" : 19.659736,
+      "lon" : 46.098348,
+      "zone" : "I",
+      "served_lines" : ["1AR", "3", "4", "6R", "7R", "8", "8AR", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Preradovićeva",
+      "lat" : 19.656596999999998,
+      "lon" : 46.097584999999995,
+      "zone" : "I",
+      "served_lines" : ["1AR", "3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Sadecki",
+      "lat" : 19.65348,
+      "lon" : 46.100096,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zdravstvena Stanica",
+      "lat" : 19.647979,
+      "lon" : 46.104040999999995,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "OŠ Sečenji Ištvan",
+      "lat" : 19.6439517,
+      "lon" : 46.107093299999995,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zorka Pruga",
+      "lat" : 19.636387799999998,
+      "lon" : 46.1114967,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zorka",
+      "lat" : 19.632562,
+      "lon" : 46.113851,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zorka Pekara Okretište",
+      "lat" : 19.6295643,
+      "lon" : 46.1156395,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veliki Progon",
+      "lat" : 19.62165,
+      "lon" : 46.119355999999996,
+      "zone" : "I",
+      "served_lines" : ["1AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Široki Progon",
+      "lat" : 19.633103,
+      "lon" : 46.136907,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pačirski Put Ev-Pro",
+      "lat" : 19.66549,
+      "lon" : 46.078340999999995,
+      "zone" : "I",
+      "served_lines" : ["2"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Ganjo Šor",
-      "lat" : 19.636066,
-      "lon" : 46.1346459,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "23374382ccbd1a53ce8f3a0b86630058"
+      "lat" : 19.635832,
+      "lon" : 46.134502999999995,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Dr Ferenca Bodrogvarija",
-      "lat" : 19.6387911,
-      "lon" : 46.1317909,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "20faeef648c6449b477b4b5cec396c13"
+      "name" : "Dr Ferenca Bodrogvarija 106",
+      "lat" : 19.639003,
+      "lon" : 46.131685999999995,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Prodavnica Farex",
-      "lat" : 19.6425408,
-      "lon" : 46.128668,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "aa31add093416b62a9cc4486ccae938e"
+      "name" : "Prodavnica Fareks",
+      "lat" : 19.642760799999998,
+      "lon" : 46.128445,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Zorkina",
-      "lat" : 19.6458292,
-      "lon" : 46.1252067,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9bf6638bfc35102ef8668cda64e9aef7"
+      "lat" : 19.645889999999998,
+      "lon" : 46.125135,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Padejska",
-      "lat" : 19.6483129,
-      "lon" : 46.1223177,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "d09b3de6a33761092451e959089130c9"
+      "lat" : 19.648256999999997,
+      "lon" : 46.121973,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Drvara Subotica",
-      "lat" : 19.6503943,
-      "lon" : 46.1193468,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f05f08c6cba9a7c42345161565bae492"
+      "lat" : 19.650123999999998,
+      "lon" : 46.119445999999996,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Somborska pruga",
-      "lat" : 19.6523952,
-      "lon" : 46.1163906,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "3ecff0a6f5f1d14058b9c6097684bb5a"
+      "name" : "Somborska",
+      "lat" : 19.652324,
+      "lon" : 46.116461,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Bazeni",
-      "lat" : 19.6544284,
-      "lon" : 46.1135198,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "a5dd0436d20f5dfc5bd4ade17dd71a2b"
+      "lat" : 19.654332,
+      "lon" : 46.113617999999995,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Dudova šuma groblje",
-      "lat" : 19.6573895,
-      "lon" : 46.1102695,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "50dcf137ee6343cc803c24404879a56b"
+      "name" : "Dudova Šuma-Groblje",
+      "lat" : 19.657284999999998,
+      "lon" : 46.110192999999995,
+      "zone" : "I",
+      "served_lines" : ["2", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Hala sportova",
-      "lat" : 19.6558446,
-      "lon" : 46.1084323,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "242840ce853bb990cf338051fe11365c"
+      "name" : "Hala Sportova",
+      "lat" : 19.655773999999997,
+      "lon" : 46.108399,
+      "zone" : "I",
+      "served_lines" : ["2", "8", "8AR", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Samoposluga br. 23",
-      "lat" : 19.6593368,
-      "lon" : 46.104687,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "58cc65c0bfe0ee5a8e75851d7a31520b"
+      "name" : "Samoposluga Broj 23",
+      "lat" : 19.65935,
+      "lon" : 46.104614999999995,
+      "zone" : "I",
+      "served_lines" : ["2", "8", "8AR", "9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Arsenija Čarnojevića",
-      "lat" : 19.6654469,
-      "lon" : 46.1037348,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "1ba277bad1955a0fc543c3ca28b2ff44"
+      "name" : "Pačirski Put Ev-Pro",
+      "lat" : 19.665803,
+      "lon" : 46.078478999999994,
+      "zone" : "I",
+      "served_lines" : ["2R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Higjenski zavod",
-      "lat" : 19.6682256,
-      "lon" : 46.1026896,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "7eee3409380bc5e53dbc720279937065"
+      "name" : "Široki Progon",
+      "lat" : 19.633221,
+      "lon" : 46.136928,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Bioskop Jadran",
-      "lat" : 19.6694648,
-      "lon" : 46.1004765,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "10a26aa0dc6cfe2505d311d83e0621c4"
+      "name" : "Samoposluga Broj 23",
+      "lat" : 19.659592999999997,
+      "lon" : 46.104858,
+      "zone" : "I",
+      "served_lines" : ["2R", "8R", "8A", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Nova opština",
-      "lat" : 19.6708757,
-      "lon" : 46.0995689,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f7395477ba5c5e7cc5d5d8a295b12aa5"
+      "name" : "Hala Sportova",
+      "lat" : 19.656119,
+      "lon" : 46.108630999999995,
+      "zone" : "I",
+      "served_lines" : ["2R", "8R", "8A", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Teretna stanica",
-      "lat" : 19.6750331,
-      "lon" : 46.1002012,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "012f912532881734e77411243a3beaff"
+      "name" : "Dudova Šuma-Groblje",
+      "lat" : 19.6574378,
+      "lon" : 46.110180199999995,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Sup",
-      "lat" : 19.6827954,
-      "lon" : 46.0997214,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "ebebf8cf5f4e11a8aa63a625b438ad0f"
+      "name" : "Bazeni",
+      "lat" : 19.654504,
+      "lon" : 46.113543,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Partizan4",
-      "lat" : 19.6878648,
-      "lon" : 46.1001454,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f711c2c6a55d7ded2ca4e589af32d443"
+      "name" : "Somborska",
+      "lat" : 19.652404999999998,
+      "lon" : 46.116468999999995,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Subotica-trans",
-      "lat" : 19.694345,
-      "lon" : 46.1012464,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "1d14cc301e6ce6addc39455ff805d7c1"
+      "name" : "Drvara Subotica",
+      "lat" : 19.650191,
+      "lon" : 46.11951,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Aurometal",
-      "lat" : 19.6987438,
-      "lon" : 46.1017597,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b722dac582c7a905d1d8e0283cb1556d"
+      "name" : "Padejska",
+      "lat" : 19.648338,
+      "lon" : 46.122008,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "ATB Sever",
-      "lat" : 19.6931863,
-      "lon" : 46.0972291,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "c2c80ac63b0bb43287375bc76c56cbdb"
+      "name" : "Zorkina",
+      "lat" : 19.645889999999998,
+      "lon" : 46.125229,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Palić naselje",
-      "lat" : 19.7635782,
-      "lon" : 46.1096149,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b4236197369c3c5ab8f21dfe9c2036ab"
+      "name" : "Prodavnica Fareks",
+      "lat" : 19.642716,
+      "lon" : 46.128538,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Orbanfalova",
-      "lat" : 19.7599089,
-      "lon" : 46.1068218,
-      "zone" : "1",
-      "served_lines" : ["1AA","6A","3A"],
-      "uid" : "797d2df1b984f81d6e44262a66e561c7"
+      "name" : "Dr Ferenca Bodrogvarija",
+      "lat" : 19.638824,
+      "lon" : 46.13196,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Košut Lajoša",
-      "lat" : 19.754802,
-      "lon" : 46.1056875,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "9827a5330da7c4c8c9d8f5641b6c1b60"
+      "name" : "Ganjo Šor",
+      "lat" : 19.63552,
+      "lon" : 46.134868,
+      "zone" : "I",
+      "served_lines" : ["2R", "9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "OŠ Miroslav Antić",
-      "lat" : 19.7498238,
-      "lon" : 46.106197,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "befbbba5204e4d131ad026ed996ddd28"
+      "name" : "Makova Sedmica",
+      "lat" : 19.672318999999998,
+      "lon" : 46.149926,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Rogaška",
-      "lat" : 19.7467232,
-      "lon" : 46.1069818,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f1c1b17e83b72e333b057c8e2bcb492a"
+      "name" : "Bajski Put",
+      "lat" : 19.624602,
+      "lon" : 46.101856999999995,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Partizanska",
-      "lat" : 19.7408438,
-      "lon" : 46.1057172,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "f3f7e913b5a3b78599c839ea56384f34"
+      "name" : "Slovinov Put",
+      "lat" : 19.676462,
+      "lon" : 46.145115999999994,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mz Graničar",
+      "lat" : 19.681431999999997,
+      "lon" : 46.139661,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Oficirski Stanovi",
+      "lat" : 19.677744999999998,
+      "lon" : 46.133842,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "I Krivina",
+      "lat" : 19.67434,
+      "lon" : 46.130764,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "II Krivina",
+      "lat" : 19.676831,
+      "lon" : 46.125927999999995,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kolar",
+      "lat" : 19.673734,
+      "lon" : 46.118533,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Škola Majšanski Put",
+      "lat" : 19.672618,
+      "lon" : 46.115127,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Skrob",
+      "lat" : 19.669995,
+      "lon" : 46.111196,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Željezničar",
+      "lat" : 19.6700549,
+      "lon" : 46.1076364,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Radio Subotica",
+      "lat" : 19.673319,
+      "lon" : 46.101152,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Patrija",
+      "lat" : 19.669045,
+      "lon" : 46.099334,
+      "zone" : "I",
+      "served_lines" : ["3", "4", "6R", "7R", "8AR", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pošta I",
+      "lat" : 19.664437,
+      "lon" : 46.097355,
+      "zone" : "I",
+      "served_lines" : ["3", "4", "6R", "7R", "8AR", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Matije Gupca",
+      "lat" : 19.662307,
+      "lon" : 46.097339,
+      "zone" : "I",
+      "served_lines" : ["3", "6R", "7R", "8AR", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Sadecki Bajski Put",
+      "lat" : 19.653164,
+      "lon" : 46.09961,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Škola Đuro Salaj",
+      "lat" : 19.647596,
+      "lon" : 46.100553999999995,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Drvara Raskrsnica",
+      "lat" : 19.642996999999998,
+      "lon" : 46.101687,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajski Put - Dom",
+      "lat" : 19.639339,
+      "lon" : 46.102740999999995,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jasenovačka",
+      "lat" : 19.634588,
+      "lon" : 46.102692999999995,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bunar",
+      "lat" : 19.631275,
+      "lon" : 46.102703,
+      "zone" : "I",
+      "served_lines" : ["3"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajski Put",
+      "lat" : 19.624185999999998,
+      "lon" : 46.101715999999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Makova Sedmica",
+      "lat" : 19.67225,
+      "lon" : 46.150599,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bunar",
+      "lat" : 19.631211,
+      "lon" : 46.102613999999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jasenovačka",
+      "lat" : 19.63449,
+      "lon" : 46.102627999999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bajski Put - Dom",
+      "lat" : 19.639348,
+      "lon" : 46.102658,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Drvara Raskrsnica",
+      "lat" : 19.644105,
+      "lon" : 46.101284,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Škola Đuro Salaj",
+      "lat" : 19.648276,
+      "lon" : 46.100366,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Sadecki Bajski Put",
+      "lat" : 19.652994,
+      "lon" : 46.099582999999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pošta I",
+      "lat" : 19.664304299999998,
+      "lon" : 46.0970654,
+      "zone" : "I",
+      "served_lines" : ["3R", "4R", "6", "7", "8A", "10R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Nova Opština",
+      "lat" : 19.670870999999998,
+      "lon" : 46.099595,
+      "zone" : "I",
+      "served_lines" : ["3R", "4R", "6", "7", "9", "10R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Radio Subotica",
+      "lat" : 19.6732092,
+      "lon" : 46.1018044,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Železničar",
+      "lat" : 19.670126,
+      "lon" : 46.107554,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Skrob",
+      "lat" : 19.669949,
+      "lon" : 46.110915999999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "OŠ Majšanski Put",
+      "lat" : 19.6726727,
+      "lon" : 46.1146428,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kolar",
+      "lat" : 19.67398,
+      "lon" : 46.119139,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "II Krivina",
+      "lat" : 19.676631999999998,
+      "lon" : 46.125425,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "I Krivina",
+      "lat" : 19.674439,
+      "lon" : 46.130745999999995,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Oficirski Stanovi",
+      "lat" : 19.67794,
+      "lon" : 46.13406,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "MZ Graničar",
+      "lat" : 19.6817386,
+      "lon" : 46.140117599999996,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Slovinov Put",
+      "lat" : 19.676054,
+      "lon" : 46.145592,
+      "zone" : "I",
+      "served_lines" : ["3R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veliki Radanovac Okretište",
+      "lat" : 19.722742,
+      "lon" : 46.129048,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Rasadnik V.Radanovac",
+      "lat" : 19.726032,
+      "lon" : 46.125406,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kestenova",
+      "lat" : 19.727641,
+      "lon" : 46.122406999999995,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Peščarin Voćnjak",
+      "lat" : 19.729146999999998,
+      "lon" : 46.119157,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Vrtna Stanica",
+      "lat" : 19.730370999999998,
+      "lon" : 46.116009,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Beli Golub",
+      "lat" : 19.731748,
+      "lon" : 46.112565,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palmina",
+      "lat" : 19.732072,
+      "lon" : 46.109387999999996,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veliki Radanovac Mz",
+      "lat" : 19.727909999999998,
+      "lon" : 46.107458,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Trgopromet",
+      "lat" : 19.72874,
+      "lon" : 46.105492,
+      "zone" : "I",
+      "served_lines" : ["4"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
       "name" : "Radanovac",
-      "lat" : 19.7273898,
-      "lon" : 46.1052411,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "4000f91a7be822b79a057cd019bf12e8"
+      "lat" : 19.727456,
+      "lon" : 46.105109,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "II Kasarna",
-      "lat" : 19.7132385,
-      "lon" : 46.1036121,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "337b2bd344d1dc858c89642afa9b1eac"
+      "name" : "Subotica - II Kasarna",
+      "lat" : 19.713081,
+      "lon" : 46.103556,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Aurometal",
-      "lat" : 19.6997175,
-      "lon" : 46.1020572,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "e6d5b4706e737bdf008c4be44eed5a38"
+      "name" : "Subotica - Aurometal",
+      "lat" : 19.699723,
+      "lon" : 46.102021,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Subotica-trans",
-      "lat" : 19.6946615,
-      "lon" : 46.1015031,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "8d03e10672815d233108ea7ada39fd44"
+      "name" : "Suboticatrans",
+      "lat" : 19.694739,
+      "lon" : 46.101451,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "SUT",
-      "lat" : 19.6913597,
-      "lon" : 46.1010288,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "b02594ecb9e476eee6177d0938b5d718"
+      "name" : "Sut",
+      "lat" : 19.691183,
+      "lon" : 46.100975999999996,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Partizan3",
-      "lat" : 19.6861884,
-      "lon" : 46.1000636,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "fe1032a1d491deaf84044a435dde23eb"
+      "name" : "Subotica - Partizan",
+      "lat" : 19.68612,
+      "lon" : 46.100023,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "SUP",
-      "lat" : 19.6803599,
-      "lon" : 46.0999836,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "da4ebd8825a0708826bf0caaaf8fca77"
+      "name" : "Subotica Sup",
+      "lat" : 19.680657,
+      "lon" : 46.099934999999995,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Teretna stanica",
-      "lat" : 19.6751162,
-      "lon" : 46.1001994,
-      "zone" : "1",
-      "served_lines" : [""],
-      "uid" : "288ad97bd03a7095835e695fa826adba"
+      "name" : "Teretna Stanica",
+      "lat" : 19.675508999999998,
+      "lon" : 46.100148,
+      "zone" : "I",
+      "served_lines" : ["4", "6R", "7R", "9R", "10", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "Preko Pošte Br.2",
-      "lat" : 19.664436155786134,
-      "lon" : 46.097322242937565,
-      "zone" : "1",
-      "served_lines" : ["3A"],
-      "uid" : "230fb2231542781aca49d39adede697d"
+      "name" : "Politehnička Škola",
+      "lat" : 19.6617186,
+      "lon" : 46.096194999999994,
+      "zone" : "I",
+      "served_lines" : ["4", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
     },
     {
-      "name" : "suPapirna",
-      "lat" : 19.700976873291026,
-      "lon" : 46.08137730955261,
-      "zone" : "1",
-      "served_lines" : ["1AA", "1AB", "2A", "2B", "3A", "3B", "4A", "4B", "6A", "6B", "8AA", "8AB", "8A", "8B", "9A", "9B", "10A", "10B", "16A", "16B"],
+      "name" : "Vatrogasci",
+      "lat" : 19.660452,
+      "lon" : 46.095095,
+      "zone" : "I",
+      "served_lines" : ["4", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veliki Radanovac Okretište",
+      "lat" : 19.722844,
+      "lon" : 46.129118999999996,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Teretna Stanica",
+      "lat" : 19.675207,
+      "lon" : 46.09999,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "9", "10R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica Sup",
+      "lat" : 19.682662999999998,
+      "lon" : 46.099740999999995,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "9", "10R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Partizan",
+      "lat" : 19.688064,
+      "lon" : 46.100235,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "9", "10R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Suboticatrans",
+      "lat" : 19.694412,
+      "lon" : 46.101276,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "9", "10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Aurometal",
+      "lat" : 19.698794,
+      "lon" : 46.101755,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "9", "10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - II Kasarna",
+      "lat" : 19.713169,
+      "lon" : 46.103366,
+      "zone" : "I",
+      "served_lines" : ["4R", "6", "7", "10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Trgopromet",
+      "lat" : 19.728904999999997,
+      "lon" : 46.1053,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veliki Radanovac Mz",
+      "lat" : 19.727973,
+      "lon" : 46.107561,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palmina",
+      "lat" : 19.732316,
+      "lon" : 46.109386,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Beli Golub",
+      "lat" : 19.731894,
+      "lon" : 46.112567,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Vrtna Stanica",
+      "lat" : 19.730624,
+      "lon" : 46.115752,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Peščarin Voćnjak",
+      "lat" : 19.729132,
+      "lon" : 46.119369,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kestenova",
+      "lat" : 19.727798,
+      "lon" : 46.122544,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Rasadnik V.Radanovac",
+      "lat" : 19.725884,
+      "lon" : 46.125692,
+      "zone" : "I",
+      "served_lines" : ["4R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mali Bajmok - Swarovski",
+      "lat" : 19.635762,
+      "lon" : 46.075469999999996,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Vikend Naselje",
+      "lat" : 19.767689999999998,
+      "lon" : 46.088553,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Calzedonia",
+      "lat" : 19.632963999999998,
+      "lon" : 46.078143,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dunkenmotoren",
+      "lat" : 19.635676,
+      "lon" : 46.080002,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Batinska",
+      "lat" : 19.636554999999998,
+      "lon" : 46.083058,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mali Bajmok",
+      "lat" : 19.641901,
+      "lon" : 46.086839,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dom Mali Bajmok",
+      "lat" : 19.645284999999998,
+      "lon" : 46.089234,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Slavica",
+      "lat" : 19.648159,
+      "lon" : 46.091265,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Gajeva",
+      "lat" : 19.651452,
+      "lon" : 46.093272,
+      "zone" : "I",
+      "served_lines" : ["6"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Drvena Ambulanta",
+      "lat" : 19.653684,
+      "lon" : 46.094682999999996,
+      "zone" : "I",
+      "served_lines" : ["6", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Preradovićeva",
+      "lat" : 19.656617,
+      "lon" : 46.096373,
+      "zone" : "I",
+      "served_lines" : ["6", "8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Radanovac",
+      "lat" : 19.730106,
+      "lon" : 46.104741999999995,
+      "zone" : "I",
+      "served_lines" : ["6", "7", "10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Benzinska Pumpa",
+      "lat" : 19.743,
+      "lon" : 46.103645,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zoo Vrt",
+      "lat" : 19.753055,
+      "lon" : 46.102796999999995,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić, Toranj",
+      "lat" : 19.758675099999998,
+      "lon" : 46.102232099999995,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palic Center",
+      "lat" : 19.762304999999998,
+      "lon" : 46.102014,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić, Lovranska",
+      "lat" : 19.7645062,
+      "lon" : 46.099985499999995,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Štrand",
+      "lat" : 19.766199,
+      "lon" : 46.094204999999995,
+      "zone" : "I",
+      "served_lines" : ["6", "7"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Vikend Naselje",
+      "lat" : 19.768345999999998,
+      "lon" : 46.08835,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mali Bajmok - Swarovski",
+      "lat" : 19.635694,
+      "lon" : 46.074925,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Štrand",
+      "lat" : 19.766714,
+      "lon" : 46.094052999999995,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Lovranska",
+      "lat" : 19.76447,
+      "lon" : 46.099418,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palic Center",
+      "lat" : 19.7608584,
+      "lon" : 46.102265599999996,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Zoo Vrt",
+      "lat" : 19.751614,
+      "lon" : 46.103055999999995,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić - Benzinska Pumpa",
+      "lat" : 19.742532,
+      "lon" : 46.103857,
+      "zone" : "I",
+      "served_lines" : ["6R", "7R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Preradovićeva",
+      "lat" : 19.656547,
+      "lon" : 46.096523999999995,
+      "zone" : "I",
+      "served_lines" : ["6R", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Drvena Ambulanta",
+      "lat" : 19.653816,
+      "lon" : 46.094853,
+      "zone" : "I",
+      "served_lines" : ["6R", "8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Gajeva",
+      "lat" : 19.651001,
+      "lon" : 46.093198,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Slavica",
+      "lat" : 19.648728,
+      "lon" : 46.091828,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dom Mali Bajmok",
+      "lat" : 19.643998,
+      "lon" : 46.088484,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Mali Bajmok",
+      "lat" : 19.640484,
+      "lon" : 46.086023999999995,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Batinska",
+      "lat" : 19.636176,
+      "lon" : 46.083,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Dunkenmotoren",
+      "lat" : 19.635595,
+      "lon" : 46.080023,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Calzedonia",
+      "lat" : 19.632599,
+      "lon" : 46.077982,
+      "zone" : "I",
+      "served_lines" : ["6R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Đerđa Lukača",
+      "lat" : 19.660045,
+      "lon" : 46.135842,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo okretište",
+      "lat" : 19.687553599999998,
+      "lon" : 46.0661742,
+      "zone" : "I",
+      "served_lines" : ["8", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jovana Mikića 263",
+      "lat" : 19.664088,
+      "lon" : 46.126895999999995,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jovana Mikića 198",
+      "lat" : 19.664794,
+      "lon" : 46.124832999999995,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Višnjička",
+      "lat" : 19.664939,
+      "lon" : 46.122462,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Železničko Naselje",
+      "lat" : 19.665293,
+      "lon" : 46.118345999999995,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pruga Subotica",
+      "lat" : 19.666057,
+      "lon" : 46.114357999999996,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Gubo Đar",
+      "lat" : 19.663148,
+      "lon" : 46.110637,
+      "zone" : "I",
+      "served_lines" : ["8", "8AR"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bife Gat",
+      "lat" : 19.656444999999998,
+      "lon" : 46.090486999999996,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kersko Groblje",
+      "lat" : 19.660183,
+      "lon" : 46.088176,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Berber Milan",
+      "lat" : 19.663595,
+      "lon" : 46.087112,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Obdanište Ker",
+      "lat" : 19.663617,
+      "lon" : 46.085001999999996,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kolevka",
+      "lat" : 19.669242,
+      "lon" : 46.081191,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Plate Dobrijevića I",
+      "lat" : 19.676148899999998,
+      "lon" : 46.067759699999996,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Plate Dobrijevića 2",
+      "lat" : 19.679289,
+      "lon" : 46.068493,
+      "zone" : "I",
+      "served_lines" : ["8"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo - Groblje",
+      "lat" : 19.680965999999998,
+      "lon" : 46.066037,
+      "zone" : "I",
+      "served_lines" : ["8", "16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo Okretnica",
+      "lat" : 19.687343,
+      "lon" : 46.066189,
+      "zone" : "I",
+      "served_lines" : ["8R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Đerđa Lukača",
+      "lat" : 19.660145,
+      "lon" : 46.135948,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo groblje",
+      "lat" : 19.6813658,
+      "lon" : 46.0666162,
+      "zone" : "I",
+      "served_lines" : ["8R", "16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Plate Dobrijevića II",
+      "lat" : 19.680419,
+      "lon" : 46.068678999999996,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Plate Dobrijevića 1",
+      "lat" : 19.675359999999998,
+      "lon" : 46.067685999999995,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kolevka",
+      "lat" : 19.668917999999998,
+      "lon" : 46.081512,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Obdanište Ker",
+      "lat" : 19.6646422,
+      "lon" : 46.084520499999996,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Berber Milan",
+      "lat" : 19.664383,
+      "lon" : 46.086738,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kersko Groblje",
+      "lat" : 19.659667,
+      "lon" : 46.088539,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bife Gat",
+      "lat" : 19.656314,
+      "lon" : 46.090956999999996,
+      "zone" : "I",
+      "served_lines" : ["8R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Gubo Đar",
+      "lat" : 19.66324,
+      "lon" : 46.110555999999995,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Pruga Subotica",
+      "lat" : 19.666193,
+      "lon" : 46.114339,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Železničko Naselje",
+      "lat" : 19.665398,
+      "lon" : 46.118482,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Višnjička",
+      "lat" : 19.664987,
+      "lon" : 46.121111,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jovana Mikića 198",
+      "lat" : 19.664686,
+      "lon" : 46.125789,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Jovana Mikića 263",
+      "lat" : 19.664008,
+      "lon" : 46.127371,
+      "zone" : "I",
+      "served_lines" : ["8R", "8A"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Sever",
+      "lat" : 19.698452,
+      "lon" : 46.098043999999994,
+      "zone" : "I",
+      "served_lines" : ["9"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Sever",
+      "lat" : 19.698104999999998,
+      "lon" : 46.097939,
+      "zone" : "I",
+      "served_lines" : ["9R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić Naselje Pulska",
+      "lat" : 19.763659999999998,
+      "lon" : 46.109382,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Orbanfalova",
+      "lat" : 19.759885999999998,
+      "lon" : 46.106812,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Košut Lajoša",
+      "lat" : 19.75405,
+      "lon" : 46.105478999999995,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Oš Miroslav Antić",
+      "lat" : 19.749544999999998,
+      "lon" : 46.106648,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Rogaška",
+      "lat" : 19.747338,
+      "lon" : 46.107217999999996,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Partizanska",
+      "lat" : 19.741872,
+      "lon" : 46.106052,
+      "zone" : "I",
+      "served_lines" : ["10"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Palić Naselje Pulska",
+      "lat" : 19.763588,
+      "lon" : 46.109536,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Subotica - Partizanska",
+      "lat" : 19.742311,
+      "lon" : 46.106068,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Rogaška",
+      "lat" : 19.746889,
+      "lon" : 46.107028,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Ružina",
+      "lat" : 19.751939999999998,
+      "lon" : 46.108101999999995,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Josipa Kolumba",
+      "lat" : 19.758706999999998,
+      "lon" : 46.109534,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Marije Bursać",
+      "lat" : 19.762341,
+      "lon" : 46.110301,
+      "zone" : "I",
+      "served_lines" : ["10R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Teslino Naselje",
+      "lat" : 19.685454999999997,
+      "lon" : 46.113164,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Radnoti Mikloša",
+      "lat" : 19.68753,
+      "lon" : 46.109055,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Teslino Naselje Pijaca",
+      "lat" : 19.6896672,
+      "lon" : 46.1061226,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kerska Crkva",
+      "lat" : 19.6658707,
+      "lon" : 46.0894317,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Prozivka",
+      "lat" : 19.669079999999997,
+      "lon" : 46.086617,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Masloš",
+      "lat" : 19.671336999999998,
+      "lon" : 46.084849999999996,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bolnica 2 - Subotica",
+      "lat" : 19.673704999999998,
+      "lon" : 46.082228,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veterinarski Zavod",
+      "lat" : 19.677297,
+      "lon" : 46.076125999999995,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo - Peščara",
+      "lat" : 19.679448999999998,
+      "lon" : 46.071731,
+      "zone" : "I",
+      "served_lines" : ["16"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Teslino Naselje",
+      "lat" : 19.685551,
+      "lon" : 46.113012999999995,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Aleksandrovo centar",
+      "lat" : 19.679363499999997,
+      "lon" : 46.072860299999995,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Veterinarski Zavod",
+      "lat" : 19.6779299,
+      "lon" : 46.0757984,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Bolnica 2 - Subotica",
+      "lat" : 19.674172,
+      "lon" : 46.081762,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Masloš",
+      "lat" : 19.672079999999998,
+      "lon" : 46.084457,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Prozivka",
+      "lat" : 19.668381,
+      "lon" : 46.087503,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Kerska Crkva",
+      "lat" : 19.66491,
+      "lon" : 46.090201,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Vatrogasci",
+      "lat" : 19.660019,
+      "lon" : 46.094390999999995,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Sut",
+      "lat" : 19.691795,
+      "lon" : 46.101532999999996,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Teslino Naselje Pijaca",
+      "lat" : 19.688591,
+      "lon" : 46.107510999999995,
+      "zone" : "I",
+      "served_lines" : ["16R"],
+      "uid" : "075fd027bb73780f983dbda71ad1ee15"
+    },
+    {
+      "name" : "Radnoti Mikloša",
+      "lat" : 19.687195,
+      "lon" : 46.110291,
+      "zone" : "I",
+      "served_lines" : ["16R"],
       "uid" : "075fd027bb73780f983dbda71ad1ee15"
     }
   ]
