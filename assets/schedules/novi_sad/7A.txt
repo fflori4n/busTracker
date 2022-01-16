@@ -1,4 +1,4 @@
-# linija 7AA	2021-10-18
+# linija 7AA	2022-01-04
 >#RAD
 04 30R
 05 00R 25R 50R
