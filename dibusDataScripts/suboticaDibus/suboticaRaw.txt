@@ -1,0 +1,3358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name><![CDATA[Linije gradskog prevoza JP "Subotica-trans"]]></name>
+    <description><![CDATA[Trase linije gradskog prevoza JP "Subotica-trans" u julu 2016. godine<br><br>Public transport lines for the Public transport company "Subotica-trans" for the city Subotica.]]></description>
+    <Style id="icon-503-000000-labelson">
+      <IconStyle>
+        <color>ff000000</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-009D57-labelson">
+      <IconStyle>
+        <color>ff579d00</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-0BA9CC-labelson">
+      <IconStyle>
+        <color>ffcca90b</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-7C3592-labelson">
+      <IconStyle>
+        <color>ff92357c</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-7CCFA9-labelson">
+      <IconStyle>
+        <color>ffa9cf7c</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-CCCCCC-labelson">
+      <IconStyle>
+        <color>ffcccccc</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-CDDC39-labelson">
+      <IconStyle>
+        <color>ff39dccd</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-DB4436-labelson">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-F4EB37-labelson">
+      <IconStyle>
+        <color>ff37ebf4</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-F8971B-labelson">
+      <IconStyle>
+        <color>ff1b97f8</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-503-F8971B-labelson-nodesc">
+      <IconStyle>
+        <color>ff1b97f8</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-000000-9719-nodesc-normal">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>9.719</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-000000-9719-nodesc-highlight">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>14.5785</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-000000-9719-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-000000-9719-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-000000-9719-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-009D57-4488-nodesc-normal">
+      <LineStyle>
+        <color>ff579d00</color>
+        <width>4.488</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-009D57-4488-nodesc-highlight">
+      <LineStyle>
+        <color>ff579d00</color>
+        <width>6.732</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-009D57-4488-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-009D57-4488-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-009D57-4488-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-4186F0-7781-nodesc-normal">
+      <LineStyle>
+        <color>fff08641</color>
+        <width>7.781</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-4186F0-7781-nodesc-highlight">
+      <LineStyle>
+        <color>fff08641</color>
+        <width>11.6715</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-4186F0-7781-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-4186F0-7781-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-4186F0-7781-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-7C3592-4294-normal">
+      <LineStyle>
+        <color>ff92357c</color>
+        <width>4.294</width>
+      </LineStyle>
+    </Style>
+    <Style id="line-7C3592-4294-highlight">
+      <LineStyle>
+        <color>ff92357c</color>
+        <width>6.441</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="line-7C3592-4294">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-7C3592-4294-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-7C3592-4294-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-7CCFA9-4294-nodesc-normal">
+      <LineStyle>
+        <color>ffa9cf7c</color>
+        <width>4.294</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-7CCFA9-4294-nodesc-highlight">
+      <LineStyle>
+        <color>ffa9cf7c</color>
+        <width>6.441</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-7CCFA9-4294-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-7CCFA9-4294-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-7CCFA9-4294-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-CCCCCC-4681-nodesc-normal">
+      <LineStyle>
+        <color>ffcccccc</color>
+        <width>4.681</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-CCCCCC-4681-nodesc-highlight">
+      <LineStyle>
+        <color>ffcccccc</color>
+        <width>7.0215</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-CCCCCC-4681-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-CCCCCC-4681-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-CCCCCC-4681-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-CDDC39-5262-nodesc-normal">
+      <LineStyle>
+        <color>ff39dccd</color>
+        <width>5.262</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-CDDC39-5262-nodesc-highlight">
+      <LineStyle>
+        <color>ff39dccd</color>
+        <width>7.893</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-CDDC39-5262-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-CDDC39-5262-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-CDDC39-5262-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-DB4436-9331-normal">
+      <LineStyle>
+        <color>ff3644db</color>
+        <width>9.331</width>
+      </LineStyle>
+    </Style>
+    <Style id="line-DB4436-9331-highlight">
+      <LineStyle>
+        <color>ff3644db</color>
+        <width>13.9965</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="line-DB4436-9331">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-DB4436-9331-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-DB4436-9331-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-F4EB37-3906-nodesc-normal">
+      <LineStyle>
+        <color>ff37ebf4</color>
+        <width>3.906</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-F4EB37-3906-nodesc-highlight">
+      <LineStyle>
+        <color>ff37ebf4</color>
+        <width>5.859</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-F4EB37-3906-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-F4EB37-3906-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-F4EB37-3906-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-F8971B-7588-nodesc-normal">
+      <LineStyle>
+        <color>ff1b97f8</color>
+        <width>7.588</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-F8971B-7588-nodesc-highlight">
+      <LineStyle>
+        <color>ff1b97f8</color>
+        <width>11.382</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-F8971B-7588-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-F8971B-7588-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-F8971B-7588-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Linija 1A Kelebija opština-Novo naselje</name>
+      <Placemark>
+        <name>Linija 1a Kelebija opština-Novo naselje
+</name>
+        <description>Smer kretanja autobusa na liniji 1a iz smera Novog naselja prema Kelebiji opštini</description>
+        <styleUrl>#line-DB4436-9331</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6745986,46.0662933,0
+            19.6747541,46.0661668,0
+            19.6737403,46.0634794,0
+            19.6682847,46.0674657,0
+            19.6706289,46.0692094,0
+            19.6728417,46.0707474,0
+            19.6732092,46.0708414,0
+            19.6741265,46.0710498,0
+            19.6738153,46.0721905,0
+            19.6733486,46.0729887,0
+            19.6729034,46.0735637,0
+            19.672308,46.074094,0
+            19.6661282,46.0787382,0
+            19.6682096,46.0800926,0
+            19.6696472,46.081209,0
+            19.6704224,46.0817708,0
+            19.6707469,46.0819494,0
+            19.6720827,46.0825597,0
+            19.673397,46.0830694,0
+            19.6729302,46.0836201,0
+            19.6795821,46.0859902,0
+            19.6797591,46.0859604,0
+            19.6798718,46.0860162,0
+            19.6798772,46.0860944,0
+            19.6839809,46.0876086,0
+            19.6842706,46.087657,0
+            19.6812129,46.0907115,0
+            19.6773398,46.0929957,0
+            19.6719539,46.0959941,0
+            19.6716106,46.0964107,0
+            19.6705914,46.0982892,0
+            19.6696311,46.1001975,0
+            19.6674478,46.1046684,0
+            19.6670723,46.1044006,0
+            19.6649694,46.1034707,0
+            19.6624482,46.1026822,0
+            19.6620727,46.1023697,0
+            19.6619976,46.1021242,0
+            19.6606565,46.1016109,0
+            19.6604848,46.1015886,0
+            19.6603668,46.1015142,0
+            19.6609461,46.1008224,0
+            19.6607316,46.1007108,0
+            19.6617937,46.0993122,0
+            19.6599913,46.0983525,0
+            19.6575022,46.0969092,0
+            19.6561933,46.0979954,0
+            19.6555173,46.0983599,0
+            19.6544015,46.0991634,0
+            19.6534467,46.1001157,0
+            19.6495521,46.1029872,0
+            19.645679,46.1057767,0
+            19.6404111,46.1095331,0
+            19.6385765,46.1107009,0
+            19.6373749,46.1111565,0
+            19.6357011,46.1116194,0
+            19.6352184,46.1118928,0
+            19.6335769,46.1133487,0
+            19.6292853,46.1156841,0
+            19.6224618,46.1190159,0
+            19.6151233,46.1220798,0
+            19.6131063,46.1231803,0
+            19.6112394,46.1242363,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Novo naselje okretnica
+</name>
+        <description><![CDATA[Bus stop "Novo naselje okretnica"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6746147,46.0663454,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Petra Horvatskog
+</name>
+        <description><![CDATA[Bus stop "Petra Horvatskog"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.67094,46.0653516,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Josipa Šokčića
+</name>
+        <description><![CDATA[Bus stop "Josipa Šokčića"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.668636,46.0677858,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Josipa Lihta
+</name>
+        <description><![CDATA[Bus stop "Josipa Lihta"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6707657,46.0692503,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pijaca Novo naselje
+</name>
+        <description><![CDATA[Bus stop "Pijaca Novo naselje"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6741265,46.0714145,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dušana Krnjajskog
+</name>
+        <description><![CDATA[Bus stop "Dušana Krnjajskog"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6701944,46.0758058,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pačirski put
+</name>
+        <description><![CDATA[Bus stop "Pačirski put"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.666678,46.0783493,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bolnica</name>
+        <description><![CDATA[Bus stop "Bolnica"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6723804,46.0825987,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajnatska II
+</name>
+        <description><![CDATA[Bus stop "Bajnatska II"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6738744,46.0839066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajnatska I
+</name>
+        <description><![CDATA[Bus stop "Bajnatska I"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6786943,46.0856442,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Senćansko groblje
+</name>
+        <description><![CDATA[Bus stop "Senćansko groblje"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6838173,46.0881463,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dinamotrans</name>
+        <description><![CDATA[Bus stop "Dinamotrans"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6805692,46.0911319,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Autobuska stanica Subotica</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA0hfzW0K9QhyqhetIQe_s034Q8k9eLd1_qYMn6HvowOVNZVfStsnPgTfuzorODyo2LsXQ4DV10xDHCFvKmu9qwuqaZeZXntllAwbsX7bQWe4gJ17GVoA_aTTBXORcWeqZQwoq4Zl2BX21RAwJwpf7CMkg" height="200" width="auto" /><br><br>Bus stop "Autobuska stanica Subotica"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA0hfzW0K9QhyqhetIQe_s034Q8k9eLd1_qYMn6HvowOVNZVfStsnPgTfuzorODyo2LsXQ4DV10xDHCFvKmu9qwuqaZeZXntllAwbsX7bQWe4gJ17GVoA_aTTBXORcWeqZQwoq4Zl2BX21RAwJwpf7CMkg</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6742231,46.0947851,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MEŠC</name>
+        <description><![CDATA[Bus stop "MEŠC"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6704519,46.0988286,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jadran</name>
+        <description><![CDATA[Bus stop "Jadran"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6690625,46.1015589,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Higjenski zavod
+</name>
+        <description><![CDATA[Bus stop "Higjenski zavod"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6678823,46.1039654,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arsenija Čarnojevića</name>
+        <description><![CDATA[Bus stop "Arsenija Čarnojevića"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.664492,46.1034149,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sinagoga</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA3yzbKRn6-TeXVTjA8XnMd0uHSgJdiANpd3uTXwa1jAb3G9T_VOFXzPcR31ZwXPwsj6phNa04YNuOlnW4uXAwasS0OxGHWep0aKpxhFV_xd1Hvny5wtGYgAsbQk5PcKI_gj4oTQ9UUzVbbxVQs" height="200" width="auto" /><br><br>Bus stop "Sinagoga"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA3yzbKRn6-TeXVTjA8XnMd0uHSgJdiANpd3uTXwa1jAb3G9T_VOFXzPcR31ZwXPwsj6phNa04YNuOlnW4uXAwasS0OxGHWep0aKpxhFV_xd1Hvny5wtGYgAsbQk5PcKI_gj4oTQ9UUzVbbxVQs</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6603453,46.1013469,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6600208,46.0984399,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Preradovićeva</name>
+        <description><![CDATA[Bus stop "Preradovićeva"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6569443,46.0974132,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sadecki</name>
+        <description><![CDATA[Bus stop "Sadecki"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6535352,46.1000822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zdravstvena stanica
+</name>
+        <description><![CDATA[Bus stop "Zdravstvena stanica"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6481064,46.1040621,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Škola Sečenji Ištvan
+</name>
+        <description><![CDATA[Bus stop "Škola Sečenji Ištvan"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6439999,46.1070152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zorka pruga
+</name>
+        <description><![CDATA[Bus stop "Zorka pruga"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6381152,46.1108236,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zorka</name>
+        <description><![CDATA[Bus stop "Zorka"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6326971,46.1137206,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zorka okretnica
+</name>
+        <description><![CDATA[Bus stop "Zorka okretnica"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6296448,46.1155614,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Veliki progon
+</name>
+        <description><![CDATA[Bus stop "Veliki progon"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6225101,46.118908,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kelebija opština
+</name>
+        <description><![CDATA[Bus stop "Kelebija opština"]]></description>
+        <styleUrl>#icon-503-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6113762,46.1241861,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 2 - Srpski šor-Pačirski put (KTC)</name>
+      <Placemark>
+        <name>Linija 2 Srpski šor (Široki progon)-Pačirski put (KTC)
+</name>
+        <styleUrl>#line-009D57-4488-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6655273,46.0781874,0
+            19.6660638,46.0785893,0
+            19.6682471,46.0800926,0
+            19.6696043,46.0811308,0
+            19.6708488,46.0819122,0
+            19.6735042,46.0829875,0
+            19.6729892,46.0836164,0
+            19.6795875,46.0859679,0
+            19.6797484,46.0859269,0
+            19.6798879,46.0859865,0
+            19.6799308,46.0860869,0
+            19.684056,46.0875491,0
+            19.6845281,46.0877426,0
+            19.6815991,46.0907636,0
+            19.677179,46.0933083,0
+            19.6726298,46.0957337,0
+            19.6719432,46.0961801,0
+            19.6712995,46.0973258,0
+            19.6675014,46.1047948,0
+            19.6670508,46.104527,0
+            19.6650124,46.1036046,0
+            19.6625233,46.1028012,0
+            19.6619868,46.1024739,0
+            19.6618313,46.1026189,0
+            19.6611714,46.1033814,0
+            19.6559572,46.109005,0
+            19.6581244,46.1096744,0
+            19.6577114,46.1100389,0
+            19.6569014,46.1108348,0
+            19.6548843,46.1131702,0
+            19.6527815,46.1159369,0
+            19.649713,46.1201016,0
+            19.6494985,46.1204437,0
+            19.6491981,46.1210684,0
+            19.6462154,46.1249948,0
+            19.6440911,46.1272999,0
+            19.6413445,46.1296941,0
+            19.637568,46.1330548,0
+            19.636066,46.1344823,0
+            19.6333838,46.1369357,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>EV-PRO
+</name>
+        <description><![CDATA[Bus stop "EV-PRO"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6645617,46.0765501,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pačirski put
+</name>
+        <description><![CDATA[Bus stop "Pačirski put"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6659887,46.0786061,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bolnica</name>
+        <description><![CDATA[Bus stop "Bolnica"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6726137,46.0826769,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajnatska II
+</name>
+        <description><![CDATA[Bus stop "Bajnatska II"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6746066,46.0841726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajnatska I
+</name>
+        <description><![CDATA[Bus stop "Bajnatska I"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6786809,46.0856237,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Senćansko groblje
+</name>
+        <description><![CDATA[Bus stop "Senćansko groblje"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6837798,46.0881035,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dinamotrans</name>
+        <description><![CDATA[Bus stop "Dinamotrans"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.680478,46.0911654,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Autobuska stanica grad
+</name>
+        <description><![CDATA[Bus stop "Autobuska stanica grad"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6743304,46.0947293,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MEŠC</name>
+        <description><![CDATA[Bus stop "MEŠC"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6704948,46.0987691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jadran</name>
+        <description><![CDATA[Bus stop "Jadran"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6690947,46.1014994,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Higjenski zavod
+</name>
+        <description><![CDATA[Bus stop "Higjenski zavod"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6679252,46.1040323,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arsenija Čarnojevića</name>
+        <description><![CDATA[Bus stop "Arsenija Čarnojevića"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6645188,46.1034707,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samoposluga br. 23
+</name>
+        <description><![CDATA[Bus stop "Samoposluga br. 23"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6594387,46.1051556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hala sportova
+</name>
+        <description><![CDATA[Bus stop "Hala sportova"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6562308,46.1087818,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dudova šuma groblje
+</name>
+        <description><![CDATA[Bus stop "Dudova šuma groblje"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6575719,46.1102695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bazeni</name>
+        <description><![CDATA[Bus stop "Bazeni"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6546108,46.113583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Somborska pruga
+</name>
+        <description><![CDATA[Bus stop "Somborska pruga"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6525159,46.1164222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drvara Subotica
+</name>
+        <description><![CDATA[Bus stop "Drvara Subotica"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6502897,46.1194658,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Padejska
+</name>
+        <description><![CDATA[Bus stop "Padejska"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6483344,46.1222843,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zorkina</name>
+        <description><![CDATA[Bus stop "Zorkina"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6458399,46.1251769,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prodavnica Farex</name>
+        <description><![CDATA[Bus stop "Prodavnica Farex"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6425784,46.1287015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dr Ferenca Bodrogvarija
+</name>
+        <description><![CDATA[Bus stop "Dr Ferenca Bodrogvarija"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6388555,46.1319916,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ganjo šor
+</name>
+        <description><![CDATA[Bus stop "Ganjo šor"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6360606,46.1345381,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Široki progon
+</name>
+        <description><![CDATA[Bus stop "Široki progon"]]></description>
+        <styleUrl>#icon-503-009D57-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6334803,46.136906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 3 Makova Sedmica-Bajski put</name>
+      <Placemark>
+        <name>Linija 3 Makova Sedmica-Bajski put
+</name>
+        <styleUrl>#line-4186F0-7781-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6721605,46.1506375,0
+            19.6724099,46.1502139,0
+            19.67311,46.1489809,0
+            19.6738744,46.1477294,0
+            19.6792603,46.1425707,0
+            19.6818781,46.1400432,0
+            19.6812236,46.1391214,0
+            19.6806657,46.1378799,0
+            19.6801722,46.1365566,0
+            19.6799254,46.1361402,0
+            19.6793032,46.1355232,0
+            19.6783698,46.1347202,0
+            19.6781015,46.1342593,0
+            19.6779513,46.1337388,0
+            19.6775758,46.132973,0
+            19.6767068,46.1324526,0
+            19.675355,46.1317239,0
+            19.6750653,46.1314637,0
+            19.6741211,46.1301328,0
+            19.6740782,46.1297462,0
+            19.6741855,46.1295157,0
+            19.675355,46.1285491,0
+            19.6772754,46.1266455,0
+            19.6769321,46.125783,0
+            19.6763957,46.1247866,0
+            19.6761596,46.1240058,0
+            19.6755803,46.1227713,0
+            19.6753335,46.1223029,0
+            19.6751404,46.1215741,0
+            19.6749043,46.1209866,0
+            19.6745503,46.120295,0
+            19.6741641,46.1193803,0
+            19.6738636,46.1181606,0
+            19.6737134,46.1173649,0
+            19.6725976,46.1145238,0
+            19.6721363,46.1134528,0
+            19.6710527,46.1125083,0
+            19.670645,46.111943,0
+            19.6693897,46.110024,0
+            19.6692502,46.1098306,0
+            19.6694112,46.109667,0
+            19.6692288,46.1093992,0
+            19.6705914,46.1068628,0
+            19.6725118,46.1032327,0
+            19.6741211,46.1001082,0
+            19.6716964,46.0999074,0
+            19.6698403,46.0994535,0
+            19.6682954,46.0988881,0
+            19.6667933,46.0982409,0
+            19.6661925,46.0978764,0
+            19.6637785,46.0970654,0
+            19.6629953,46.096805,0
+            19.6605706,46.0987617,0
+            19.6575371,46.0969594,0
+            19.6560752,46.0981814,0
+            19.6544766,46.0992155,0
+            19.6538758,46.0994312,0
+            19.6527064,46.099766,0
+            19.6513331,46.1000413,0
+            19.6491337,46.1003314,0
+            19.6474493,46.1005769,0
+            19.646827,46.1006513,0
+            19.6455717,46.1009935,0
+            19.6420312,46.1020127,0
+            19.6399713,46.1026673,0
+            19.6376109,46.1027268,0
+            19.6325898,46.1026971,0
+            19.6296716,46.1026524,0
+            19.6246827,46.1017932,0
+            19.6244305,46.1017486,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Makova Sedmica
+</name>
+        <description><![CDATA[Bus stop "Makova Sedmica"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6722007,46.1501637,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Slovinov put
+</name>
+        <description><![CDATA[Bus stop "Slovinov put"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6765164,46.1450795,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MZ Graničar
+</name>
+        <description><![CDATA[Bus stop "MZ Graničar"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6814221,46.1396622,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oficirski stanovi
+</name>
+        <description><![CDATA[Bus stop "Oficirski stanovi"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6777394,46.1338541,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>I krivina
+</name>
+        <description><![CDATA[Bus stop "I krivina"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6744323,46.1309693,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>II krivina
+</name>
+        <description><![CDATA[Bus stop "II krivina"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6767765,46.1259466,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kolar</name>
+        <description><![CDATA[Bus stop "Kolar"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.674392,46.1204437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OŠ Majšanski put
+</name>
+        <description><![CDATA[Bus stop "OŠ Majšanski put"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.672654,46.1151597,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Skrob</name>
+        <description><![CDATA[Bus stop "Skrob"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6699959,46.1112178,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Željezničar</name>
+        <description><![CDATA[Bus stop "Željezničar"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6707684,46.1060315,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radio Subotica
+</name>
+        <description><![CDATA[Bus stop "Radio Subotica"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6734157,46.1010586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6692529,46.0994163,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta I 
+</name>
+        <description><![CDATA[Bus stop "Pošta I"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6645027,46.09743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Matije Gupca
+</name>
+        <description><![CDATA[Bus stop "Matije Gupca"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6625045,46.0972737,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6598276,46.0985422,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Preradovićeva</name>
+        <description><![CDATA[Bus stop "Preradovićeva"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6567217,46.0975936,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajski put (Sadecki)</name>
+        <description><![CDATA[Bus stop "Bajski put (Sadecki)"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6531409,46.0995763,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OŠ Đuro Salaj
+</name>
+        <description><![CDATA[Bus stop "OŠ Đuro Salaj"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6477282,46.1005788,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drvara R
+</name>
+        <description><![CDATA[Bus stop "Drvara R"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6430504,46.1017504,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajski put-Dom</name>
+        <description><![CDATA[Bus stop "Bajski put-Dom"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6391451,46.1027938,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jasenovačka</name>
+        <description><![CDATA[Bus stop "Jasenovačka"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.634293,46.1027491,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bunar</name>
+        <description><![CDATA[Bus stop "Bunar"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6315598,46.1027343,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bajski put
+</name>
+        <description><![CDATA[Bus stop "Bajski put"]]></description>
+        <styleUrl>#icon-503-0BA9CC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6244842,46.1018155,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 4 Veliki Radanovac-Lifka</name>
+      <Placemark>
+        <name>Linija 4 Veliki Radanovac-Lifka
+</name>
+        <description>Smer kretanja autobusa na liniji 4 iz smera Velikog Radanovca do Lifke</description>
+        <styleUrl>#line-7C3592-4294</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.7228247,46.1293298,0
+            19.7231144,46.1289283,0
+            19.7246915,46.1271474,0
+            19.7256303,46.1260878,0
+            19.7267622,46.1247828,0
+            19.7271001,46.1243404,0
+            19.7272342,46.1241285,0
+            19.7284305,46.1213473,0
+            19.7292084,46.1195067,0
+            19.7298843,46.1178706,0
+            19.7311449,46.1147098,0
+            19.7330976,46.1098381,0
+            19.7329903,46.1096447,0
+            19.7325611,46.1095033,0
+            19.7280443,46.1077033,0
+            19.7291923,46.1049659,0
+            19.7281194,46.1050552,0
+            19.7270036,46.1050329,0
+            19.7247076,46.1048097,0
+            19.7154164,46.1037088,0
+            19.6995163,46.1019383,0
+            19.6921134,46.1010604,0
+            19.6858907,46.0998553,0
+            19.684689,46.0997511,0
+            19.6743464,46.1001677,0
+            19.6721578,46.1000338,0
+            19.6698403,46.0994535,0
+            19.6669436,46.0984269,0
+            19.6661282,46.0979805,0
+            19.6631455,46.0969538,0
+            19.6620727,46.0965818,0
+            19.6604204,46.0949153,0
+            19.6575853,46.0968925,0
+            19.6601307,46.0983674,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Veliki Radanovac Okretnica
+</name>
+        <description><![CDATA[Bus stop "Veliki Radanovac Okretnica"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7227442,46.1292852,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rasadnik</name>
+        <description><![CDATA[Bus stop "Rasadnik"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7260165,46.1255636,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kestenova</name>
+        <description><![CDATA[Bus stop "Kestenova"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7277358,46.1224758,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Peščarin voćnjak
+</name>
+        <description><![CDATA[Bus stop "Peščarin voćnjak"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7291467,46.1191311,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vrtna</name>
+        <description><![CDATA[Bus stop "Vrtna"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7304046,46.1160039,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beli golub
+</name>
+        <description><![CDATA[Bus stop "Beli golub"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7317833,46.1126087,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Palmina</name>
+        <description><![CDATA[Bus stop "Palmina"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7318986,46.1093602,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mesna zajednica Veliki Radanovac
+</name>
+        <description><![CDATA[Bus stop "Mesna zajednica Veliki Radanovac"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7279853,46.1073425,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trgopromet</name>
+        <description><![CDATA[Bus stop "Trgopromet"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7287416,46.1054829,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radanovac</name>
+        <description><![CDATA[Bus stop "Radanovac"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7274649,46.1051742,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kasarna</name>
+        <description><![CDATA[Bus stop "Kasarna"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7130829,46.1035897,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aurometal</name>
+        <description><![CDATA[Bus stop "Aurometal"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6997845,46.1020648,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subotica-trans</name>
+        <description><![CDATA[Bus stop "Subotica-trans"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6948144,46.1015198,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUT</name>
+        <description><![CDATA[Bus stop "SUT"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6912819,46.1010121,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w" height="200" width="auto" /><br><br>Bus stop "Partizan"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6862447,46.1000822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUP</name>
+        <description><![CDATA[Bus stop "SUP"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.680478,46.0999929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teretna stanica
+</name>
+        <description><![CDATA[Bus stop "Teretna stanica"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6752369,46.1001938,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6690893,46.0993717,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta</name>
+        <description><![CDATA[Bus stop "Pošta"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6643123,46.0973705,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Politehnička škola
+</name>
+        <description><![CDATA[Bus stop "Politehnička škola"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.662255,46.0966972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vatrogasci</name>
+        <description><![CDATA[Bus stop "Vatrogasci"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6605545,46.095224,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "LIfka"]]></description>
+        <styleUrl>#icon-503-7C3592-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6601307,46.0983674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 6 Vikend naselje-Mali Bajmok</name>
+      <Placemark>
+        <name>Linija 6 Vikend naselje-Mali Bajmok
+</name>
+        <styleUrl>#line-F8971B-7588-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.7684035,46.0884141,0
+            19.7686502,46.0885332,0
+            19.7680494,46.0908398,0
+            19.7678992,46.0916806,0
+            19.7673628,46.0936821,0
+            19.766365,46.0942624,0
+            19.766129,46.0945154,0
+            19.7658286,46.0954602,0
+            19.7638008,46.1020294,0
+            19.7615478,46.1021335,0
+            19.7575888,46.1024832,0
+            19.7479758,46.103361,0
+            19.7412917,46.1039635,0
+            19.7298011,46.1049082,0
+            19.7280953,46.1050087,0
+            19.7272316,46.1050077,0
+            19.7263787,46.1049101,0
+            19.7246084,46.1047,0
+            19.7126779,46.1033461,0
+            19.6999535,46.1019178,0
+            19.6920732,46.1010176,0
+            19.6858719,46.0998199,0
+            19.6846917,46.0997158,0
+            19.6785817,46.0999538,0
+            19.6742258,46.1001101,0
+            19.6722195,46.0999836,0
+            19.6698591,46.0995075,0
+            19.6668443,46.0984585,0
+            19.6655569,46.0977964,0
+            19.6642694,46.097283,0
+            19.6630034,46.0968813,0
+            19.6605787,46.0988175,0
+            19.657832,46.0971873,0
+            19.6551499,46.0955421,0
+            19.6491954,46.0919485,0
+            19.6480259,46.0911672,0
+            19.6449146,46.0889796,0
+            19.637619,46.0839121,0
+            19.6342716,46.081434,0
+            19.6359667,46.0801615,0
+            19.632508,46.0778273,0
+            19.6361303,46.0751955,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Vikend naselje</name>
+        <description><![CDATA[Bus stop "Vikend naselje"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7683096,46.0883081,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Štrand</name>
+        <description><![CDATA[Bus stop "Štrand"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7672018,46.0938458,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lovranska</name>
+        <description><![CDATA[Bus stop "Lovranska"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7646376,46.0995168,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Palić centar</name>
+        <description><![CDATA[Bus stop "Palić centar"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7607109,46.1022953,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Palić Toranj</name>
+        <description><![CDATA[Bus stop "Palić toranj"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7580528,46.1023288,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ZOO vrt</name>
+        <description><![CDATA[Bus stop "ZOO vrt"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7516933,46.1031006,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Benzinska pumpa</name>
+        <description><![CDATA[Bus stop "Benzinska pumpa"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7425282,46.1039226,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radanovac</name>
+        <description><![CDATA[Bus stop "Radanovac"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7274864,46.1051519,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kasarna</name>
+        <description><![CDATA[Bus stop "Kasarna"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7131607,46.1035935,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Autometal</name>
+        <description><![CDATA[Bus stop "Aurometal"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6998274,46.1020722,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subotica-trans</name>
+        <description><![CDATA[Bus stop "Subotica-trans"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6947366,46.1015087,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUT</name>
+        <description><![CDATA[Bus stop "SUT"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6912095,46.1010102,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w" height="200" width="auto" /><br><br>Bus stop "Partizan"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6861267,46.1000487,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUP</name>
+        <description><![CDATA[Bus stop "SUP"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6805424,46.0999929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teretna stanica
+</name>
+        <description><![CDATA[Bus stop "Teretna stanica"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6753442,46.1001938,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6691376,46.0993829,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta</name>
+        <description><![CDATA[Bus stop "Pošta"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6643391,46.0973891,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Matije Gupca
+</name>
+        <description><![CDATA[Bus stop "Matije Gupca"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6624347,46.0973482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6598974,46.0985534,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sarvaš</name>
+        <description><![CDATA[Bus stop "Sarvaš"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6567351,46.09666,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drvena ambulanta
+</name>
+        <description><![CDATA[Bus stop "Drvena ambulanta"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6537954,46.094852,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gajeva</name>
+        <description><![CDATA[Bus stop "Gajeva"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6510112,46.093204,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Slavica</name>
+        <description><![CDATA[Bus stop "Slavica"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6486804,46.0918145,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dom</name>
+        <description><![CDATA[Bus stop "Dom"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6441716,46.0886504,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mali Bajmok
+</name>
+        <description><![CDATA[Bus stop "Mali Bajmok"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6404272,46.0860348,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dunkermotoren</name>
+        <description><![CDATA[Bus stop "Dunker motoren"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6355778,46.0800964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Calzedonia</name>
+        <description><![CDATA[Bus stop "Calzedonia"]]></description>
+        <styleUrl>#icon-503-F8971B-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6325201,46.0779865,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swarovski</name>
+        <styleUrl>#icon-503-F8971B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.6361303,46.0751955,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 16 Teslino naselje-Aleksandrovo</name>
+      <Placemark>
+        <name>Linija 16 Teslino naselje-Aleksandrovo
+</name>
+        <styleUrl>#line-000000-9719-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6852255,46.1135867,0
+            19.6897745,46.1057619,0
+            19.6917057,46.1025483,0
+            19.6922207,46.1007629,0
+            19.6862555,46.0996618,0
+            19.6846247,46.0995131,0
+            19.6742392,46.0998999,0
+            19.6722651,46.0997214,0
+            19.6706772,46.0994238,0
+            19.6668577,46.0979359,0
+            19.6648836,46.0972663,0
+            19.6633172,46.096805,0
+            19.6621907,46.0963363,0
+            19.6614182,46.0956518,0
+            19.6607852,46.0949301,0
+            19.6599483,46.0940671,0
+            19.6599483,46.09371,0
+            19.6610534,46.0927725,0
+            19.6623409,46.0919467,0
+            19.6640174,46.090918,0
+            19.6654793,46.0898149,0
+            19.6672522,46.0884885,0
+            19.6703768,46.085912,0
+            19.6715355,46.0849744,0
+            19.6726084,46.084007,0
+            19.6735847,46.0831066,0
+            19.6736867,46.0826415,0
+            19.6739388,46.082221,0
+            19.6764708,46.0776367,0
+            19.6770179,46.0770339,0
+            19.6781015,46.0753742,0
+            19.6811056,46.0690028,0
+            19.6813202,46.0655787,0
+            19.6813416,46.0654075,0
+            19.6815991,46.0651841,0
+            19.6820712,46.0650055,0
+            19.6827042,46.0650576,0
+            19.6875751,46.0659955,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Teslino naselje
+</name>
+        <description><![CDATA[Bus stop "Teslino naselje"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6855608,46.1131572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radnoti Mikloša
+</name>
+        <description><![CDATA[Bus stop "Radnoti Mikloša"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6875671,46.1091631,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teslino naselje Pijaca
+</name>
+        <description><![CDATA[Bus stop "Teslino naselje Pijaca"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.688707,46.1070171,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUT</name>
+        <description><![CDATA[Bus stop "SUT"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6911264,46.1009972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w" height="200" width="auto" /><br><br>Bus stop "Partizan"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6863171,46.1000952,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUP</name>
+        <description><![CDATA[Bus stop "SUP"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.680419,46.0999892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teretna stanica
+</name>
+        <description><![CDATA[Bus stop "Teretna stanica"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6751833,46.1002049,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6691939,46.0994071,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta I
+</name>
+        <description><![CDATA[Bus stop "Pošta I"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6642184,46.0973351,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Politehnička škola
+</name>
+        <description><![CDATA[Bus stop "Politehnička škola"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6621585,46.0966897,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vatrogasci</name>
+        <description><![CDATA[Bus stop "Vatrogasci"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6604794,46.0951794,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kerska crkva
+</name>
+        <description><![CDATA[Bus stop "Kerska crkva"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6654361,46.089614,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prozivka</name>
+        <description><![CDATA[Bus stop "Prozivka"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6691751,46.0865743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Masloš</name>
+        <description><![CDATA[Bus stop "Masloš"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6712565,46.0849447,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bolnica-Beogradski put
+</name>
+        <description><![CDATA[Bus stop "Bolnica-Beogradski put"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6736705,46.0822062,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Veterinarski zavod
+</name>
+        <description><![CDATA[Bus stop "Veterinarski zavod"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6773184,46.0760849,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aleksandrovo Peščara
+</name>
+        <description><![CDATA[Bus stop "Aleksandrovo peščara"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6795231,46.0717308,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aleksandrovo groblje
+</name>
+        <description><![CDATA[Bus stop "Aleksandrovo groblje"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.680993,46.0661333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aleksandrovo okretnica
+</name>
+        <description><![CDATA[Bus stop "Aleksandrovo okretnica"]]></description>
+        <styleUrl>#icon-503-000000-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6875483,46.0662263,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 8 Železničko naselje-Aleksandrovo</name>
+      <Placemark>
+        <name>Linija 8 Železničko naselje-Aleksandrovo
+</name>
+        <styleUrl>#line-7CCFA9-4294-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6601898,46.1359246,0
+            19.6609944,46.1340771,0
+            19.6613539,46.1332146,0
+            19.6617026,46.1324116,0
+            19.662062,46.1316235,0
+            19.6624053,46.1307834,0
+            19.6627808,46.1299321,0
+            19.6630812,46.1292518,0
+            19.6636122,46.1281661,0
+            19.6641621,46.1269132,0
+            19.6647388,46.1256379,0
+            19.6651304,46.1243218,0
+            19.6652162,46.1225371,0
+            19.6651089,46.121496,0
+            19.6654952,46.1185213,0
+            19.6664608,46.1139846,0
+            19.6652377,46.112274,0
+            19.664079,46.1112922,0
+            19.6630705,46.1103253,0
+            19.6624696,46.1101765,0
+            19.6587145,46.1098641,0
+            19.6557534,46.1090013,0
+            19.6559036,46.1086591,0
+            19.6618903,46.1023363,0
+            19.6617615,46.1021726,0
+            19.6602595,46.1015923,0
+            19.660281,46.1013394,0
+            19.6607316,46.1008633,0
+            19.660517,46.1006848,0
+            19.6615684,46.0993308,0
+            19.6605975,46.0988844,0
+            19.6528512,46.0942456,0
+            19.654659,46.0928134,0
+            19.655453,46.0921587,0
+            19.6561825,46.0913997,0
+            19.6563971,46.0911319,0
+            19.6565366,46.0907301,0
+            19.6573198,46.0898893,0
+            19.6578026,46.0895321,0
+            19.6620083,46.0873519,0
+            19.6631456,46.0874338,0
+            19.6632636,46.087404,0
+            19.6633923,46.0873668,0
+            19.663918,46.0870171,0
+            19.6625447,46.085953,0
+            19.6647763,46.0842861,0
+            19.6675766,46.0824629,0
+            19.6689177,46.081488,0
+            19.669497,46.0811531,0
+            19.6681667,46.0801113,0
+            19.6660423,46.0787419,0
+            19.6692503,46.0763454,0
+            19.6723402,46.0740754,0
+            19.6733809,46.0729962,0
+            19.6738207,46.0722072,0
+            19.6741748,46.0710907,0
+            19.67484,46.0683143,0
+            19.6748829,46.0675253,0
+            19.6787453,46.0683069,0
+            19.6813417,46.0689396,0
+            19.681406,46.0669223,0
+            19.6814919,46.0654559,0
+            19.6816957,46.0652698,0
+            19.6821356,46.0650911,0
+            19.6827793,46.0651283,0
+            19.6875751,46.0660588,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Đerđa Lukača</name>
+        <description><![CDATA[Bus stup "Đerđa Lukača"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6600664,46.1359283,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jovana Mikića 263
+</name>
+        <description><![CDATA[Bus stop "Jovana Mikića 263"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6640307,46.1269653,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jovana Mikića 198
+</name>
+        <description><![CDATA[Bus stop "Jovana Mikića 198"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6646154,46.1255599,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Višnjička</name>
+        <description><![CDATA[Bus stop "Višnjička"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6650982,46.1224181,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Železničko naselje
+</name>
+        <description><![CDATA[Bus stop "Železničko naselje"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6652591,46.1186403,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pruga</name>
+        <description><![CDATA[Bus stop "Pruga"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6660531,46.1145685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gubo Đar
+</name>
+        <description><![CDATA[Bus stop "Gubo Đar"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6641031,46.1116009,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hala sportova
+</name>
+        <description><![CDATA[Bus stop "Hala sportova"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6558338,46.1086591,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samoposluga br. 23
+</name>
+        <description><![CDATA[Bus stop "Samoposluga br. 23"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6595246,46.1046572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sinagoga</name>
+        <description><![CDATA[Bus stop "Sinagoga"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6604231,46.1012706,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6596533,46.0984771,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sarvaš</name>
+        <description><![CDATA[Bus stop "Sarvaš"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6567002,46.0966693,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drvena ambulanta
+</name>
+        <description><![CDATA[Bus stop "Drvena ambulanta"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6537659,46.0948279,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bife Gard
+</name>
+        <description><![CDATA[Bus stop "Bife Gard"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6565393,46.0907561,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kersko groblje
+</name>
+        <description><![CDATA[Bus stop "Kersko groblje"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6613377,46.0875845,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berber Milan
+</name>
+        <description><![CDATA[Bus stop "Berber Milan"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6637383,46.0870654,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Obdanište Ker
+</name>
+        <description><![CDATA[Bus stop "Obdanište Ker"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6657312,46.083728,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kolevka</name>
+        <description><![CDATA[Bus stop "Kolevka"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6690196,46.0815066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pačirski put
+</name>
+        <description><![CDATA[Bus stop "Pačirski put"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6662354,46.078954,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dušana Krnjajskog
+</name>
+        <description><![CDATA[Bus stop "Dušana Krnjajskog"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6702963,46.0755156,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pijaca Novo naselje
+</name>
+        <description><![CDATA[Bus stop "Pijaca Novo naselje"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.673987,46.071314,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plate Dobrojevića I
+</name>
+        <description><![CDATA[Bus stop "Plate Dobrojevića I"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6754676,46.0676183,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plate Dobrojevića II
+</name>
+        <description><![CDATA[Bus stop "Plate Dobrojevića II"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6794024,46.0684464,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aleksandrovo groblje
+</name>
+        <description><![CDATA[Bus stop "Aleksandrovo groblje"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6809822,46.066029,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aleksandrovo okretište
+</name>
+        <description><![CDATA[Bus stop "Aleksandrovo okretište"]]></description>
+        <styleUrl>#icon-503-7CCFA9-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6875429,46.066137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 8a Železničko naselje-Jadran-Lifka</name>
+      <Placemark>
+        <name>Linija 8a Železničko naselje-Jadran-Lifka
+</name>
+        <styleUrl>#line-F4EB37-3906-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6603185,46.1359767,0
+            19.6614075,46.133724,0
+            19.6631241,46.1296644,0
+            19.6650124,46.125664,0
+            19.6652484,46.1242363,0
+            19.6653342,46.1226152,0
+            19.6652055,46.1213807,0
+            19.665699,46.1181383,0
+            19.6665788,46.1140627,0
+            19.6652699,46.1121438,0
+            19.6630383,46.1103439,0
+            19.6627378,46.1101505,0
+            19.6587038,46.1097934,0
+            19.6561503,46.1089752,0
+            19.6557212,46.1087372,0
+            19.6617079,46.1023251,0
+            19.6623516,46.10234,0
+            19.6627808,46.1026375,0
+            19.6650338,46.1033368,0
+            19.6671581,46.1042592,0
+            19.6674371,46.1044526,0
+            19.6697545,46.0996321,0
+            19.666729,46.0985608,0
+            19.6656132,46.097921,0
+            19.6630812,46.097058,0
+            19.6610427,46.0986352,0
+            19.6603346,46.0990816,0
+            19.6597767,46.0988435,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Đerđa Lukača
+</name>
+        <description><![CDATA[Bus stop "Đerđa Lukača"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6601576,46.1359432,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jovana Mikića 263
+</name>
+        <description><![CDATA[Bus stop "Jovana Mikića 263"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6640253,46.1270322,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jovana Mikića 198</name>
+        <description><![CDATA[Bus stop "Jovana Mikića 198"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6646154,46.1255599,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Višnjička</name>
+        <description><![CDATA[Bus stop "Višnjička"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6648407,46.1225334,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Železničko naselje
+</name>
+        <description><![CDATA[Bus stop "Železničko naselje"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.665302,46.1186143,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pruga</name>
+        <description><![CDATA[Bus stop "Pruga"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6660316,46.1144643,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gubo Đar
+</name>
+        <description><![CDATA[Bus stop "Gubo Đar"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6640682,46.1116046,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hala sportova
+</name>
+        <description><![CDATA[Bus stop "Hala sportova"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6558446,46.1084323,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samoposluga br. 23
+</name>
+        <description><![CDATA[Bus stop "Samoposluga br. 23"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6595085,46.1046553,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arsenija Čarnojevića
+</name>
+        <description><![CDATA[Bus stop "Arsenija Čarnojevića"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6654254,46.10356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Higjenski zavod</name>
+        <description><![CDATA[Bus stop "Higjenski zavod"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.668113,46.10279,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bioskop Jadran
+</name>
+        <description><![CDATA[Bus stop "Bioskop Jadran"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6692663,46.1004802,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6689633,46.0993234,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta I
+</name>
+        <description><![CDATA[Bus stop "Pošta I"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6642694,46.0973556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Matije Gupca
+</name>
+        <description><![CDATA[Bus stop "Matije Gupca"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6623248,46.0974374,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-F4EB37-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6597257,46.0985069,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 9 Srpski šor-ATB Sever</name>
+      <Placemark>
+        <name>Linija 9 Srpski šor-ATB Sever
+</name>
+        <styleUrl>#line-CDDC39-5262-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.6333838,46.1369357,0
+            19.6375895,46.1335455,0
+            19.6418381,46.1296495,0
+            19.6441555,46.1275378,0
+            19.6465158,46.1251286,0
+            19.649477,46.1211725,0
+            19.6500349,46.1200719,0
+            19.6553993,46.112843,0
+            19.6581459,46.1099273,0
+            19.6553135,46.1090645,0
+            19.6613216,46.1024293,0
+            19.6622229,46.1029351,0
+            19.6649694,46.1036716,0
+            19.6669865,46.1045717,0
+            19.6675229,46.1048841,0
+            19.6701944,46.0996544,0
+            19.6720934,46.1000785,0
+            19.6742713,46.1002421,0
+            19.6845925,46.0998478,0
+            19.6857941,46.0999445,0
+            19.6899784,46.1007406,0
+            19.6919525,46.1011051,0
+            19.7016621,46.1022582,0
+            19.7024775,46.0990444,0
+            19.7024989,46.0987691,0
+            19.7022736,46.0985236,0
+            19.7017801,46.0983004,0
+            19.6970272,46.0978243,0
+            19.6932452,46.0973853,0
+            19.6931273,46.0973668,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Široki progon
+</name>
+        <description><![CDATA[Bus stop "Široki progon"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6335232,46.1369952,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ganjo Šor
+</name>
+        <description><![CDATA[Bus stop "Ganjo Šar"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.636066,46.1346459,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dr Ferenca Bodrogvarija</name>
+        <description><![CDATA[Bus stop "Dr Ferenca Bodrogvarija"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6387911,46.1317909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prodavnica Farex
+</name>
+        <description><![CDATA[Bus stop "Prodavnica Farex"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6425408,46.128668,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zorkina</name>
+        <description><![CDATA[Bus stop "Zorkina"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6458292,46.1252067,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Padejska</name>
+        <description><![CDATA[Bus stop "Padejska"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6483129,46.1223177,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drvara Subotica
+</name>
+        <description><![CDATA[Bus stop "Drvara Subotica"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6503943,46.1193468,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Somborska pruga
+</name>
+        <description><![CDATA[Bus stop "Somborska pruga"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6523952,46.1163906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bazeni</name>
+        <description><![CDATA[Bus stop "Bazeni"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6544284,46.1135198,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dudova šuma groblje
+</name>
+        <description><![CDATA[Bus stop "Dudova šuma groblje"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6573895,46.1102695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hala sportova
+</name>
+        <description><![CDATA[Bus stop "Hala sportova"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6558446,46.1084323,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samoposluga br. 23
+</name>
+        <description><![CDATA[Bus stop "Samoposluga br. 23"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6593368,46.104687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arsenija Čarnojevića
+</name>
+        <description><![CDATA[Bus stop "Arsenija Čarnojevića"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6654469,46.1037348,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Higjenski zavod
+</name>
+        <description><![CDATA[Bus stop "Higjenski zavod"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6682256,46.1026896,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bioskop Jadran
+</name>
+        <description><![CDATA[Bus stop "Bioskop Jadran"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6694648,46.1004765,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nova opština
+</name>
+        <description><![CDATA[Bus stop "Nova opština"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6708757,46.0995689,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teretna stanica
+</name>
+        <description><![CDATA[Bus stop "Teretna stanica"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6750331,46.1002012,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sup</name>
+        <description><![CDATA[Bus stop "Sup"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6827954,46.0997214,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w" height="200" width="auto" /><br><br>Bus stop "Partizan"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6878648,46.1001454,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subotica-trans</name>
+        <description><![CDATA[Bus stop "Subotica-trans"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.694345,46.1012464,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aurometal</name>
+        <description><![CDATA[Bus stop "Aurometal"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6987438,46.1017597,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ATB Sever
+</name>
+        <description><![CDATA[Bus stop "ATB Sever"]]></description>
+        <styleUrl>#icon-503-CDDC39-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6931863,46.0972291,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Linija 10 Palić naselje-Lifka</name>
+      <Placemark>
+        <name>Linija 10 Palić naselje-Lifka</name>
+        <styleUrl>#line-CCCCCC-4681-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            19.7637606,46.1095703,0
+            19.7646081,46.1077182,0
+            19.7597909,46.1067363,0
+            19.7556174,46.1058288,0
+            19.7553706,46.1057321,0
+            19.7504032,46.1046386,0
+            19.7491586,46.1075694,0
+            19.7405219,46.1057395,0
+            19.7356725,46.1045568,0
+            19.735136,46.1045717,0
+            19.728173,46.105137,0
+            19.7270679,46.1051147,0
+            19.7185707,46.10417,0
+            19.7099447,46.1031583,0
+            19.7004282,46.1021689,0
+            19.6924675,46.1012464,0
+            19.6916413,46.1011125,0
+            19.6858585,46.1000189,0
+            19.6846354,46.0999148,0
+            19.6742713,46.1003016,0
+            19.6720505,46.1001454,0
+            19.6698403,46.0995726,0
+            19.6668684,46.0985534,0
+            19.6646583,46.0975341,0
+            19.6630597,46.096991,0
+            19.6608281,46.098717,0
+            19.6603668,46.0989923,0
+            19.6598518,46.098717,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Palić naselje
+</name>
+        <description><![CDATA[Bus stop "Palić naselje"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7635782,46.1096149,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Orbanfalova</name>
+        <description><![CDATA[Bus stop "Orbanfalova"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7599089,46.1068218,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Košut Lajoša
+</name>
+        <description><![CDATA[Bus stop "Košut Lajoša"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.754802,46.1056875,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OŠ Miroslav Antić
+</name>
+        <description><![CDATA[Bus stop "OŠ Miroslav Antić"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7498238,46.106197,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rogaška</name>
+        <description><![CDATA[Bus stop "Rogaška"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7467232,46.1069818,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizanska</name>
+        <description><![CDATA[Bus stop "Partizanska"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7408438,46.1057172,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radanovac</name>
+        <description><![CDATA[Bus stop "Radanovac"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7273898,46.1052411,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>II Kasarna
+</name>
+        <description><![CDATA[Bus stop "II Kasarna"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.7132385,46.1036121,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aurometal</name>
+        <description><![CDATA[Bus stop "Aurometal"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6997175,46.1020572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subotica-trans</name>
+        <description><![CDATA[Bus stop "Subotica-trans"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6946615,46.1015031,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUT</name>
+        <description><![CDATA[Bus stop "SUT"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6913597,46.1010288,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan</name>
+        <description><![CDATA[<img src="https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w" height="200" width="auto" /><br><br>Bus stop "Partizan"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://lh3.googleusercontent.com/umsh/ALX7VA245mvODxinXQZQkeIZrpM1nlmfjTCtmrXeRMoRGm0qAgk1JKaw3sf2VM3g9oafcYDy1GDz8YdBs8GDer5IGrQ47_zP9w</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            19.6861884,46.1000636,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SUP</name>
+        <description><![CDATA[Bus stop "SUP"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6803599,46.0999836,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Teretna stanica
+</name>
+        <description><![CDATA[Bus stop "Teretna stanica"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6751162,46.1001994,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Patrija</name>
+        <description><![CDATA[Bus stop "Patrija"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6690357,46.0993531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pošta</name>
+        <description><![CDATA[Bus stop "Pošta"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6644196,46.0974225,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Matije Gupca
+</name>
+        <description><![CDATA[Bus stop "Matije Gupca"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6623784,46.0973928,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lifka</name>
+        <description><![CDATA[Bus stop "Lifka"]]></description>
+        <styleUrl>#icon-503-CCCCCC-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            19.6597767,46.0985217,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
